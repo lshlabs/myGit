@@ -9,7 +9,7 @@ class App(tk.Tk):
         self.geometry('700x500')
         self.resizable(False, False)
         self.title('매크로')
-        self.configure(bg='white', padx=20, pady=20)
+        self.configure(bg='gainsboro', padx=20, pady=20)
         
         # 창 위치를 불러오고, 메뉴와 콘텐츠 영역을 생성합니다.
         self.load_window_position()
@@ -32,19 +32,19 @@ class App(tk.Tk):
 
         # 메뉴 아이템과 색상, 그리고 폰트 크기 설정
         menu_items = [
-            ("배달 플랫폼", "purple", "white", 14),
-            ("배달의 민족", "white", "black", 14),
-            ("요기요", "white", "black", 14),
-            ("+", "white", "black", 14),
-            ("배차 플랫폼", "purple", "white", 14),
-            ("만나", "white", "black", 14),
-            ("+", "white", "black", 14)
+            ("배달 플랫폼", "purple", "white", 12),
+            ("배달의 민족", "white", "black", 12),
+            ("요기요", "white", "black", 12),
+            ("+", "white", "black", 13),
+            ("배차 플랫폼", "purple", "white", 12),
+            ("만나", "white", "black", 12),
+            ("+", "white", "black", 12)
             ]
 
         # 메뉴 아이템 생성
         for i, (text, bg, fg, font_size) in enumerate(menu_items):
             label = tk.Label(menu_frame, text=text, bg=bg, fg=fg, 
-                      font=("TkDefaultFont", font_size),  # 폰트 크기 설정
+                      font=('default',font_size),  # 폰트 크기 설정
                       width=20, height=2, anchor='center')
             label.grid(row=i, column=0, sticky='nsew')  # sticky 옵션으로 상하좌우 여백 없이 꽉 채움
 
@@ -94,15 +94,32 @@ class App(tk.Tk):
         label_image5.place(x=345, y=310, width=120)
         label_image6.place(x=510, y=310, width=120)
         
-        # 기타 옵션 레이블 생성
-        label_receiption = tk.Label(text="기본 접수시간", bg='white',font=("Arial",14))
-        button1_receiption = tk.Button(text="-", bg='black', fg='black', width=1, height=1)
-        label_option2 = tk.Label(text="testtesttesttesttesttest")
-        label_option3 = tk.Label(text="testtesttesttesttesttesttesttesttest")
-        label_receiption.place(x=180, y=360)
-        button1_receiption.place(x=270, y=355)
-        label_option2.place(x=180, y=390)
-        label_option3.place(x=180, y=420)
+        # Frame 위젯 생성 및 배치
+        frame_option1 = tk.Frame(self, height=30, bg='white')  # Frame 높이 설정
+        frame_option1.place(x=180, y=350)  # Frame을 윈도우에 패딩과 함께 배치
+        
+        # 기타 옵션 레이블 생성 및 Frame 내에 배치
+        label_reception = tk.Label(frame_option1, text="기본 접수시간(분)", bg='white', font=('default', 10))
+        label_reception.grid(row=0, column=0, padx=(0, 10), sticky='w')
+        
+        # '-' 버튼 생성 및 Frame 내에 배치
+        btn_decrease = tk.Button(frame_option1, text='-')
+        btn_decrease.grid(row=0, column=1, sticky='ew')
+        
+        # Entry 위젯 생성 및 Frame 내에 배치, 비활성화 상태로 설정
+        entry = tk.Entry(frame_option1, justify='center', width=5)
+        entry.grid(row=0, column=2, padx=5, sticky='ew')
+        entry.insert(0, "50")
+        entry.config(state=tk.DISABLED)  # 사용자의 직접 입력을 방지
+        
+        # '+' 버튼 생성 및 Frame 내에 배치
+        btn_increase = tk.Button(frame_option1, text='+')
+        btn_increase.grid(row=0, column=3, sticky='ew')
+
+        # Grid column 설정
+        frame_option1.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
+        
+        
 
     # 창이 닫힐 때 현재 창 위치를 저장하는 함수입니다.
     def save_position(self, event):
