@@ -15,9 +15,6 @@ class App(tk.Tk):
         self.load_window_position()
         self.create_menu()
         self.create_content_area()
-        # 마우스 휠 이벤트와 창이 닫힐 때의 이벤트를 바인딩합니다.
-        self.bind_all("<MouseWheel>", self._on_mousewheel)
-        self.bind('<Destroy>', self.save_position)
         
     # 창 위치를 불러오는 함수입니다. 파일이 존재하면 그 위치에 창을 배치합니다.
     def load_window_position(self):
@@ -29,36 +26,36 @@ class App(tk.Tk):
     
     # 메뉴를 생성하는 함수입니다.
     def create_menu(self):
-        menu_frame = tk.Frame(self, bg='white', width=140, height=460, highlightthickness=1)
+        menu_frame = tk.Frame(self, width=140, height=460, bd=1, relief='solid', bg='white')
         menu_frame.grid(padx=(0, 10))
         menu_frame.grid_propagate(False)  # 프레임 크기 고정
 
-        menu_items = ["배달 플랫폼", "배달의 민족", "요기요", "+", "배차 플랫폼", "만나", "+"]
-        menu_colors = [("purple", "white"), ("white", "black"), ("white", "black"), ("white", "black"), ("purple", "white"), ("white", "black"), ("white", "black")]
+        # 메뉴 아이템과 색상 설정
+        menu_items = [
+            ("배달 플랫폼", "purple", "white"),
+            ("배달의 민족", "white", "black"),
+            ("요기요", "white", "black"),
+            ("+", "white", "black"),
+            ("배차 플랫폼", "purple", "white"),
+            ("만나", "white", "black"),
+            ("+", "white", "black")
+        ]
+            
+        # 메뉴 아이템 생성
+        for i, (text, bg, fg) in enumerate(menu_items):
+            label = tk.Label(menu_frame, text=text, bg=bg, fg=fg, width=20, height=2, anchor='center')
+            label.grid(row=i, column=0, sticky='nsew')  # sticky 옵션으로 상하좌우 여백 없이 꽉 채움
 
-        for i, (text, (bg, fg)) in enumerate(zip(menu_items, menu_colors)):
-            label = tk.Label(menu_frame, text=text, bg=bg, fg=fg, width=14, height=3, anchor='center')
-            label.grid(row=i, column=0)
+        # 프레임 내부의 모든 행과 열에 대해 동일한 공간 배분
+        for i in range(len(menu_items)):
+            menu_frame.grid_rowconfigure(i, weight=1)
+        menu_frame.grid_columnconfigure(0, weight=1)
 
             
     # 콘텐츠 영역을 생성하는 함수입니다.
     def create_content_area(self):
-        self.content_frame = tk.Frame(self)
-        self.content_frame.grid(row=0, column=1)
-        
-        self.content_canvas = tk.Canvas(self.content_frame, bg='white', width=498, height=460, highlightthickness=1)
-        self.content_canvas.pack(side='left', fill='both', expand=True)
-
-        self.scrollable_frame = tk.Frame(self.content_canvas, bg='white')
-        self.content_canvas.create_window((0, 0), window=self.scrollable_frame, anchor='nw', width=498)
-
-        # 스크롤 가능한 영역 설정
-        self.scrollable_frame.bind('<Configure>', lambda event: self.content_canvas.configure(scrollregion=self.content_canvas.bbox('all')))
-        
-        # 스크롤바 추가
-        scrollbar = tk.Scrollbar(self.content_frame, orient='vertical', command=self.content_canvas.yview, width=0, highlightthickness=0)
-        scrollbar.pack(side='right', fill='y')
-        self.content_canvas.configure(yscrollcommand=scrollbar.set)
+        content_frame = tk.Frame(self, bd=1, width=500, height=460, relief='solid', bg='white')
+        content_frame.grid(row=0, column=1)
         
         # 콘텐츠 프레임을 채웁니다.
         self.create_widgets()
@@ -100,10 +97,6 @@ class App(tk.Tk):
         label_option1.place(x=180, y=360)
         label_option2.place(x=180, y=390)
         label_option3.place(x=180, y=420)
-
-    # 마우스 휠로 스크롤하는 기능
-    def _on_mousewheel(self, event):
-        self.content_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
 
     # 창이 닫힐 때 현재 창 위치를 저장하는 함수입니다.
     def save_position(self, event):
