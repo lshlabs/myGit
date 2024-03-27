@@ -30,20 +30,22 @@ class App(tk.Tk):
         menu_frame.grid(padx=(0, 10))
         menu_frame.grid_propagate(False)  # 프레임 크기 고정
 
-        # 메뉴 아이템과 색상 설정
+        # 메뉴 아이템과 색상, 그리고 폰트 크기 설정
         menu_items = [
-            ("배달 플랫폼", "purple", "white"),
-            ("배달의 민족", "white", "black"),
-            ("요기요", "white", "black"),
-            ("+", "white", "black"),
-            ("배차 플랫폼", "purple", "white"),
-            ("만나", "white", "black"),
-            ("+", "white", "black")
-        ]
-            
+            ("배달 플랫폼", "purple", "white", 14),
+            ("배달의 민족", "white", "black", 14),
+            ("요기요", "white", "black", 14),
+            ("+", "white", "black", 14),
+            ("배차 플랫폼", "purple", "white", 14),
+            ("만나", "white", "black", 14),
+            ("+", "white", "black", 14)
+            ]
+
         # 메뉴 아이템 생성
-        for i, (text, bg, fg) in enumerate(menu_items):
-            label = tk.Label(menu_frame, text=text, bg=bg, fg=fg, width=20, height=2, anchor='center')
+        for i, (text, bg, fg, font_size) in enumerate(menu_items):
+            label = tk.Label(menu_frame, text=text, bg=bg, fg=fg, 
+                      font=("TkDefaultFont", font_size),  # 폰트 크기 설정
+                      width=20, height=2, anchor='center')
             label.grid(row=i, column=0, sticky='nsew')  # sticky 옵션으로 상하좌우 여백 없이 꽉 채움
 
         # 프레임 내부의 모든 행과 열에 대해 동일한 공간 배분
@@ -77,6 +79,7 @@ class App(tk.Tk):
         frame4.place(x=180,y=200)
         frame5.place(x=345,y=200)
         frame6.place(x=510,y=200)
+        
         # 이미지 레이블 생성 및 배치
         label_image1 = tk.Label(text="image 1")
         label_image2 = tk.Label(text="image 2")
@@ -90,11 +93,14 @@ class App(tk.Tk):
         label_image4.place(x=180, y=310, width=120)
         label_image5.place(x=345, y=310, width=120)
         label_image6.place(x=510, y=310, width=120)
+        
         # 기타 옵션 레이블 생성
-        label_option1 = tk.Checkbutton(text="testtesttest")
+        label_receiption = tk.Label(text="기본 접수시간", bg='white',font=("Arial",14))
+        button1_receiption = tk.Button(text="-", bg='black', fg='black', width=1, height=1)
         label_option2 = tk.Label(text="testtesttesttesttesttest")
         label_option3 = tk.Label(text="testtesttesttesttesttesttesttesttest")
-        label_option1.place(x=180, y=360)
+        label_receiption.place(x=180, y=360)
+        button1_receiption.place(x=270, y=355)
         label_option2.place(x=180, y=390)
         label_option3.place(x=180, y=420)
 
