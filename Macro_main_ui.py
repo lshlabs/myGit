@@ -1,68 +1,62 @@
 import tkinter as tk
 import os
 
-# App 클래스는 tk.Tk를 상속하여 만든 메인 애플리케이션 클래스입니다.
 class App(tk.Tk):
-    def __init__(self):
-        super().__init__()
-        # 창 크기, 리사이즈 가능 여부, 타이틀 설정
+    def __init__(self, master=None):
+        super().__init__(master)
         self.geometry('700x500')
         self.resizable(False, False)
         self.title('매크로')
         self.configure(bg='gainsboro', padx=20, pady=20)
-        
-        # 창 위치를 불러오고, 메뉴와 콘텐츠 영역을 생성합니다.
         self.load_window_position()
         self.create_menu()
         self.create_content_area()
-        
-    # 창 위치를 불러오는 함수입니다. 파일이 존재하면 그 위치에 창을 배치합니다.
+
     def load_window_position(self):
         position_file = 'window_position.txt'
         if os.path.exists(position_file):
             with open(position_file, 'r') as f:
-                position = f.read()
-            self.geometry(position)
-    
-    # 메뉴를 생성하는 함수입니다.
+                self.geometry(f.read())
+
     def create_menu(self):
         menu_frame = tk.Frame(self, width=140, height=460, bd=1, relief='solid', bg='white')
         menu_frame.grid(padx=(0, 10))
-        menu_frame.grid_propagate(False)  # 프레임 크기 고정
+        menu_frame.grid_propagate(False)
 
-        # 메뉴 아이템과 색상, 그리고 폰트 크기 설정
-        menu_items = [
-            ("배달 플랫폼", "purple", "white", 12),
-            ("배달의 민족", "white", "black", 12),
-            ("요기요", "white", "black", 12),
-            ("+", "white", "black", 13),
-            ("배차 플랫폼", "purple", "white", 12),
-            ("만나", "white", "black", 12),
-            ("+", "white", "black", 12)
-            ]
+        # 개별 메뉴 항목 생성 및 배치
+        self.menu_item1 = tk.Label(menu_frame, text="배달 플랫폼", bg="purple", fg="white", font=('default', 12), width=20, height=2, anchor='center')
+        self.menu_item1.grid(row=0, column=0, sticky='nsew')
 
-        # 메뉴 아이템 생성
-        for i, (text, bg, fg, font_size) in enumerate(menu_items):
-            label = tk.Label(menu_frame, text=text, bg=bg, fg=fg, 
-                      font=('default',font_size),  # 폰트 크기 설정
-                      width=20, height=2, anchor='center')
-            label.grid(row=i, column=0, sticky='nsew')  # sticky 옵션으로 상하좌우 여백 없이 꽉 채움
+        self.menu_item2 = tk.Label(menu_frame, text="배달의 민족", bg="white", fg="black", font=('default', 12), width=20, height=2, anchor='center')
+        self.menu_item2.grid(row=1, column=0, sticky='nsew')
 
-        # 프레임 내부의 모든 행과 열에 대해 동일한 공간 배분
-        for i in range(len(menu_items)):
+        self.menu_item3 = tk.Label(menu_frame, text="요기요", bg="white", fg="black", font=('default', 12), width=20, height=2, anchor='center')
+        self.menu_item3.grid(row=2, column=0, sticky='nsew')
+
+        self.menu_item4 = tk.Label(menu_frame, text="+", bg="white", fg="black", font=('default', 13), width=20, height=2, anchor='center')
+        self.menu_item4.grid(row=3, column=0, sticky='nsew')
+
+        self.menu_item5 = tk.Label(menu_frame, text="배차 플랫폼", bg="purple", fg="white", font=('default', 12), width=20, height=2, anchor='center')
+        self.menu_item5.grid(row=4, column=0, sticky='nsew')
+
+        self.menu_item6 = tk.Label(menu_frame, text="만나", bg="white", fg="black", font=('default', 12), width=20, height=2, anchor='center')
+        self.menu_item6.grid(row=5, column=0, sticky='nsew')
+
+        self.menu_item7 = tk.Label(menu_frame, text="+", bg="white", fg="black", font=('default', 12), width=20, height=2, anchor='center')
+        self.menu_item7.grid(row=6, column=0, sticky='nsew')
+
+        # 각 행에 대한 가중치 설정
+        for i in range(7):
             menu_frame.grid_rowconfigure(i, weight=1)
         menu_frame.grid_columnconfigure(0, weight=1)
 
-            
-    # 콘텐츠 영역을 생성하는 함수입니다.
+
     def create_content_area(self):
         content_frame = tk.Frame(self, bd=1, width=500, height=460, relief='solid', bg='white')
         content_frame.grid(row=0, column=1)
-        
-        # 콘텐츠 프레임을 채웁니다.
         self.create_widgets()
-        
-    # 콘텐츠 프레임에 내용을 채우는 함수입니다.
+
+     # 콘텐츠 프레임에 내용을 채우는 함수입니다.
     def create_widgets(self):
         label_tip = tk.Label(text='※ 이미지를 클릭하여 등록해주세요', bg='white')
         label_tip.place(x=170, y=8)
@@ -118,13 +112,9 @@ class App(tk.Tk):
 
         # Grid column 설정
         frame_option1.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
-        
-        
 
-    # 창이 닫힐 때 현재 창 위치를 저장하는 함수입니다.
     def save_position(self, event):
-        position_file = 'window_position.txt'
-        with open(position_file, 'w') as f: 
+        with open('window_position.txt', 'w') as f: 
             f.write(self.geometry())
 
 if __name__ == "__main__":
