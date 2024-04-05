@@ -2,10 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 import os
 
-color_baemin = "#45D3D3"
-color_yogiyo = "#FA0150"
-
-
 class App(tk.Tk):
     def __init__(self, master=None):
         super().__init__(master)
@@ -69,56 +65,76 @@ class App(tk.Tk):
      # 콘텐츠 프레임에 내용을 채우는 함수입니다.
     def create_widgets(self):
         # 상단 타이틀 부분
-        frame_title = tk.Frame(self, width=500, height=66, bg=color_baemin, relief='solid', bd=1)
-        frame_title.place(x=150,y=0)
-        frame_title.pack_propagate(0)
+        self.frame_title = tk.Frame(self, width=500, height=66, bg='grey', relief='solid', bd=1)
+        self.frame_title.place(x=150,y=0)
+        self.frame_title.pack_propagate(False)
         
-        label_title = tk.Label(frame_title, text="배달의 민족", bg=color_baemin, fg='white', font=('default',25))
-        label_title.pack(padx=10, pady=10, anchor='w')
+        self.label_title = tk.Label(self.frame_title, text="@platform name", bg='grey', fg='white', font=('default',25))
+        self.label_title.pack(padx=15, pady=10, anchor='w')
         
-        button_onoff = tk.Button(frame_title, text='OFF', width=5, height=2, bg=color_baemin)
-        button_onoff.place(x=400, y=10)
+        self.button_onoff = tk.Button(self.frame_title, text='OFF', width=5, height=2, bg='grey')
+        self.button_onoff.place(x=400, y=10)
         
         label_tip = tk.Label(text='※ 이미지를 클릭하여 등록해주세요', bg='white')
         label_tip.place(x=170, y=70)
         # 이미지 프레임 생성 및 배치
-        frame1 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        frame2 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        frame3 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        frame4 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        frame5 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        frame6 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        frame1.place(x=180,y=100)
-        frame2.place(x=345,y=100)
-        frame3.place(x=510,y=100)
-        frame4.place(x=180,y=260)
-        frame5.place(x=345,y=260)
-        frame6.place(x=510,y=260)
+        self.frame_image1 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image2 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image3 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image4 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image5 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image6 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image1.pack_propagate(False)
+        self.frame_image2.pack_propagate(False)
+        self.frame_image3.pack_propagate(False)
+        self.frame_image4.pack_propagate(False)
+        self.frame_image5.pack_propagate(False)
+        self.frame_image6.pack_propagate(False)
+        self.frame_image1.place(x=180,y=100)
+        self.frame_image2.place(x=345,y=100)
+        self.frame_image3.place(x=510,y=100)
+        self.frame_image4.place(x=180,y=260)
+        self.frame_image5.place(x=345,y=260)
+        self.frame_image6.place(x=510,y=260)
         
-        # 이미지 레이블 생성 및 배치
-        label_image1 = tk.Label(text="배달 접수 팝업")
-        label_image2 = tk.Label(text="포장 접수 팝업")
-        label_image3 = tk.Label(text="alt+tab 화면")
-        label_image4 = tk.Label(text="image 4")
-        label_image5 = tk.Label(text="image 5")
-        label_image6 = tk.Label(text="image 6")
-        label_image1.place(x=180, y=210, width=120)
-        label_image2.place(x=345, y=210, width=120)
-        label_image3.place(x=510, y=210, width=120)
-        label_image4.place(x=180, y=370, width=120)
-        label_image5.place(x=345, y=370, width=120)
-        label_image6.place(x=510, y=370, width=120)
+        # 이미지를 프레임 내에 이미지를 보여줄 레이블 생성 및 배치
+        self.label_image1 = tk.Label(self.frame_image1)
+        self.label_image2 = tk.Label(self.frame_image2)
+        self.label_image3 = tk.Label(self.frame_image3)
+        self.label_image4 = tk.Label(self.frame_image4)
+        self.label_image5 = tk.Label(self.frame_image5)
+        self.label_image6 = tk.Label(self.frame_image6)
+        self.label_image1.pack(expand=True, fill=tk.BOTH)
+        self.label_image2.pack(expand=True, fill=tk.BOTH)
+        self.label_image3.pack(expand=True, fill=tk.BOTH)
+        self.label_image4.pack(expand=True, fill=tk.BOTH)
+        self.label_image5.pack(expand=True, fill=tk.BOTH)
+        self.label_image6.pack(expand=True, fill=tk.BOTH)
+        
+        # 이미지 이름 레이블 생성 및 배치
+        title_image1 = tk.Label(text="image 1", bg='white')
+        title_image2 = tk.Label(text="image 2", bg='white')
+        title_image3 = tk.Label(text="image 3", bg='white')
+        title_image4 = tk.Label(text="image 4", bg='white')
+        title_image5 = tk.Label(text="image 5", bg='white')
+        title_image6 = tk.Label(text="image 6", bg='white')
+        title_image1.place(x=180, y=220, width=120)
+        title_image2.place(x=345, y=220, width=120)
+        title_image3.place(x=510, y=220, width=120)
+        title_image4.place(x=180, y=380, width=120)
+        title_image5.place(x=345, y=380, width=120)
+        title_image6.place(x=510, y=380, width=120)
         
         # Frame 위젯 생성 및 배치
         frame_option1 = tk.Frame(self, height=30, bg='white')  # Frame 높이 설정
         frame_option1.place(x=180, y=410)  # Frame을 윈도우에 패딩과 함께 배치
         
-        # StringVar 인스턴스 생성 및 초기값 설정
-        self.entry_var = tk.StringVar(self, "50")
-        
         # 기타 옵션 레이블 생성 및 Frame 내에 배치
         label_reception = tk.Label(frame_option1, text="기본 접수시간(분)", bg='white', font=('default', 10))
         label_reception.grid(row=0, column=0, padx=(0, 10), sticky='w')
+        
+        # StringVar 인스턴스 생성 및 초기값 설정
+        self.entry_var = tk.StringVar(self, "50")
         
         # '-' 버튼 생성 및 Frame 내에 배치
         self.btn_decrease = tk.Button(frame_option1, text='-')
