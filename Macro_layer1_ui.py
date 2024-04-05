@@ -20,7 +20,7 @@ class App(tk.Tk):
             self.button_onoff.config(text='Off', bg='lightgrey')
 
     def load_window_position(self):
-        position_file = 'window_position.txt'
+        position_file = 'data.txt'
         if os.path.exists(position_file):
             with open(position_file, 'r') as f:
                 self.geometry(f.read())
@@ -75,7 +75,7 @@ class App(tk.Tk):
         self.button_onoff = tk.Button(self.frame_title, text='OFF', width=5, height=2, bg='grey')
         self.button_onoff.place(x=400, y=10)
         
-        label_tip = tk.Label(text='※ 이미지를 클릭하여 등록해주세요', bg='white')
+        label_tip = tk.Label(text='※ 이미지를 클릭하여 등록해주세요', bg='white', fg='black')
         label_tip.place(x=170, y=80)
         # 이미지 프레임 생성 및 배치
         self.frame_image1 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
@@ -112,9 +112,9 @@ class App(tk.Tk):
         #self.label_image6.pack(expand=True, fill=tk.BOTH)
         
         # 이미지 이름 레이블 생성 및 배치
-        title_image1 = tk.Label(text="image 1", bg='white')
-        title_image2 = tk.Label(text="image 2", bg='white')
-        title_image3 = tk.Label(text="image 3", bg='white')
+        title_image1 = tk.Label(text="image 1", bg='white', fg='black')
+        title_image2 = tk.Label(text="image 2", bg='white', fg='black')
+        title_image3 = tk.Label(text="image 3", bg='white', fg='black')
         #title_image4 = tk.Label(text="image 4", bg='white')
         #title_image5 = tk.Label(text="image 5", bg='white')
         #title_image6 = tk.Label(text="image 6", bg='white')
@@ -130,7 +130,7 @@ class App(tk.Tk):
         frame_option1.place(x=180, y=290)  # Frame을 윈도우에 패딩과 함께 배치
         
         # 기타 옵션 레이블 생성 및 Frame 내에 배치
-        label_reception1 = tk.Label(frame_option1, text="배달 기본 접수시간(분)", bg='white', font=('default', 10))
+        label_reception1 = tk.Label(frame_option1, text="배달 기본 접수시간(분)", bg='white', fg='black', font=('default', 10))
         label_reception1.grid(row=0, column=0, padx=(0, 10), sticky='w')
         
         # StringVar 인스턴스 생성 및 초기값 설정
@@ -157,7 +157,7 @@ class App(tk.Tk):
         frame_option2.place(x=180, y=330)  # Frame을 윈도우에 패딩과 함께 배치
         
         # 기타 옵션 레이블 생성 및 Frame 내에 배치
-        label_reception2 = tk.Label(frame_option2, text="포장 기본 접수시간(분)", bg='white', font=('default', 10))
+        label_reception2 = tk.Label(frame_option2, text="포장 기본 접수시간(분)", bg='white', fg='black', font=('default', 10))
         label_reception2.grid(row=0, column=0, padx=(0, 10), sticky='w')
         
         # StringVar 인스턴스 생성 및 초기값 설정
@@ -180,7 +180,7 @@ class App(tk.Tk):
         frame_option2.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
 
     def save_position(self, event):
-        with open('window_position.txt', 'w') as f: 
+        with open('data.txt', 'w') as f: 
             f.write(self.geometry())
 
 if __name__ == "__main__":

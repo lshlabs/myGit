@@ -20,7 +20,7 @@ class App(tk.Tk):
             self.button_onoff.config(text='Off', bg='lightgrey')
 
     def load_window_position(self):
-        position_file = 'window_position.txt'
+        position_file = 'data.txt'
         if os.path.exists(position_file):
             with open(position_file, 'r') as f:
                 self.geometry(f.read())
@@ -76,84 +76,111 @@ class App(tk.Tk):
         self.button_onoff.place(x=400, y=10)
         
         label_tip = tk.Label(text='※ 이미지를 클릭하여 등록해주세요', bg='white')
-        label_tip.place(x=170, y=70)
+        label_tip.place(x=170, y=80)
         # 이미지 프레임 생성 및 배치
         self.frame_image1 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
         self.frame_image2 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
         self.frame_image3 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        self.frame_image4 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        self.frame_image5 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        self.frame_image6 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        #self.frame_image4 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        #self.frame_image5 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        #self.frame_image6 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
         self.frame_image1.pack_propagate(False)
         self.frame_image2.pack_propagate(False)
         self.frame_image3.pack_propagate(False)
-        self.frame_image4.pack_propagate(False)
-        self.frame_image5.pack_propagate(False)
-        self.frame_image6.pack_propagate(False)
-        self.frame_image1.place(x=180,y=100)
-        self.frame_image2.place(x=345,y=100)
-        self.frame_image3.place(x=510,y=100)
-        self.frame_image4.place(x=180,y=260)
-        self.frame_image5.place(x=345,y=260)
-        self.frame_image6.place(x=510,y=260)
+        #self.frame_image4.pack_propagate(False)
+        #self.frame_image5.pack_propagate(False)
+        #self.frame_image6.pack_propagate(False)
+        self.frame_image1.place(x=180,y=120)
+        self.frame_image2.place(x=345,y=120)
+        self.frame_image3.place(x=510,y=120)
+        #self.frame_image4.place(x=180,y=260)
+        #self.frame_image5.place(x=345,y=260)
+        #self.frame_image6.place(x=510,y=260)
         
         # 이미지를 프레임 내에 이미지를 보여줄 레이블 생성 및 배치
         self.label_image1 = tk.Label(self.frame_image1)
         self.label_image2 = tk.Label(self.frame_image2)
         self.label_image3 = tk.Label(self.frame_image3)
-        self.label_image4 = tk.Label(self.frame_image4)
-        self.label_image5 = tk.Label(self.frame_image5)
-        self.label_image6 = tk.Label(self.frame_image6)
+        #self.label_image4 = tk.Label(self.frame_image4)
+        #self.label_image5 = tk.Label(self.frame_image5)
+        #self.label_image6 = tk.Label(self.frame_image6)
         self.label_image1.pack(expand=True, fill=tk.BOTH)
         self.label_image2.pack(expand=True, fill=tk.BOTH)
         self.label_image3.pack(expand=True, fill=tk.BOTH)
-        self.label_image4.pack(expand=True, fill=tk.BOTH)
-        self.label_image5.pack(expand=True, fill=tk.BOTH)
-        self.label_image6.pack(expand=True, fill=tk.BOTH)
+        #self.label_image4.pack(expand=True, fill=tk.BOTH)
+        #self.label_image5.pack(expand=True, fill=tk.BOTH)
+        #self.label_image6.pack(expand=True, fill=tk.BOTH)
         
         # 이미지 이름 레이블 생성 및 배치
         title_image1 = tk.Label(text="image 1", bg='white')
         title_image2 = tk.Label(text="image 2", bg='white')
         title_image3 = tk.Label(text="image 3", bg='white')
-        title_image4 = tk.Label(text="image 4", bg='white')
-        title_image5 = tk.Label(text="image 5", bg='white')
-        title_image6 = tk.Label(text="image 6", bg='white')
-        title_image1.place(x=180, y=220, width=120)
-        title_image2.place(x=345, y=220, width=120)
-        title_image3.place(x=510, y=220, width=120)
-        title_image4.place(x=180, y=380, width=120)
-        title_image5.place(x=345, y=380, width=120)
-        title_image6.place(x=510, y=380, width=120)
+        #title_image4 = tk.Label(text="image 4", bg='white')
+        #title_image5 = tk.Label(text="image 5", bg='white')
+        #title_image6 = tk.Label(text="image 6", bg='white')
+        title_image1.place(x=180, y=240, width=120)
+        title_image2.place(x=345, y=240, width=120)
+        title_image3.place(x=510, y=240, width=120)
+        #title_image4.place(x=180, y=380, width=120)
+        #title_image5.place(x=345, y=380, width=120)
+        #title_image6.place(x=510, y=380, width=120)
         
-        # Frame 위젯 생성 및 배치
+        # 옵션1 위젯 생성 및 배치
         frame_option1 = tk.Frame(self, height=30, bg='white')  # Frame 높이 설정
-        frame_option1.place(x=180, y=410)  # Frame을 윈도우에 패딩과 함께 배치
+        frame_option1.place(x=180, y=290)  # Frame을 윈도우에 패딩과 함께 배치
         
         # 기타 옵션 레이블 생성 및 Frame 내에 배치
-        label_reception = tk.Label(frame_option1, text="기본 접수시간(분)", bg='white', font=('default', 10))
-        label_reception.grid(row=0, column=0, padx=(0, 10), sticky='w')
+        label_reception1 = tk.Label(frame_option1, text="배달 기본 접수시간(분)", bg='white', font=('default', 10))
+        label_reception1.grid(row=0, column=0, padx=(0, 10), sticky='w')
         
         # StringVar 인스턴스 생성 및 초기값 설정
-        self.entry_var = tk.StringVar(self, "50")
+        self.entry_var1 = tk.StringVar(self, "50")
         
         # '-' 버튼 생성 및 Frame 내에 배치
-        self.btn_decrease = tk.Button(frame_option1, text='-')
-        self.btn_decrease.grid(row=0, column=1, sticky='ew')
+        self.btn_decrease1 = tk.Button(frame_option1, text='-')
+        self.btn_decrease1.grid(row=0, column=1, sticky='ew')
         
         # Entry 위젯 생성 및 Frame 내에 배치, 비활성화 상태로 설정
-        self.entry = ttk.Entry(frame_option1, justify='center', width=5, textvariable=self.entry_var)
-        self.entry.grid(row=0, column=2, padx=5, sticky='ew')
-        self.entry.config(state='readonly')  # 사용자의 직접 입력을 방지
+        self.entry1 = ttk.Entry(frame_option1, justify='center', width=5, textvariable=self.entry_var1)
+        self.entry1.grid(row=0, column=2, padx=5, sticky='ew')
+        self.entry1.config(state='readonly')  # 사용자의 직접 입력을 방지
         
         # '+' 버튼 생성 및 Frame 내에 배치
-        self.btn_increase = tk.Button(frame_option1, text='+')
-        self.btn_increase.grid(row=0, column=3, sticky='ew')
+        self.btn_increase1 = tk.Button(frame_option1, text='+')
+        self.btn_increase1.grid(row=0, column=3, sticky='ew')
 
         # Grid column 설정
         frame_option1.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
 
+        # 옵션2 위젯 생성 및 배치
+        frame_option2 = tk.Frame(self, height=30, bg='white')  # Frame 높이 설정
+        frame_option2.place(x=180, y=330)  # Frame을 윈도우에 패딩과 함께 배치
+        
+        # 기타 옵션 레이블 생성 및 Frame 내에 배치
+        label_reception2 = tk.Label(frame_option2, text="포장 기본 접수시간(분)", bg='white', font=('default', 10))
+        label_reception2.grid(row=0, column=0, padx=(0, 10), sticky='w')
+        
+        # StringVar 인스턴스 생성 및 초기값 설정
+        self.entry_var2 = tk.StringVar(self, "15")
+        
+        # '-' 버튼 생성 및 Frame 내에 배치
+        self.btn_decrease2 = tk.Button(frame_option2, text='-')
+        self.btn_decrease2.grid(row=0, column=1, sticky='ew')
+        
+        # Entry 위젯 생성 및 Frame 내에 배치, 비활성화 상태로 설정
+        self.entry2 = ttk.Entry(frame_option2, justify='center', width=5, textvariable=self.entry_var2)
+        self.entry2.grid(row=0, column=2, padx=5, sticky='ew')
+        self.entry2.config(state='readonly')  # 사용자의 직접 입력을 방지
+        
+        # '+' 버튼 생성 및 Frame 내에 배치
+        self.btn_increase2 = tk.Button(frame_option2, text='+')
+        self.btn_increase2.grid(row=0, column=3, sticky='ew')
+
+        # Grid column 설정
+        frame_option2.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
+
     def save_position(self, event):
-        with open('window_position.txt', 'w') as f: 
+        with open('data.txt', 'w') as f: 
             f.write(self.geometry())
 
 if __name__ == "__main__":
