@@ -4,8 +4,24 @@ from tkinter import filedialog
 from tkinter import messagebox
 from Macro_layer1_ui import App  # Macro_main_ui 모듈에서 App 클래스를 가져옵니다.
 
-app = App()  # App 인스턴스를 생성하고, tkinter의 메인 윈도우를 master로 설정합니다.
+app = App()  # App 인스턴스 생성
 color_yogiyo = "#FA0150"
+
+def load_window_position(app_instance):
+# 창 위치와 크기를 파일에서 불러오는 함수
+    try:
+        with open('data.txt', 'r') as f:
+            position = f.read()
+            app_instance.geometry(position)
+    except Exception as e:
+        print(e)
+        app_instance.geometry('700x500')  # 기본 크기와 위치
+
+def save_window_position(app_instance):
+# 창 위치와 크기를 파일에 저장하는 함수
+    position = app_instance.geometry()
+    with open('data.txt', 'w') as f:
+        f.write(position)
 
 def on_menu_click(event):
     # 클릭된 메뉴의 이름을 팝업으로 띄워줍니다.
@@ -54,7 +70,15 @@ def display_thumbnail(file_path, image_label):
     image_label.image = photo
 
 def main():
+    load_window_position(app)  # 창 위치 불러오기
     configure_title()
+    
+    # 창 닫기 이벤트를 처리하기 위해 새로운 함수를 정의하고, 해당 함수 내에서 창 위치 저장 로직을 호출
+    def on_closing():
+        save_window_position(app)  # 프로그램 종료 시 창 위치 저장
+        app.destroy()
+    
+    app.protocol("WM_DELETE_WINDOW", on_closing)  # 창 닫기 이벤트 처리
     
     # 각 메뉴 항목에 클릭 이벤트 바인딩
     app.menu_item2.bind("<Button-1>", on_menu_click)

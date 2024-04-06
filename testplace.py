@@ -1,33 +1,68 @@
 import tkinter as tk
+from tkinter import filedialog
+from PIL import Image, ImageTk
+import json
 
-def change_frame_and_text_color(frame, text_widget, frame_color, text_color):
-    """
-    Frame의 배경색과 내부 Text 위젯의 텍스트 색상을 변경하는 함수입니다.
-    
-    :param frame: 색상을 변경할 Frame 객체입니다.
-    :param text_widget: 색상을 변경할 Text 위젯 객체입니다.
-    :param frame_color: Frame의 새 배경색입니다.
-    :param text_color: Text 위젯의 새 텍스트 색상입니다.
-    """
-    # Frame의 배경색 변경
-    frame.config(bg=frame_color)
-    # Text 위젯의 텍스트 색상 변경
-    text_widget.config(fg=text_color)
+class ImageFrameApp:
+    def __init__(self, root):
+        self.root = root
+        self.images = [None, None, None]  # 이미지 경로를 저장할 리스트
+        self.image_labels = []  # 이미지 라벨 위젯을 저장할 리스트
+        self.load_data()  # 이전 상태 불러오기
 
-# Tkinter 창 생성
-root = tk.Tk()
-root.title("Frame과 Text 색상 변경 예제")
+        for i in range(3):
+            frame = tk.Frame(root, width=200, height=200, borderwidth=2, relief='groove')
+            frame.pack(side='left', padx=10, pady=10)
+            frame.propagate(False)  # 프레임 크기 고정
+            
+            # 이미지 레이블 추가, 레이블 크기를 프레임과 동일하게 설정
+            label = tk.Label(frame, width=200, height=200)
+            label.pack(expand=True, fill='both')
+            label.bind('<Button-1>', lambda event, index=i: self.select_image(index))
+            self.image_labels.append(label)
+            
+            # 저장된 이미지가 있으면 표시
+            if self.images[i]:
+                self.display_image(i, self.images[i])
+        
+        # 종료 이벤트 처리
+        root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
-# Frame 생성 및 배치
-frame = tk.Frame(root, width=200, height=100)
-frame.pack(padx=10, pady=10)
+    def select_image(self, index):
+        file_path = filedialog.askopenfilename()
+        if file_path:
+            self.images[index] = file_path
+            self.display_image(index, file_path)
 
-# Label 생성 및 Frame 내에 배치
-label = tk.Label(frame, text="안녕하세요!", font=('Arial', 16))
-label.pack(pady=10)
+    def display_image(self, index, file_path):
+        image = Image.open(file_path)
+        image = image.resize((200, 200), Image.Resampling.LANCZOS)  # 이미지를 레이블 크기에 맞게 조절
+        photo = ImageTk.PhotoImage(image)
+        
+        label = self.image_labels[index]
+        label.configure(image=photo)
+        label.image = photo  # 참조를 유지, 이 부분이 중요합니다!
 
-# 색상 변경 버튼 생성 및 클릭 이벤트 연결
-color_change_btn = tk.Button(root, text="색상 변경", command=lambda: change_frame_and_text_color(frame, label, "blue", "white"))
-color_change_btn.pack(pady=10)
+    def on_closing(self):
+        self.save_data()
+        self.root.destroy()
 
-root.mainloop()
+    def save_data(self):
+        with open('image_data.json', 'w') as f:
+            json.dump(self.images, f)
+
+    def load_data(self):
+        try:
+            with open('image_data.json', 'r') as f:
+                self.images = json.load(f)
+        except FileNotFoundError:
+            self.images = [None, None, None]
+
+if __name__ == '__main__':
+    root = tk.Tk()
+    root.title("이미지 액자 앱")
+    root.geometry("660x220")  # 창의 초기 크기 설정
+    root.resizable(True, True)  # 창의 크기 조절 가능
+
+    app = ImageFrameApp(root)
+    root.mainloop()

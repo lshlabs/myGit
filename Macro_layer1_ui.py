@@ -9,7 +9,7 @@ class App(tk.Tk):
         self.resizable(False, False)
         self.title('매크로')
         self.configure(bg='gainsboro', padx=20, pady=20)
-        self.load_window_position()
+        # self.load_window_position()
         self.create_menu()
         self.create_content()
         
@@ -19,11 +19,11 @@ class App(tk.Tk):
         else:
             self.button_onoff.config(text='Off', bg='lightgrey')
 
-    def load_window_position(self):
-        position_file = 'data.txt'
-        if os.path.exists(position_file):
-            with open(position_file, 'r') as f:
-                self.geometry(f.read())
+    # def load_window_position(self):
+    #     position_file = 'data.txt'
+    #     if os.path.exists(position_file):
+    #         with open(position_file, 'r') as f:
+    #             self.geometry(f.read())
 
     def create_menu(self):
         menu_frame = tk.Frame(self, width=140, height=460, bd=1, relief='solid', bg='white')
@@ -179,9 +179,9 @@ class App(tk.Tk):
         # Grid column 설정
         frame_option2.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
 
-    def save_position(self, event):
-        with open('data.txt', 'w') as f: 
-            f.write(self.geometry())
+    # def save_position(self, event):
+    #     with open('data.txt', 'w') as f: 
+    #         f.write(self.geometry())
 
 if __name__ == "__main__":
     app = App()
