@@ -5,7 +5,7 @@ import os
 class App(tk.Tk):
     def __init__(self, master=None):
         super().__init__(master)
-        self.geometry('700x500')
+        self.geometry('690x500')
         self.resizable(False, False)
         self.title('매크로')
         self.configure(bg='gainsboro', padx=20, pady=20)
