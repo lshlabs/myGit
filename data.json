@@ -5,7 +5,7 @@
             "/Users/mac/Desktop/사진자료/배민(포장).PNG",
             "/Users/mac/Desktop/사진자료/alt+tab.png"
         ],
-        "button_state": "OFF",
+        "button_state": "ON",
         "entry_var1": "55",
         "entry_var2": "15"
     },
@@ -16,7 +16,7 @@
             "/Users/mac/Desktop/사진자료/alt+tab.png"
         ],
         "button_state": "ON",
-        "entry_var1": "60",
+        "entry_var1": "55",
         "entry_var2": "20"
     },
     "window_geometry": "690x500+563+250"

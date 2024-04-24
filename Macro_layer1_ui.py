@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from PIL import Image, ImageTk
 import os
 
 class App(tk.Tk):
@@ -18,12 +19,6 @@ class App(tk.Tk):
             self.button_onoff.config(text='On', bg='lightgreen')
         else:
             self.button_onoff.config(text='Off', bg='lightgrey')
-
-    # def load_window_position(self):
-    #     position_file = 'data.txt'
-    #     if os.path.exists(position_file):
-    #         with open(position_file, 'r') as f:
-    #             self.geometry(f.read())
 
     def create_menu(self):
         menu_frame = tk.Frame(self, width=140, height=460, bd=1, relief='solid', bg='white')
@@ -77,53 +72,63 @@ class App(tk.Tk):
         
         label_tip = tk.Label(text='※ 이미지를 클릭하여 등록해주세요', bg='white', fg='black')
         label_tip.place(x=170, y=80)
+        
         # 이미지 프레임 생성 및 배치
         self.frame_image1 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
         self.frame_image2 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
         self.frame_image3 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        #self.frame_image4 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        #self.frame_image5 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
-        #self.frame_image6 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image4 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image5 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
+        self.frame_image6 = tk.Frame(self, width=120, height=120, bg='grey', bd=1)
         self.frame_image1.pack_propagate(False)
         self.frame_image2.pack_propagate(False)
         self.frame_image3.pack_propagate(False)
-        #self.frame_image4.pack_propagate(False)
-        #self.frame_image5.pack_propagate(False)
-        #self.frame_image6.pack_propagate(False)
+        self.frame_image4.pack_propagate(False)
+        self.frame_image5.pack_propagate(False)
+        self.frame_image6.pack_propagate(False)
         self.frame_image1.place(x=180,y=120)
         self.frame_image2.place(x=345,y=120)
         self.frame_image3.place(x=510,y=120)
-        #self.frame_image4.place(x=180,y=260)
-        #self.frame_image5.place(x=345,y=260)
-        #self.frame_image6.place(x=510,y=260)
+        self.frame_image4.place(x=180,y=260)
+        self.frame_image5.place(x=345,y=260)
+        self.frame_image6.place(x=510,y=260)
+        self.frame_image4.place_forget()
+        self.frame_image5.place_forget()
+        self.frame_image6.place_forget()
         
         # 이미지를 프레임 내에 이미지를 보여줄 레이블 생성 및 배치
         self.label_image1 = tk.Label(self.frame_image1)
         self.label_image2 = tk.Label(self.frame_image2)
         self.label_image3 = tk.Label(self.frame_image3)
-        #self.label_image4 = tk.Label(self.frame_image4)
-        #self.label_image5 = tk.Label(self.frame_image5)
-        #self.label_image6 = tk.Label(self.frame_image6)
+        self.label_image4 = tk.Label(self.frame_image4)
+        self.label_image5 = tk.Label(self.frame_image5)
+        self.label_image6 = tk.Label(self.frame_image6)
         self.label_image1.pack(expand=True, fill=tk.BOTH)
         self.label_image2.pack(expand=True, fill=tk.BOTH)
         self.label_image3.pack(expand=True, fill=tk.BOTH)
-        #self.label_image4.pack(expand=True, fill=tk.BOTH)
-        #self.label_image5.pack(expand=True, fill=tk.BOTH)
-        #self.label_image6.pack(expand=True, fill=tk.BOTH)
+        self.label_image4.pack(expand=True, fill=tk.BOTH)
+        self.label_image5.pack(expand=True, fill=tk.BOTH)
+        self.label_image6.pack(expand=True, fill=tk.BOTH)
+        self.label_image4.place_forget()
+        self.label_image5.place_forget()
+        self.label_image6.place_forget()
         
         # 이미지 이름 레이블 생성 및 배치
-        title_image1 = tk.Label(text="image 1", bg='white', fg='black')
-        title_image2 = tk.Label(text="image 2", bg='white', fg='black')
-        title_image3 = tk.Label(text="image 3", bg='white', fg='black')
-        #title_image4 = tk.Label(text="image 4", bg='white')
-        #title_image5 = tk.Label(text="image 5", bg='white')
-        #title_image6 = tk.Label(text="image 6", bg='white')
-        title_image1.place(x=180, y=240, width=120)
-        title_image2.place(x=345, y=240, width=120)
-        title_image3.place(x=510, y=240, width=120)
-        #title_image4.place(x=180, y=380, width=120)
-        #title_image5.place(x=345, y=380, width=120)
-        #title_image6.place(x=510, y=380, width=120)
+        self.title_image1 = tk.Label(text="image 1", bg='white', fg='black')
+        self.title_image2 = tk.Label(text="image 2", bg='white', fg='black')
+        self.title_image3 = tk.Label(text="image 3", bg='white', fg='black')
+        self.title_image4 = tk.Label(text="image 4", bg='white')
+        self.title_image5 = tk.Label(text="image 5", bg='white')
+        self.title_image6 = tk.Label(text="image 6", bg='white')
+        self.title_image1.place(x=180, y=240, width=120)
+        self.title_image2.place(x=345, y=240, width=120)
+        self.title_image3.place(x=510, y=240, width=120)
+        self.title_image4.place(x=180, y=380, width=120)
+        self.title_image5.place(x=345, y=380, width=120)
+        self.title_image6.place(x=510, y=380, width=120)
+        self.title_image4.place_forget()
+        self.title_image5.place_forget()
+        self.title_image6.place_forget()
         
         # 옵션1 위젯 생성 및 배치
         frame_option1 = tk.Frame(self, height=30, bg='white')  # Frame 높이 설정
@@ -179,9 +184,24 @@ class App(tk.Tk):
         # Grid column 설정
         frame_option2.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
 
-    # def save_position(self, event):
-    #     with open('data.txt', 'w') as f: 
-    #         f.write(self.geometry())
+        # 옵션3 위젯 생성 및 배치
+        self.frame_option3 = tk.Frame(self, height=30, bg='white')  # Frame 높이 설정
+        self.frame_option3.place(x=180, y=390)  # Frame을 윈도우에 패딩과 함께 배치
+        
+        # 기타 옵션 레이블 생성 및 Frame 내에 배치
+        label_reception3 = tk.Label(self.frame_option3, text="매크로 동작 설정", bg='white', fg='black', font=('default', 10))
+        label_reception3.grid(row=0, column=0, padx=(0, 10), sticky='w')
+        
+        self.setting_icon = Image.open("/Users/mac/Desktop/settings.png")
+        self.setting_icon = self.setting_icon.resize((30, 30), Image.Resampling.LANCZOS)
+        self.setting_icon_photo = ImageTk.PhotoImage(self.setting_icon)
+        
+        # '-' 버튼 생성 및 Frame 내에 배치
+        self.btn_setting = tk.Button(self.frame_option3, image=self.setting_icon_photo, borderwidth=0)
+        self.btn_setting.grid(row=0, column=1, sticky='ew')
+        
+        # Grid column 설정
+        self.frame_option3.grid_columnconfigure(2, weight=1)  # Entry 위젯이 있는 열의 너비를 가변적으로 설정
 
 if __name__ == "__main__":
     app = App()

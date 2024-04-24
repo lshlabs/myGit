@@ -6,10 +6,38 @@ from Macro_layer1_ui import App  # Macro_main_ui 모듈에서 App 클래스를 �
 
 baemin = {"text": "배달의 민족", "color": "#45D3D3"}
 yogiyo = {"text": "요기요", "color": "#FA0150"}
+manna = {"text": "만나", "color": "#ff6b00"}
 app = App()  # App 인스턴스 생성
+img_visible = False  # 가시성을 추적하는 전역 변수
 
 # 이미지 경로를 저장할 리스트
 image_paths = [None, None, None]
+
+def fold_imageframes():
+    global img_visible
+    if img_visible:
+        app.frame_image4.place_forget()
+        app.frame_image5.place_forget()
+        app.frame_image6.place_forget()
+        app.label_image4.place_forget()
+        app.label_image5.place_forget()
+        app.label_image6.place_forget()
+        app.title_image4.place_forget()
+        app.title_image5.place_forget()
+        app.title_image6.place_forget()
+        app.frame_option3.place(x=180, y=390)
+        img_visible = False
+    else:
+        app.frame_image4.place(x=180,y=260)
+        app.frame_image5.place(x=345,y=260)
+        app.frame_image6.place(x=510,y=260)
+        app.label_image4.pack(expand=True, fill=tk.BOTH)
+        app.label_image5.pack(expand=True, fill=tk.BOTH)
+        app.label_image6.pack(expand=True, fill=tk.BOTH)
+        app.title_image4.place(x=180, y=380)
+        app.title_image5.place(x=345, y=380)
+        app.title_image6.place(x=510, y=380)
+        img_visible = True
 
 # 이미지 선택 함수
 def select_image(event, label):
@@ -118,11 +146,20 @@ def configure_title(menu_name=None):
         app.label_title.config(text=baemin["text"], bg=baemin["color"])
         app.menu_item2.config(bg="gainsboro")
         app.menu_item3.config(bg="white")
+        app.menu_item6.config(bg="white")
     elif menu_name == yogiyo["text"]:
         app.frame_title.config(bg=yogiyo["color"])
         app.label_title.config(text=yogiyo["text"], bg=yogiyo["color"])
-        app.menu_item3.config(bg="gainsboro")
         app.menu_item2.config(bg="white")
+        app.menu_item3.config(bg="gainsboro")
+        app.menu_item6.config(bg="white")
+    elif menu_name == manna["text"]:
+        app.frame_title.config(bg=manna["color"])
+        app.label_title.config(text=manna["text"])
+        app.menu_item2.config(bg="white")
+        app.menu_item3.config(bg="white")
+        app.menu_item6.config(bg="gainsboro")
+        
         
 def update_value(entry_var, change):
     # 현재 엔트리의 값 가져오기
@@ -139,6 +176,9 @@ def toggle():
     else:
         app.button_onoff.config(text='OFF', bg='lightgrey')
     save_data()  # 버튼 상태가 변경될 때마다 저장
+    
+def show_message(event):
+    messagebox.showinfo("공지", "기능 준비 중입니다.")
 
 def main():
     configure_title()
@@ -152,9 +192,9 @@ def main():
     # 각 메뉴 항목에 클릭 이벤트 바인딩
     app.menu_item2.bind("<Button-1>", on_menu_click)
     app.menu_item3.bind("<Button-1>", on_menu_click)
-    #app.menu_item4.bind("<Button-1>", on_menu_click)
+    app.menu_item4.bind("<Button-1>", show_message)
     #app.menu_item6.bind("<Button-1>", on_menu_click)
-    #app.menu_item7.bind("<Button-1>", on_menu_click)
+    app.menu_item7.bind("<Button-1>", show_message)
     
      # On/Off 버튼 클릭 이벤트에 함수 연결
     app.button_onoff.config(command=toggle)
