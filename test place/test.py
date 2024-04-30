@@ -10,7 +10,7 @@ def show_frames():
 
 def hide_frames():
     for frame in frames[3:]:
-        frame.grid_forget()   
+        frame.grid_remove()
     scrollbar.pack_forget()
     title_frame.config(bg="#45D3D3")
     title_label.config(text="배달의 민족", bg="#45D3D3")
