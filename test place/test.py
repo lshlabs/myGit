@@ -45,6 +45,9 @@ def select_image(event, label):
     if file_path:
         image_paths[index] = file_path  # 인덱스를 사용하여 image_paths 딕셔너리에 경로 저장
         display_image(label, file_path)
+    else:
+        # 경로가 없는 경우, label을 변경하지 않음
+        print(f"No image path for label {i}, leaving it unchanged.")
     
 # 이미지 디스플레이 함수
 def display_image(frame, file_path):
@@ -126,15 +129,27 @@ def load_data(menu_name=None, load_window_geometry=True):
 
             if load_window_geometry:
                 root.geometry(all_data.get("window_geometry", ""))
-    except (FileNotFoundError, ValueError) as e:
-        print(e)
-        image_paths = str({i: None for i in range(12)})
+    # except (FileNotFoundError, ValueError) as e:
+    #     print(e)
+    #     image_paths = str({i: None for i in range(12)})
+    except FileNotFoundError:
+        print("data2.json 파일을 찾을 수 없습니다. 기본값을 사용합니다.")
+        image_paths = {i: None for i in range(12)}
+    except json.JSONDecodeError:
+        print("JSON 파일을 해석하는 데 오류가 발생했습니다. 기본값을 사용합니다.")
+        image_paths = {i: None for i in range(12)}
+    except Exception as e:
+        print(f"예상치 못한 오류가 발생했습니다: {e}")
+        image_paths = {i: None for i in range(12)}
 
     # 로드된 이미지 경로를 사용하여 이미지 표시
     for i, path in image_paths.items():
         label = ilabels[i]
         if path:
             display_image(label, str(path))
+        else:
+            # 경로가 없는 경우, label을 변경하지 않음
+            print(f"No image path for label {i}, leaving it unchanged.")
 
 # menu 클릭이벤트 함수
 def on_menu_click(event):
@@ -149,14 +164,14 @@ def on_menu_click(event):
     for i, path in image_paths.items():  # items()로 키와 값을 함께 가져옵니다
          if path:
             label = ilabels[i]
-            display_image(label, path)
-
-        
+            display_image(label, path) 
 
 def configure_title(menu_name=None):
     if menu_name == baemin["text"]:
         manage_frames_visibility(0, 3, True)  # Displaying iframes 0-2
-        oframes[1].grid()
+        oframes[0].grid(row=5)
+        oframes[1].grid(row=6)
+        oframes[2].grid(row=7)
         title_frame.config(bg=baemin["color"])
         title_label.config(text=baemin["text"], bg=baemin["color"])
         menu_item2.config(bg="gainsboro")
@@ -164,7 +179,9 @@ def configure_title(menu_name=None):
         menu_item6.config(bg="white")
     elif menu_name == yogiyo["text"]:
         manage_frames_visibility(3, 6, True)  # Displaying iframes 3-5
-        oframes[1].grid()
+        oframes[0].grid(row=5)
+        oframes[1].grid(row=6)
+        oframes[2].grid(row=7)
         title_frame.config(bg=yogiyo["color"])
         title_label.config(text=yogiyo["text"], bg=yogiyo["color"])
         menu_item2.config(bg="white")
@@ -173,8 +190,8 @@ def configure_title(menu_name=None):
     elif menu_name == manna["text"]:
         manage_frames_visibility(6, 12, True)  # Displaying iframes 6-11
         oframes[1].grid_remove()
-        oframes[0].grid(row=8)
-        oframes[2].grid(row=9)
+        oframes[0].grid(row=10)
+        oframes[2].grid(row=11)
         title_frame.config(bg=manna["color"])
         title_label.config(text=manna["text"], bg=manna["color"])
         menu_item2.config(bg="white")
@@ -211,7 +228,9 @@ def on_opening(app):
         if path:
             label = ilabels[i]
             display_image(label, path)
-
+        else:
+            # 경로가 없는 경우, label을 변경하지 않음
+            print(f"No image path for label {i}, leaving it unchanged.")
 
 if __name__ == "__main__":
     root = tk.Tk()
