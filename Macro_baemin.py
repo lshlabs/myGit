@@ -48,13 +48,13 @@ def select_image(event, label):
         display_image(label, file_path)
 
 # 이미지 디스플레이 함수
-def display_image(label, file_path):
+def display_image(frame, file_path):
     image = Image.open(file_path)
     # 이미지를 라벨 크기에 맞게 조절
     image = image.resize((120, 120), Image.Resampling.LANCZOS)
     photo = ImageTk.PhotoImage(image)
-    label.configure(image=photo)
-    label.image = photo  # 참조를 유지
+    frame.configure(image=photo)
+    frame.image = photo  # 참조를 유지
 
 # 데이터 저장 함수
 def save_data():

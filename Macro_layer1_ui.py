@@ -96,7 +96,7 @@ class App(tk.Tk):
         self.frame_image5.place_forget()
         self.frame_image6.place_forget()
         
-        # 이미지를 프레임 내에 이미지를 보여줄 레이블 생성 및 배치
+        # 프레임 내에 이미지를 보여줄 레이블 생성 및 배치
         self.label_image1 = tk.Label(self.frame_image1)
         self.label_image2 = tk.Label(self.frame_image2)
         self.label_image3 = tk.Label(self.frame_image3)
@@ -192,11 +192,10 @@ class App(tk.Tk):
         label_reception3 = tk.Label(self.frame_option3, text="매크로 동작 설정", bg='white', fg='black', font=('default', 10))
         label_reception3.grid(row=0, column=0, padx=(0, 10), sticky='w')
         
-        self.setting_icon = Image.open("/Users/mac/Desktop/settings.png")
+        self.setting_icon = Image.open("/Users/mac/Documents/GitHub/myGit/imagefiles/settings.png")
         self.setting_icon = self.setting_icon.resize((30, 30), Image.Resampling.LANCZOS)
         self.setting_icon_photo = ImageTk.PhotoImage(self.setting_icon)
         
-        # '-' 버튼 생성 및 Frame 내에 배치
         self.btn_setting = tk.Button(self.frame_option3, image=self.setting_icon_photo, borderwidth=0)
         self.btn_setting.grid(row=0, column=1, sticky='ew')
         
