@@ -1,10 +1,11 @@
-import time
+# test.py
 import tkinter as tk
 import json, os
 from tkinter import ttk, filedialog
 from PIL import Image, ImageTk
 from numpy import save
 from test_ui import setup_ui
+from test_setting import open_sub_window
 
 baemin = {"text": "배달의 민족", "color": "#45D3D3"}
 yogiyo = {"text": "요기요", "color": "#FA0150"}
@@ -20,7 +21,7 @@ def update_layout(bind_scroll=True):
         scrollable_frame.bind("<MouseWheel>", on_mousewheel)
     else:
         scrollable_frame.unbind("<MouseWheel>")
-        
+
 def update_value(entry_var, change):
     # 현재 엔트리의 값 가져오기
     current_value = int(entry_var.get())
@@ -29,9 +30,10 @@ def update_value(entry_var, change):
     # 새로운 값으로 StringVar 업데이트
     entry_var.set(str(new_value))
     save_data()  # 엔트리 값이 변경될 때마다 저장
-    
+
 # 이미지 선택 함수
 def select_image(event, label):
+    file_path = filedialog.askopenfilename()
     # 'label_image'를 제거하여 순수 숫자 부분만 추출
     index_str = label.name.replace('label_image', '')  # 'label_image' 문자열을 제거
     if index_str.isdigit():  # 추출된 부분이 숫자인지 확인
@@ -41,14 +43,13 @@ def select_image(event, label):
     else:
         return  # 숫자가 아니면 함수 종료
 
-    file_path = filedialog.askopenfilename()
     if file_path:
         image_paths[index] = file_path  # 인덱스를 사용하여 image_paths 딕셔너리에 경로 저장
         display_image(label, file_path)
     else:
         # 경로가 없는 경우, label을 변경하지 않음
-        print(f"No image path for label {i}, leaving it unchanged.")
-    
+        print(f"No image path for label {index}, leaving it unchanged.")
+
 # 이미지 디스플레이 함수
 def display_image(frame, file_path):
     try:
@@ -57,9 +58,7 @@ def display_image(frame, file_path):
         photo = ImageTk.PhotoImage(image)
         frame.configure(image=photo)
         frame.image = photo  # 참조를 유지
-        file_path = str(file_path)
-        print("Attempting to open image at:", file_path, "Type of file_path:", type(file_path))  # 경로 로그 출력
-   
+        print("Attempting to open image at:", file_path)  # 경로 로그 출력
     except Exception as e:
         print(f"Failed to open image: {e}")
 
@@ -91,37 +90,38 @@ def save_data():
     }
     # 전체 데이터를 불러오기
     try:
-        with open('data2.json', 'r') as f:
-            all_data = json.load(f)
+        with open('data2_win.json', 'r', encoding='utf-8') as f:
+            try:
+                all_data = json.load(f)
+            except json.JSONDecodeError:
+                all_data = {}
     except FileNotFoundError:
         all_data = {}
-        
+
     # 현재 프로그램의 데이터를 업데이트
     all_data.update(data)
     # window_geometry 데이터 업데이트
     all_data.update(data_window_position)
-        
+
     # 데이터 저장
-    with open('data2.json', 'w', encoding='utf-8') as f:  # encoding 명시적으로 추가
+    with open('data2_win.json', 'w', encoding='utf-8') as f:
         json.dump(all_data, f, indent=4, ensure_ascii=False)
 
     print(f"Data saved for {program_id}")
 
-
-# 데이터 로딩 함수
 def load_data(menu_name=None, load_window_geometry=True):
     global image_paths
     # program_id 대신 menu_name을 사용하여 데이터 로드
     program_id = menu_name if menu_name else title_label.cget("text")
     try:
-        with open('data2.json', 'r') as f:
+        with open('data2_win.json', 'r', encoding='utf-8') as f:
             all_data = json.load(f)
             data = all_data.get(program_id, {})
 
             loaded_paths = data.get("image_paths", {str(i): None for i in range(12)})
             image_paths = {int(k): v for k, v in loaded_paths.items() if v is not None}
 
-            if menu_name == manna["text"] :
+            if menu_name == manna["text"]:
                 entry_var1.set(data.get("entry_var1", "15"))
             else:
                 entry_var1.set(data.get("entry_var1", "50"))
@@ -129,11 +129,8 @@ def load_data(menu_name=None, load_window_geometry=True):
 
             if load_window_geometry:
                 root.geometry(all_data.get("window_geometry", ""))
-    # except (FileNotFoundError, ValueError) as e:
-    #     print(e)
-    #     image_paths = str({i: None for i in range(12)})
     except FileNotFoundError:
-        print("data2.json 파일을 찾을 수 없습니다. 기본값을 사용합니다.")
+        print("data2_win.json 파일을 찾을 수 없습니다. 기본값을 사용합니다.")
         image_paths = {i: None for i in range(12)}
     except json.JSONDecodeError:
         print("JSON 파일을 해석하는 데 오류가 발생했습니다. 기본값을 사용합니다.")
@@ -161,10 +158,10 @@ def on_menu_click(event):
     # 메뉴 아이템 클릭 시 해당 데이터 로드
     load_data(menu_name, load_window_geometry=False)
     # 로드된 이미지 경로를 사용하여 이미지 표시
-    for i, path in image_paths.items():  # items()로 키와 값을 함께 가져옵니다
-         if path:
-            label = ilabels[i]
-            display_image(label, path) 
+    # for i, path in image_paths.items():  # items()로 키와 값을 함께 가져옵니다
+    #      if path:
+    #         label = ilabels[i]
+    #         display_image(label, path)
 
 def configure_title(menu_name=None):
     if menu_name == baemin["text"]:
@@ -222,7 +219,7 @@ def on_closing():
     
 # 프로그램 시작 시 실행할 함수
 def on_opening(app):
-    load_data()
+    load_data(load_window_geometry=True)
     # 로드된 이미지 경로를 사용하여 이미지 표시
     for i, path in image_paths.items():  # items()로 키와 값을 함께 가져옵니다
         if path:
@@ -238,7 +235,7 @@ if __name__ == "__main__":
     root.resizable(False, False)
     root.title('매크로')
     
-    (title_label, content_canvas, iframes, ilabels, inames, menu_frame, uni_frame, scrollbar, title_frame, title_label, scrollable_frame,
+    (title_label, content_canvas, iframes, ilabels, inames, menu_frame, uni_frame, scrollbar, title_frame, title_label, scrollable_frame, btn_setting,
     menu_item2, menu_item3, menu_item4, menu_item6, menu_item7, setting_icon_photo, entry_var1, entry_var2, oframes, obtn_m1, obtn_m2, obtn_p1, obtn_p2) = setup_ui(root)
 
     configure_title(baemin["text"])
@@ -258,9 +255,9 @@ if __name__ == "__main__":
     obtn_m1.config(command=lambda: update_value(entry_var1, -5))
     obtn_p2.config(command=lambda: update_value(entry_var2, +5))
     obtn_m2.config(command=lambda: update_value(entry_var2, -5))
+    
+    btn_setting.config(command=lambda: open_sub_window(root))
 
-    # menu1()
-
-     # 종료 이벤트 처리
+    # 종료 이벤트 처리
     root.protocol("WM_DELETE_WINDOW", on_closing)
     root.mainloop()

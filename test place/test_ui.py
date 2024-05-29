@@ -1,3 +1,4 @@
+# test_ui.py
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -86,7 +87,7 @@ def setup_ui(root):
     for i in range(12):
         # 각 이미지 프레임 생성 및 위치 설정
         iframe = tk.Frame(scrollable_frame, width=120, height=120, bd=1, relief='solid')
-        iframe.grid(row=((i//3)*2)+1, column=i%3, padx=27, pady=5)  # row 값을 2*i로 설정하여 각 프레임 사이에 공간을 남깁니다.
+        iframe.grid(row=((i//3)*2)+1, column=i%3, padx=23, pady=5)  # row 값을 2*i로 설정하여 각 프레임 사이에 공간을 남깁니다.
         iframe.pack_propagate(False)
         iframes.append(iframe)
     
@@ -114,43 +115,43 @@ def setup_ui(root):
         oframe.grid_columnconfigure(2, weight=1)
         oframes.append(oframe)
         
-    olabel1 = tk.Label(oframes[0], text="배달 기본 접수시간(분)", bg='white', fg='black', font=('default', 13))
+    olabel1 = tk.Label(oframes[0], text="배달 기본 접수시간(분)", bg='white', fg='black', font=('default', 12))
     olabel1.grid(row=0, column=0, padx=27, sticky='w')
     
-    obtn_m1 = tk.Button(oframes[0], text='-', bg='white')
+    obtn_m1 = tk.Button(oframes[0], text='-', bg='gainsboro', relief='solid', bd=1, width=2, height=1)
     obtn_m1.grid(row=0, column=1, sticky='ew')
     
-    obtn_p1 = tk.Button(oframes[0], text='+', bg='white')
+    obtn_p1 = tk.Button(oframes[0], text='+', bg='gainsboro', relief='solid', bd=1, width=2, height=1)
     obtn_p1.grid(row=0, column=3, sticky='ew')
     
     entry_var1 = tk.StringVar(root, "50")
 
     oentry1 = ttk.Entry(oframes[0], justify='center', width=5, textvariable=entry_var1, state='readonly')
-    oentry1.grid(row=0, column=2, padx=5, sticky='ew')
+    oentry1.grid(row=0, column=2, padx=5, sticky='ew', ipady=1)
     
-    olabel2 = tk.Label(oframes[1], text="포장 기본 접수시간(분)", bg='white', fg='black', font=('default', 13))
+    olabel2 = tk.Label(oframes[1], text="포장 기본 접수시간(분)", bg='white', fg='black', font=('default', 12))
     olabel2.grid(row=0, column=0, padx=27, sticky='w')
     
-    obtn_m2 = tk.Button(oframes[1], text='-', bg='white')
+    obtn_m2 = tk.Button(oframes[1], text='-', bg='gainsboro', relief='solid', bd=1, width=2, height=1)
     obtn_m2.grid(row=0, column=1, sticky='ew')
     
-    obtn_p2 = tk.Button(oframes[1], text='+', bg='white')
+    obtn_p2 = tk.Button(oframes[1], text='+', bg='gainsboro', relief='solid', bd=1, width=2, height=1)
     obtn_p2.grid(row=0, column=3, sticky='ew')
     
     entry_var2 = tk.StringVar(root, "15")
 
     oentry2 = ttk.Entry(oframes[1], justify='center', width=5, textvariable=entry_var2, state='readonly')
-    oentry2.grid(row=0, column=2, padx=5, sticky='ew')
+    oentry2.grid(row=0, column=2, padx=5, sticky='ew', ipady=1)
     
-    olabel3 = tk.Label(oframes[2], text="매크로 동작 설정", bg='white', fg='black', font=('default', 13))
-    olabel3.grid(row=0, column=0, padx=27, sticky='w')
+    olabel3 = tk.Label(oframes[2], text="매크로 동작 설정", bg='white', fg='black', font=('default', 12))
+    olabel3.grid(row=0, column=0, padx=(27,10), sticky='w')
     
-    setting_icon = Image.open("/Users/mac/Documents/GitHub/myGit/imagefiles/settings.png")
-    setting_icon = setting_icon.resize((30, 30), Image.Resampling.LANCZOS)
+    setting_icon = Image.open("C:\myGit\myGit\imagefiles\settings.png")
+    setting_icon = setting_icon.resize((25, 25), Image.Resampling.LANCZOS)
     setting_icon_photo = ImageTk.PhotoImage(setting_icon)
     
-    btn_setting = tk.Button(oframes[2], image=setting_icon_photo, borderwidth=0)
+    btn_setting = tk.Button(oframes[2], image=setting_icon_photo, borderwidth=0, bg='white')
     btn_setting.grid(row=0, column=1, sticky='ew')
     
-    return (title_label, content_canvas, iframes, ilabels, inames, menu_frame, uni_frame, scrollbar, title_frame, title_label, scrollable_frame,
+    return (title_label, content_canvas, iframes, ilabels, inames, menu_frame, uni_frame, scrollbar, title_frame, title_label, scrollable_frame, btn_setting,
             menu_item2, menu_item3, menu_item4, menu_item6, menu_item7, setting_icon_photo, entry_var1, entry_var2, oframes, obtn_m1, obtn_m2, obtn_p1, obtn_p2)

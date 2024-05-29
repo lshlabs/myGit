@@ -1,0 +1,33 @@
+{
+    "배달의 민족": {
+        "image_paths": {
+            "0": "C:/myGit/myGit/imagefiles/배민(배달).PNG",
+            "1": "C:/myGit/myGit/imagefiles/배민(포장).PNG",
+            "2": "C:/myGit/myGit/imagefiles/alt+tab.png"
+        },
+        "entry_var1": "50",
+        "entry_var2": "15"
+    },
+    "window_geometry": "700x500+943+278",
+    "요기요": {
+        "image_paths": {
+            "3": "C:/myGit/myGit/imagefiles/요기요(배달).PNG",
+            "4": "C:/myGit/myGit/imagefiles/요기요(배달).PNG",
+            "5": "C:/myGit/myGit/imagefiles/alt+tab.png"
+        },
+        "entry_var1": "50",
+        "entry_var2": "20"
+    },
+    "만나": {
+        "image_paths": {
+            "3": "C:/myGit/myGit/imagefiles/요기요(배달).PNG",
+            "6": "C:/myGit/myGit/imagefiles/모아핫키.PNG",
+            "7": "C:/myGit/myGit/imagefiles/모아(배민 요청).PNG",
+            "8": "C:/myGit/myGit/imagefiles/모아(요기요 요청).PNG",
+            "9": "C:/myGit/myGit/imagefiles/모아(포장완료).PNG",
+            "10": "C:/myGit/myGit/imagefiles/모아(포장완료확인).PNG",
+            "11": "C:/myGit/myGit/imagefiles/모아(접수확인).PNG"
+        },
+        "entry_var2": "20"
+    }
+}
