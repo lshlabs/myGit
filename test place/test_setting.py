@@ -3,7 +3,7 @@ import tkinter as tk
 def open_sub_window(main_window):
     sub_window = tk.Toplevel(main_window)
     sub_window.title("Sub Window")
-    sub_window.geometry("400x480")  # Sub window size
+    sub_window.geometry("400x480")  # Sub window sizesss
 
     # Get the position of the main window
     main_x = main_window.winfo_x()
