@@ -1,11 +1,18 @@
 import tkinter as tk
 from tkinter import ttk
 
+<<<<<<< HEAD
 class SettingsApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Settings")
         self.root.geometry("400x250")
+=======
+def open_sub_window(main_window):
+    sub_window = tk.Toplevel(main_window)
+    sub_window.title("Sub Window")
+    sub_window.geometry("400x480")  # Sub window sizesss
+>>>>>>> b929fd3039a7d36867d5ec335e597310e4ac0fd5
 
         # Variables to store hotkeys
         self.execution_hotkey = tk.StringVar()

@@ -105,8 +105,8 @@ def setup_ui(root):
         ilabels.append(ilabel)
 
     
-    dummy_frame3 = tk.Frame(scrollable_frame, height=30, bg='white', pady=10)
-    dummy_frame3.grid(row=5)
+    #dummy_frame3 = tk.Frame(scrollable_frame, height=30, width=0, bg='purple', pady=10)
+    #dummy_frame3.grid(row=5)
     
     oframes = []
     for i in range(3):
@@ -145,8 +145,8 @@ def setup_ui(root):
     
     olabel3 = tk.Label(oframes[2], text="매크로 동작 설정", bg='white', fg='black', font=('default', 12))
     olabel3.grid(row=0, column=0, padx=(27,10), sticky='w')
-    
-    setting_icon = Image.open("C:\myGit\myGit\imagefiles\settings.png")
+    setting_icon = Image.open("/Users/mac/Documents/GitHub/myGit/imagefiles/settings.png")  # for mac
+    # setting_icon = Image.open("C:\myGit\myGit\imagefiles\settings.png")   # for win
     setting_icon = setting_icon.resize((25, 25), Image.Resampling.LANCZOS)
     setting_icon_photo = ImageTk.PhotoImage(setting_icon)
     

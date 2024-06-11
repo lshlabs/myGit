@@ -1,0 +1,23 @@
+{
+    "배달의 민족": {
+        "image_paths": {
+            "0": "/Users/mac/Documents/GitHub/myGit/imagefiles/배민(배달).PNG"
+        },
+        "entry_var1": "55",
+        "entry_var2": "15"
+    },
+    "window_geometry": "700x500+547+185",
+    "요기요": {
+        "image_paths": {
+            "3": "/Users/mac/Documents/GitHub/myGit/imagefiles/모아(요기요 요청).PNG"
+        },
+        "entry_var1": "50",
+        "entry_var2": "20"
+    },
+    "만나": {
+        "image_paths": {
+            "6": "/Users/mac/Documents/GitHub/myGit/imagefiles/모아(포장완료).PNG"
+        },
+        "entry_var2": "20"
+    }
+}
