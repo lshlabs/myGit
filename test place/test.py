@@ -90,7 +90,8 @@ def save_data():
     }
     # 전체 데이터를 불러오기
     try:
-        with open('data2_win.json', 'r', encoding='utf-8') as f:
+        #with open('data_win.json', 'r', encoding='utf-8') as f:    #for win
+        with open('data_mac.json', 'r', encoding='utf-8') as f:     #for mac
             try:
                 all_data = json.load(f)
             except json.JSONDecodeError:
@@ -104,7 +105,8 @@ def save_data():
     all_data.update(data_window_position)
 
     # 데이터 저장
-    with open('data2_win.json', 'w', encoding='utf-8') as f:
+    #with open('data_win.json', 'w', encoding='utf-8') as f:    #for win
+    with open('data_mac.json', 'w', encoding='utf-8') as f:     #for mac
         json.dump(all_data, f, indent=4, ensure_ascii=False)
 
     print(f"Data saved for {program_id}")
@@ -114,7 +116,8 @@ def load_data(menu_name=None, load_window_geometry=True):
     # program_id 대신 menu_name을 사용하여 데이터 로드
     program_id = menu_name if menu_name else title_label.cget("text")
     try:
-        with open('data2_win.json', 'r', encoding='utf-8') as f:
+        #with open('data_win.json', 'r', encoding='utf-8') as f:   #for win
+        with open('data_mac.json', 'r', encoding='utf-8') as f:   #for mac
             all_data = json.load(f)
             data = all_data.get(program_id, {})
 
@@ -130,7 +133,8 @@ def load_data(menu_name=None, load_window_geometry=True):
             if load_window_geometry:
                 root.geometry(all_data.get("window_geometry", ""))
     except FileNotFoundError:
-        print("data2_win.json 파일을 찾을 수 없습니다. 기본값을 사용합니다.")
+        #print("data_win.json 파일을 찾을 수 없습니다. 기본값을 사용합니다.")   #for win
+        print("data_mac.json 파일을 찾을 수 없습니다. 기본값을 사용합니다.")   #for mac
         image_paths = {i: None for i in range(12)}
     except json.JSONDecodeError:
         print("JSON 파일을 해석하는 데 오류가 발생했습니다. 기본값을 사용합니다.")
