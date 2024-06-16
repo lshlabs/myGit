@@ -1,52 +1,65 @@
 import tkinter as tk
 from tkinter import ttk
 
-
 class SettingsApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Settings")
-        self.root.geometry("400x250")
-        
-    def open_sub_window(main_window):   
-        sub_window = tk.Toplevel(main_window)
-        sub_window.title("Sub Window")
-        sub_window.geometry("400x480")  # Sub window sizesss
+        self.root.geometry("500x250")
 
         # Variables to store hotkeys
         self.execution_hotkey = tk.StringVar()
         self.termination_hotkey = tk.StringVar()
         self.delay_time = tk.StringVar()
 
-        # 실행모드 단축키 설명 라벨 추가
-        ttk.Label(root, text="버튼을 눌러 실행모드에 사용할 단축키를 설정하세요.").grid(row=0, column=0, columnspan=3, padx=10, pady=5, sticky='w')
+        left_padding = 20
+
+        # 실행모드 단축키 설명 라벨
+        ttk.Label(root, text="실행모드 단축키 설명:").pack(anchor='w', padx=left_padding, pady=5)
+
+        # 실행모드 단축키 설정을 위한 프레임
+        execution_frame = ttk.Frame(root)
+        execution_frame.pack(anchor='w', padx=30, pady=(5,20), fill='x')
+
         # 실행모드 단축키 라벨
-        ttk.Label(root, text="실행모드 단축키:").grid(row=1, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(execution_frame, text="실행모드 단축키:").pack(side='left', padx=5)
         # 실행모드 단축키 입력 필드
-        self.execution_entry = ttk.Entry(root, textvariable=self.execution_hotkey)
-        self.execution_entry.grid(row=1, column=1, padx=10, pady=5, sticky='w')
+        self.execution_entry = ttk.Entry(execution_frame, textvariable=self.execution_hotkey, width=15)
+        self.execution_entry.pack(side='left', padx=(30,5))
         # 실행모드 단축키 설정 버튼
-        ttk.Button(root, text="Set", command=self.set_execution_hotkey, width=6).grid(row=1, column=2, padx=10, pady=5, sticky='w')
+        ttk.Button(execution_frame, text="Set", command=self.set_execution_hotkey).pack(side='left', padx=5)
 
-        # 실행모드 종료 단축키 설명 라벨 추가
-        ttk.Label(root, text="버튼을 눌러 실행모드에 중단할 단축키를 설정하세요.").grid(row=2, column=0, columnspan=3, padx=10, pady=5, sticky='w')
+        # 실행모드 종료 단축키 설명 라벨
+        ttk.Label(root, text="실행모드 종료 단축키 설명:").pack(anchor='w', padx=left_padding, pady=5)
+        
+        # 실행모드 종료 단축키 설정을 위한 프레임
+        termination_frame = ttk.Frame(root)
+        termination_frame.pack(anchor='w', padx=30, pady=(5,20), fill='x')
+
         # 실행모드 종료 단축키 라벨
-        ttk.Label(root, text="실행모드 종료 단축키:").grid(row=3, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(termination_frame, text="실행모드 종료 단축키:").pack(side='left', padx=5)
         # 실행모드 종료 단축키 입력 필드
-        self.termination_entry = ttk.Entry(root, textvariable=self.termination_hotkey)
-        self.termination_entry.grid(row=3, column=1, padx=10, pady=5, sticky='w')
+        self.termination_entry = ttk.Entry(termination_frame, textvariable=self.termination_hotkey, width=15)
+        self.termination_entry.pack(side='left', padx=5)
         # 실행모드 종료 단축키 설정 버튼
-        ttk.Button(root, text="Set", command=self.set_termination_hotkey, width=6).grid(row=3, column=2, padx=10, pady=5, sticky='w')
+        ttk.Button(termination_frame, text="기록", width=3, command=self.set_termination_hotkey).pack(side='left', padx=5)
+        # 실행모드 종료 단축키 설정 버튼
+        ttk.Button(termination_frame, text="설정", width=3).pack(side='left', padx=5)
 
-        # 딜레이 설정 설명 라벨 추가
-        ttk.Label(root, text="숫자를 입력하여 실행 간 딜레이를 설정하세요.").grid(row=4, column=0, columnspan=3, padx=10, pady=5, sticky='w')
+        # 딜레이 설정 설명 라벨
+        ttk.Label(root, text="딜레이 설정 설명:").pack(anchor='w', padx=left_padding, pady=5)
+        
+        # 딜레이 설정을 위한 프레임
+        delay_frame = ttk.Frame(root)
+        delay_frame.pack(anchor='w', padx=30, pady=(5,20), fill='x')
+
         # 딜레이 설정 라벨
-        ttk.Label(root, text="딜레이 설정:").grid(row=5, column=0, padx=10, pady=5, sticky='e')
+        ttk.Label(delay_frame, text="딜레이 설정:").pack(side='left', padx=5)
         # 딜레이 설정 입력 필드
-        self.delay_entry = ttk.Entry(root, textvariable=self.delay_time)
-        self.delay_entry.grid(row=5, column=1, padx=10, pady=5, sticky='w')
+        self.delay_entry = ttk.Entry(delay_frame, textvariable=self.delay_time)
+        self.delay_entry.pack(side='left', padx=5)
         # 딜레이 단위 라벨
-        ttk.Label(root, text="초").grid(row=5, column=2, padx=10, pady=5, sticky='w')
+        ttk.Label(delay_frame, text="초").pack(side='left', padx=5)
 
         self.current_hotkey = []
         self.setting_execution_hotkey = False

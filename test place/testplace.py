@@ -1,68 +1,77 @@
 import tkinter as tk
-from tkinter import filedialog
-from PIL import Image, ImageTk
-import json
+from tkinter import ttk
 
-class ImageFrameApp:
+class MacroSettingsApp:
     def __init__(self, root):
         self.root = root
-        self.images = [None, None, None]  # 이미지 경로를 저장할 리스트
-        self.image_labels = []  # 이미지 라벨 위젯을 저장할 리스트
-        self.load_data()  # 이전 상태 불러오기
-
-        for i in range(3):
-            frame = tk.Frame(root, width=200, height=200, borderwidth=2, relief='groove')
-            frame.pack(side='left', padx=10, pady=10)
-            frame.propagate(False)  # 프레임 크기 고정
-            
-            # 이미지 레이블 추가, 레이블 크기를 프레임과 동일하게 설정
-            label = tk.Label(frame, width=200, height=200)
-            label.pack(expand=True, fill='both')
-            label.bind('<Button-1>', lambda event, index=i: self.select_image(index))
-            self.image_labels.append(label)
-            
-            # 저장된 이미지가 있으면 표시
-            if self.images[i]:
-                self.display_image(i, self.images[i])
+        self.root.title("키보드/마우스 매크로 설정")
+        self.root.geometry("450x600")
         
-        # 종료 이벤트 처리
-        root.protocol("WM_DELETE_WINDOW", self.on_closing)
+        main_frame = ttk.Frame(root, padding="10")
+        main_frame.pack(fill=tk.BOTH, expand=True)
 
-    def select_image(self, index):
-        file_path = filedialog.askopenfilename()
-        if file_path:
-            self.images[index] = file_path
-            self.display_image(index, file_path)
-
-    def display_image(self, index, file_path):
-        image = Image.open(file_path)
-        image = image.resize((200, 200), Image.Resampling.LANCZOS)  # 이미지를 레이블 크기에 맞게 조절
-        photo = ImageTk.PhotoImage(image)
+        # 프로그램 실행과 관련된 설정
+        program_frame = ttk.LabelFrame(main_frame, text="프로그램 실행과 관련된 설정", padding="10")
+        program_frame.pack(fill=tk.X, expand=True, pady=5)
         
-        label = self.image_labels[index]
-        label.configure(image=photo)
-        label.image = photo  # 참조를 유지, 이 부분이 중요합니다!
+        ttk.Label(program_frame, text="매크로 프로그램 이름 변경:").pack(anchor='w', pady=2)
+        ttk.Combobox(program_frame, values=["키보드/마우스 매크로 V2"]).pack(fill=tk.X, pady=2)
 
-    def on_closing(self):
-        self.save_data()
-        self.root.destroy()
+        ttk.Checkbutton(program_frame, text="다른 윈도우보다 항상 위에 두기").pack(anchor='w', pady=2)
+        ttk.Checkbutton(program_frame, text="프로그램 시작시 시스템 트레이로 최소화").pack(anchor='w', pady=2)
 
-    def save_data(self):
-        with open('image_data.json', 'w') as f:
-            json.dump(self.images, f)
+        ttk.Label(program_frame, text="윈도우즈 IME 입력기 설정:").pack(anchor='w', pady=2)
+        ttk.Combobox(program_frame, values=["두벌식 자판"]).pack(fill=tk.X, pady=2)
+        
+        # 매크로 실행과 관련된 설정
+        execution_frame = ttk.LabelFrame(main_frame, text="매크로 실행과 관련된 설정", padding="10")
+        execution_frame.pack(fill=tk.X, expand=True, pady=5)
+        
+        ttk.Label(execution_frame, text="매크로 실행/중단 키:").pack(anchor='w', pady=2)
+        ttk.Combobox(execution_frame, values=["F12 key"]).pack(fill=tk.X, pady=2)
 
-    def load_data(self):
-        try:
-            with open('image_data.json', 'r') as f:
-                self.images = json.load(f)
-        except FileNotFoundError:
-            self.images = [None, None, None]
+        ttk.Checkbutton(execution_frame, text='"매크로 실행 가능" 선택시 시스템 트레이에 선택된 매크로 실행').pack(anchor='w', pady=2)
+        ttk.Checkbutton(execution_frame, text="매크로 실행/중단 시 아이콘 깜박임 및 팝업창 알림").pack(anchor='w', pady=2)
 
-if __name__ == '__main__':
+        ttk.Label(execution_frame, text="매크로 주기(빠를수록 숫자 작게):").pack(anchor='w', pady=2)
+        ttk.Entry(execution_frame).pack(fill=tk.X, pady=2)
+        
+        ttk.Label(execution_frame, text="매크로 이벤트 실행 주기:").pack(anchor='w', pady=2)
+        ttk.Entry(execution_frame).pack(fill=tk.X, pady=2)
+        
+        ttk.Checkbutton(execution_frame, text="매크로 실행시 IME의 한/영 전환 상태 유지").pack(anchor='w', pady=2)
+
+        # 매크로 키로 사용하는 키 설정
+        key_frame = ttk.LabelFrame(main_frame, text="매크로 키로 사용하는 키 설정", padding="10")
+        key_frame.pack(fill=tk.X, expand=True, pady=5)
+        
+        ttk.Label(key_frame, text="매크로 키를 사용하는 키:").pack(anchor='w', pady=2)
+        ttk.Combobox(key_frame, values=["F11 key"]).pack(fill=tk.X, pady=2)
+        
+        ttk.Label(key_frame, text="마우스 위치 현재 키:").pack(anchor='w', pady=2)
+        ttk.Combobox(key_frame, values=["F10 key"]).pack(fill=tk.X, pady=2)
+
+        # 매크로 시작/종료 조건 설정에 사용하는 키 설정
+        start_end_frame = ttk.LabelFrame(main_frame, text="매크로 시작/종료 조건 설정에 사용하는 키 설정", padding="10")
+        start_end_frame.pack(fill=tk.X, expand=True, pady=5)
+        
+        ttk.Label(start_end_frame, text="시작 시, 화면이동 키:").pack(anchor='w', pady=2)
+        ttk.Combobox(start_end_frame, values=["F9 key"]).pack(fill=tk.X, pady=2)
+        
+        ttk.Label(start_end_frame, text="종료 시, 화면이동 키:").pack(anchor='w', pady=2)
+        ttk.Combobox(start_end_frame, values=["F8 key"]).pack(fill=tk.X, pady=2)
+        
+        ttk.Checkbutton(start_end_frame, text="매크로가 종료 시 작동(종료/파랑) 및 인식 확인 표시").pack(anchor='w', pady=2)
+        ttk.Checkbutton(start_end_frame, text="매크로 실행시 모든 노트 보기/버튼 대기").pack(anchor='w', pady=2)
+
+        # 확인 및 취소 버튼
+        button_frame = ttk.Frame(main_frame)
+        button_frame.pack(fill=tk.X, pady=10)
+        
+        ttk.Button(button_frame, text="OK").pack(side=tk.RIGHT, padx=5)
+        ttk.Button(button_frame, text="Cancel").pack(side=tk.RIGHT)
+
+if __name__ == "__main__":
     root = tk.Tk()
-    root.title("이미지 액자 앱")
-    root.geometry("660x220")  # 창의 초기 크기 설정
-    root.resizable(True, True)  # 창의 크기 조절 가능
-
-    app = ImageFrameApp(root)
+    app = MacroSettingsApp(root)
     root.mainloop()
