@@ -1,4 +1,3 @@
-# test_ui.py
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -9,7 +8,7 @@ import os
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # config.json 파일의 절대 경로
-CONFIG_PATH = os.path.join(SCRIPT_DIR, 'config.json')
+CONFIG_PATH = os.path.join(SCRIPT_DIR, 'datafiles\config.json')
 
 # 상수 정의
 BACKGROUND_COLOR = 'white'
@@ -26,14 +25,14 @@ except FileNotFoundError:
     # 기본 설정값 사용
     config = {
         "default_values": ["50", "15"],
-        "setting_icon_path": r"C:\myGit\myGit\imagefiles\settings.png"
+        "setting_icon_path": r"C:\myGit\myGit\EagleOrder\imagefiles\settings.png"
     }
 except json.JSONDecodeError:
     print(f"설정 파일 형식이 잘못되었습니다: {CONFIG_PATH}")
     # 기본 설정값 사용
     config = {
         "default_values": ["50", "15"],
-        "setting_icon_path": r"C:\myGit\myGit\imagefiles\settings.png"
+        "setting_icon_path": r"C:\myGit\myGit\EagleOrder\imagefiles\settings.png"
     }
 
 def create_menu_item(parent, text, bg_color, fg_color, row):
@@ -41,7 +40,10 @@ def create_menu_item(parent, text, bg_color, fg_color, row):
     item.grid(row=row, column=0, sticky='nsew')
     return item
 
-def create_image_frame(parent, row, col):
+def create_image_frame(parent, index):
+    row = index // 3 * 2 + 1
+    col = index % 3
+    
     frame = tk.Frame(parent, width=120, height=120, bd=1, relief='solid')
     frame.grid(row=row, column=col, padx=23, pady=5)
     frame.pack_propagate(False)
@@ -49,8 +51,12 @@ def create_image_frame(parent, row, col):
     label = tk.Label(frame)
     label.pack(expand=True, fill=tk.BOTH)
     
-    name_label = tk.Label(parent, text=f"이미지 {row*3 + col + 1}", bg=BACKGROUND_COLOR)
-    name_label.grid(row=row+1, column=col, padx=27, pady=(0,15))
+    image_number = index + 1
+    name_label = tk.Label(parent, text=f"이미지 {image_number}", bg=BACKGROUND_COLOR)
+    name_label.grid(row=row + 1, column=col, padx=27, pady=(0, 15))
+    
+    # name_label = tk.Label(parent, text=f"이미지 {(row - 1)*3 + col + 1}", bg=BACKGROUND_COLOR)
+    # name_label.grid(row=row+1, column=col, padx=27, pady=(0,15))
     
     return frame, label, name_label
 
@@ -107,7 +113,8 @@ def setup_ui(root):
     
     tk.Label(scrollable_frame, text='※ 이미지를 클릭하여 등록해주세요', bg=BACKGROUND_COLOR, fg='black', padx=27).grid(row=0, columnspan=3, sticky='w', pady=15)
     
-    iframes, ilabels, inames = zip(*[create_image_frame(scrollable_frame, i//3*2+1, i%3) for i in range(12)])
+    # iframes, ilabels, inames = zip(*[create_image_frame(scrollable_frame, i//3*2+1, i%3) for i in range(12)])
+    iframes, ilabels, inames = zip(*[create_image_frame(scrollable_frame, i) for i in range(12)])
     
     oframes = [tk.Frame(scrollable_frame, bg=BACKGROUND_COLOR) for _ in range(3)]
     for i, frame in enumerate(oframes):

@@ -1,0 +1,18 @@
+{
+    "배달의 민족": {
+        "image_paths": {},
+        "entry_var1": "50",
+        "entry_var2": "15"
+    },
+    "window_geometry_main": "700x500+750+402",
+    "요기요": {
+        "image_paths": {},
+        "entry_var1": "50",
+        "entry_var2": "20"
+    },
+    "만나": {
+        "image_paths": {},
+        "entry_var1": "50",
+        "entry_var2": "10"
+    }
+}

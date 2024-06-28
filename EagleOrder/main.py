@@ -3,7 +3,7 @@ import json, os
 import platform
 from tkinter import ttk, filedialog
 from PIL import Image, ImageTk
-from test_ui import setup_ui
+from main_ui import setup_ui
 import subprocess
 
 MENU_CONFIG = {
@@ -22,7 +22,7 @@ class DeliveryMacro:
         # 운영 체제에 따라 파일명 설정
         # 현재 스크립트의 디렉토리를 기준으로 data 파일의 절대 경로 설정
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.data_file = os.path.join(script_dir, 'data_mac.json' if platform.system() == 'Darwin' else 'data_win.json')
+        self.data_file = os.path.join(script_dir, 'datafiles\data_mac.json' if platform.system() == 'Darwin' else 'datafiles\data_win.json')
         # self.data_file = 'data_mac.json' if platform.system() == 'Darwin' else 'data_win.json'
 
         self.image_paths = {i: None for i in range(12)}
@@ -59,7 +59,7 @@ class DeliveryMacro:
         self.obtn_p2.config(command=lambda: self.update_value(self.entry_var2, +5))
         self.obtn_m2.config(command=lambda: self.update_value(self.entry_var2, -5))
         
-        self.btn_setting.config(command=self.run_testplace)
+        self.btn_setting.config(command=self.run_setting)
 
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
@@ -173,9 +173,9 @@ class DeliveryMacro:
         self.save_data()
         self.root.destroy()
 
-    def run_testplace(self):
+    def run_setting(self):
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        script_path = os.path.join(script_dir, "testplace.py")
+        script_path = os.path.join(script_dir, "setting.py")
         subprocess.run(["python", script_path])
 
     def save_to_json(self, data):

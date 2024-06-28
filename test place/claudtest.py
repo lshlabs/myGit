@@ -1,6 +1,6 @@
+# test.py
 import tkinter as tk
 import json, os
-import platform
 from tkinter import ttk, filedialog
 from PIL import Image, ImageTk
 from test_ui import setup_ui
@@ -18,12 +18,6 @@ class DeliveryMacro:
         self.root.geometry("700x500")
         self.root.resizable(False, False)
         self.root.title('매크로')
-
-        # 운영 체제에 따라 파일명 설정
-        # 현재 스크립트의 디렉토리를 기준으로 data 파일의 절대 경로 설정
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.data_file = os.path.join(script_dir, 'data_mac.json' if platform.system() == 'Darwin' else 'data_win.json')
-        # self.data_file = 'data_mac.json' if platform.system() == 'Darwin' else 'data_win.json'
 
         self.image_paths = {i: None for i in range(12)}
         self.setup_ui()
@@ -145,8 +139,8 @@ class DeliveryMacro:
         self.menu_item6.config(bg="gainsboro" if menu_name == "만나" else "white")
 
         if menu_name == "만나":
-            self.oframes[0].grid_remove()
-            self.oframes[1].grid(row=10)
+            self.oframes[1].grid_remove()
+            self.oframes[0].grid(row=10)
             self.oframes[2].grid(row=11)
         else:
             self.oframes[0].grid(row=5)
@@ -180,22 +174,21 @@ class DeliveryMacro:
 
     def save_to_json(self, data):
         try:
-            with open(self.data_file, 'r+', encoding='utf-8') as f:
+            with open('data.json', 'r+', encoding='utf-8') as f:
                 all_data = json.load(f)
                 all_data.update(data)
                 f.seek(0)
                 json.dump(all_data, f, indent=4, ensure_ascii=False)
                 f.truncate()
         except FileNotFoundError:
-            with open(self.data_file, 'w', encoding='utf-8') as f:
+            with open('data.json', 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)
 
     def load_from_json(self):
         try:
-            with open(self.data_file, 'r', encoding='utf-8') as f:
+            with open('data.json', 'r', encoding='utf-8') as f:
                 return json.load(f)
         except FileNotFoundError:
-            print(f"{self.data_file} 파일을 찾을 수 없습니다. 기본값을 사용합니다.")
             return {}
         except json.JSONDecodeError:
             print("JSON 파일을 해석하는 데 오류가 발생했습니다. 기본값을 사용합니다.")

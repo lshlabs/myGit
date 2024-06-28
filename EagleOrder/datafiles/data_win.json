@@ -1,0 +1,25 @@
+{
+    "배달의 민족": {
+        "image_paths": {
+            "0": "C:/myGit/myGit/EagleOrder/imagefiles/배민(배달).PNG",
+            "1": "C:/myGit/myGit/EagleOrder/imagefiles/배민(포장).PNG"
+        },
+        "entry_var1": "50",
+        "entry_var2": "5"
+    },
+    "window_geometry_main": "700x500+338+338",
+    "요기요": {
+        "image_paths": {
+            "3": "C:/myGit/myGit/EagleOrder/imagefiles/요기요(배달).PNG"
+        },
+        "entry_var1": "50",
+        "entry_var2": "15"
+    },
+    "만나": {
+        "image_paths": {
+            "6": "C:/myGit/myGit/EagleOrder/imagefiles/모아핫키.PNG"
+        },
+        "entry_var1": "80",
+        "entry_var2": "25"
+    }
+}

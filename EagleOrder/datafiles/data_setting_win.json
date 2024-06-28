@@ -1,0 +1,18 @@
+{
+    "delaytime": "0.9",
+    "combobox_run": "W 키",
+    "combobox_stop": "스페이스바",
+    "check_run": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "check_stop": [
+        true,
+        false,
+        true,
+        true
+    ],
+    "window_geometry": "380x300+1044+315"
+}

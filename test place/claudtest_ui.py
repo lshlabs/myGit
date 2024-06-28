@@ -3,13 +3,6 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 import json
-import os
-
-# 현재 스크립트의 디렉토리 경로
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# config.json 파일의 절대 경로
-CONFIG_PATH = os.path.join(SCRIPT_DIR, 'config.json')
 
 # 상수 정의
 BACKGROUND_COLOR = 'white'
@@ -18,23 +11,8 @@ TITLE_COLOR = '#45D3D3'
 FONT_SIZE = 12
 
 # 설정 파일 로드
-try:
-    with open(CONFIG_PATH, 'r') as f:
-        config = json.load(f)
-except FileNotFoundError:
-    print(f"설정 파일을 찾을 수 없습니다: {CONFIG_PATH}")
-    # 기본 설정값 사용
-    config = {
-        "default_values": ["50", "15"],
-        "setting_icon_path": r"C:\myGit\myGit\imagefiles\settings.png"
-    }
-except json.JSONDecodeError:
-    print(f"설정 파일 형식이 잘못되었습니다: {CONFIG_PATH}")
-    # 기본 설정값 사용
-    config = {
-        "default_values": ["50", "15"],
-        "setting_icon_path": r"C:\myGit\myGit\imagefiles\settings.png"
-    }
+with open('config.json', 'r') as f:
+    config = json.load(f)
 
 def create_menu_item(parent, text, bg_color, fg_color, row):
     item = tk.Label(parent, text=text, bg=bg_color, fg=fg_color, font=('default', FONT_SIZE), anchor='center')
@@ -124,17 +102,7 @@ def setup_ui(root):
     
     tk.Label(oframes[2], text="매크로 동작 설정", bg=BACKGROUND_COLOR, fg='black', font=('default', FONT_SIZE)).grid(row=0, column=0, padx=(27,10), sticky='w')
     
-    setting_icon_path = config['setting_icon_path']
-    if not os.path.isabs(setting_icon_path):
-        setting_icon_path = os.path.join(SCRIPT_DIR, setting_icon_path)
-
-    try:
-        setting_icon = Image.open(setting_icon_path)
-        setting_icon = setting_icon.resize((25, 25), Image.Resampling.LANCZOS)
-        setting_icon_photo = ImageTk.PhotoImage(setting_icon)
-    except FileNotFoundError:
-        print(f"설정 아이콘 파일을 찾을 수 없습니다: {setting_icon_path}")
-    setting_icon_photo = None
+    setting_icon = Image.open(config['setting_icon_path'])
     setting_icon = setting_icon.resize((25, 25), Image.Resampling.LANCZOS)
     setting_icon_photo = ImageTk.PhotoImage(setting_icon)
     
