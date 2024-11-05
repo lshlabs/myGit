@@ -144,7 +144,7 @@ class DeliveryMacro:
         self.menu_item3.config(bg="gainsboro" if menu_name == "요기요" else "white")
         self.menu_item6.config(bg="gainsboro" if menu_name == "만나" else "white")
 
-        if menu_name == "만나":
+        if menu_name == "만나1":
             self.oframes[0].grid_remove()
             self.oframes[1].grid(row=10)
             self.oframes[2].grid(row=11)
