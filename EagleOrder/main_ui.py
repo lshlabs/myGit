@@ -8,7 +8,7 @@ import os
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # config.json 파일의 절대 경로
-CONFIG_PATH = os.path.join(SCRIPT_DIR, 'datafiles\config.json')
+CONFIG_PATH = os.path.join(SCRIPT_DIR, 'datafiles', 'config.json')
 
 # 상수 정의
 BACKGROUND_COLOR = 'white'
@@ -18,21 +18,26 @@ FONT_SIZE = 12
 
 # 설정 파일 로드
 try:
-    with open(CONFIG_PATH, 'r') as f:
+    with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
         config = json.load(f)
 except FileNotFoundError:
     print(f"설정 파일을 찾을 수 없습니다: {CONFIG_PATH}")
+    # datafiles 디렉토리 생성
+    os.makedirs(os.path.join(SCRIPT_DIR, 'datafiles'), exist_ok=True)
     # 기본 설정값 사용
     config = {
         "default_values": ["50", "15"],
-        "setting_icon_path": r"C:\myGit\myGit\EagleOrder\imagefiles\settings.png"
+        "setting_icon_path": os.path.join("imagefiles", "settings.png")
     }
+    # 설정 파일 생성
+    with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
+        json.dump(config, f, ensure_ascii=False, indent=4)
 except json.JSONDecodeError:
     print(f"설정 파일 형식이 잘못되었습니다: {CONFIG_PATH}")
     # 기본 설정값 사용
     config = {
         "default_values": ["50", "15"],
-        "setting_icon_path": r"C:\myGit\myGit\EagleOrder\imagefiles\settings.png"
+        "setting_icon_path": os.path.join("imagefiles", "settings.png")
     }
 
 def create_menu_item(parent, text, bg_color, fg_color, row):
@@ -141,9 +146,7 @@ def setup_ui(root):
         setting_icon_photo = ImageTk.PhotoImage(setting_icon)
     except FileNotFoundError:
         print(f"설정 아이콘 파일을 찾을 수 없습니다: {setting_icon_path}")
-    setting_icon_photo = None
-    setting_icon = setting_icon.resize((25, 25), Image.Resampling.LANCZOS)
-    setting_icon_photo = ImageTk.PhotoImage(setting_icon)
+        setting_icon_photo = None
     
     btn_setting = tk.Button(oframes[2], image=setting_icon_photo, borderwidth=0, bg=BACKGROUND_COLOR)
     btn_setting.grid(row=0, column=1, sticky='ew')

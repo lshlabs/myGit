@@ -20,10 +20,9 @@ class DeliveryMacro:
         self.root.title('매크로')
 
         # 운영 체제에 따라 파일명 설정
-        # 현재 스크립트의 디렉토리를 기준으로 data 파일의 절대 경로 설정
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.data_file = os.path.join(script_dir, 'datafiles\data_mac.json' if platform.system() == 'Darwin' else 'datafiles\data_win.json')
-        # self.data_file = 'data_mac.json' if platform.system() == 'Darwin' else 'data_win.json'
+        data_filename = 'data_mac.json' if platform.system() == 'Darwin' else 'data_win.json'
+        self.data_file = os.path.join(script_dir, 'datafiles', data_filename)
 
         self.image_paths = {i: None for i in range(12)}
         self.setup_ui()
