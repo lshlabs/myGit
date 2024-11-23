@@ -25,7 +25,7 @@ class ReflexClicker:
         current_dir = Path(__file__).parent
         images = []
         for i in range(1, 4):
-            img_path = current_dir / f"img0{i}.png"
+            img_path = current_dir / f"img0{i}_win.png"
             img = cv.imread(str(img_path))
             if img is None:
                 raise FileNotFoundError(f"이미지를 찾을 수 없습니다: {img_path}")
