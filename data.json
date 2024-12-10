@@ -1,0 +1,13 @@
+{
+    "요기요": {
+        "image_paths": [
+            null,
+            null,
+            null
+        ],
+        "button_state": "OFF",
+        "entry_var1": "50",
+        "entry_var2": "15"
+    },
+    "window_geometry": "690x500+401+171"
+}
