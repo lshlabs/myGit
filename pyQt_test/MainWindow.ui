@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>494</height>
+    <height>491</height>
    </rect>
   </property>
   <property name="font">
@@ -57,11 +57,18 @@
       <height>600</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+     </font>
+    </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(255, 255, 255)</string>
+     <string notr="true">background-color:rgb(255, 255, 255);
+color:rgb(0, 0, 0);
+border: 1px solid black;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::Box</enum>
@@ -108,14 +115,26 @@
        <height>540</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(255, 255, 255);
+border: none;</string>
+     </property>
      <widget class="QFrame" name="Setting_frame">
       <property name="geometry">
        <rect>
-        <x>15</x>
+        <x>43</x>
         <y>350</y>
-        <width>520</width>
+        <width>463</width>
         <height>171</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -128,7 +147,7 @@
         <rect>
          <x>5</x>
          <y>10</y>
-         <width>510</width>
+         <width>453</width>
          <height>50</height>
         </rect>
        </property>
@@ -138,13 +157,21 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:none;</string>
+       </property>
        <property name="frameShape">
         <enum>QFrame::Shape::NoFrame</enum>
        </property>
        <property name="frameShadow">
         <enum>QFrame::Shadow::Plain</enum>
        </property>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_timeset1">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -155,226 +182,27 @@
         </property>
         <property name="font">
          <font>
-          <family>Helvetica</family>
-          <pointsize>13</pointsize>
+          <family>Arial</family>
+          <pointsize>9</pointsize>
          </font>
         </property>
         <property name="text">
          <string>배달 기본 접수시간(분)</string>
         </property>
        </widget>
-       <widget class="QFrame" name="verticalFrame">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>0</y>
-          <width>41</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="sizeConstraint">
-          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-         </property>
-         <property name="leftMargin">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>5</number>
-         </property>
-         <property name="rightMargin">
-          <number>5</number>
-         </property>
-         <property name="bottomMargin">
-          <number>5</number>
-         </property>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="Button_minus1">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>30</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Helvetica</family>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    border-radius: 5px;
-    border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
-    padding: 2px 4px;
-}</string>
-           </property>
-           <property name="text">
-            <string>-</string>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QFrame" name="verticalFrame_4">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>0</y>
-          <width>41</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,1,0">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="sizeConstraint">
-          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-         </property>
-         <property name="leftMargin">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>5</number>
-         </property>
-         <property name="rightMargin">
-          <number>5</number>
-         </property>
-         <property name="bottomMargin">
-          <number>5</number>
-         </property>
-         <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="Button_plus1">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>30</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Helvetica</family>
-             <pointsize>13</pointsize>
-             <bold>false</bold>
-             <hintingpreference>PreferVerticalHinting</hintingpreference>
-            </font>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    border-radius: 5px;
-    border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
-    padding: 2px 4px;
-}</string>
-           </property>
-           <property name="text">
-            <string>+</string>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QFrame" name="verticalFrame_7">
+       <widget class="QFrame" name="verticalFrame_entry1">
         <property name="geometry">
          <rect>
           <x>190</x>
           <y>0</y>
-          <width>71</width>
+          <width>51</width>
           <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,1,0">
          <property name="spacing">
@@ -384,19 +212,24 @@
           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
          </property>
          <property name="leftMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="topMargin">
           <number>5</number>
          </property>
          <property name="rightMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="bottomMargin">
           <number>5</number>
          </property>
          <item>
-          <spacer name="verticalSpacer_9">
+          <spacer name="verticalSpacer4">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -415,8 +248,8 @@
           <widget class="QLineEdit" name="entry1">
            <property name="font">
             <font>
-             <family>Helvetica</family>
-             <pointsize>13</pointsize>
+             <family>Arial</family>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -428,7 +261,12 @@
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer_10">
+          <spacer name="verticalSpacer3">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -445,45 +283,10 @@
          </item>
         </layout>
        </widget>
-      </widget>
-      <widget class="QFrame" name="frame_timeset2">
-       <property name="geometry">
-        <rect>
-         <x>5</x>
-         <y>65</y>
-         <width>510</width>
-         <height>50</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::Shape::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Shadow::Plain</enum>
-       </property>
-       <widget class="QLabel" name="label_2">
+       <widget class="QFrame" name="verticalFrame_plus1">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Helvetica</family>
-          <pointsize>13</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>포장 기본 접수시간(분)</string>
-        </property>
-       </widget>
-       <widget class="QFrame" name="verticalFrame_5">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
+          <x>240</x>
           <y>0</y>
           <width>41</width>
           <height>51</height>
@@ -494,6 +297,348 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,1,0">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <spacer name="verticalSpacer5">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_plus1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
+             <bold>false</bold>
+             <hintingpreference>PreferVerticalHinting</hintingpreference>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border-radius: 5px;
+    border: 1px solid #8f8f91;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+}</string>
+           </property>
+           <property name="text">
+            <string>∧</string>
+           </property>
+           <property name="icon">
+            <iconset theme="QIcon::ThemeIcon::InsertText"/>
+           </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer6">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="verticalFrame_minus1">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>0</y>
+          <width>41</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1,0">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <spacer name="verticalSpacer1">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_minus1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
+             <bold>false</bold>
+             <hintingpreference>PreferVerticalHinting</hintingpreference>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border-radius: 5px;
+    border: 1px solid #8f8f91;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+}</string>
+           </property>
+           <property name="text">
+            <string>∨</string>
+           </property>
+           <property name="icon">
+            <iconset theme="QIcon::ThemeIcon::InsertText"/>
+           </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer2">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QSpinBox" name="spinBox">
+        <property name="geometry">
+         <rect>
+          <x>354</x>
+          <y>10</y>
+          <width>61</width>
+          <height>24</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"> border: 1px solid #8f8f91;</string>
+        </property>
+        <property name="buttonSymbols">
+         <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+        </property>
+        <property name="minimum">
+         <number>15</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_timeset2">
+       <property name="geometry">
+        <rect>
+         <x>5</x>
+         <y>65</y>
+         <width>453</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:none;</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Shape::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Shadow::Plain</enum>
+       </property>
+       <widget class="QLabel" name="label_timeset2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>포장 기본 접수시간(분)</string>
+        </property>
+       </widget>
+       <widget class="QFrame" name="verticalFrame_plus2">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>0</y>
+          <width>41</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0">
          <property name="spacing">
@@ -515,7 +660,12 @@
           <number>5</number>
          </property>
          <item>
-          <spacer name="verticalSpacer_5">
+          <spacer name="verticalSpacer11">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -546,8 +696,8 @@
            </property>
            <property name="font">
             <font>
-             <family>Helvetica</family>
-             <pointsize>13</pointsize>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
             </font>
@@ -564,116 +714,29 @@
 }</string>
            </property>
            <property name="text">
-            <string>+</string>
+            <string>∧</string>
            </property>
-           <property name="flat">
-            <bool>true</bool>
+           <property name="icon">
+            <iconset theme="QIcon::ThemeIcon::InsertText"/>
            </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QFrame" name="verticalFrame_6">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>0</y>
-          <width>41</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,1,0">
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <property name="sizeConstraint">
-          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
-         </property>
-         <property name="leftMargin">
-          <number>5</number>
-         </property>
-         <property name="topMargin">
-          <number>5</number>
-         </property>
-         <property name="rightMargin">
-          <number>5</number>
-         </property>
-         <property name="bottomMargin">
-          <number>5</number>
-         </property>
-         <item>
-          <spacer name="verticalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Policy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="Button_minus2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>30</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Helvetica</family>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-           <property name="autoFillBackground">
+           <property name="autoExclusive">
             <bool>false</bool>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    border-radius: 5px;
-    border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
-    padding: 2px 4px;
-}</string>
-           </property>
-           <property name="text">
-            <string>-</string>
+           <property name="default">
+            <bool>false</bool>
            </property>
            <property name="flat">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer_8">
+          <spacer name="verticalSpacer12">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -690,14 +753,19 @@
          </item>
         </layout>
        </widget>
-       <widget class="QFrame" name="verticalFrame_8">
+       <widget class="QFrame" name="verticalFrame_entry2">
         <property name="geometry">
          <rect>
           <x>190</x>
           <y>0</y>
-          <width>71</width>
+          <width>51</width>
           <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,1,0">
          <property name="spacing">
@@ -719,7 +787,12 @@
           <number>5</number>
          </property>
          <item>
-          <spacer name="verticalSpacer_11">
+          <spacer name="verticalSpacer9">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -738,8 +811,8 @@
           <widget class="QLineEdit" name="enrty2">
            <property name="font">
             <font>
-             <family>Helvetica</family>
-             <pointsize>13</pointsize>
+             <family>Arial</family>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="text">
@@ -751,7 +824,145 @@
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer_12">
+          <spacer name="verticalSpacer10">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QFrame" name="verticalFrame_minus2">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>0</y>
+          <width>41</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0,1,0">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <spacer name="verticalSpacer7">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Policy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_minus2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial</family>
+             <pointsize>10</pointsize>
+             <bold>false</bold>
+             <hintingpreference>PreferVerticalHinting</hintingpreference>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border-radius: 5px;
+    border: 1px solid #8f8f91;
+    background-color: #f0f0f0;
+    padding: 2px 4px;
+}</string>
+           </property>
+           <property name="text">
+            <string>∨</string>
+           </property>
+           <property name="icon">
+            <iconset theme="QIcon::ThemeIcon::InsertText"/>
+           </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer8">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -774,9 +985,17 @@
         <rect>
          <x>5</x>
          <y>120</y>
-         <width>510</width>
+         <width>453</width>
          <height>50</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border:none;</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::Shape::NoFrame</enum>
@@ -784,7 +1003,7 @@
        <property name="frameShadow">
         <enum>QFrame::Shadow::Plain</enum>
        </property>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_timeset3">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -795,15 +1014,15 @@
         </property>
         <property name="font">
          <font>
-          <family>Helvetica</family>
-          <pointsize>13</pointsize>
+          <family>Arial</family>
+          <pointsize>9</pointsize>
          </font>
         </property>
         <property name="text">
          <string>매크로 동작 설정</string>
         </property>
        </widget>
-       <widget class="QFrame" name="frame">
+       <widget class="QFrame" name="frame_setting_icon">
         <property name="geometry">
          <rect>
           <x>155</x>
@@ -811,6 +1030,11 @@
           <width>30</width>
           <height>30</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
         </property>
         <property name="styleSheet">
          <string notr="true">background:rgb(206, 208, 208)</string>
@@ -824,11 +1048,11 @@
        </widget>
       </widget>
      </widget>
-     <widget class="QLabel" name="Image_label6">
+     <widget class="QLabel" name="label_Image5">
       <property name="geometry">
        <rect>
         <x>213</x>
-        <y>311</y>
+        <y>309</y>
         <width>120</width>
         <height>25</height>
        </rect>
@@ -851,18 +1075,27 @@
         <height>30</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+border: 1px solid black;</string>
+      </property>
       <property name="text">
-       <string>이미지 6</string>
+       <string>이미지 5</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="Image_label1">
+     <widget class="QLabel" name="label_Image1">
       <property name="geometry">
        <rect>
         <x>43</x>
-        <y>146</y>
+        <y>144</y>
         <width>120</width>
         <height>25</height>
        </rect>
@@ -884,6 +1117,15 @@
         <width>120</width>
         <height>30</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+border: 1px solid black;</string>
       </property>
       <property name="text">
        <string>이미지 1</string>
@@ -892,7 +1134,7 @@
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QFrame" name="Image_frame7">
+     <widget class="QFrame" name="frame_image6">
       <property name="geometry">
        <rect>
         <x>383</x>
@@ -919,8 +1161,14 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(206, 208, 208)</string>
+       <string notr="true">background:rgb(206, 208, 208);
+border:1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -929,11 +1177,11 @@
        <enum>QFrame::Shadow::Plain</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="Image_label7">
+     <widget class="QLabel" name="label_Image6">
       <property name="geometry">
        <rect>
         <x>383</x>
-        <y>311</y>
+        <y>309</y>
         <width>120</width>
         <height>25</height>
        </rect>
@@ -956,18 +1204,27 @@
         <height>30</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+border: 1px solid black;</string>
+      </property>
       <property name="text">
-       <string>이미지 7</string>
+       <string>이미지 6</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="Image_label2">
+     <widget class="QLabel" name="label_Image2">
       <property name="geometry">
        <rect>
         <x>213</x>
-        <y>146</y>
+        <y>144</y>
         <width>120</width>
         <height>25</height>
        </rect>
@@ -989,6 +1246,15 @@
         <width>120</width>
         <height>30</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+border: 1px solid black;</string>
       </property>
       <property name="text">
        <string>이미지 2</string>
@@ -997,7 +1263,7 @@
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QFrame" name="Image_frame2">
+     <widget class="QFrame" name="frame_image2">
       <property name="geometry">
        <rect>
         <x>213</x>
@@ -1024,8 +1290,14 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(206, 208, 208)</string>
+       <string notr="true">background:rgb(206, 208, 208);
+border:1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -1034,7 +1306,7 @@
        <enum>QFrame::Shadow::Plain</enum>
       </property>
      </widget>
-     <widget class="QFrame" name="Image_frame6">
+     <widget class="QFrame" name="frame_image5">
       <property name="geometry">
        <rect>
         <x>213</x>
@@ -1061,8 +1333,14 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(206, 208, 208)</string>
+       <string notr="true">background:rgb(206, 208, 208);
+border:1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -1071,11 +1349,11 @@
        <enum>QFrame::Shadow::Plain</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="Image_label5">
+     <widget class="QLabel" name="label_Image4">
       <property name="geometry">
        <rect>
         <x>43</x>
-        <y>311</y>
+        <y>309</y>
         <width>120</width>
         <height>25</height>
        </rect>
@@ -1098,14 +1376,23 @@
         <height>30</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+border: 1px solid black;</string>
+      </property>
       <property name="text">
-       <string>이미지 5</string>
+       <string>이미지 4</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QFrame" name="Image_frame1">
+     <widget class="QFrame" name="frame_image1">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -1135,11 +1422,17 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(206, 208, 208)</string>
+       <string notr="true">background:rgb(206, 208, 208);
+border:1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -1148,7 +1441,7 @@
        <enum>QFrame::Shadow::Plain</enum>
       </property>
      </widget>
-     <widget class="QFrame" name="Image_frame3">
+     <widget class="QFrame" name="frame_image3">
       <property name="geometry">
        <rect>
         <x>383</x>
@@ -1175,8 +1468,14 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(206, 208, 208)</string>
+       <string notr="true">background:rgb(206, 208, 208);
+border:1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -1185,11 +1484,11 @@
        <enum>QFrame::Shadow::Plain</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="Image_label3">
+     <widget class="QLabel" name="label_Image3">
       <property name="geometry">
        <rect>
         <x>383</x>
-        <y>146</y>
+        <y>144</y>
         <width>120</width>
         <height>25</height>
        </rect>
@@ -1212,6 +1511,15 @@
         <height>30</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: black;
+border: 1px solid black;</string>
+      </property>
       <property name="text">
        <string>이미지 3</string>
       </property>
@@ -1219,7 +1527,7 @@
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QFrame" name="Image_frame5">
+     <widget class="QFrame" name="frame_image4">
       <property name="geometry">
        <rect>
         <x>43</x>
@@ -1246,8 +1554,14 @@
         <height>100</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(206, 208, 208)</string>
+       <string notr="true">background:rgb(206, 208, 208);
+border:1px solid black;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::Box</enum>
@@ -1258,7 +1572,7 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QFrame" name="Title_frame">
+   <widget class="QFrame" name="frame_titile">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -1281,11 +1595,12 @@
     </property>
     <property name="font">
      <font>
-      <family>Helvetica</family>
+      <family>Arial</family>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background:rgb(206, 208, 208)</string>
+     <string notr="true">background:rgb(206, 208, 208);
+border: 1px solid black;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::Box</enum>
@@ -1293,13 +1608,13 @@
     <property name="frameShadow">
      <enum>QFrame::Shadow::Plain</enum>
     </property>
-    <widget class="QLabel" name="Title_label">
+    <widget class="QLabel" name="label_title">
      <property name="geometry">
       <rect>
        <x>1</x>
        <y>1</y>
        <width>548</width>
-       <height>64</height>
+       <height>66</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -1310,10 +1625,14 @@
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>30</pointsize>
        <bold>false</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:rgb(0, 0, 0);
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu Name</string>
@@ -1323,7 +1642,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QFrame" name="Menu_frame">
+   <widget class="QFrame" name="frame_menu">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -1352,14 +1671,15 @@
     </property>
     <property name="font">
      <font>
-      <family>Helvetica</family>
+      <family>Arial</family>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(234, 238, 238);
+     <string notr="true">background: rgb(234, 238, 238);
+ border: 1px solid black; 
 </string>
     </property>
     <property name="frameShape">
@@ -1368,7 +1688,7 @@
     <property name="lineWidth">
      <number>1</number>
     </property>
-    <widget class="QLabel" name="MenuLabel2">
+    <widget class="QLabel" name="label_menu2">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1397,12 +1717,14 @@
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgb(255, 255, 255)</string>
+      <string notr="true">background-color:rgb(255, 255, 255);
+color: black;
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu2</string>
@@ -1411,7 +1733,7 @@
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="MenuLabel6">
+    <widget class="QLabel" name="label_menu6">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1440,12 +1762,14 @@
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255)</string>
+      <string notr="true">background-color:rgb(255, 255, 255);
+color: black;
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu6</string>
@@ -1454,7 +1778,7 @@
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="MenuLabel4">
+    <widget class="QLabel" name="label_menu4">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1483,12 +1807,14 @@
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgb(255, 255, 255)</string>
+      <string notr="true">background-color:rgb(255, 255, 255);
+color: black;
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu4</string>
@@ -1497,7 +1823,7 @@
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="MenuLabel5">
+    <widget class="QLabel" name="label_menu5">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1526,13 +1852,14 @@
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(148, 55, 255);
-color:rgb(255, 255, 255);</string>
+color:rgb(255, 255, 255);
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu5</string>
@@ -1541,7 +1868,7 @@ color:rgb(255, 255, 255);</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="MenuLabel7">
+    <widget class="QLabel" name="label_menu7">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1570,12 +1897,14 @@ color:rgb(255, 255, 255);</string>
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255)</string>
+      <string notr="true">background-color:rgb(255, 255, 255);
+color: black;
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu7</string>
@@ -1584,7 +1913,7 @@ color:rgb(255, 255, 255);</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="MenuLabel1">
+    <widget class="QLabel" name="label_menu1">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1619,13 +1948,14 @@ color:rgb(255, 255, 255);</string>
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(148, 55, 255);
-color:rgb(255, 255, 255);</string>
+color:rgb(255, 255, 255);
+border: none;</string>
      </property>
      <property name="lineWidth">
       <number>0</number>
@@ -1637,7 +1967,7 @@ color:rgb(255, 255, 255);</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="MenuLabel3">
+    <widget class="QLabel" name="label_menu3">
      <property name="geometry">
       <rect>
        <x>1</x>
@@ -1666,12 +1996,14 @@ color:rgb(255, 255, 255);</string>
      </property>
      <property name="font">
       <font>
-       <family>Helvetica</family>
+       <family>Arial</family>
        <pointsize>13</pointsize>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color:rgb(255, 255, 255)</string>
+      <string notr="true">background-color:rgb(255, 255, 255);
+color: black;
+border: none;</string>
      </property>
      <property name="text">
       <string>Menu3</string>
@@ -1680,14 +2012,17 @@ color:rgb(255, 255, 255);</string>
       <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
-    <zorder>MenuLabel1</zorder>
-    <zorder>MenuLabel2</zorder>
-    <zorder>MenuLabel6</zorder>
-    <zorder>MenuLabel4</zorder>
-    <zorder>MenuLabel5</zorder>
-    <zorder>MenuLabel7</zorder>
-    <zorder>MenuLabel3</zorder>
+    <zorder>label_menu1</zorder>
+    <zorder>label_menu2</zorder>
+    <zorder>label_menu6</zorder>
+    <zorder>label_menu4</zorder>
+    <zorder>label_menu5</zorder>
+    <zorder>label_menu7</zorder>
+    <zorder>label_menu3</zorder>
    </widget>
+   <zorder>frame_titile</zorder>
+   <zorder>frame_menu</zorder>
+   <zorder>scrollArea</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
