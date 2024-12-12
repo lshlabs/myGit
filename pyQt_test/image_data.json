@@ -1,0 +1,20 @@
+{
+  "menu2": {
+    "frame_image1": "../../../../Desktop/사진자료/chrome icon.png",
+    "frame_image2": null,
+    "frame_image3": null
+  },
+  "menu3": {
+    "frame_image1": null,
+    "frame_image2": "../../../../Desktop/사진자료/down_arrow.jpg",
+    "frame_image3": null
+  },
+  "menu6": {
+    "frame_image1": null,
+    "frame_image2": null,
+    "frame_image3": null,
+    "frame_image4": null,
+    "frame_image5": "../../../../Desktop/사진자료/source3.png",
+    "frame_image6": null
+  }
+}
