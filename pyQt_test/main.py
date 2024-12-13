@@ -334,7 +334,7 @@ class MainWindow(QMainWindow):
             self.ui.entry1.setText(str(data['menu3']['entry1']))
             self.ui.entry2.setText(str(data['menu3']['entry2']))
 
-        # menu3의 버튼 상태 로드
+        # menu3의 버튼 상태 로���
         self.load_button_state('menu3')
 
     def show_menu6(self):
@@ -471,6 +471,55 @@ class MainWindow(QMainWindow):
         
         # 상태 저장
         self.save_button_state(current_menu, 'on', color)
+
+    def show_image_dialog(self, frame):
+        """이미지 선택 다이얼로그 표시"""
+        dialog = ImageDialog(self)
+        current_menu = self.get_current_menu()
+        frame_name = frame.objectName()
+        
+        # 현재 프레임에 이미지가 있으면 다이얼로그에 표시
+        if frame.pixmap() and not frame.pixmap().isNull():
+            dialog.ui.preview_label.setPixmap(frame.pixmap().scaled(
+                dialog.ui.preview_label.size(),
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation
+            ))
+            # 현재 이미지 파일 경로 가져오기
+            with open(self.data_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                current_path = data[current_menu][frame_name]
+                if current_path:
+                    dialog.selected_file_path = self.get_absolute_path(current_path)
+                    dialog.selected_pixmap = frame.pixmap()
+        
+        if dialog.exec() == QDialog.Accepted:
+            if dialog.reset_requested:
+                # 이미지 초기화
+                frame.clear()
+                frame.setStyleSheet("background:rgb(206, 208, 208);\nborder:1px solid black;")
+                self.menu_pixmaps[current_menu][frame_name] = None
+                
+                # JSON 파일 업데이트
+                with open(self.data_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                data[current_menu][frame_name] = None
+                with open(self.data_file, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
+            
+            elif dialog.selected_pixmap:
+                # 새 이미지 설정
+                frame.setPixmap(dialog.selected_pixmap)
+                frame.setStyleSheet("background: transparent;\nborder:1px solid black;")
+                self.menu_pixmaps[current_menu][frame_name] = dialog.selected_pixmap
+                
+                # JSON 파일 업데이트
+                relative_path = self.get_relative_path(dialog.selected_file_path)
+                with open(self.data_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                data[current_menu][frame_name] = relative_path
+                with open(self.data_file, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

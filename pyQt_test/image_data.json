@@ -1,31 +1,31 @@
 {
   "menu2": {
-    "frame_image1": null,
-    "frame_image2": null,
+    "frame_image1": "../../../../Desktop/사진자료/source3.png",
+    "frame_image2": "../../../../Desktop/사진자료/source2.png",
     "frame_image3": null,
-    "entry1": 50,
+    "entry1": 55,
     "entry2": 15,
     "button_state": "on",
     "frame_color": "background:#45D3D3"
   },
   "menu3": {
     "frame_image1": null,
-    "frame_image2": null,
+    "frame_image2": "../../../../Desktop/사진자료/source5.png",
     "frame_image3": null,
-    "entry1": 50,
-    "entry2": 15,
-    "button_state": "on",
-    "frame_color": "background:#FA0150"
+    "entry1": 70,
+    "entry2": 20,
+    "button_state": "off",
+    "frame_color": "background:rgb(206, 208, 208)"
   },
   "menu6": {
     "frame_image1": null,
     "frame_image2": null,
-    "frame_image3": null,
+    "frame_image3": "../../../../Desktop/사진자료/source2.png",
     "frame_image4": null,
-    "frame_image5": null,
+    "frame_image5": "../../../../Desktop/사진자료/source6.png",
     "frame_image6": null,
-    "entry1": 50,
-    "entry2": 15,
+    "entry1": 70,
+    "entry2": 25,
     "button_state": "off",
     "frame_color": "background:rgb(206, 208, 208)"
   }
