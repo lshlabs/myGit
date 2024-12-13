@@ -233,24 +233,24 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_5.addItem(self.verticalSpacer11)
 
-        self.Button_plus2 = QPushButton(self.verticalFrame_plus2)
-        self.Button_plus2.setObjectName(u"Button_plus2")
-        sizePolicy1.setHeightForWidth(self.Button_plus2.sizePolicy().hasHeightForWidth())
-        self.Button_plus2.setSizePolicy(sizePolicy1)
-        self.Button_plus2.setMaximumSize(QSize(30, 20))
-        self.Button_plus2.setFont(font4)
-        self.Button_plus2.setAutoFillBackground(False)
-        self.Button_plus2.setStyleSheet(u"QPushButton {\n"
+        self.button_plus2 = QPushButton(self.verticalFrame_plus2)
+        self.button_plus2.setObjectName(u"button_plus2")
+        sizePolicy1.setHeightForWidth(self.button_plus2.sizePolicy().hasHeightForWidth())
+        self.button_plus2.setSizePolicy(sizePolicy1)
+        self.button_plus2.setMaximumSize(QSize(30, 20))
+        self.button_plus2.setFont(font4)
+        self.button_plus2.setAutoFillBackground(False)
+        self.button_plus2.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
 "    border: 1px solid #8f8f91;\n"
 "    background-color: #f0f0f0;\n"
 "    padding: 2px 4px;\n"
 "}")
-        self.Button_plus2.setIcon(icon)
-        self.Button_plus2.setAutoExclusive(False)
-        self.Button_plus2.setFlat(False)
+        self.button_plus2.setIcon(icon)
+        self.button_plus2.setAutoExclusive(False)
+        self.button_plus2.setFlat(False)
 
-        self.verticalLayout_5.addWidget(self.Button_plus2)
+        self.verticalLayout_5.addWidget(self.button_plus2)
 
         self.verticalSpacer12 = QSpacerItem(20, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -270,14 +270,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addItem(self.verticalSpacer9)
 
-        self.enrty2 = QLineEdit(self.verticalFrame_entry2)
-        self.enrty2.setObjectName(u"enrty2")
-        self.enrty2.setFont(font3)
-        self.enrty2.setStyleSheet(u"border: 1px solid black;")
-        self.enrty2.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.enrty2.setReadOnly(True)
+        self.entry2 = QLineEdit(self.verticalFrame_entry2)
+        self.entry2.setObjectName(u"entry2")
+        self.entry2.setFont(font3)
+        self.entry2.setStyleSheet(u"border: 1px solid black;")
+        self.entry2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.entry2.setReadOnly(True)
 
-        self.verticalLayout_8.addWidget(self.enrty2)
+        self.verticalLayout_8.addWidget(self.entry2)
 
         self.verticalSpacer10 = QSpacerItem(20, 10, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -465,17 +465,17 @@ class Ui_MainWindow(object):
 "border:1px solid black;")
         self.frame_image6.setFrameShape(QFrame.Shape.NoFrame)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-        self.frame_titile = QFrame(self.centralwidget)
-        self.frame_titile.setObjectName(u"frame_titile")
-        self.frame_titile.setGeometry(QRect(150, 10, 550, 66))
-        self.frame_titile.setMinimumSize(QSize(550, 66))
-        self.frame_titile.setMaximumSize(QSize(550, 66))
-        self.frame_titile.setFont(font2)
-        self.frame_titile.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_title = QFrame(self.centralwidget)
+        self.frame_title.setObjectName(u"frame_title")
+        self.frame_title.setGeometry(QRect(150, 10, 550, 66))
+        self.frame_title.setMinimumSize(QSize(550, 66))
+        self.frame_title.setMaximumSize(QSize(550, 66))
+        self.frame_title.setFont(font2)
+        self.frame_title.setStyleSheet(u"background:rgb(206, 208, 208);\n"
 "border: 1px solid black;")
-        self.frame_titile.setFrameShape(QFrame.Shape.Box)
-        self.frame_titile.setFrameShadow(QFrame.Shadow.Plain)
-        self.label_title = QLabel(self.frame_titile)
+        self.frame_title.setFrameShape(QFrame.Shape.Box)
+        self.frame_title.setFrameShadow(QFrame.Shadow.Plain)
+        self.label_title = QLabel(self.frame_title)
         self.label_title.setObjectName(u"label_title")
         self.label_title.setGeometry(QRect(1, 1, 548, 66))
         sizePolicy2.setHeightForWidth(self.label_title.sizePolicy().hasHeightForWidth())
@@ -487,7 +487,22 @@ class Ui_MainWindow(object):
         self.label_title.setFont(font5)
         self.label_title.setStyleSheet(u"color:rgb(0, 0, 0);\n"
 "border: none;")
-        self.label_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_title.setIndent(40)
+        self.button_on = QPushButton(self.frame_title)
+        self.button_on.setObjectName(u"button_on")
+        self.button_on.setGeometry(QRect(465, 10, 70, 45))
+        self.button_on.setFont(font2)
+        self.button_on.setStyleSheet(u"background:rgb(219, 222, 222);\n"
+"border:1px solid black;\n"
+"border-radius:15px;")
+        self.button_off = QPushButton(self.frame_title)
+        self.button_off.setObjectName(u"button_off")
+        self.button_off.setGeometry(QRect(465, 10, 70, 45))
+        self.button_off.setFont(font2)
+        self.button_off.setStyleSheet(u"background:rgb(219, 222, 222);\n"
+"border:1px solid black;\n"
+"border-radius:15px;")
         self.frame_menu = QFrame(self.centralwidget)
         self.frame_menu.setObjectName(u"frame_menu")
         self.frame_menu.setGeometry(QRect(10, 10, 130, 457))
@@ -605,7 +620,7 @@ class Ui_MainWindow(object):
         self.label_menu7.raise_()
         self.label_menu3.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
-        self.frame_titile.raise_()
+        self.frame_title.raise_()
         self.frame_menu.raise_()
         self.scrollArea.raise_()
         self.statusbar = QStatusBar(MainWindow)
@@ -616,7 +631,7 @@ class Ui_MainWindow(object):
 
         self.button_plus1.setDefault(False)
         self.button_minus1.setDefault(False)
-        self.Button_plus2.setDefault(False)
+        self.button_plus2.setDefault(False)
         self.button_minus2.setDefault(False)
 
 
@@ -630,8 +645,8 @@ class Ui_MainWindow(object):
         self.button_plus1.setText(QCoreApplication.translate("MainWindow", u"\u2227", None))
         self.button_minus1.setText(QCoreApplication.translate("MainWindow", u"\u2228", None))
         self.label_timeset2.setText(QCoreApplication.translate("MainWindow", u"\ud3ec\uc7a5 \uae30\ubcf8 \uc811\uc218\uc2dc\uac04(\ubd84)", None))
-        self.Button_plus2.setText(QCoreApplication.translate("MainWindow", u"\u2227", None))
-        self.enrty2.setText(QCoreApplication.translate("MainWindow", u"50", None))
+        self.button_plus2.setText(QCoreApplication.translate("MainWindow", u"\u2227", None))
+        self.entry2.setText(QCoreApplication.translate("MainWindow", u"15", None))
         self.button_minus2.setText(QCoreApplication.translate("MainWindow", u"\u2228", None))
         self.label_timeset3.setText(QCoreApplication.translate("MainWindow", u"\ub9e4\ud06c\ub85c \ub3d9\uc791 \uc124\uc815", None))
         self.label_image5.setText(QCoreApplication.translate("MainWindow", u"\uc774\ubbf8\uc9c0 5", None))
@@ -647,6 +662,8 @@ class Ui_MainWindow(object):
         self.frame_image5.setText("")
         self.frame_image6.setText("")
         self.label_title.setText(QCoreApplication.translate("MainWindow", u"Menu Name", None))
+        self.button_on.setText(QCoreApplication.translate("MainWindow", u"ON", None))
+        self.button_off.setText(QCoreApplication.translate("MainWindow", u"OFF", None))
         self.label_menu2.setText(QCoreApplication.translate("MainWindow", u"Menu2", None))
         self.label_menu6.setText(QCoreApplication.translate("MainWindow", u"Menu6", None))
         self.label_menu4.setText(QCoreApplication.translate("MainWindow", u"Menu4", None))

@@ -659,7 +659,7 @@ border: none;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="Button_plus2">
+          <widget class="QPushButton" name="button_plus2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
@@ -786,7 +786,7 @@ border: none;</string>
           </spacer>
          </item>
          <item>
-          <widget class="QLineEdit" name="enrty2">
+          <widget class="QLineEdit" name="entry2">
            <property name="font">
             <font>
              <family>Arial</family>
@@ -797,7 +797,7 @@ border: none;</string>
             <string notr="true">border: 1px solid black;</string>
            </property>
            <property name="text">
-            <string>50</string>
+            <string>15</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -1484,7 +1484,7 @@ border:1px solid black;</string>
      </widget>
     </widget>
    </widget>
-   <widget class="QFrame" name="frame_titile">
+   <widget class="QFrame" name="frame_title">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -1550,7 +1550,56 @@ border: none;</string>
       <string>Menu Name</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+     </property>
+     <property name="indent">
+      <number>40</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_on">
+     <property name="geometry">
+      <rect>
+       <x>465</x>
+       <y>10</y>
+       <width>70</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgb(219, 222, 222);
+border:1px solid black;
+border-radius:15px;</string>
+     </property>
+     <property name="text">
+      <string>ON</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_off">
+     <property name="geometry">
+      <rect>
+       <x>465</x>
+       <y>10</y>
+       <width>70</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgb(219, 222, 222);
+border:1px solid black;
+border-radius:15px;</string>
+     </property>
+     <property name="text">
+      <string>OFF</string>
      </property>
     </widget>
    </widget>
@@ -1932,7 +1981,7 @@ border: none;</string>
     <zorder>label_menu7</zorder>
     <zorder>label_menu3</zorder>
    </widget>
-   <zorder>frame_titile</zorder>
+   <zorder>frame_title</zorder>
    <zorder>frame_menu</zorder>
    <zorder>scrollArea</zorder>
   </widget>
