@@ -1,7 +1,13 @@
 {
   "settings": {
-    "combobox_value": "6",
-    "checkbox_state": false
+    "combo_run_value": "3",
+    "check_ctrl1_state": false,
+    "check_alt1_state": false,
+    "check_shift1_state": false,
+    "combo_stop_value": "9",
+    "check_ctrl2_state": false,
+    "check_alt2_state": false,
+    "check_shift2_state": false
   },
   "menu2": {
     "frame_image1": "../../../../Desktop/사진자료/source3.png",
@@ -9,19 +15,19 @@
     "frame_image3": "../../../../Desktop/사진자료/source5.png",
     "entry1": 65,
     "entry2": 20,
-    "button_state": "off",
-    "frame_color": "background:#CED0D0",
-    "label_title_color": "#000000"
+    "button_state": "on",
+    "frame_color": "background:#45D3D3",
+    "label_title_color": "#FFFFFF"
   },
   "menu3": {
-    "frame_image1": null,
+    "frame_image1": "../../../../Desktop/사진자료/source3.png",
     "frame_image2": null,
     "frame_image3": null,
-    "entry1": 100,
+    "entry1": 80,
     "entry2": 30,
-    "button_state": "off",
-    "frame_color": "background:#CED0D0",
-    "label_title_color": "#000000"
+    "button_state": "on",
+    "frame_color": "background:#FA0150",
+    "label_title_color": "#FFFFFF"
   },
   "menu6": {
     "frame_image1": null,
@@ -32,8 +38,8 @@
     "frame_image6": null,
     "entry1": 45,
     "entry2": 20,
-    "button_state": "off",
-    "frame_color": "background:#CED0D0",
-    "label_title_color": "#000000"
+    "button_state": "on",
+    "frame_color": "background:#ff6b00",
+    "label_title_color": "#FFFFFF"
   }
 }

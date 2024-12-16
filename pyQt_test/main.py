@@ -7,6 +7,7 @@ from PySide6.QtGui import QPixmap
 from ui.MainWindow_ui import Ui_MainWindow
 from dialogs.image_dialog import ImageDialog
 from dialogs.settings_dialog import SettingsDialog
+from macro.macro_controller import MacroController
 from utils import (get_data_file_path, load_json_data, save_json_data, 
                   get_relative_path, get_absolute_path)
 
@@ -22,6 +23,9 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         
         self.data_file = get_data_file_path()
+        
+        # MacroController 인스턴스 생성
+        self.macro_controller = MacroController(self.data_file)
         
         # settings 아이콘 설정
         settings_icon = QPixmap(":/img/settings.png")
@@ -75,8 +79,14 @@ class MainWindow(QMainWindow):
         """초기 이미지 데이터 파일 생성"""
         initial_data = {
             'settings': {
-                'combobox_value': '0',
-                'checkbox_state': False
+                'combo_run_value': '0',
+                'check_ctrl1_state': False,
+                'check_alt1_state': False,
+                'check_shift1_state': False,
+                'combo_stop_value': '0',
+                'check_ctrl2_state': False,
+                'check_alt2_state': False,
+                'check_shift2_state': False,
             },
             'menu2': {
                 'frame_image1': None,

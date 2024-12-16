@@ -1,4 +1,3 @@
-# macro/image_finder.py
 import cv2 as cv
 import numpy as np
 import pyautogui as pg
@@ -19,8 +18,10 @@ class ImageFinder:
             pos = pg.locateOnScreen(image_path, confidence=0.8)  # confidence 값 0.8로 수정
             if pos:
                 # Mac 스케일링 고려한 좌표 계산
-                click_x = pos[0] / self.screen_scale + (71 / self.screen_scale)
-                click_y = pos[1] / self.screen_scale + (71 / self.screen_scale)
+                #click_x = pos[0] / self.screen_scale + (71 / self.screen_scale)
+                #click_y = pos[1] / self.screen_scale + (71 / self.screen_scale)
+                click_x = pos[0] / self.screen_scale + ((pos[2] / 2) / self.screen_scale)
+                click_y = pos[1] / self.screen_scale + ((pos[3] / 2) / self.screen_scale)
                 return (click_x, click_y)
             return None
         except TypeError:
