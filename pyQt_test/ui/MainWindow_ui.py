@@ -26,10 +26,10 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(710, 491)
         font = QFont()
-        font.setFamilies([u"Helvetica"])
+        font.setFamilies([u"Arial"])
         MainWindow.setFont(font)
         MainWindow.setAutoFillBackground(False)
-        MainWindow.setStyleSheet(u"background-color: rgb(234, 238, 238)")
+        MainWindow.setStyleSheet(u"background-color: #EAEFEF")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         font1 = QFont()
@@ -45,12 +45,10 @@ class Ui_MainWindow(object):
         self.scrollArea.setSizePolicy(sizePolicy)
         self.scrollArea.setMinimumSize(QSize(550, 388))
         self.scrollArea.setMaximumSize(QSize(550, 600))
-        font2 = QFont()
-        font2.setFamilies([u"Arial"])
-        self.scrollArea.setFont(font2)
+        self.scrollArea.setFont(font)
         self.scrollArea.setAutoFillBackground(False)
-        self.scrollArea.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
-"color:rgb(0, 0, 0);\n"
+        self.scrollArea.setStyleSheet(u"background-color:#FFFFFF;\n"
+"color:#000000;\n"
 "border: 1px solid black;")
         self.scrollArea.setFrameShape(QFrame.Shape.Box)
         self.scrollArea.setFrameShadow(QFrame.Shadow.Plain)
@@ -65,12 +63,12 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setSizePolicy(sizePolicy)
         self.scrollAreaWidgetContents.setMinimumSize(QSize(590, 540))
         self.scrollAreaWidgetContents.setMaximumSize(QSize(590, 540))
-        self.scrollAreaWidgetContents.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+        self.scrollAreaWidgetContents.setStyleSheet(u"background-color:#FFFFFF;\n"
 "border: none;")
         self.Setting_frame = QFrame(self.scrollAreaWidgetContents)
         self.Setting_frame.setObjectName(u"Setting_frame")
         self.Setting_frame.setGeometry(QRect(43, 350, 461, 171))
-        self.Setting_frame.setFont(font2)
+        self.Setting_frame.setFont(font)
         self.Setting_frame.setStyleSheet(u"border: 1px solid black;")
         self.Setting_frame.setFrameShape(QFrame.Shape.Box)
         self.Setting_frame.setFrameShadow(QFrame.Shadow.Plain)
@@ -82,21 +80,21 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.frame_timeset1.sizePolicy().hasHeightForWidth())
         self.frame_timeset1.setSizePolicy(sizePolicy1)
-        self.frame_timeset1.setFont(font2)
+        self.frame_timeset1.setFont(font)
         self.frame_timeset1.setStyleSheet(u"border:none;")
         self.frame_timeset1.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_timeset1.setFrameShadow(QFrame.Shadow.Plain)
         self.label_timeset1 = QLabel(self.frame_timeset1)
         self.label_timeset1.setObjectName(u"label_timeset1")
         self.label_timeset1.setGeometry(QRect(10, 10, 131, 31))
-        font3 = QFont()
-        font3.setFamilies([u"Arial"])
-        font3.setPointSize(9)
-        self.label_timeset1.setFont(font3)
+        font2 = QFont()
+        font2.setFamilies([u"Arial"])
+        font2.setPointSize(9)
+        self.label_timeset1.setFont(font2)
         self.verticalFrame_entry1 = QFrame(self.frame_timeset1)
         self.verticalFrame_entry1.setObjectName(u"verticalFrame_entry1")
         self.verticalFrame_entry1.setGeometry(QRect(190, 0, 51, 51))
-        self.verticalFrame_entry1.setFont(font2)
+        self.verticalFrame_entry1.setFont(font)
         self.verticalLayout_7 = QVBoxLayout(self.verticalFrame_entry1)
         self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
@@ -108,7 +106,7 @@ class Ui_MainWindow(object):
 
         self.entry1 = QLineEdit(self.verticalFrame_entry1)
         self.entry1.setObjectName(u"entry1")
-        self.entry1.setFont(font3)
+        self.entry1.setFont(font2)
         self.entry1.setStyleSheet(u"border: 1px solid black;")
         self.entry1.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.entry1.setReadOnly(True)
@@ -128,7 +126,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.verticalFrame_plus1.sizePolicy().hasHeightForWidth())
         self.verticalFrame_plus1.setSizePolicy(sizePolicy2)
-        self.verticalFrame_plus1.setFont(font2)
+        self.verticalFrame_plus1.setFont(font)
         self.verticalLayout_9 = QVBoxLayout(self.verticalFrame_plus1)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
@@ -143,12 +141,12 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.button_plus1.sizePolicy().hasHeightForWidth())
         self.button_plus1.setSizePolicy(sizePolicy1)
         self.button_plus1.setMaximumSize(QSize(30, 20))
-        font4 = QFont()
-        font4.setFamilies([u"Arial"])
-        font4.setPointSize(10)
-        font4.setBold(False)
-        font4.setHintingPreference(QFont.PreferVerticalHinting)
-        self.button_plus1.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"Arial"])
+        font3.setPointSize(10)
+        font3.setBold(False)
+        font3.setHintingPreference(QFont.PreferVerticalHinting)
+        self.button_plus1.setFont(font3)
         self.button_plus1.setAutoFillBackground(False)
         self.button_plus1.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
@@ -173,7 +171,7 @@ class Ui_MainWindow(object):
         self.verticalFrame_minus1.setGeometry(QRect(150, 0, 41, 51))
         sizePolicy2.setHeightForWidth(self.verticalFrame_minus1.sizePolicy().hasHeightForWidth())
         self.verticalFrame_minus1.setSizePolicy(sizePolicy2)
-        self.verticalFrame_minus1.setFont(font2)
+        self.verticalFrame_minus1.setFont(font)
         self.verticalLayout_10 = QVBoxLayout(self.verticalFrame_minus1)
         self.verticalLayout_10.setSpacing(0)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
@@ -188,7 +186,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.button_minus1.sizePolicy().hasHeightForWidth())
         self.button_minus1.setSizePolicy(sizePolicy1)
         self.button_minus1.setMaximumSize(QSize(30, 20))
-        self.button_minus1.setFont(font4)
+        self.button_minus1.setFont(font3)
         self.button_minus1.setAutoFillBackground(False)
         self.button_minus1.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
@@ -210,20 +208,20 @@ class Ui_MainWindow(object):
         self.frame_timeset2 = QFrame(self.Setting_frame)
         self.frame_timeset2.setObjectName(u"frame_timeset2")
         self.frame_timeset2.setGeometry(QRect(5, 65, 453, 50))
-        self.frame_timeset2.setFont(font2)
+        self.frame_timeset2.setFont(font)
         self.frame_timeset2.setStyleSheet(u"border:none;")
         self.frame_timeset2.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_timeset2.setFrameShadow(QFrame.Shadow.Plain)
         self.label_timeset2 = QLabel(self.frame_timeset2)
         self.label_timeset2.setObjectName(u"label_timeset2")
         self.label_timeset2.setGeometry(QRect(10, 10, 131, 31))
-        self.label_timeset2.setFont(font3)
+        self.label_timeset2.setFont(font2)
         self.verticalFrame_plus2 = QFrame(self.frame_timeset2)
         self.verticalFrame_plus2.setObjectName(u"verticalFrame_plus2")
         self.verticalFrame_plus2.setGeometry(QRect(240, 0, 41, 51))
         sizePolicy2.setHeightForWidth(self.verticalFrame_plus2.sizePolicy().hasHeightForWidth())
         self.verticalFrame_plus2.setSizePolicy(sizePolicy2)
-        self.verticalFrame_plus2.setFont(font2)
+        self.verticalFrame_plus2.setFont(font)
         self.verticalLayout_5 = QVBoxLayout(self.verticalFrame_plus2)
         self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
@@ -238,7 +236,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.button_plus2.sizePolicy().hasHeightForWidth())
         self.button_plus2.setSizePolicy(sizePolicy1)
         self.button_plus2.setMaximumSize(QSize(30, 20))
-        self.button_plus2.setFont(font4)
+        self.button_plus2.setFont(font3)
         self.button_plus2.setAutoFillBackground(False)
         self.button_plus2.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
@@ -260,7 +258,7 @@ class Ui_MainWindow(object):
         self.verticalFrame_entry2 = QFrame(self.frame_timeset2)
         self.verticalFrame_entry2.setObjectName(u"verticalFrame_entry2")
         self.verticalFrame_entry2.setGeometry(QRect(190, 0, 51, 51))
-        self.verticalFrame_entry2.setFont(font2)
+        self.verticalFrame_entry2.setFont(font)
         self.verticalLayout_8 = QVBoxLayout(self.verticalFrame_entry2)
         self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -272,7 +270,7 @@ class Ui_MainWindow(object):
 
         self.entry2 = QLineEdit(self.verticalFrame_entry2)
         self.entry2.setObjectName(u"entry2")
-        self.entry2.setFont(font3)
+        self.entry2.setFont(font2)
         self.entry2.setStyleSheet(u"border: 1px solid black;")
         self.entry2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.entry2.setReadOnly(True)
@@ -289,7 +287,7 @@ class Ui_MainWindow(object):
         self.verticalFrame_minus2.setGeometry(QRect(150, 0, 41, 51))
         sizePolicy2.setHeightForWidth(self.verticalFrame_minus2.sizePolicy().hasHeightForWidth())
         self.verticalFrame_minus2.setSizePolicy(sizePolicy2)
-        self.verticalFrame_minus2.setFont(font2)
+        self.verticalFrame_minus2.setFont(font)
         self.verticalLayout_11 = QVBoxLayout(self.verticalFrame_minus2)
         self.verticalLayout_11.setSpacing(0)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
@@ -304,7 +302,7 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.button_minus2.sizePolicy().hasHeightForWidth())
         self.button_minus2.setSizePolicy(sizePolicy1)
         self.button_minus2.setMaximumSize(QSize(30, 20))
-        self.button_minus2.setFont(font4)
+        self.button_minus2.setFont(font3)
         self.button_minus2.setAutoFillBackground(False)
         self.button_minus2.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
@@ -326,14 +324,14 @@ class Ui_MainWindow(object):
         self.frame_timeset3 = QFrame(self.Setting_frame)
         self.frame_timeset3.setObjectName(u"frame_timeset3")
         self.frame_timeset3.setGeometry(QRect(5, 120, 453, 50))
-        self.frame_timeset3.setFont(font2)
+        self.frame_timeset3.setFont(font)
         self.frame_timeset3.setStyleSheet(u"border:none;")
         self.frame_timeset3.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_timeset3.setFrameShadow(QFrame.Shadow.Plain)
         self.label_timeset3 = QLabel(self.frame_timeset3)
         self.label_timeset3.setObjectName(u"label_timeset3")
         self.label_timeset3.setGeometry(QRect(10, 10, 91, 31))
-        self.label_timeset3.setFont(font3)
+        self.label_timeset3.setFont(font2)
         self.label_settings_icon = QLabel(self.frame_timeset3)
         self.label_settings_icon.setObjectName(u"label_settings_icon")
         self.label_settings_icon.setGeometry(QRect(150, 0, 30, 30))
@@ -343,8 +341,8 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_settings_icon.sizePolicy().hasHeightForWidth())
         self.label_settings_icon.setSizePolicy(sizePolicy3)
         self.label_settings_icon.setMaximumSize(QSize(30, 30))
-        self.label_settings_icon.setFont(font3)
-        self.label_settings_icon.setPixmap(QPixmap(u"/img/settings.png"))
+        self.label_settings_icon.setFont(font2)
+        self.label_settings_icon.setPixmap(QPixmap(u"../../../../../../../img/settings.png"))
         self.label_settings_icon.setScaledContents(True)
         self.label_image5 = QLabel(self.scrollAreaWidgetContents)
         self.label_image5.setObjectName(u"label_image5")
@@ -353,7 +351,7 @@ class Ui_MainWindow(object):
         self.label_image5.setSizePolicy(sizePolicy3)
         self.label_image5.setMinimumSize(QSize(120, 25))
         self.label_image5.setMaximumSize(QSize(120, 30))
-        self.label_image5.setFont(font2)
+        self.label_image5.setFont(font)
         self.label_image5.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image5.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -364,7 +362,7 @@ class Ui_MainWindow(object):
         self.label_image1.setSizePolicy(sizePolicy3)
         self.label_image1.setMinimumSize(QSize(120, 25))
         self.label_image1.setMaximumSize(QSize(120, 30))
-        self.label_image1.setFont(font2)
+        self.label_image1.setFont(font)
         self.label_image1.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image1.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -375,7 +373,7 @@ class Ui_MainWindow(object):
         self.label_image6.setSizePolicy(sizePolicy3)
         self.label_image6.setMinimumSize(QSize(120, 25))
         self.label_image6.setMaximumSize(QSize(120, 30))
-        self.label_image6.setFont(font2)
+        self.label_image6.setFont(font)
         self.label_image6.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image6.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -386,7 +384,7 @@ class Ui_MainWindow(object):
         self.label_image2.setSizePolicy(sizePolicy3)
         self.label_image2.setMinimumSize(QSize(120, 25))
         self.label_image2.setMaximumSize(QSize(120, 30))
-        self.label_image2.setFont(font2)
+        self.label_image2.setFont(font)
         self.label_image2.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image2.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -397,7 +395,7 @@ class Ui_MainWindow(object):
         self.label_image4.setSizePolicy(sizePolicy3)
         self.label_image4.setMinimumSize(QSize(120, 25))
         self.label_image4.setMaximumSize(QSize(120, 30))
-        self.label_image4.setFont(font2)
+        self.label_image4.setFont(font)
         self.label_image4.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image4.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -408,7 +406,7 @@ class Ui_MainWindow(object):
         self.label_image3.setSizePolicy(sizePolicy3)
         self.label_image3.setMinimumSize(QSize(120, 25))
         self.label_image3.setMaximumSize(QSize(120, 30))
-        self.label_image3.setFont(font2)
+        self.label_image3.setFont(font)
         self.label_image3.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image3.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -418,7 +416,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.frame_image1.sizePolicy().hasHeightForWidth())
         self.frame_image1.setSizePolicy(sizePolicy3)
         self.frame_image1.setMaximumSize(QSize(120, 120))
-        self.frame_image1.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_image1.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image1.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_image2 = QLabel(self.scrollAreaWidgetContents)
@@ -427,7 +425,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.frame_image2.sizePolicy().hasHeightForWidth())
         self.frame_image2.setSizePolicy(sizePolicy3)
         self.frame_image2.setMaximumSize(QSize(120, 120))
-        self.frame_image2.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_image2.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image2.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_image3 = QLabel(self.scrollAreaWidgetContents)
@@ -436,7 +434,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.frame_image3.sizePolicy().hasHeightForWidth())
         self.frame_image3.setSizePolicy(sizePolicy3)
         self.frame_image3.setMaximumSize(QSize(120, 120))
-        self.frame_image3.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_image3.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image3.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_image4 = QLabel(self.scrollAreaWidgetContents)
@@ -445,7 +443,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.frame_image4.sizePolicy().hasHeightForWidth())
         self.frame_image4.setSizePolicy(sizePolicy3)
         self.frame_image4.setMaximumSize(QSize(120, 120))
-        self.frame_image4.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_image4.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image4.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_image5 = QLabel(self.scrollAreaWidgetContents)
@@ -454,7 +452,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.frame_image5.sizePolicy().hasHeightForWidth())
         self.frame_image5.setSizePolicy(sizePolicy3)
         self.frame_image5.setMaximumSize(QSize(120, 120))
-        self.frame_image5.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_image5.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image5.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_image6 = QLabel(self.scrollAreaWidgetContents)
@@ -463,7 +461,7 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.frame_image6.sizePolicy().hasHeightForWidth())
         self.frame_image6.setSizePolicy(sizePolicy3)
         self.frame_image6.setMaximumSize(QSize(120, 120))
-        self.frame_image6.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_image6.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image6.setFrameShape(QFrame.Shape.NoFrame)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
@@ -472,8 +470,8 @@ class Ui_MainWindow(object):
         self.frame_title.setGeometry(QRect(150, 10, 550, 66))
         self.frame_title.setMinimumSize(QSize(550, 66))
         self.frame_title.setMaximumSize(QSize(550, 66))
-        self.frame_title.setFont(font2)
-        self.frame_title.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        self.frame_title.setFont(font)
+        self.frame_title.setStyleSheet(u"background:#CED0D0;\n"
 "border: 1px solid black;")
         self.frame_title.setFrameShape(QFrame.Shape.Box)
         self.frame_title.setFrameShadow(QFrame.Shadow.Plain)
@@ -482,27 +480,27 @@ class Ui_MainWindow(object):
         self.label_title.setGeometry(QRect(1, 1, 548, 66))
         sizePolicy2.setHeightForWidth(self.label_title.sizePolicy().hasHeightForWidth())
         self.label_title.setSizePolicy(sizePolicy2)
-        font5 = QFont()
-        font5.setFamilies([u"Arial"])
-        font5.setPointSize(30)
-        font5.setBold(False)
-        self.label_title.setFont(font5)
-        self.label_title.setStyleSheet(u"color:rgb(0, 0, 0);\n"
+        font4 = QFont()
+        font4.setFamilies([u"Arial"])
+        font4.setPointSize(30)
+        font4.setBold(False)
+        self.label_title.setFont(font4)
+        self.label_title.setStyleSheet(u"color:#000000;\n"
 "border: none;")
         self.label_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_title.setIndent(40)
         self.button_on = QPushButton(self.frame_title)
         self.button_on.setObjectName(u"button_on")
         self.button_on.setGeometry(QRect(465, 10, 70, 45))
-        self.button_on.setFont(font2)
-        self.button_on.setStyleSheet(u"background:rgb(219, 222, 222);\n"
+        self.button_on.setFont(font)
+        self.button_on.setStyleSheet(u"background:#DBDEDE;\n"
 "border:1px solid black;\n"
 "border-radius:15px;")
         self.button_off = QPushButton(self.frame_title)
         self.button_off.setObjectName(u"button_off")
         self.button_off.setGeometry(QRect(465, 10, 70, 45))
-        self.button_off.setFont(font2)
-        self.button_off.setStyleSheet(u"background:rgb(219, 222, 222);\n"
+        self.button_off.setFont(font)
+        self.button_off.setStyleSheet(u"background:#DBDEDE;\n"
 "border:1px solid black;\n"
 "border-radius:15px;")
         self.frame_menu = QFrame(self.centralwidget)
@@ -515,9 +513,9 @@ class Ui_MainWindow(object):
         self.frame_menu.setSizePolicy(sizePolicy4)
         self.frame_menu.setMinimumSize(QSize(130, 457))
         self.frame_menu.setMaximumSize(QSize(130, 457))
-        self.frame_menu.setFont(font2)
+        self.frame_menu.setFont(font)
         self.frame_menu.setAutoFillBackground(False)
-        self.frame_menu.setStyleSheet(u"background: rgb(234, 238, 238);\n"
+        self.frame_menu.setStyleSheet(u"background: #EAEFEF;\n"
 " border: 1px solid black; \n"
 "")
         self.frame_menu.setFrameShape(QFrame.Shape.Box)
@@ -529,11 +527,11 @@ class Ui_MainWindow(object):
         self.label_menu2.setSizePolicy(sizePolicy2)
         self.label_menu2.setMinimumSize(QSize(128, 65))
         self.label_menu2.setMaximumSize(QSize(128, 65))
-        font6 = QFont()
-        font6.setFamilies([u"Arial"])
-        font6.setPointSize(13)
-        self.label_menu2.setFont(font6)
-        self.label_menu2.setStyleSheet(u"background:rgb(206, 208, 208);\n"
+        font5 = QFont()
+        font5.setFamilies([u"Arial"])
+        font5.setPointSize(13)
+        self.label_menu2.setFont(font5)
+        self.label_menu2.setStyleSheet(u"background:#CED0D0;\n"
 "color: white;\n"
 "border: none;")
         self.label_menu2.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -544,8 +542,8 @@ class Ui_MainWindow(object):
         self.label_menu6.setSizePolicy(sizePolicy2)
         self.label_menu6.setMinimumSize(QSize(128, 65))
         self.label_menu6.setMaximumSize(QSize(128, 65))
-        self.label_menu6.setFont(font6)
-        self.label_menu6.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+        self.label_menu6.setFont(font5)
+        self.label_menu6.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
         self.label_menu6.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -556,8 +554,8 @@ class Ui_MainWindow(object):
         self.label_menu4.setSizePolicy(sizePolicy2)
         self.label_menu4.setMinimumSize(QSize(128, 65))
         self.label_menu4.setMaximumSize(QSize(128, 65))
-        self.label_menu4.setFont(font6)
-        self.label_menu4.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+        self.label_menu4.setFont(font5)
+        self.label_menu4.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
         self.label_menu4.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -568,9 +566,9 @@ class Ui_MainWindow(object):
         self.label_menu5.setSizePolicy(sizePolicy2)
         self.label_menu5.setMinimumSize(QSize(128, 65))
         self.label_menu5.setMaximumSize(QSize(128, 65))
-        self.label_menu5.setFont(font6)
-        self.label_menu5.setStyleSheet(u"background-color: rgb(148, 55, 255);\n"
-"color:rgb(255, 255, 255);\n"
+        self.label_menu5.setFont(font5)
+        self.label_menu5.setStyleSheet(u"background-color: #9437FF;\n"
+"color:#FFFFFF;\n"
 "border: none;")
         self.label_menu5.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_menu7 = QLabel(self.frame_menu)
@@ -580,8 +578,8 @@ class Ui_MainWindow(object):
         self.label_menu7.setSizePolicy(sizePolicy2)
         self.label_menu7.setMinimumSize(QSize(128, 65))
         self.label_menu7.setMaximumSize(QSize(128, 65))
-        self.label_menu7.setFont(font6)
-        self.label_menu7.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+        self.label_menu7.setFont(font5)
+        self.label_menu7.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
         self.label_menu7.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -596,9 +594,9 @@ class Ui_MainWindow(object):
         self.label_menu1.setMinimumSize(QSize(128, 65))
         self.label_menu1.setMaximumSize(QSize(128, 65))
         self.label_menu1.setBaseSize(QSize(0, 0))
-        self.label_menu1.setFont(font6)
-        self.label_menu1.setStyleSheet(u"background-color: rgb(148, 55, 255);\n"
-"color:rgb(255, 255, 255);\n"
+        self.label_menu1.setFont(font5)
+        self.label_menu1.setStyleSheet(u"background-color: #9437FF;\n"
+"color:#FFFFFF;\n"
 "border: none;")
         self.label_menu1.setLineWidth(0)
         self.label_menu1.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -609,8 +607,8 @@ class Ui_MainWindow(object):
         self.label_menu3.setSizePolicy(sizePolicy2)
         self.label_menu3.setMinimumSize(QSize(128, 65))
         self.label_menu3.setMaximumSize(QSize(128, 65))
-        self.label_menu3.setFont(font6)
-        self.label_menu3.setStyleSheet(u"background-color:rgb(255, 255, 255);\n"
+        self.label_menu3.setFont(font5)
+        self.label_menu3.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
         self.label_menu3.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -667,12 +665,12 @@ class Ui_MainWindow(object):
         self.label_title.setText(QCoreApplication.translate("MainWindow", u"Menu Name", None))
         self.button_on.setText(QCoreApplication.translate("MainWindow", u"ON", None))
         self.button_off.setText(QCoreApplication.translate("MainWindow", u"OFF", None))
-        self.label_menu2.setText(QCoreApplication.translate("MainWindow", u"Menu2", None))
-        self.label_menu6.setText(QCoreApplication.translate("MainWindow", u"Menu6", None))
-        self.label_menu4.setText(QCoreApplication.translate("MainWindow", u"Menu4", None))
-        self.label_menu5.setText(QCoreApplication.translate("MainWindow", u"Menu5", None))
-        self.label_menu7.setText(QCoreApplication.translate("MainWindow", u"Menu7", None))
-        self.label_menu1.setText(QCoreApplication.translate("MainWindow", u"Menu1", None))
-        self.label_menu3.setText(QCoreApplication.translate("MainWindow", u"Menu3", None))
+        self.label_menu2.setText(QCoreApplication.translate("MainWindow", u"\ubc30\ub2ec\uc758\ubbfc\uc871", None))
+        self.label_menu6.setText(QCoreApplication.translate("MainWindow", u"\ub9cc\ub098", None))
+        self.label_menu4.setText(QCoreApplication.translate("MainWindow", u"+", None))
+        self.label_menu5.setText(QCoreApplication.translate("MainWindow", u"\ubc30\ub2ec \ud50c\ub7ab\ud3fc", None))
+        self.label_menu7.setText(QCoreApplication.translate("MainWindow", u"+", None))
+        self.label_menu1.setText(QCoreApplication.translate("MainWindow", u"\uc8fc\ubb38 \ud50c\ub7ab\ud3fc", None))
+        self.label_menu3.setText(QCoreApplication.translate("MainWindow", u"\uc694\uae30\uc694", None))
     # retranslateUi
 

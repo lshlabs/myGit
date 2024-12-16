@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
                 'entry1': 50,
                 'entry2': 15,
                 'button_state': 'off',
-                'frame_color': "background:rgb(206, 208, 208)"
+                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
             },
             'menu3': {
                 'frame_image1': None,
@@ -94,7 +94,7 @@ class MainWindow(QMainWindow):
                 'entry1': 50,
                 'entry2': 15,
                 'button_state': 'off',
-                'frame_color': "background:rgb(206, 208, 208)"
+                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
             },
             'menu6': {
                 'frame_image1': None,
@@ -106,7 +106,7 @@ class MainWindow(QMainWindow):
                 'entry1': 50,
                 'entry2': 15,
                 'button_state': 'off',
-                'frame_color': "background:rgb(206, 208, 208)"
+                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
             }
         }
         save_json_data(self.data_file, initial_data)
@@ -136,11 +136,15 @@ class MainWindow(QMainWindow):
         
         # 메뉴별 설정
         settings = {
-            'menu2': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190},
-            'menu3': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190},
+            'menu2': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 390},
+            'menu3': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 390},
             'menu6': {'frames': ['frame_image1', 'frame_image2', 'frame_image3',
-                               'frame_image4', 'frame_image5', 'frame_image6'], 'y_pos': 350}
+                               'frame_image4', 'frame_image5', 'frame_image6'], 'y_pos': 350, 'height': 540}
         }[menu_name]
+        
+        # scrollAreaWidgetContents 높이 조절
+        self.ui.scrollAreaWidgetContents.setMinimumHeight(settings['height'])
+        self.ui.scrollAreaWidgetContents.setMaximumHeight(settings['height'])
         
         # UI 업데이트
         self.update_menu_display(menu_name, settings)
@@ -166,7 +170,7 @@ class MainWindow(QMainWindow):
                     frame.setStyleSheet("background: transparent; border: 1px solid black;")
                 else:
                     frame.clear()
-                    frame.setStyleSheet("background:rgb(206, 208, 208);\nborder:1px solid black;")
+                    frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")  # RGB(206, 208, 208) -> HEX
                 frame.show()
                 label.show()
             else:
@@ -175,7 +179,7 @@ class MainWindow(QMainWindow):
         
         # 메뉴 스타일 변경
         for m in ['menu2', 'menu3', 'menu6']:
-            style = "background:rgb(206, 208, 208);\ncolor: white;\nborder: none;" if m == menu_name else \
+            style = "background:#CED0D0;\ncolor: white;\nborder: none;" if m == menu_name else \
                    "background-color:rgb(255, 255, 255);\ncolor: black;\nborder: none;"
             getattr(self.ui, f'label_{m}').setStyleSheet(style)
 
@@ -190,7 +194,19 @@ class MainWindow(QMainWindow):
         """entry 값 업데이트 통합 메서드"""
         entry = getattr(self.ui, f'entry{entry_number}')
         current_value = int(entry.text())
+        
+        # 최솟값과 최댓값 설정
+        min_value = 0  # 최솟값
+        max_value = 180  # 최댓값
+        
         new_value = current_value + (5 if increment else -5)
+        
+        # 최솟값과 최댓값을 초과하지 않도록 조정
+        if new_value < min_value:
+            new_value = min_value
+        elif new_value > max_value:
+            new_value = max_value
+        
         entry.setText(str(new_value))
         
         current_menu = self.get_current_menu()
@@ -199,12 +215,11 @@ class MainWindow(QMainWindow):
             data[current_menu][f'entry{entry_number}'] = new_value
             save_json_data(self.data_file, data)
 
-
     def get_current_menu(self):
         """현재 선택된 메뉴 반환"""
-        if self.ui.label_menu3.styleSheet().find("background:rgb(206, 208, 208)") != -1:
+        if self.ui.label_menu3.styleSheet().find("background:#CED0D0") != -1:
             return 'menu3'
-        elif self.ui.label_menu6.styleSheet().find("background:rgb(206, 208, 208)") != -1:
+        elif self.ui.label_menu6.styleSheet().find("background:#CED0D0") != -1:
             return 'menu6'
         return 'menu2'
 
@@ -214,6 +229,13 @@ class MainWindow(QMainWindow):
         if data:
             data[current_menu]['button_state'] = state
             data[current_menu]['frame_color'] = color
+            
+            # label_title 색상 저장
+            if state == 'off':
+                data[current_menu]['label_title_color'] = "#000000"  # ON 상태일 때 검은색
+            else:
+                data[current_menu]['label_title_color'] = "#FFFFFF"  # OFF 상태일 때 흰색
+            
             save_json_data(self.data_file, data)
 
     def load_button_state(self, menu):
@@ -224,10 +246,14 @@ class MainWindow(QMainWindow):
             
         state = data[menu]['button_state']
         
+        # label_title 색상 로드
+        label_title_color = data[menu].get('label_title_color', "#000000")  # 기본값은 검은색
+        self.ui.label_title.setStyleSheet(f"color: {label_title_color};")
+        
         if state == 'off':  # OFF 상태
             self.ui.button_off.show()
             self.ui.button_on.hide()
-            self.ui.frame_title.setStyleSheet("background:rgb(206, 208, 208)")
+            self.ui.frame_title.setStyleSheet("background:#CED0D0")  # RGB(206, 208, 208) -> HEX
         else:  # ON 상태
             self.ui.button_on.show()
             self.ui.button_off.hide()
@@ -244,9 +270,12 @@ class MainWindow(QMainWindow):
         current_menu = self.get_current_menu()
         self.ui.button_off.show()
         self.ui.button_on.hide()
-        color = "background:rgb(206, 208, 208)"
+        color = "background:#CED0D0"  # RGB(206, 208, 208) -> HEX
         self.ui.frame_title.setStyleSheet(color)
         self.save_button_state(current_menu, 'off', color)
+        
+        # label_title 색상 변경
+        self.ui.label_title.setStyleSheet("color: #000000;")  # ON 상태일 때 검은색
 
     def on_button_off_clicked(self):
         """OFF 버튼 클릭 (OFF -> ON)"""
@@ -262,6 +291,9 @@ class MainWindow(QMainWindow):
         color = f"background:{colors[current_menu]}"
         self.ui.frame_title.setStyleSheet(color)
         self.save_button_state(current_menu, 'on', color)
+        
+        # label_title 색상 변경
+        self.ui.label_title.setStyleSheet("color: #FFFFFF;")  # OFF 상태일 때 흰색
 
     def show_image_dialog(self, frame):
         """이미지 선택 다이얼로그 표시"""
@@ -281,7 +313,7 @@ class MainWindow(QMainWindow):
             if dialog.reset_requested:
                 # 이미지 초기화
                 frame.clear()
-                frame.setStyleSheet("background:rgb(206, 208, 208);\nborder:1px solid black;")
+                frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")  # RGB(206, 208, 208) -> HEX
                 self.menu_pixmaps[current_menu][frame_name] = None
                 
                 # JSON 파일 업데이트

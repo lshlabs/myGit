@@ -34,7 +34,7 @@ class Ui_SettingsDialog(object):
         font.setFamilies([u"Arial"])
         SettingsDialog.setFont(font)
         SettingsDialog.setAutoFillBackground(False)
-        SettingsDialog.setStyleSheet(u"background:gainsboro;")
+        SettingsDialog.setStyleSheet(u"background:#DCDCDC;")
         self.buttonBox = QDialogButtonBox(SettingsDialog)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(10, 440, 431, 32))
