@@ -1006,28 +1006,41 @@ border: none;</string>
          <string>매크로 동작 설정</string>
         </property>
        </widget>
-       <widget class="QFrame" name="frame_setting_icon">
+       <widget class="QLabel" name="label_settings_icon">
         <property name="geometry">
          <rect>
-          <x>155</x>
-          <y>10</y>
+          <x>150</x>
+          <y>0</y>
           <width>30</width>
           <height>30</height>
          </rect>
         </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>Arial</family>
+          <pointsize>9</pointsize>
          </font>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background:rgb(206, 208, 208)</string>
+        <property name="text">
+         <string/>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::Shape::NoFrame</enum>
+        <property name="pixmap">
+         <pixmap>/img/settings.png</pixmap>
         </property>
-        <property name="frameShadow">
-         <enum>QFrame::Shadow::Plain</enum>
+        <property name="scaledContents">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
