@@ -24,8 +24,12 @@ class MainWindow(QMainWindow):
         
         self.data_file = get_data_file_path()
         
+        # 데이터 파일이 없으면 생성
+        if not os.path.exists(self.data_file):
+            self.create_data_file()  # 데이터 파일 생성
+        
         # MacroController 인스턴스 생성
-        self.macro_controller = MacroController(self.data_file)
+        self.macro_controller = MacroController(self.data_file, self)  # MainWindow 인스턴스 전달
         
         # settings 아이콘 설정
         settings_icon = QPixmap(":/img/settings.png")
@@ -41,10 +45,6 @@ class MainWindow(QMainWindow):
             'menu6': {}
         }
         
-        # 데이터 파일이 없으면 생성
-        if not os.path.exists(self.data_file):
-            self.create_data_file()
-            
         # 이미지 데이터 로드
         self.load_image_data()
         
@@ -72,51 +72,77 @@ class MainWindow(QMainWindow):
         # entry 초기값 설정
         data = load_json_data(self.data_file)
         if data:
-            self.ui.entry1.setText(str(data['menu2']['entry1']))
-            self.ui.entry2.setText(str(data['menu2']['entry2']))
+            self.ui.entry1.setText(str(data['menu2']['other_values']['entry1']))
+            self.ui.entry2.setText(str(data['menu2']['other_values']['entry2']))
 
     def create_data_file(self):
-        """초기 이미지 데이터 파일 생성"""
+        """초기 데이터 파일 생성"""
         initial_data = {
-            'settings': {
-                'combo_run_value': '0',
-                'check_ctrl1_state': False,
-                'check_alt1_state': False,
-                'check_shift1_state': False,
-                'combo_stop_value': '0',
-                'check_ctrl2_state': False,
-                'check_alt2_state': False,
-                'check_shift2_state': False,
-            },
             'menu2': {
-                'frame_image1': None,
-                'frame_image2': None,
-                'frame_image3': None,
-                'entry1': 50,
-                'entry2': 15,
-                'button_state': 'off',
-                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                'settings': {
+                    'combo_run_value': '0',
+                    'check_ctrl1_state': False,
+                    'check_alt1_state': False,
+                    'check_shift1_state': False,
+                    'combo_stop_value': '0',
+                    'check_ctrl2_state': False,
+                    'check_alt2_state': False,
+                    'check_shift2_state': False,
+                },
+                'other_values': {
+                    'frame_image1': None,
+                    'frame_image2': None,
+                    'frame_image3': None,
+                    'entry1': 50,
+                    'entry2': 15,
+                    'button_state': 'off',
+                    'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                }
             },
             'menu3': {
-                'frame_image1': None,
-                'frame_image2': None,
-                'frame_image3': None,
-                'entry1': 50,
-                'entry2': 15,
-                'button_state': 'off',
-                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                'settings': {
+                    'combo_run_value': '0',
+                    'check_ctrl1_state': False,
+                    'check_alt1_state': False,
+                    'check_shift1_state': False,
+                    'combo_stop_value': '0',
+                    'check_ctrl2_state': False,
+                    'check_alt2_state': False,
+                    'check_shift2_state': False,
+                },
+                'other_values': {
+                    'frame_image1': None,
+                    'frame_image2': None,
+                    'frame_image3': None,
+                    'entry1': 50,
+                    'entry2': 15,
+                    'button_state': 'off',
+                    'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                }
             },
             'menu6': {
-                'frame_image1': None,
-                'frame_image2': None,
-                'frame_image3': None,
-                'frame_image4': None,
-                'frame_image5': None,
-                'frame_image6': None,
-                'entry1': 50,
-                'entry2': 15,
-                'button_state': 'off',
-                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                'settings': {
+                    'combo_run_value': '0',
+                    'check_ctrl1_state': False,
+                    'check_alt1_state': False,
+                    'check_shift1_state': False,
+                    'combo_stop_value': '0',
+                    'check_ctrl2_state': False,
+                    'check_alt2_state': False,
+                    'check_shift2_state': False,
+                },
+                'other_values': {
+                    'frame_image1': None,
+                    'frame_image2': None,
+                    'frame_image3': None,
+                    'frame_image4': None,
+                    'frame_image5': None,
+                    'frame_image6': None,
+                    'entry1': 50,
+                    'entry2': 15,
+                    'button_state': 'off',
+                    'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                }
             }
         }
         save_json_data(self.data_file, initial_data)
@@ -126,9 +152,10 @@ class MainWindow(QMainWindow):
         data = load_json_data(self.data_file)
         if data:
             for menu in ['menu2', 'menu3', 'menu6']:
-                for frame_name in data[menu]:
+                self.menu_pixmaps[menu] = {}  # 각 메뉴에 대한 초기화
+                for frame_name in data[menu]['other_values']:  # 'other_values'에서 프레임 이름 가져오기
                     if frame_name.startswith('frame_'):
-                        image_path = data[menu][frame_name]
+                        image_path = data[menu]['other_values'][frame_name]
                         absolute_path = get_absolute_path(image_path)
                         if absolute_path and os.path.exists(absolute_path):
                             pixmap = QPixmap(absolute_path)
@@ -196,8 +223,8 @@ class MainWindow(QMainWindow):
         # entry 값과 버튼 상태 로드
         data = load_json_data(self.data_file)
         if data:
-            self.ui.entry1.setText(str(data[menu_name]['entry1']))
-            self.ui.entry2.setText(str(data[menu_name]['entry2']))
+            self.ui.entry1.setText(str(data[menu_name]['other_values']['entry1']))
+            self.ui.entry2.setText(str(data[menu_name]['other_values']['entry2']))
         self.load_button_state(menu_name)
 
     def update_entry_value(self, entry_number, increment=True):
@@ -222,7 +249,7 @@ class MainWindow(QMainWindow):
         current_menu = self.get_current_menu()
         data = load_json_data(self.data_file)
         if data:
-            data[current_menu][f'entry{entry_number}'] = new_value
+            data[current_menu]['other_values'][f'entry{entry_number}'] = new_value
             save_json_data(self.data_file, data)
 
     def get_current_menu(self):
@@ -237,14 +264,15 @@ class MainWindow(QMainWindow):
         """버튼 상태와 프레임 색상 저장"""
         data = load_json_data(self.data_file)
         if data:
-            data[current_menu]['button_state'] = state
-            data[current_menu]['frame_color'] = color
+            # button_state와 frame_color를 other_values에 저장
+            data[current_menu]['other_values']['button_state'] = state
+            data[current_menu]['other_values']['frame_color'] = color
             
             # label_title 색상 저장
             if state == 'off':
-                data[current_menu]['label_title_color'] = "#000000"  # ON 상태일 때 검은색
+                data[current_menu]['other_values']['label_title_color'] = "#000000"  # OFF 상태일 때 검은색
             else:
-                data[current_menu]['label_title_color'] = "#FFFFFF"  # OFF 상태일 때 흰색
+                data[current_menu]['other_values']['label_title_color'] = "#FFFFFF"  # ON 상태일 때 흰색
             
             save_json_data(self.data_file, data)
 
@@ -254,10 +282,10 @@ class MainWindow(QMainWindow):
         if not data:
             return
             
-        state = data[menu]['button_state']
+        state = data[menu]['other_values']['button_state']
         
         # label_title 색상 로드
-        label_title_color = data[menu].get('label_title_color', "#000000")  # 기본값은 검은색
+        label_title_color = data[menu]['other_values'].get('label_title_color', "#000000")  # 기본값은 검은색
         self.ui.label_title.setStyleSheet(f"color: {label_title_color};")
         
         if state == 'off':  # OFF 상태
@@ -315,7 +343,7 @@ class MainWindow(QMainWindow):
             dialog.set_preview_image(frame.pixmap())
             data = load_json_data(self.data_file)
             if data:
-                current_path = data[current_menu][frame_name]
+                current_path = data[current_menu]['other_values'][frame_name]
                 if current_path:
                     dialog.selected_file_path = get_absolute_path(current_path)
         
@@ -329,7 +357,7 @@ class MainWindow(QMainWindow):
                 # JSON 파일 업데이트
                 data = load_json_data(self.data_file)
                 if data:
-                    data[current_menu][frame_name] = None
+                    data[current_menu]['other_values'][frame_name] = None
                     save_json_data(self.data_file, data)
             
             elif dialog.selected_pixmap:
@@ -342,7 +370,7 @@ class MainWindow(QMainWindow):
                 relative_path = get_relative_path(dialog.selected_file_path)
                 data = load_json_data(self.data_file)
                 if data:
-                    data[current_menu][frame_name] = relative_path
+                    data[current_menu]['other_values'][frame_name] = relative_path
                     save_json_data(self.data_file, data)
 
     def show_settings_dialog(self, event):
