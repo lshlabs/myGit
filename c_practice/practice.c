@@ -23,6 +23,7 @@ int findCombination(int arr[], int picked[], int start, int n, int r, int idx) {
             sum += picked[i];
         }
         return (sum == TARGET_SUM);  // 합이 100이면 1 반환
+
     }
     
     for (int i = start; i < n; i++) {
