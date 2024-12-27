@@ -3,17 +3,19 @@ import os
 import threading
 import time
 from pynput import keyboard  # pynput 라이브러리 추가
-from .image_finder import ImageFinder
+from .image_finder_pyautogui import ImageFinder
 import pyautogui as pg
 
 class MacroController:
     def __init__(self, data_file, main_window):
         self.data_file = data_file
         self.main_window = main_window  # MainWindow 인스턴스 저장
-        self.image_finder = ImageFinder()
+        self.image_finder_pyautogui = ImageFinder()
         self.running = {}  # 각 메뉴의 실행 상태를 관리하는 딕셔너리
         self.macro_threads = {}  # 각 메뉴의 스레드를 관리하는 딕셔너리
         self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))  # 데이터 파일에서 설정 읽기
+        self.macro_queue = []  # 실행할 매크로 순서를 저장하는 큐
+        self.current_macro = None  # 현재 실행 중인 매크로
         self.register_hotkeys()
 
     def create_hotkey_combination(self):
@@ -44,7 +46,7 @@ class MacroController:
         # 디버깅 출력
         print(f"menu2 실행 트리거 키 조합: {run_combination['menu2']}")
         print(f"menu2 종료 트리거 키 조합: {stop_combination['menu2']}")
-        print(f"menu3 실행 트리거 키 조합: {stop_combination['menu3']}")
+        print(f"menu3 실행 트리거 키 조합: {run_combination['menu3']}")
         print(f"menu3 종료 트리거 키 조합: {stop_combination['menu3']}")
         print(f"menu6 실행 트리거 키 조합: {run_combination['menu6']}")
         print(f"menu6 종료 트리거 키 조합: {stop_combination['menu6']}")
@@ -70,43 +72,57 @@ class MacroController:
 
     def _run_macro(self, menu_name):
         """매크로 실행 스레드"""
-        menu_data = self.data[menu_name]['other_values']  # 'other_values'에서 데이터 가져오기
+        menu_data = self.data[menu_name]['other_values']
         image_frames = [k for k in menu_data.keys() if k.startswith('frame_image')]
         
         while self.running.get(menu_name, False):
-            for frame in image_frames:
+            # 현재 매크로가 큐의 첫번째가 아니면 대기
+            while menu_name != self.macro_queue[0]:
+                time.sleep(0.1)
+                if not self.running.get(menu_name, False):
+                    return
+
+            for i, frame in enumerate(image_frames):
                 if not self.running.get(menu_name, False):
                     break
                     
                 image_path = menu_data[frame]
-                if image_path:  # 이미지가 있는 경우만
+                if image_path:
                     abs_path = os.path.join(os.path.dirname(self.data_file), image_path)
-                    found = self._click_image(abs_path, menu_name, image_path)
-
-                time.sleep(0.1)  # CPU 사용량 감소를 위한 짧은 대기
-
-    def _click_image(self, abs_path, menu_name, image_path):
-        """이미지를 클릭하는 메서드"""
-        pos = self.image_finder.find_image(abs_path)  # find_image 메서드 호출
-        if pos:
-            pg.click(pos[0], pos[1])
-            print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: {image_path}")  # 디버깅용
-            return True
-        else:
-            print(f"이미지 {image_path}를 찾지 못했습니다.")
-            return False
+                    filename = os.path.basename(abs_path)
+                    
+                    while self.running.get(menu_name, False):
+                        print(f"[{menu_name}] ({filename}) 인식 대기중")
+                        pos = self.image_finder_pyautogui.find_image(abs_path)
+                        
+                        if pos:
+                            pg.click(pos[0], pos[1])
+                            print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: ({filename})\n")
+                            break
+                            
+                        time.sleep(0.1)
+                    
+                time.sleep(0.1)
+            
+            # 한 루프가 끝나면 큐의 맨 뒤로 이동
+            if self.running.get(menu_name, False):
+                self.macro_queue.append(self.macro_queue.pop(0))
 
     def start_macro(self, menu_name):
         """매크로 시작"""
+        self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))
+        
         if not self.running.get(menu_name, False):
             self.running[menu_name] = True
+            if menu_name not in self.macro_queue:
+                self.macro_queue.append(menu_name)
             self.macro_threads[menu_name] = threading.Thread(
                 target=self._run_macro, 
                 args=(menu_name,)
             )
+            print(f"\n[{menu_name}] 매크로가 시작되었습니다.\n")
             self.macro_threads[menu_name].daemon = True
             self.macro_threads[menu_name].start()
-            print(f"{menu_name} 매크로가 시작되었습니다.")
 
     def stop_macro(self, menu_name):
         """매크로 중지"""
@@ -115,4 +131,6 @@ class MacroController:
             if menu_name in self.macro_threads:
                 self.macro_threads[menu_name].join(timeout=1.0)
                 del self.macro_threads[menu_name]
-        print(f"{menu_name} 매크로가 중지되었습니다.")
+            if menu_name in self.macro_queue:
+                self.macro_queue.remove(menu_name)
+        print(f"\n[{menu_name}] 매크로가 중지되었습니다.\n")

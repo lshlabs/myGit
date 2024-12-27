@@ -16,11 +16,11 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 # API 토큰 입력
 TOKEN = '7533494717:AAGeUDhojuN0XH4nZtEdeEHL-zsSQjsujWo'  # 여기에 텔레그램 봇 토큰을 입력하세요.
 
-# 한글 폰트 설정
-font_path = 'C:/Windows/Fonts/malgun.ttf'  # Malgun Gothic 폰트 경로
-font_prop = fm.FontProperties(fname=font_path, size=12)
-plt.rc('font', family=font_prop.get_name())
-plt.rcParams['axes.unicode_minus'] = False  # 음수 기호 표시
+# # 한글 폰트 설정
+# font_path = 'C:/Windows/Fonts/malgun.ttf'  # Malgun Gothic 폰트 경로
+# font_prop = fm.FontProperties(fname=font_path, size=12)
+# plt.rc('font', family=font_prop.get_name())
+# plt.rcParams['axes.unicode_minus'] = False  # 음수 기호 표시
 
 # 이전 BTC 가격 저장
 previous_btc_price = None
