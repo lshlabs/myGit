@@ -16,15 +16,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLayout,
-    QLineEdit, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStatusBar, QVBoxLayout,
-    QWidget)
+    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
+    QScrollArea, QSizePolicy, QSpacerItem, QStatusBar,
+    QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(710, 491)
+        MainWindow.resize(710, 500)
         font = QFont()
         font.setFamilies([u"Arial"])
         MainWindow.setFont(font)
@@ -43,8 +43,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
         self.scrollArea.setSizePolicy(sizePolicy)
-        self.scrollArea.setMinimumSize(QSize(550, 388))
-        self.scrollArea.setMaximumSize(QSize(550, 600))
+        self.scrollArea.setMinimumSize(QSize(550, 392))
+        self.scrollArea.setMaximumSize(QSize(550, 392))
         self.scrollArea.setFont(font)
         self.scrollArea.setAutoFillBackground(False)
         self.scrollArea.setStyleSheet(u"background-color:#FFFFFF;\n"
@@ -342,7 +342,7 @@ class Ui_MainWindow(object):
         self.label_settings_icon.setSizePolicy(sizePolicy3)
         self.label_settings_icon.setMaximumSize(QSize(30, 30))
         self.label_settings_icon.setFont(font2)
-        self.label_settings_icon.setPixmap(QPixmap(u"../../../../../../../img/settings.png"))
+        self.label_settings_icon.setPixmap(QPixmap(u"../../../../../../../../../../img/settings.png"))
         self.label_settings_icon.setScaledContents(True)
         self.label_image5 = QLabel(self.scrollAreaWidgetContents)
         self.label_image5.setObjectName(u"label_image5")
@@ -464,6 +464,17 @@ class Ui_MainWindow(object):
         self.frame_image6.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image6.setFrameShape(QFrame.Shape.NoFrame)
+        self.debug_terminal = QPlainTextEdit(self.scrollAreaWidgetContents)
+        self.debug_terminal.setObjectName(u"debug_terminal")
+        self.debug_terminal.setGeometry(QRect(43, 550, 461, 171))
+        self.debug_terminal.setStyleSheet(u"border: 1px solid black;\n"
+"background-color:gainsboro;\n"
+"color:#000000;")
+        self.debug_terminal.setFrameShape(QFrame.Shape.NoFrame)
+        self.debug_terminal.setFrameShadow(QFrame.Shadow.Plain)
+        self.debug_terminal.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+        self.debug_terminal.setTabChangesFocus(True)
+        self.debug_terminal.setReadOnly(True)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.frame_title = QFrame(self.centralwidget)
         self.frame_title.setObjectName(u"frame_title")
@@ -639,7 +650,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\uba54\uc778", None))
         self.label_timeset1.setText(QCoreApplication.translate("MainWindow", u"\ubc30\ub2ec \uae30\ubcf8 \uc811\uc218\uc2dc\uac04(\ubd84)", None))
         self.entry1.setText(QCoreApplication.translate("MainWindow", u"50", None))
         self.button_plus1.setText(QCoreApplication.translate("MainWindow", u"\u2227", None))
@@ -662,6 +673,7 @@ class Ui_MainWindow(object):
         self.frame_image4.setText("")
         self.frame_image5.setText("")
         self.frame_image6.setText("")
+        self.debug_terminal.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\ub514\ubc84\uadf8 \ucd9c\ub825...", None))
         self.label_title.setText(QCoreApplication.translate("MainWindow", u"Menu Name", None))
         self.button_on.setText(QCoreApplication.translate("MainWindow", u"ON", None))
         self.button_off.setText(QCoreApplication.translate("MainWindow", u"OFF", None))

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>710</width>
-    <height>491</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="font">
@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>메인</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -48,13 +48,13 @@
     <property name="minimumSize">
      <size>
       <width>550</width>
-      <height>388</height>
+      <height>392</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
       <width>550</width>
-      <height>600</height>
+      <height>392</height>
      </size>
     </property>
     <property name="font">
@@ -1037,7 +1037,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>../../../../../../../img/settings.png</pixmap>
+         <pixmap>../../../../../../../../../../img/settings.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -1493,6 +1493,39 @@ border:1px solid black;</string>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="debug_terminal">
+      <property name="geometry">
+       <rect>
+        <x>43</x>
+        <y>550</y>
+        <width>461</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1px solid black;
+background-color:gainsboro;
+color:#000000;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="tabChangesFocus">
+       <bool>true</bool>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="placeholderText">
+       <string>디버그 출력...</string>
       </property>
      </widget>
     </widget>

@@ -75,6 +75,8 @@ class MainWindow(QMainWindow):
             self.ui.entry1.setText(str(data['menu2']['other_values']['entry1']))
             self.ui.entry2.setText(str(data['menu2']['other_values']['entry2']))
 
+       
+
     def create_data_file(self):
         """초기 데이터 파일 생성"""
         initial_data = {
@@ -138,7 +140,6 @@ class MainWindow(QMainWindow):
                     'frame_image4': None,
                     'frame_image5': None,
                     'frame_image6': None,
-                    'entry1': 50,
                     'entry2': 15,
                     'button_state': 'off',
                     'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
@@ -173,10 +174,10 @@ class MainWindow(QMainWindow):
         
         # 메뉴별 설정
         settings = {
-            'menu2': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 390},
-            'menu3': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 390},
+            'menu2': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 570},
+            'menu3': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 570},
             'menu6': {'frames': ['frame_image1', 'frame_image2', 'frame_image3',
-                               'frame_image4', 'frame_image5', 'frame_image6'], 'y_pos': 350, 'height': 540}
+                               'frame_image4', 'frame_image5', 'frame_image6'], 'y_pos': 355, 'height': 740}
         }[menu_name]
         
         # scrollAreaWidgetContents 높이 조절
@@ -195,6 +196,28 @@ class MainWindow(QMainWindow):
         # 타이틀 변경
         self.ui.label_title.setText(getattr(self.ui, f'label_{menu_name}').text())
         
+        # menu6일 때 entry1 숨기기
+        if menu_name == 'menu6':
+            self.ui.frame_timeset1.hide()
+            self.ui.label_timeset2.setText("배차 요청시간(분)")
+            self.ui.Setting_frame.setMinimumHeight(120)
+            self.ui.Setting_frame.setMaximumHeight(120)
+            self.ui.frame_timeset2.setGeometry(5, 10, 453, 50)
+            self.ui.frame_timeset3.setGeometry(5, 65, 453, 50)
+            self.ui.scrollAreaWidgetContents.setMinimumHeight((settings['height']-40))
+            self.ui.scrollAreaWidgetContents.setMaximumHeight((settings['height']-40))
+            self.ui.debug_terminal.setGeometry(43, 500, 461, 171)
+        else:
+            self.ui.frame_timeset1.show()
+            self.ui.label_timeset2.setText("포장 기본 접수시간(분)")
+            self.ui.Setting_frame.setMinimumHeight(171)
+            self.ui.Setting_frame.setMaximumHeight(171)
+            self.ui.frame_timeset2.setGeometry(5, 65, 453, 50)
+            self.ui.frame_timeset3.setGeometry(5, 120, 453, 50)
+            self.ui.scrollAreaWidgetContents.setMinimumHeight(settings['height'])
+            self.ui.scrollAreaWidgetContents.setMaximumHeight(settings['height'])
+            self.ui.debug_terminal.setGeometry(43, 380, 461, 171)
+        
         # 이미지 프레임 표시/숨기기
         all_frames = [f'frame_image{i}' for i in range(1, 7)]
         for frame_name in all_frames:
@@ -207,7 +230,7 @@ class MainWindow(QMainWindow):
                     frame.setStyleSheet("background: transparent; border: 1px solid black;")
                 else:
                     frame.clear()
-                    frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")  # RGB(206, 208, 208) -> HEX
+                    frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")
                 frame.show()
                 label.show()
             else:
@@ -223,7 +246,9 @@ class MainWindow(QMainWindow):
         # entry 값과 버튼 상태 로드
         data = load_json_data(self.data_file)
         if data:
-            self.ui.entry1.setText(str(data[menu_name]['other_values']['entry1']))
+            # menu6가 아닐 때만 entry1 값 설정
+            if menu_name != 'menu6':
+                self.ui.entry1.setText(str(data[menu_name]['other_values']['entry1']))
             self.ui.entry2.setText(str(data[menu_name]['other_values']['entry2']))
         self.load_button_state(menu_name)
 
