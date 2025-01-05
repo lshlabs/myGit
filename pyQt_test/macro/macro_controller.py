@@ -4,21 +4,26 @@ import threading
 import time
 from pynput import keyboard  # pynput 라이브러리 추가
 from .image_finder_pyautogui import ImageFinder
-from .time_controller import TimeController
 import pyautogui as pg
 
 class MacroController:
     def __init__(self, data_file, main_window):
         self.data_file = data_file
-        self.main_window = main_window  # MainWindow 인스턴스 저장
+        self.main_window = main_window
         self.image_finder_pyautogui = ImageFinder()
-        self.time_controller = TimeController()
-        self.running = {}  # 각 메뉴의 실행 상태를 관리하는 딕셔너리
-        self.macro_threads = {}  # 각 메뉴의 스레드를 관리하는 딕셔너리
-        self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))  # 데이터 파일에서 설정 읽기
-        self.macro_queue = []  # 실행할 매크로 순서를 저장하는 큐
-        self.current_macro = None  # 현재 실행 중인 매크로
+        self.running = {}  # 각 메뉴의 실행 상태
+        self.macro_threads = {}  # 각 메뉴의 스레드
+        self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))
+        self.completed_frames = {}  # 각 메뉴의 완료된 프레임 수
+        self.spinner_chars = ['|', '/', '-', '\\']
+        self.spinner_index = 0
+        self.status_thread = None
+        self.status_running = False
+        self.frame1_detected = {}  # frame_image1 감지 상태
+        self.frame1_order = []  # frame_image1이 감지된 메뉴 순서
+        self.current_cycle_menu = None  # 현재 frame2,3 실행 중인 메뉴
         self.register_hotkeys()
+        self.start_status_thread()
 
     def create_hotkey_combination(self):
         """핫키 조합을 생성하는 메서드"""
@@ -75,97 +80,97 @@ class MacroController:
     def _run_macro(self, menu_name):
         """매크로 실행 스레드"""
         menu_data = self.data[menu_name]['other_values']
-        new_menu_data = {'adjust_time': '/Users/mac/Documents/GitHub/myGit/pyQt_test/img/baemin_50m.png'}
-        new_menu_data.update(menu_data)
-        image_frames = [k for k in new_menu_data.keys() if k.startswith(('adjust_time','frame_image'))]
-        menu_entry1 = self.data[menu_name]['other_values']['entry1']  # menu_entry1 값 불러오기
-
+        
         while self.running.get(menu_name, False):
-            # 현재 매크로가 큐의 첫번째가 아니면 대기
-            while menu_name != self.macro_queue[0]:
-                time.sleep(0.1)
-                if not self.running.get(menu_name, False):
-                    return
+            # frame_image1 감지
+            if not self.frame1_detected.get(menu_name, False):
+                if self._detect_frame1(menu_name, menu_data):
+                    self.frame1_detected[menu_name] = True
+                    self.completed_frames[menu_name] = 1
+                    if menu_name not in self.frame1_order:
+                        self.frame1_order.append(menu_name)
+                continue
 
-            for i, frame in enumerate(image_frames):
+            # frame1_order가 비어있으면 continue
+            if not self.frame1_order:
+                time.sleep(0.1)
+                continue
+
+            # frame_image2, frame_image3 처리
+            # 현재 메뉴가 frame1_order의 첫 번째가 아니면 대기
+            if menu_name != self.frame1_order[0]:
+                time.sleep(0.1)
+                continue
+
+            # frame_image2, frame_image3 순차 실행
+            for frame in ['frame_image2', 'frame_image3']:
                 if not self.running.get(menu_name, False):
                     break
+                self._process_image(menu_name, frame, menu_data)
 
-                image_path = new_menu_data[frame]
-                if image_path:
-                    abs_path = os.path.join(os.path.dirname(self.data_file), image_path)
-                    filename = os.path.basename(abs_path)
-                    
-                    while self.running.get(menu_name, False):
-                        if i == 0:
-                            if menu_entry1 == 50:
-                                print(f"[{menu_name}] 설정 접수시간이 50분 입니다\n")
-                                break
-                            
-                            elif menu_name == 'menu2' and menu_entry1 < 50:
-                                print(f"[{menu_name}] 배달 접수시간 인식 대기중")
-                                pos = self.time_controller.click_minus()
-                                if pos:
-                                    difference = abs(menu_entry1 - 50)
-                                    count = difference // 5
-                                    for _ in range(count):
-                                        pg.click(pos[0], pos[1])
-                                        print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: ({filename})\n")
-                                    break
-                                
-                            elif menu_name == 'menu2' and menu_entry1 > 50:
-                                print(f"[{menu_name}] 배달 접수시간 인식 대기중")
-                                pos = self.time_controller.click_plus()
-                                if pos:
-                                    difference = abs(menu_entry1 - 50)
-                                    count = difference // 5
-                                    for _ in range(count):
-                                        pg.click(pos[0], pos[1])
-                                        print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: ({filename})\n")
-                                    break
-                                    
-                            elif menu_name == 'menu3' and menu_entry1 < 50:
-                                print(f"[{menu_name}] 배달 접수시간 인식 대기중")
-                                pos = self.time_controller.click_minus()
-                                if pos:
-                                    difference = abs(menu_entry1 - 50)
-                                    count = difference // 5
-                                    for _ in range(count):
-                                        pg.click(pos[0], pos[1])
-                                        print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: ({filename})\n")
-                                    break
-                                
-                            elif menu_name == 'menu3' and menu_entry1 > 50:
-                                print(f"[{menu_name}] 배달 접수시간 인식 대기중")
-                                pos = self.time_controller.click_plus()
-                                if pos:
-                                    difference = abs(menu_entry1 - 50)
-                                    count = difference // 5
-                                    for _ in range(count):
-                                        pg.click(pos[0], pos[1])
-                                        print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: ({filename})\n")
-                                    break
-                               
-                        else: # i != 0 
-                            print(f"[{menu_name}] ({filename}) 인식 대기중")
-                            pos = self.image_finder_pyautogui.find_image(abs_path)
-                            if pos:
-                                pg.click(pos[0], pos[1])
-                                print(f"클릭 위치: ({pos[0]}, {pos[1]}), 이미지: ({filename})\n")
-                                break
-                            time.sleep(0.1)
-                            
-                time.sleep(0.1)
+            # 한 사이클 완료 후 상태 초기화
+            self.frame1_detected[menu_name] = False
+            self.completed_frames[menu_name] = 0
+            # frame1_order에서 현재 메뉴 제거 (리스트가 비어있지 않은 경우에만)
+            if self.frame1_order and self.frame1_order[0] == menu_name:
+                self.frame1_order.pop(0)
+
+    def _detect_frame1(self, menu_name, menu_data):
+        """frame_image1 감지 및 처리"""
+        image_path = menu_data.get('frame_image1')
+        if not image_path:
+            return False
+
+        abs_path = os.path.join(os.path.dirname(self.data_file), image_path)
+        pos = self.image_finder_pyautogui.find_image(abs_path)
+        
+        if pos:
+            pg.click(pos[0], pos[1])
+            return True
+        return False
+
+    def _process_image(self, menu_name, frame, menu_data):
+        """이미지 처리 및 클릭 실행"""
+        image_path = menu_data[frame]
+        if image_path:
+            abs_path = os.path.join(os.path.dirname(self.data_file), image_path)
             
-            # 한 루프가 끝나면 큐의 맨 뒤로 이동
-            if self.running.get(menu_name, False):
-                self.macro_queue.append(self.macro_queue.pop(0))
+            while self.running.get(menu_name, False):
+                pos = self.image_finder_pyautogui.find_image(abs_path)
+                if pos:
+                    pg.click(pos[0], pos[1])
+                    self.completed_frames[menu_name] += 1
+                    break
+                time.sleep(0.1)
+
+    def _print_status(self):
+        """현재 실행 상태 출력"""
+        # 스피너 문자 가져오기
+        spinner = self.spinner_chars[self.spinner_index]
+        self.spinner_index = (self.spinner_index + 1) % len(self.spinner_chars)
+
+        status_msg = "현재 실행중 "
+        active_macros = []
+        
+        for menu_name in self.running.keys():
+            if self.running[menu_name]:
+                total_frames = len([k for k in self.data[menu_name]['other_values'].keys() 
+                                 if k.startswith('frame_image')])
+                completed = self.completed_frames.get(menu_name, 0)
+                
+                # 한 사이클이 완료되면 카운터 리셋
+                if completed >= total_frames:
+                    self.completed_frames[menu_name] = 0
+                    completed = 0
+                    
+                active_macros.append(f"[{menu_name}] ({completed}/{total_frames})")
+        
+        print(f"\r{status_msg}{', '.join(active_macros)} {spinner}", end='', flush=True)
 
     def start_macro(self, menu_name):
         """매크로 시작"""
         self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))
         
-        # 버튼 상태 확인
         button_state = self.data[menu_name]['other_values']['button_state']
         if button_state == 'off':
             print(f"[{menu_name}] 매크로가 off 상태입니다")
@@ -173,8 +178,12 @@ class MacroController:
         
         if not self.running.get(menu_name, False):
             self.running[menu_name] = True
-            if menu_name not in self.macro_queue:
-                self.macro_queue.append(menu_name)
+            self.completed_frames[menu_name] = 0
+            self.frame1_detected[menu_name] = False
+            
+            # 상태 출력 스레드가 실행 중이 아니면 다시 시작
+            if not self.status_running:
+                self.start_status_thread()
             
             self.macro_threads[menu_name] = threading.Thread(
                 target=self._run_macro, 
@@ -186,11 +195,42 @@ class MacroController:
 
     def stop_macro(self, menu_name):
         """매크로 중지"""
-        if menu_name in self.running:
-            self.running[menu_name] = False
-            if menu_name in self.macro_threads:
-                self.macro_threads[menu_name].join(timeout=1.0)
-                del self.macro_threads[menu_name]
-            if menu_name in self.macro_queue:
-                self.macro_queue.remove(menu_name)
-        print(f"\n[{menu_name}] 매크로가 중지되었습니다\n")
+        # 매크로가 실행 중이 아닐 때
+        if not self.running.get(menu_name, False):
+            print(f"\n[{menu_name}] 매크로가 실행중이 아닙니다\n")
+            return
+        
+        # 매크로가 실행 중일 때
+        self.running[menu_name] = False
+        self.completed_frames[menu_name] = 0
+        self.frame1_detected[menu_name] = False
+        
+        if menu_name in self.macro_threads:
+            self.macro_threads[menu_name].join(timeout=1.0)
+            del self.macro_threads[menu_name]
+        
+        # frame1_order에서 해당 메뉴 제거
+        if menu_name in self.frame1_order:
+            self.frame1_order.remove(menu_name)
+        
+        print(f"\n[{menu_name}] 매크로가 중지되었습니다")
+        
+        if not any(self.running.values()):
+            self.status_running = False
+            if self.status_thread:
+                self.status_thread.join(timeout=1.0)
+            print("모든 매크로가 중지되었습니다.\n")
+
+    def start_status_thread(self):
+        """상태 출력 전용 스레드 시작"""
+        self.status_running = True
+        self.status_thread = threading.Thread(target=self._status_loop)
+        self.status_thread.daemon = True
+        self.status_thread.start()
+
+    def _status_loop(self):
+        """상태 출력 루프"""
+        while self.status_running:
+            if any(self.running.values()):  # 실행 중인 매크로가 있을 때만 상태 출력
+                self._print_status()
+            time.sleep(0.5)

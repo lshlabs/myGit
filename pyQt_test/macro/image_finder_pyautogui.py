@@ -27,7 +27,7 @@ class ImageFinder:
         else:
             img.save(filepath)
             
-        print(f"디버그 이미지 저장됨: {filepath}")
+        print(f"\n디버그 이미지 저장됨: {filepath}\n")
         return filepath
 
     def find_image(self, image_path):
