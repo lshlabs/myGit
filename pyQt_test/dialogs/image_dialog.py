@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QDialog, QFileDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
 from ui.ImageDialog_ui import Ui_ImageDialog
-#import resource_rc
+import resource_rc
 
 # 상수 정의
 THUMBNAIL_SIZE = (120, 120)  # 썸네일 이미지 크기
@@ -13,6 +13,21 @@ class ImageDialog(QDialog):
         super().__init__(parent)
         self.ui = Ui_ImageDialog()
         self.ui.setupUi(self)
+        
+        # tooltips 아이콘 설정
+        tooltips_icon = QPixmap(":/img/tooltips.png")
+        self.ui.tool_tip.setPixmap(tooltips_icon)
+        self.ui.tool_tip.setScaledContents(True)
+        self.ui.tool_tip.setCursor(Qt.PointingHandCursor)
+        tooltip_text = """
+            <html>
+            <h3>좌표 녹화 도움말</h3>
+            <p>1. 녹화 버튼을 클릭하세요</p>
+            <p>2. 해당 이미지가 있는 실제 화면상의 위치에 마우스를 올려주세요</p>
+            <p>3. ESC 버튼을 누르면 좌표가 자동으로 채워집니다</p>
+            </html>
+        """
+        self.ui.tool_tip.setToolTip(tooltip_text)
         
         # QLabel 클릭 이벤트 연결
         self.ui.preview_label.mousePressEvent = self.select_image

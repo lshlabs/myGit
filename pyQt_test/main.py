@@ -174,10 +174,10 @@ class MainWindow(QMainWindow):
         
         # 메뉴별 설정
         settings = {
-            'menu2': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 570},
-            'menu3': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 570},
+            'menu2': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 390},
+            'menu3': {'frames': ['frame_image1', 'frame_image2', 'frame_image3'], 'y_pos': 190, 'height': 390},
             'menu6': {'frames': ['frame_image1', 'frame_image2', 'frame_image3',
-                               'frame_image4', 'frame_image5', 'frame_image6'], 'y_pos': 355, 'height': 740}
+                               'frame_image4', 'frame_image5', 'frame_image6'], 'y_pos': 355, 'height': 540}
         }[menu_name]
         
         # scrollAreaWidgetContents 높이 조절
@@ -206,7 +206,6 @@ class MainWindow(QMainWindow):
             self.ui.frame_timeset3.setGeometry(5, 65, 453, 50)
             self.ui.scrollAreaWidgetContents.setMinimumHeight((settings['height']-40))
             self.ui.scrollAreaWidgetContents.setMaximumHeight((settings['height']-40))
-            self.ui.debug_terminal.setGeometry(43, 500, 461, 171)
         else:
             self.ui.frame_timeset1.show()
             self.ui.label_timeset2.setText("포장 기본 접수시간(분)")
@@ -216,7 +215,6 @@ class MainWindow(QMainWindow):
             self.ui.frame_timeset3.setGeometry(5, 120, 453, 50)
             self.ui.scrollAreaWidgetContents.setMinimumHeight(settings['height'])
             self.ui.scrollAreaWidgetContents.setMaximumHeight(settings['height'])
-            self.ui.debug_terminal.setGeometry(43, 380, 461, 171)
         
         # 이미지 프레임 표시/숨기기
         all_frames = [f'frame_image{i}' for i in range(1, 7)]

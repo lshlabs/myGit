@@ -16,7 +16,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QLayout,
-    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
+    QLineEdit, QMainWindow, QPushButton, QRadioButton,
     QScrollArea, QSizePolicy, QSpacerItem, QStatusBar,
     QVBoxLayout, QWidget)
 
@@ -334,7 +334,7 @@ class Ui_MainWindow(object):
         self.label_timeset3.setFont(font2)
         self.label_settings_icon = QLabel(self.frame_timeset3)
         self.label_settings_icon.setObjectName(u"label_settings_icon")
-        self.label_settings_icon.setGeometry(QRect(150, 0, 30, 30))
+        self.label_settings_icon.setGeometry(QRect(410, 10, 30, 30))
         sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
@@ -344,6 +344,17 @@ class Ui_MainWindow(object):
         self.label_settings_icon.setFont(font2)
         self.label_settings_icon.setPixmap(QPixmap(u"../../../../../../../../../../img/settings.png"))
         self.label_settings_icon.setScaledContents(True)
+        self.radio_passive = QRadioButton(self.frame_timeset3)
+        self.radio_passive.setObjectName(u"radio_passive")
+        self.radio_passive.setGeometry(QRect(157, 15, 70, 20))
+        self.radio_passive.setFont(font2)
+        self.radio_passive.setIconSize(QSize(8, 8))
+        self.radio_passive.setChecked(True)
+        self.radio_active = QRadioButton(self.frame_timeset3)
+        self.radio_active.setObjectName(u"radio_active")
+        self.radio_active.setGeometry(QRect(225, 15, 70, 20))
+        self.radio_active.setFont(font2)
+        self.radio_active.setIconSize(QSize(8, 8))
         self.label_image5 = QLabel(self.scrollAreaWidgetContents)
         self.label_image5.setObjectName(u"label_image5")
         self.label_image5.setGeometry(QRect(213, 309, 120, 25))
@@ -464,17 +475,6 @@ class Ui_MainWindow(object):
         self.frame_image6.setStyleSheet(u"background:#CED0D0;\n"
 "border:1px solid black;")
         self.frame_image6.setFrameShape(QFrame.Shape.NoFrame)
-        self.debug_terminal = QPlainTextEdit(self.scrollAreaWidgetContents)
-        self.debug_terminal.setObjectName(u"debug_terminal")
-        self.debug_terminal.setGeometry(QRect(43, 550, 461, 171))
-        self.debug_terminal.setStyleSheet(u"border: 1px solid black;\n"
-"background-color:gainsboro;\n"
-"color:#000000;")
-        self.debug_terminal.setFrameShape(QFrame.Shape.NoFrame)
-        self.debug_terminal.setFrameShadow(QFrame.Shadow.Plain)
-        self.debug_terminal.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-        self.debug_terminal.setTabChangesFocus(True)
-        self.debug_terminal.setReadOnly(True)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.frame_title = QFrame(self.centralwidget)
         self.frame_title.setObjectName(u"frame_title")
@@ -661,6 +661,8 @@ class Ui_MainWindow(object):
         self.button_minus2.setText(QCoreApplication.translate("MainWindow", u"\u2228", None))
         self.label_timeset3.setText(QCoreApplication.translate("MainWindow", u"\ub9e4\ud06c\ub85c \ub3d9\uc791 \uc124\uc815", None))
         self.label_settings_icon.setText("")
+        self.radio_passive.setText(QCoreApplication.translate("MainWindow", u"\uc218\ub3d9\ubaa8\ub4dc", None))
+        self.radio_active.setText(QCoreApplication.translate("MainWindow", u"\uc790\ub3d9\ubaa8\ub4dc", None))
         self.label_image5.setText(QCoreApplication.translate("MainWindow", u"\uc774\ubbf8\uc9c0 5", None))
         self.label_image1.setText(QCoreApplication.translate("MainWindow", u"\uc774\ubbf8\uc9c0 1", None))
         self.label_image6.setText(QCoreApplication.translate("MainWindow", u"\uc774\ubbf8\uc9c0 6", None))
@@ -673,7 +675,6 @@ class Ui_MainWindow(object):
         self.frame_image4.setText("")
         self.frame_image5.setText("")
         self.frame_image6.setText("")
-        self.debug_terminal.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\ub514\ubc84\uadf8 \ucd9c\ub825...", None))
         self.label_title.setText(QCoreApplication.translate("MainWindow", u"Menu Name", None))
         self.button_on.setText(QCoreApplication.translate("MainWindow", u"ON", None))
         self.button_off.setText(QCoreApplication.translate("MainWindow", u"OFF", None))

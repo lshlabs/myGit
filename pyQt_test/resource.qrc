@@ -2,5 +2,6 @@
 <RCC version="1.0">
     <qresource>
         <file>img/settings.png</file>
+        <file>img/tooltips.png</file>
     </qresource>
 </RCC>

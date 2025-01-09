@@ -1009,8 +1009,8 @@ border: none;</string>
        <widget class="QLabel" name="label_settings_icon">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>0</y>
+          <x>410</x>
+          <y>10</y>
           <width>30</width>
           <height>30</height>
          </rect>
@@ -1041,6 +1041,59 @@ border: none;</string>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radio_passive">
+        <property name="geometry">
+         <rect>
+          <x>157</x>
+          <y>15</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>수동모드</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>8</width>
+          <height>8</height>
+         </size>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QRadioButton" name="radio_active">
+        <property name="geometry">
+         <rect>
+          <x>225</x>
+          <y>15</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>자동모드</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>8</width>
+          <height>8</height>
+         </size>
         </property>
        </widget>
       </widget>
@@ -1493,39 +1546,6 @@ border:1px solid black;</string>
       </property>
       <property name="text">
        <string/>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="debug_terminal">
-      <property name="geometry">
-       <rect>
-        <x>43</x>
-        <y>550</y>
-        <width>461</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border: 1px solid black;
-background-color:gainsboro;
-color:#000000;</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Plain</enum>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="tabChangesFocus">
-       <bool>true</bool>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-      <property name="placeholderText">
-       <string>디버그 출력...</string>
       </property>
      </widget>
     </widget>

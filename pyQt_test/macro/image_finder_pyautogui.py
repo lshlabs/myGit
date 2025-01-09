@@ -1,4 +1,3 @@
-import pyautogui as pg
 import os
 import cv2
 import numpy as np
@@ -7,13 +6,15 @@ from datetime import datetime
 
 class ImageFinder:
     def __init__(self):
-        if os.name != 'nt':
-            self.screen_scale = pg.screenshot().size[0] / pg.size()[0]
-        else:
+        # macOS의 Retina 디스플레이 대응
+        if os.name != 'nt':  # macOS
+            screenshot = ImageGrab.grab()
+            self.screen_scale = 2  # Retina 디스플레이의 경우 2배 스케일
+        else:  # Windows
             self.screen_scale = 1
             
         # 디버그 이미지 저장 디렉토리 생성
-        self.debug_dir = './debug_images_pyautogui'
+        self.debug_dir = './debug_images_opencv'
         os.makedirs(self.debug_dir, exist_ok=True)
 
     def save_debug_image(self, img, prefix):
@@ -26,77 +27,77 @@ class ImageFinder:
             cv2.imwrite(filepath, img)
         else:
             img.save(filepath)
-            
-        print(f"\n디버그 이미지 저장됨: {filepath}\n")
+        print(f"디버그 이미지 저장됨: {filepath}\n", flush=True)
         return filepath
 
-    def find_image(self, image_path):
-        """pyautogui를 사용한 이미지 검색"""
+    def find_time_images(self, menu_name, menu_data):
+        """시간 조정 이미지 검색 및 조정 방향 결정"""
+        # 먼저 entry1 값 체크
+        if menu_data['entry1'] == 50:
+            print(f"[{menu_name}] 배달시간 조정이 필요하지 않습니다.\n")
+            return False, "SKIP"
+        
+        image_folder = "pyQt_test/img/"
+        
         try:
-            # 현재 화면 스크린샷
-            screenshot = ImageGrab.grab()
-            
-            # 타겟 이미지 로드
-            target = cv2.imread(image_path)
+            # menu2는 배민, menu3는 요기요 이미지 검색
+            if menu_name == 'menu2':
+                d_path = os.path.join(image_folder, 'd_baemin.png')
+                d_pos = self.find_image(d_path)
+                
+                if d_pos:  # 배민 배달 이미지 발견
+                    button_img = 'plus_baemin.png' if menu_data['entry1'] > 50 else 'minus_baemin.png'
+                    button_path = os.path.join(image_folder, button_img)
+                    #print(f"[{menu_name}] 배달 시간 조정")
+                    button_pos = self.find_image(button_path)
+                    return button_pos, button_img
+                
+            elif menu_name == 'menu3':
+                d_path = os.path.join(image_folder, 'd_yogiyo.png')
+                d_pos = self.find_image(d_path)
+                
+                if d_pos:  # 요기요 배달 이미지 발견
+                    button_img = 'plus_yogiyo.png' if menu_data['entry1'] > 50 else 'minus_yogiyo.png'
+                    button_path = os.path.join(image_folder, button_img)
+                    #print(f"[{menu_name}] 배달 시간 조정")
+                    button_pos = self.find_image(button_path)
+                    return button_pos, button_img
 
-            # pyautogui로 이미지 위치 찾기
-            location = pg.locateOnScreen(
-                image_path,
-                confidence=0.8,
-                grayscale=True
-            )
+            return None, None  # 이미지를 찾지 못한 경우
+
+        except Exception as e:
+            print(f"find_time_images 오류: {e}")
+            return None, None
+
+    def find_image(self, image_path):
+        """OpenCV를 사용한 이미지 검색"""
+        try:
+            # 일반적인 이미지 검색 로직
+            screenshot = np.array(ImageGrab.grab())
+            screenshot = cv2.cvtColor(screenshot, cv2.COLOR_RGB2BGR)
+            template = cv2.imread(image_path)
             
-            if location:
-                # 결과 시각화
-                screenshot_cv = cv2.cvtColor(np.array(screenshot), cv2.COLOR_RGB2BGR)
-                
-                # 찾은 영역 표시
-                x, y, w, h = location
-                cv2.rectangle(
-                    screenshot_cv,
-                    (int(x), int(y)),
-                    (int(x + w), int(y + h)),
-                    (0, 255, 0),  # 녹색
-                    2
-                )
-                
-                # 중앙 점 표시
-                center_x = x + (w / 2)
-                center_y = y + (h / 2)
-                cv2.circle(
-                    screenshot_cv,
-                    (int(center_x), int(center_y)),
-                    5,
-                    (0, 0, 255),  # 빨간색
-                    -1
-                )
-                
-                # 정보 텍스트 추가
-                cv2.putText(
-                    screenshot_cv,
-                    f"Found at: ({int(center_x)}, {int(center_y)})",
-                    (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    1,
-                    (255, 255, 255),
-                    2
-                )
-                
-                # # 결과 이미지 저장
-                # self.save_debug_image(screenshot_cv, 'result')
-                
-                # 실제 클릭 좌표 계산
-                click_x = center_x / self.screen_scale
-                click_y = center_y / self.screen_scale
-                
-                print(f"\n타겟 이미지 찾음")
-                # 결과 이미지 저장
-                self.save_debug_image(screenshot_cv, 'result')
-                
-                return (click_x, click_y)
-                
-            else:
+            if template is None:
+                print(f"이미지를 로드할 수 없습니다: {image_path}")
                 return None
+            
+            result = cv2.matchTemplate(screenshot, template, cv2.TM_CCOEFF_NORMED)
+            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+            
+            threshold = 0.8
+            if max_val >= threshold:
+                h, w = template.shape[:2]
+                center_x = max_loc[0] + w/2
+                center_y = max_loc[1] + h/2
+                
+                print(f"타겟 이미지 찾음: {os.path.basename(image_path)}")
+                # 디버그용 시각화
+                cv2.rectangle(screenshot, max_loc, (max_loc[0] + w, max_loc[1] + h), (0, 255, 0), 2)
+                self.save_debug_image(screenshot, 'result')
+                
+                return (center_x/self.screen_scale, center_y/self.screen_scale)
+                
+            return None
                 
         except Exception as e:
             print(f"이미지 검색 실패: {e}")
