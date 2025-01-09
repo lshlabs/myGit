@@ -14,17 +14,16 @@ class ImageDialog(QDialog):
         self.ui = Ui_ImageDialog()
         self.ui.setupUi(self)
         
-        # tooltips 아이콘 설정
-        tooltips_icon = QPixmap(":/img/tooltips.png")
-        self.ui.tool_tip.setPixmap(tooltips_icon)
-        self.ui.tool_tip.setScaledContents(True)
+        # tooltips설정
         self.ui.tool_tip.setCursor(Qt.PointingHandCursor)
         tooltip_text = """
-            <html>
-            <h3>좌표 녹화 도움말</h3>
-            <p>1. 녹화 버튼을 클릭하세요</p>
+            <html style="font-family: 나눔고딕; font-size: 12px;">
+            <p></p>
+            <h3 align="center">좌표 녹화 도움말</h3>
+            <p>1. 기록 버튼을 클릭하세요</p>
             <p>2. 해당 이미지가 있는 실제 화면상의 위치에 마우스를 올려주세요</p>
-            <p>3. ESC 버튼을 누르면 좌표가 자동으로 채워집니다</p>
+            <p>3. F9를 누르면 좌표가 자동으로 채워집니다</p>
+            <p></p>
             </html>
         """
         self.ui.tool_tip.setToolTip(tooltip_text)
@@ -33,8 +32,8 @@ class ImageDialog(QDialog):
         self.ui.preview_label.mousePressEvent = self.select_image
         
         # 버튼 이벤트 연결
-        self.ui.apply_button.clicked.connect(self.accept)
-        self.ui.cancel_button.clicked.connect(self.reject)
+        self.ui.buttonBox.accepted.connect(self.accept)
+        self.ui.buttonBox.rejected.connect(self.reject)
         self.ui.reset_button.clicked.connect(self.reset_image)
         
         self.selected_pixmap = None
@@ -77,7 +76,7 @@ class ImageDialog(QDialog):
         self.selected_file_path = None
         self.reset_requested = True
         self.ui.preview_label.clear()
-        self.ui.preview_label.setText("이미지를 선택하세요")
+        self.ui.preview_label.setText("이곳을 클릭하여\n이미지를 선택하세요")
     
     def set_preview_image(self, pixmap):
         """기존 이미지 미리보기 설정"""

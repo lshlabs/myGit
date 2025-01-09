@@ -43,8 +43,6 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
         self.scrollArea.setSizePolicy(sizePolicy)
-        self.scrollArea.setMinimumSize(QSize(550, 392))
-        self.scrollArea.setMaximumSize(QSize(550, 392))
         self.scrollArea.setFont(font)
         self.scrollArea.setAutoFillBackground(False)
         self.scrollArea.setStyleSheet(u"background-color:#FFFFFF;\n"
@@ -88,7 +86,7 @@ class Ui_MainWindow(object):
         self.label_timeset1.setObjectName(u"label_timeset1")
         self.label_timeset1.setGeometry(QRect(10, 10, 131, 31))
         font2 = QFont()
-        font2.setFamilies([u"Arial"])
+        font2.setFamilies([u"\ub098\ub214\uace0\ub515"])
         font2.setPointSize(9)
         self.label_timeset1.setFont(font2)
         self.verticalFrame_entry1 = QFrame(self.frame_timeset1)
@@ -142,7 +140,7 @@ class Ui_MainWindow(object):
         self.button_plus1.setSizePolicy(sizePolicy1)
         self.button_plus1.setMaximumSize(QSize(30, 20))
         font3 = QFont()
-        font3.setFamilies([u"Arial"])
+        font3.setFamilies([u"\ub098\ub214\uace0\ub515"])
         font3.setPointSize(10)
         font3.setBold(False)
         font3.setHintingPreference(QFont.PreferVerticalHinting)
@@ -324,7 +322,9 @@ class Ui_MainWindow(object):
         self.frame_timeset3 = QFrame(self.Setting_frame)
         self.frame_timeset3.setObjectName(u"frame_timeset3")
         self.frame_timeset3.setGeometry(QRect(5, 120, 453, 50))
-        self.frame_timeset3.setFont(font)
+        font4 = QFont()
+        font4.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        self.frame_timeset3.setFont(font4)
         self.frame_timeset3.setStyleSheet(u"border:none;")
         self.frame_timeset3.setFrameShape(QFrame.Shape.NoFrame)
         self.frame_timeset3.setFrameShadow(QFrame.Shadow.Plain)
@@ -341,8 +341,11 @@ class Ui_MainWindow(object):
         sizePolicy3.setHeightForWidth(self.label_settings_icon.sizePolicy().hasHeightForWidth())
         self.label_settings_icon.setSizePolicy(sizePolicy3)
         self.label_settings_icon.setMaximumSize(QSize(30, 30))
-        self.label_settings_icon.setFont(font2)
-        self.label_settings_icon.setPixmap(QPixmap(u"../../../../../../../../../../img/settings.png"))
+        font5 = QFont()
+        font5.setFamilies([u"Arial"])
+        font5.setPointSize(9)
+        self.label_settings_icon.setFont(font5)
+        self.label_settings_icon.setPixmap(QPixmap(u"../../../../img/settings.png"))
         self.label_settings_icon.setScaledContents(True)
         self.radio_passive = QRadioButton(self.frame_timeset3)
         self.radio_passive.setObjectName(u"radio_passive")
@@ -352,7 +355,7 @@ class Ui_MainWindow(object):
         self.radio_passive.setChecked(True)
         self.radio_active = QRadioButton(self.frame_timeset3)
         self.radio_active.setObjectName(u"radio_active")
-        self.radio_active.setGeometry(QRect(225, 15, 70, 20))
+        self.radio_active.setGeometry(QRect(250, 15, 70, 20))
         self.radio_active.setFont(font2)
         self.radio_active.setIconSize(QSize(8, 8))
         self.label_image5 = QLabel(self.scrollAreaWidgetContents)
@@ -362,7 +365,7 @@ class Ui_MainWindow(object):
         self.label_image5.setSizePolicy(sizePolicy3)
         self.label_image5.setMinimumSize(QSize(120, 25))
         self.label_image5.setMaximumSize(QSize(120, 30))
-        self.label_image5.setFont(font)
+        self.label_image5.setFont(font4)
         self.label_image5.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image5.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -373,7 +376,7 @@ class Ui_MainWindow(object):
         self.label_image1.setSizePolicy(sizePolicy3)
         self.label_image1.setMinimumSize(QSize(120, 25))
         self.label_image1.setMaximumSize(QSize(120, 30))
-        self.label_image1.setFont(font)
+        self.label_image1.setFont(font4)
         self.label_image1.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image1.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -384,7 +387,7 @@ class Ui_MainWindow(object):
         self.label_image6.setSizePolicy(sizePolicy3)
         self.label_image6.setMinimumSize(QSize(120, 25))
         self.label_image6.setMaximumSize(QSize(120, 30))
-        self.label_image6.setFont(font)
+        self.label_image6.setFont(font4)
         self.label_image6.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image6.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -395,7 +398,7 @@ class Ui_MainWindow(object):
         self.label_image2.setSizePolicy(sizePolicy3)
         self.label_image2.setMinimumSize(QSize(120, 25))
         self.label_image2.setMaximumSize(QSize(120, 30))
-        self.label_image2.setFont(font)
+        self.label_image2.setFont(font4)
         self.label_image2.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image2.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -406,7 +409,7 @@ class Ui_MainWindow(object):
         self.label_image4.setSizePolicy(sizePolicy3)
         self.label_image4.setMinimumSize(QSize(120, 25))
         self.label_image4.setMaximumSize(QSize(120, 30))
-        self.label_image4.setFont(font)
+        self.label_image4.setFont(font4)
         self.label_image4.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image4.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -417,7 +420,7 @@ class Ui_MainWindow(object):
         self.label_image3.setSizePolicy(sizePolicy3)
         self.label_image3.setMinimumSize(QSize(120, 25))
         self.label_image3.setMaximumSize(QSize(120, 30))
-        self.label_image3.setFont(font)
+        self.label_image3.setFont(font4)
         self.label_image3.setStyleSheet(u"color: black;\n"
 "border: 1px solid black;")
         self.label_image3.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -491,13 +494,16 @@ class Ui_MainWindow(object):
         self.label_title.setGeometry(QRect(1, 1, 548, 66))
         sizePolicy2.setHeightForWidth(self.label_title.sizePolicy().hasHeightForWidth())
         self.label_title.setSizePolicy(sizePolicy2)
-        font4 = QFont()
-        font4.setFamilies([u"Arial"])
-        font4.setPointSize(30)
-        font4.setBold(False)
-        self.label_title.setFont(font4)
-        self.label_title.setStyleSheet(u"color:#000000;\n"
-"border: none;")
+        font6 = QFont()
+        font6.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font6.setPointSize(30)
+        font6.setBold(False)
+        self.label_title.setFont(font6)
+        self.label_title.setStyleSheet(u"QLabel{\n"
+"	color:#000000;\n"
+"	border: none;\n"
+"}\n"
+"")
         self.label_title.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_title.setIndent(40)
         self.button_on = QPushButton(self.frame_title)
@@ -510,7 +516,7 @@ class Ui_MainWindow(object):
         self.button_off = QPushButton(self.frame_title)
         self.button_off.setObjectName(u"button_off")
         self.button_off.setGeometry(QRect(465, 10, 70, 45))
-        self.button_off.setFont(font)
+        self.button_off.setFont(font4)
         self.button_off.setStyleSheet(u"background:#DBDEDE;\n"
 "border:1px solid black;\n"
 "border-radius:15px;")
@@ -538,10 +544,10 @@ class Ui_MainWindow(object):
         self.label_menu2.setSizePolicy(sizePolicy2)
         self.label_menu2.setMinimumSize(QSize(128, 65))
         self.label_menu2.setMaximumSize(QSize(128, 65))
-        font5 = QFont()
-        font5.setFamilies([u"Arial"])
-        font5.setPointSize(13)
-        self.label_menu2.setFont(font5)
+        font7 = QFont()
+        font7.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font7.setPointSize(13)
+        self.label_menu2.setFont(font7)
         self.label_menu2.setStyleSheet(u"background:#CED0D0;\n"
 "color: white;\n"
 "border: none;")
@@ -553,7 +559,7 @@ class Ui_MainWindow(object):
         self.label_menu6.setSizePolicy(sizePolicy2)
         self.label_menu6.setMinimumSize(QSize(128, 65))
         self.label_menu6.setMaximumSize(QSize(128, 65))
-        self.label_menu6.setFont(font5)
+        self.label_menu6.setFont(font7)
         self.label_menu6.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
@@ -565,7 +571,7 @@ class Ui_MainWindow(object):
         self.label_menu4.setSizePolicy(sizePolicy2)
         self.label_menu4.setMinimumSize(QSize(128, 65))
         self.label_menu4.setMaximumSize(QSize(128, 65))
-        self.label_menu4.setFont(font5)
+        self.label_menu4.setFont(font7)
         self.label_menu4.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
@@ -577,7 +583,7 @@ class Ui_MainWindow(object):
         self.label_menu5.setSizePolicy(sizePolicy2)
         self.label_menu5.setMinimumSize(QSize(128, 65))
         self.label_menu5.setMaximumSize(QSize(128, 65))
-        self.label_menu5.setFont(font5)
+        self.label_menu5.setFont(font7)
         self.label_menu5.setStyleSheet(u"background-color: #9437FF;\n"
 "color:#FFFFFF;\n"
 "border: none;")
@@ -589,7 +595,7 @@ class Ui_MainWindow(object):
         self.label_menu7.setSizePolicy(sizePolicy2)
         self.label_menu7.setMinimumSize(QSize(128, 65))
         self.label_menu7.setMaximumSize(QSize(128, 65))
-        self.label_menu7.setFont(font5)
+        self.label_menu7.setFont(font7)
         self.label_menu7.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")
@@ -605,7 +611,7 @@ class Ui_MainWindow(object):
         self.label_menu1.setMinimumSize(QSize(128, 65))
         self.label_menu1.setMaximumSize(QSize(128, 65))
         self.label_menu1.setBaseSize(QSize(0, 0))
-        self.label_menu1.setFont(font5)
+        self.label_menu1.setFont(font7)
         self.label_menu1.setStyleSheet(u"background-color: #9437FF;\n"
 "color:#FFFFFF;\n"
 "border: none;")
@@ -618,7 +624,7 @@ class Ui_MainWindow(object):
         self.label_menu3.setSizePolicy(sizePolicy2)
         self.label_menu3.setMinimumSize(QSize(128, 65))
         self.label_menu3.setMaximumSize(QSize(128, 65))
-        self.label_menu3.setFont(font5)
+        self.label_menu3.setFont(font7)
         self.label_menu3.setStyleSheet(u"background-color:#FFFFFF;\n"
 "color: black;\n"
 "border: none;")

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>320</height>
+    <height>350</height>
    </rect>
   </property>
   <property name="font">
@@ -19,7 +19,15 @@
    <string>이미지 첨부</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(234, 238, 238)</string>
+   <string notr="true">QDialog{
+	background-color: #EAEFEF;
+}</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <widget class="QLabel" name="preview_label">
    <property name="geometry">
@@ -44,13 +52,16 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>맑은 고딕</family>
      <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:white;
-border: 1px solid black;</string>
+    <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background:white;
+	border: 1px solid black;
+}</string>
    </property>
    <property name="text">
     <string>이곳을 클릭하여
@@ -58,74 +69,6 @@ border: 1px solid black;</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignmentFlag::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="cancel_button">
-   <property name="geometry">
-    <rect>
-     <x>163</x>
-     <y>270</y>
-     <width>88</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>88</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(234, 238, 238)</string>
-   </property>
-   <property name="text">
-    <string>취소</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="apply_button">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>270</y>
-     <width>88</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>88</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(234, 238, 238)</string>
-   </property>
-   <property name="text">
-    <string>적용</string>
    </property>
   </widget>
   <widget class="QPushButton" name="reset_button">
@@ -170,33 +113,57 @@ border-radius: 10px;</string>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>25</x>
      <y>170</y>
-     <width>201</width>
-     <height>91</height>
+     <width>250</width>
+     <height>120</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>맑은 고딕</family>
+     <pointsize>10</pointsize>
+     <kerning>true</kerning>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="title">
-    <string>수동모드 좌표설정</string>
+    <string> 좌표 설정 </string>
    </property>
    <widget class="QPushButton" name="button_record">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>60</y>
-      <width>40</width>
-      <height>20</height>
+      <y>80</y>
+      <width>80</width>
+      <height>25</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <property name="text">
-     <string>녹화</string>
+     <string>기록시작</string>
+    </property>
+    <property name="default">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>30</y>
+      <x>30</x>
+      <y>50</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -211,18 +178,18 @@ border-radius: 10px;</string>
      <string>X :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="textEdit_X">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>50</width>
+      <x>50</x>
+      <y>50</y>
+      <width>60</width>
       <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>맑은 고딕</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -249,8 +216,8 @@ border: 1px solid black;</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>30</y>
+      <x>130</x>
+      <y>50</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -265,18 +232,18 @@ border: 1px solid black;</string>
      <string>Y :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="textEdit_Y">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>30</y>
-      <width>50</width>
+      <x>150</x>
+      <y>50</y>
+      <width>60</width>
       <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>맑은 고딕</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -303,28 +270,98 @@ border: 1px solid black;</string>
    <widget class="QLabel" name="tool_tip">
     <property name="geometry">
      <rect>
-      <x>103</x>
-      <y>2</y>
-      <width>20</width>
-      <height>20</height>
+      <x>223</x>
+      <y>25</y>
+      <width>15</width>
+      <height>15</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	background-color: #9437FF;
+	color:#FFFFFF;
+	border: none;
+	border-radius: 6px;
+	border-width : 1px
+
+}</string>
+    </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::TextFormat::PlainText</enum>
-    </property>
-    <property name="pixmap">
-     <pixmap>../img/tooltips.png</pixmap>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+     <string>?</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>25</y>
+      <width>210</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕</family>
+      <pointsize>8</pointsize>
+      <italic>false</italic>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>수동모드 사용 시 이미지의 좌표를 설정하세요</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>310</y>
+     <width>201</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>나눔고딕</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LayoutDirection::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Orientation::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+   </property>
+   <property name="centerButtons">
+    <bool>true</bool>
+   </property>
   </widget>
  </widget>
  <resources/>

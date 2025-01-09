@@ -21,7 +21,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Arial</family>
+    <family>나눔고딕</family>
    </font>
   </property>
   <property name="windowTitle">
@@ -31,22 +31,42 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:#DCDCDC;</string>
+   <string notr="true">QDialog{
+	background-color: #EAEFEF;
+}</string>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>260</y>
-     <width>431</width>
-     <height>32</height>
+     <width>430</width>
+     <height>35</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>430</width>
+     <height>35</height>
+    </size>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>나눔고딕</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LayoutDirection::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="orientation">
     <enum>Qt::Orientation::Horizontal</enum>
@@ -55,253 +75,323 @@
     <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_start">
+  <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>50</y>
-     <width>100</width>
-     <height>32</height>
+     <y>20</y>
+     <width>410</width>
+     <height>150</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
+     <pointsize>10</pointsize>
     </font>
    </property>
-   <property name="text">
-    <string>매크로 시작 키</string>
+   <property name="title">
+    <string> 매크로 시작 / 중지 키 설정 </string>
    </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="combo_run">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>50</y>
-     <width>120</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-     <italic>false</italic>
-     <kerning>false</kerning>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background:white;</string>
-   </property>
-   <property name="currentText">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string>선택하세요</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="check_ctrl1">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>50</y>
-     <width>50</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ctrl</string>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="check_shift1">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>50</y>
-     <width>55</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Shift</string>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="check_alt1">
-   <property name="geometry">
-    <rect>
-     <x>355</x>
-     <y>50</y>
-     <width>50</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Alt</string>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_stop">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>110</y>
-     <width>100</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>매크로 종료 키</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="combo_stop">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>110</y>
-     <width>120</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-     <italic>false</italic>
-     <kerning>false</kerning>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background:white;</string>
-   </property>
-   <property name="currentText">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string>선택하세요</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="check_alt2">
-   <property name="geometry">
-    <rect>
-     <x>355</x>
-     <y>110</y>
-     <width>50</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Alt</string>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="check_ctrl2">
-   <property name="geometry">
-    <rect>
-     <x>250</x>
-     <y>110</y>
-     <width>50</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Ctrl</string>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="check_shift2">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>110</y>
-     <width>55</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Shift</string>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="tristate">
-    <bool>false</bool>
-   </property>
+   <widget class="QCheckBox" name="check_shift1">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>30</y>
+      <width>55</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Shift</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="combo_stop">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>90</y>
+      <width>120</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕</family>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>선택하세요</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_shift2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>90</y>
+      <width>55</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Shift</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_start">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>70</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>시작 키</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_ctrl2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>90</y>
+      <width>50</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Ctrl</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_alt2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>90</y>
+      <width>50</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Alt</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_stop">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>70</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>종료 키</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_ctrl1">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>30</y>
+      <width>50</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Ctrl</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>16</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_alt1">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>30</y>
+      <width>50</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+    </property>
+    <property name="text">
+     <string>Alt</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="combo_run">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>30</y>
+      <width>120</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>나눔고딕</family>
+      <pointsize>10</pointsize>
+      <italic>false</italic>
+      <kerning>false</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>선택하세요</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

@@ -45,18 +45,6 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <property name="minimumSize">
-     <size>
-      <width>550</width>
-      <height>392</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>550</width>
-      <height>392</height>
-     </size>
-    </property>
     <property name="font">
      <font>
       <family>Arial</family>
@@ -182,7 +170,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>나눔고딕</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -248,7 +236,7 @@ border: none;</string>
           <widget class="QLineEdit" name="entry1">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>9</pointsize>
             </font>
            </property>
@@ -365,7 +353,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -498,7 +486,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -590,7 +578,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>나눔고딕</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -674,7 +662,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -789,7 +777,7 @@ border: none;</string>
           <widget class="QLineEdit" name="entry2">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>9</pointsize>
             </font>
            </property>
@@ -906,7 +894,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>나눔고딕</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -975,7 +963,7 @@ border: none;</string>
        </property>
        <property name="font">
         <font>
-         <family>Arial</family>
+         <family>나눔고딕</family>
         </font>
        </property>
        <property name="styleSheet">
@@ -998,7 +986,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>나눔고딕</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1037,7 +1025,7 @@ border: none;</string>
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>../../../../../../../../../../img/settings.png</pixmap>
+         <pixmap>../../../../img/settings.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -1054,7 +1042,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>나눔고딕</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1074,7 +1062,7 @@ border: none;</string>
        <widget class="QRadioButton" name="radio_active">
         <property name="geometry">
          <rect>
-          <x>225</x>
+          <x>250</x>
           <y>15</y>
           <width>70</width>
           <height>20</height>
@@ -1082,7 +1070,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>나눔고딕</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1127,7 +1115,7 @@ border: none;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>나눔고딕</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1170,7 +1158,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>나눔고딕</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1213,7 +1201,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>나눔고딕</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1256,7 +1244,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>나눔고딕</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1299,7 +1287,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>나눔고딕</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1342,7 +1330,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>나눔고딕</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1603,14 +1591,17 @@ border: 1px solid black;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>30</pointsize>
        <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color:#000000;
-border: none;</string>
+      <string notr="true">QLabel{
+	color:#000000;
+	border: none;
+}
+</string>
      </property>
      <property name="text">
       <string>Menu Name</string>
@@ -1656,7 +1647,7 @@ border-radius:15px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
       </font>
      </property>
      <property name="styleSheet">
@@ -1744,7 +1735,7 @@ border-radius:15px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1789,7 +1780,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1834,7 +1825,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1879,7 +1870,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1924,7 +1915,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1975,7 +1966,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -2023,7 +2014,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>나눔고딕</family>
        <pointsize>13</pointsize>
       </font>
      </property>
