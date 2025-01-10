@@ -2,11 +2,11 @@
   "menu2": {
     "settings": {
       "combo_run_value": "1",
-      "check_ctrl1_state": true,
+      "check_ctrl1_state": false,
       "check_alt1_state": false,
       "check_shift1_state": false,
       "combo_stop_value": "2",
-      "check_ctrl2_state": true,
+      "check_ctrl2_state": false,
       "check_alt2_state": false,
       "check_shift2_state": false
     },
