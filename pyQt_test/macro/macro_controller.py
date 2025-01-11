@@ -3,7 +3,7 @@ import os
 import threading
 import time
 from pynput import keyboard  # pynput 라이브러리 추가
-from .image_finder_pyautogui import ImageFinder
+from .image_finder import ImageFinder
 import pyautogui as pg
 from .hotkey_manager import HotkeyManager
 

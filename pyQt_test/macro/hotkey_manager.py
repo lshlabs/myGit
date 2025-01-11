@@ -22,18 +22,18 @@ class HotkeyManager:
             return None
         
         parts = []
-        # 수정자 키 확인
+        # 수정자 키 확인 (형식 변경)
         if self.macro_controller.data[menu]['settings'][f'check_ctrl{1 if action == "run" else 2}_state']:
-            parts.append('Key.ctrl')
+            parts.append('<ctrl>')
         if self.macro_controller.data[menu]['settings'][f'check_alt{1 if action == "run" else 2}_state']:
-            parts.append('Key.alt')
+            parts.append('<alt>')
         if self.macro_controller.data[menu]['settings'][f'check_shift{1 if action == "run" else 2}_state']:
-            parts.append('Key.shift')
+            parts.append('<shift>')
         
-        # 일반 키 추가
-        parts.append(combo_value)
+        # 일반 키 추가 (키 값을 소문자로 변환)
+        parts.append(combo_value.lower())
         
-        # 핫키 문자열 생성 (예: 'Key.ctrl+1' 또는 그냥 '1')
+        # 핫키 문자열 생성
         return '+'.join(parts)
     
     def register_hotkeys(self):

@@ -2,6 +2,10 @@ def get_initial_data():
     """초기 데이터 구조 반환"""
     return {
         'menu2': {
+            'mode': {   
+                'radio_active_state': True,
+                'radio_passive_state': False
+            },
             'settings': {
                 'combo_run_value': '0',
                 'check_ctrl1_state': False,
@@ -11,8 +15,6 @@ def get_initial_data():
                 'check_ctrl2_state': False,
                 'check_alt2_state': False,
                 'check_shift2_state': False,
-                'radio_active_state': True,
-                'radio_passive_state': False
             },
             'coordinates': {
                 'image1_x': 0,
@@ -33,6 +35,10 @@ def get_initial_data():
             }
         },
         'menu3': {
+            'mode': {   
+                'radio_active_state': True,
+                'radio_passive_state': False
+            },
             'settings': {
                 'combo_run_value': '0',
                 'check_ctrl1_state': False,
@@ -64,6 +70,10 @@ def get_initial_data():
             }
         },
         'menu6': {
+            'mode': {   
+                'radio_active_state': True,
+                'radio_passive_state': False
+            },
             'settings': {
                 'combo_run_value': '0',
                 'check_ctrl1_state': False,
@@ -99,7 +109,7 @@ def get_initial_data():
                 'frame_image6': None,
                 'entry2': 15,
                 'button_state': 'off',
-                'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
+                'frame_color': "#CED0D0"
             }
         }
     } 

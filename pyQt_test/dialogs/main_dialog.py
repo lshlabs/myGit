@@ -1,6 +1,9 @@
-import sys
 import os
-import resource_rc
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parents[1]))  # pyQt_test 폴더를 path에 추가
+
+import resource_rc  # 이제 직접 import 가능
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
@@ -8,8 +11,9 @@ from ui.MainWindow_ui import Ui_MainWindow
 from dialogs.image_dialog import ImageDialog
 from dialogs.settings_dialog import SettingsDialog
 from macro.macro_controller import MacroController
-from utils import (get_data_file_path, load_json_data, save_json_data, 
-                  get_relative_path, get_absolute_path)
+from macro.hotkey_manager import HotkeyManager
+from utils.file_utils import (get_data_file_path, load_json_data, save_json_data, 
+                              get_relative_path, get_absolute_path)
 from utils.initial_data import get_initial_data
 
 # 배달앱 정보
@@ -358,16 +362,16 @@ class MainWindow(QMainWindow):
         """라디오 버튼 상태 저장"""
         data = load_json_data(self.data_file)
         if data:
-            data[menu_name]['settings']['radio_active_state'] = self.ui.radio_active.isChecked()
-            data[menu_name]['settings']['radio_passive_state'] = self.ui.radio_passive.isChecked()
+            data[menu_name]['mode']['radio_active_state'] = self.ui.radio_active.isChecked()
+            data[menu_name]['mode']['radio_passive_state'] = self.ui.radio_passive.isChecked()
             save_json_data(self.data_file, data)
 
     def load_radio_state(self, menu_name):
         """라디오 버튼 상태 로드"""
         data = load_json_data(self.data_file)
         if data:
-            active_state = data[menu_name]['settings']['radio_active_state']
-            passive_state = data[menu_name]['settings']['radio_passive_state']
+            active_state = data[menu_name]['mode']['radio_active_state']
+            passive_state = data[menu_name]['mode']['radio_passive_state']
             
             self.ui.radio_active.setChecked(active_state)
             self.ui.radio_passive.setChecked(passive_state)
