@@ -31,7 +31,7 @@ class Ui_SettingsDialog(object):
         sizePolicy.setHeightForWidth(SettingsDialog.sizePolicy().hasHeightForWidth())
         SettingsDialog.setSizePolicy(sizePolicy)
         font = QFont()
-        font.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font.setFamilies([u"Nanum Gothic"])
         SettingsDialog.setFont(font)
         SettingsDialog.setAutoFillBackground(False)
         SettingsDialog.setStyleSheet(u"QDialog{\n"
@@ -41,9 +41,8 @@ class Ui_SettingsDialog(object):
         self.buttonBox = QDialogButtonBox(SettingsDialog)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(10, 260, 430, 35))
-        self.buttonBox.setMinimumSize(QSize(430, 35))
         font1 = QFont()
-        font1.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font1.setFamilies([u"Nanum Gothic"])
         font1.setPointSize(12)
         self.buttonBox.setFont(font1)
         self.buttonBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
@@ -55,6 +54,7 @@ class Ui_SettingsDialog(object):
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(20, 20, 410, 150))
         font2 = QFont()
+        font2.setFamilies([u".AppleSystemUIFont"])
         font2.setPointSize(10)
         self.groupBox.setFont(font2)
         self.check_shift1 = QCheckBox(self.groupBox)
@@ -73,7 +73,7 @@ class Ui_SettingsDialog(object):
         self.combo_stop.setObjectName(u"combo_stop")
         self.combo_stop.setGeometry(QRect(90, 90, 120, 32))
         font4 = QFont()
-        font4.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font4.setFamilies([u"Nanum Gothic"])
         font4.setPointSize(10)
         font4.setItalic(False)
         font4.setKerning(False)
@@ -95,11 +95,12 @@ class Ui_SettingsDialog(object):
         self.label_start.setObjectName(u"label_start")
         self.label_start.setGeometry(QRect(10, 30, 70, 32))
         font5 = QFont()
-        font5.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font5.setFamilies([u"Nanum Gothic"])
         font5.setPointSize(10)
         self.label_start.setFont(font5)
         self.label_start.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
 "}")
         self.label_start.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.check_ctrl2 = QCheckBox(self.groupBox)
@@ -126,6 +127,7 @@ class Ui_SettingsDialog(object):
         self.label_stop.setFont(font5)
         self.label_stop.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
 "}")
         self.label_stop.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.check_ctrl1 = QCheckBox(self.groupBox)

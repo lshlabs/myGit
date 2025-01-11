@@ -1,0 +1,104 @@
+{
+  "menu2": {
+    "settings": {
+      "combo_run_value": "1",
+      "check_ctrl1_state": true,
+      "check_alt1_state": false,
+      "check_shift1_state": false,
+      "combo_stop_value": "0",
+      "check_ctrl2_state": false,
+      "check_alt2_state": false,
+      "check_shift2_state": false
+    },
+    "coordinates": {
+      "image1_x": 0,
+      "image1_y": 0,
+      "image2_x": 0,
+      "image2_y": 0,
+      "image3_x": 0,
+      "image3_y": 0
+    },
+    "other_values": {
+      "frame_image1": null,
+      "frame_image2": null,
+      "frame_image3": null,
+      "entry1": 50,
+      "entry2": 15,
+      "button_state": "off",
+      "frame_color": "background:#CED0D0",
+      "label_title_color": "#000000"
+    }
+  },
+  "menu3": {
+    "settings": {
+      "combo_run_value": "0",
+      "check_ctrl1_state": false,
+      "check_alt1_state": false,
+      "check_shift1_state": false,
+      "combo_stop_value": "0",
+      "check_ctrl2_state": false,
+      "check_alt2_state": false,
+      "check_shift2_state": false,
+      "radio_active_state": false,
+      "radio_passive_state": true
+    },
+    "coordinates": {
+      "image1_x": 0,
+      "image1_y": 0,
+      "image2_x": 0,
+      "image2_y": 0,
+      "image3_x": 0,
+      "image3_y": 0
+    },
+    "other_values": {
+      "frame_image1": null,
+      "frame_image2": null,
+      "frame_image3": null,
+      "entry1": 50,
+      "entry2": 15,
+      "button_state": "off",
+      "frame_color": "background:#CED0D0",
+      "label_title_color": "#000000"
+    }
+  },
+  "menu6": {
+    "settings": {
+      "combo_run_value": "0",
+      "check_ctrl1_state": false,
+      "check_alt1_state": false,
+      "check_shift1_state": false,
+      "combo_stop_value": "0",
+      "check_ctrl2_state": false,
+      "check_alt2_state": false,
+      "check_shift2_state": false,
+      "radio_active_state": false,
+      "radio_passive_state": true
+    },
+    "coordinates": {
+      "image1_x": 0,
+      "image1_y": 0,
+      "image2_x": 0,
+      "image2_y": 0,
+      "image3_x": 0,
+      "image3_y": 0,
+      "image4_x": 0,
+      "image4_y": 0,
+      "image5_x": 0,
+      "image5_y": 0,
+      "image6_x": 0,
+      "image6_y": 0
+    },
+    "other_values": {
+      "frame_image1": null,
+      "frame_image2": null,
+      "frame_image3": null,
+      "frame_image4": null,
+      "frame_image5": null,
+      "frame_image6": null,
+      "entry2": 15,
+      "button_state": "off",
+      "frame_color": "background:#CED0D0",
+      "label_title_color": "#000000"
+    }
+  }
+}

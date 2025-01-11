@@ -18,11 +18,23 @@ class HotkeyManager:
     def _create_hotkey(self, menu, action):
         """핫키 조합을 생성하는 헬퍼 메서드"""
         combo_value = self.macro_controller.data[menu]['settings'][f'combo_{action}_value']
-        ctrl_state = 'ctrl' if self.macro_controller.data[menu]['settings'][f'check_ctrl{1 if action == "run" else 2}_state'] else None
-        alt_state = 'alt' if self.macro_controller.data[menu]['settings'][f'check_alt{1 if action == "run" else 2}_state'] else None
-        shift_state = 'shift' if self.macro_controller.data[menu]['settings'][f'check_shift{1 if action == "run" else 2}_state'] else None
+        if not combo_value or combo_value == '0':
+            return None
         
-        return '+'.join(filter(None, [combo_value, ctrl_state, alt_state, shift_state]))
+        parts = []
+        # 수정자 키 확인
+        if self.macro_controller.data[menu]['settings'][f'check_ctrl{1 if action == "run" else 2}_state']:
+            parts.append('Key.ctrl')
+        if self.macro_controller.data[menu]['settings'][f'check_alt{1 if action == "run" else 2}_state']:
+            parts.append('Key.alt')
+        if self.macro_controller.data[menu]['settings'][f'check_shift{1 if action == "run" else 2}_state']:
+            parts.append('Key.shift')
+        
+        # 일반 키 추가
+        parts.append(combo_value)
+        
+        # 핫키 문자열 생성 (예: 'Key.ctrl+1' 또는 그냥 '1')
+        return '+'.join(parts)
     
     def register_hotkeys(self):
         """키보드 이벤트 리스너 등록"""

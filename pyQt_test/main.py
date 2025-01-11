@@ -10,6 +10,7 @@ from dialogs.settings_dialog import SettingsDialog
 from macro.macro_controller import MacroController
 from utils import (get_data_file_path, load_json_data, save_json_data, 
                   get_relative_path, get_absolute_path)
+from utils.initial_data import get_initial_data
 
 # 배달앱 정보
 baemin = {"text": "배달의 민족", "color": "#45D3D3"}
@@ -75,77 +76,13 @@ class MainWindow(QMainWindow):
             self.ui.entry1.setText(str(data['menu2']['other_values']['entry1']))
             self.ui.entry2.setText(str(data['menu2']['other_values']['entry2']))
 
-       
+        # 라디오 버튼 상태 변경 이벤트 연결
+        self.ui.radio_active.toggled.connect(lambda: self.save_radio_state(self.get_current_menu()))
+        self.ui.radio_passive.toggled.connect(lambda: self.save_radio_state(self.get_current_menu()))
 
     def create_data_file(self):
         """초기 데이터 파일 생성"""
-        initial_data = {
-            'menu2': {
-                'settings': {
-                    'combo_run_value': '0',
-                    'check_ctrl1_state': False,
-                    'check_alt1_state': False,
-                    'check_shift1_state': False,
-                    'combo_stop_value': '0',
-                    'check_ctrl2_state': False,
-                    'check_alt2_state': False,
-                    'check_shift2_state': False,
-                },
-                'other_values': {
-                    'frame_image1': None,
-                    'frame_image2': None,
-                    'frame_image3': None,
-                    'entry1': 50,
-                    'entry2': 15,
-                    'button_state': 'off',
-                    'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
-                }
-            },
-            'menu3': {
-                'settings': {
-                    'combo_run_value': '0',
-                    'check_ctrl1_state': False,
-                    'check_alt1_state': False,
-                    'check_shift1_state': False,
-                    'combo_stop_value': '0',
-                    'check_ctrl2_state': False,
-                    'check_alt2_state': False,
-                    'check_shift2_state': False,
-                },
-                'other_values': {
-                    'frame_image1': None,
-                    'frame_image2': None,
-                    'frame_image3': None,
-                    'entry1': 50,
-                    'entry2': 15,
-                    'button_state': 'off',
-                    'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
-                }
-            },
-            'menu6': {
-                'settings': {
-                    'combo_run_value': '0',
-                    'check_ctrl1_state': False,
-                    'check_alt1_state': False,
-                    'check_shift1_state': False,
-                    'combo_stop_value': '0',
-                    'check_ctrl2_state': False,
-                    'check_alt2_state': False,
-                    'check_shift2_state': False,
-                },
-                'other_values': {
-                    'frame_image1': None,
-                    'frame_image2': None,
-                    'frame_image3': None,
-                    'frame_image4': None,
-                    'frame_image5': None,
-                    'frame_image6': None,
-                    'entry2': 15,
-                    'button_state': 'off',
-                    'frame_color': "#CED0D0"  # RGB(206, 208, 208) -> HEX
-                }
-            }
-        }
+        initial_data = get_initial_data()
         save_json_data(self.data_file, initial_data)
 
     def load_image_data(self):
@@ -186,6 +123,9 @@ class MainWindow(QMainWindow):
         
         # UI 업데이트
         self.update_menu_display(menu_name, settings)
+        
+        # 라디오 버튼 상태 로드 추가
+        self.load_radio_state(menu_name)
 
     def update_menu_display(self, menu_name, settings):
         """메뉴 화면 업데이트"""
@@ -358,29 +298,42 @@ class MainWindow(QMainWindow):
 
     def show_image_dialog(self, frame):
         """이미지 선택 다이얼로그 표시"""
-        dialog = ImageDialog(self)
         current_menu = self.get_current_menu()
         frame_name = frame.objectName()
+        image_number = frame_name.replace('frame_image', '')
         
-        if frame.pixmap() and not frame.pixmap().isNull():
-            dialog.set_preview_image(frame.pixmap())
-            data = load_json_data(self.data_file)
-            if data:
+        dialog = ImageDialog(self, current_menu, image_number)
+        
+        # 데이터 로드
+        data = load_json_data(self.data_file)
+        if data:
+            # 이미지 관련 처리
+            if frame.pixmap() and not frame.pixmap().isNull():
+                dialog.set_preview_image(frame.pixmap())
                 current_path = data[current_menu]['other_values'][frame_name]
                 if current_path:
                     dialog.selected_file_path = get_absolute_path(current_path)
+            
+            # 좌표 로드 (이미지 유무와 관계없이)
+            x_coord = data[current_menu]['coordinates'][f'image{image_number}_x']
+            y_coord = data[current_menu]['coordinates'][f'image{image_number}_y']
+            if x_coord != 0 or y_coord != 0:
+                dialog.ui.textEdit_X.setText(str(x_coord))
+                dialog.ui.textEdit_Y.setText(str(y_coord))
         
         if dialog.exec() == QDialog.Accepted:
             if dialog.reset_requested:
                 # 이미지 초기화
                 frame.clear()
-                frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")  # RGB(206, 208, 208) -> HEX
+                frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")
                 self.menu_pixmaps[current_menu][frame_name] = None
                 
-                # JSON 파일 업데이트
+                # JSON 파일 업데이트 (이미지 경로와 좌표 모두 초기화)
                 data = load_json_data(self.data_file)
                 if data:
                     data[current_menu]['other_values'][frame_name] = None
+                    data[current_menu]['coordinates'][f'image{image_number}_x'] = 0
+                    data[current_menu]['coordinates'][f'image{image_number}_y'] = 0
                     save_json_data(self.data_file, data)
             
             elif dialog.selected_pixmap:
@@ -389,7 +342,7 @@ class MainWindow(QMainWindow):
                 frame.setStyleSheet("background: transparent;\nborder:1px solid black;")
                 self.menu_pixmaps[current_menu][frame_name] = dialog.selected_pixmap
                 
-                # JSON 파일 업데이트
+                # JSON 파일 업데이트 (이미지 경로)
                 relative_path = get_relative_path(dialog.selected_file_path)
                 data = load_json_data(self.data_file)
                 if data:
@@ -400,6 +353,24 @@ class MainWindow(QMainWindow):
         """설정 다이얼로그 표시"""
         dialog = SettingsDialog(self)
         dialog.exec()
+
+    def save_radio_state(self, menu_name):
+        """라디오 버튼 상태 저장"""
+        data = load_json_data(self.data_file)
+        if data:
+            data[menu_name]['settings']['radio_active_state'] = self.ui.radio_active.isChecked()
+            data[menu_name]['settings']['radio_passive_state'] = self.ui.radio_passive.isChecked()
+            save_json_data(self.data_file, data)
+
+    def load_radio_state(self, menu_name):
+        """라디오 버튼 상태 로드"""
+        data = load_json_data(self.data_file)
+        if data:
+            active_state = data[menu_name]['settings']['radio_active_state']
+            passive_state = data[menu_name]['settings']['radio_passive_state']
+            
+            self.ui.radio_active.setChecked(active_state)
+            self.ui.radio_passive.setChecked(passive_state)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

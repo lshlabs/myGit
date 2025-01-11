@@ -38,7 +38,7 @@ class Ui_ImageDialog(object):
         self.preview_label.setMinimumSize(QSize(0, 0))
         self.preview_label.setMaximumSize(QSize(200, 160))
         font1 = QFont()
-        font1.setFamilies([u"\ub9d1\uc740 \uace0\ub515"])
+        font1.setFamilies([u"Nanum Gothic"])
         font1.setPointSize(12)
         self.preview_label.setFont(font1)
         self.preview_label.setStyleSheet(u"QLabel{\n"
@@ -65,7 +65,7 @@ class Ui_ImageDialog(object):
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(25, 170, 250, 120))
         font3 = QFont()
-        font3.setFamilies([u"\ub9d1\uc740 \uace0\ub515"])
+        font3.setFamilies([u"Nanum Gothic"])
         font3.setPointSize(10)
         font3.setKerning(True)
         self.groupBox.setFont(font3)
@@ -85,11 +85,15 @@ class Ui_ImageDialog(object):
         font5.setFamilies([u"Arial"])
         font5.setPointSize(11)
         self.label_2.setFont(font5)
+        self.label_2.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
         self.textEdit_X = QTextEdit(self.groupBox)
         self.textEdit_X.setObjectName(u"textEdit_X")
         self.textEdit_X.setGeometry(QRect(50, 50, 60, 20))
         font6 = QFont()
-        font6.setFamilies([u"\ub9d1\uc740 \uace0\ub515"])
+        font6.setFamilies([u"Nanum Gothic"])
         font6.setPointSize(10)
         self.textEdit_X.setFont(font6)
         self.textEdit_X.setAutoFillBackground(False)
@@ -103,6 +107,10 @@ class Ui_ImageDialog(object):
         self.label_3.setObjectName(u"label_3")
         self.label_3.setGeometry(QRect(130, 50, 20, 20))
         self.label_3.setFont(font5)
+        self.label_3.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
         self.textEdit_Y = QTextEdit(self.groupBox)
         self.textEdit_Y.setObjectName(u"textEdit_Y")
         self.textEdit_Y.setGeometry(QRect(150, 50, 60, 20))
@@ -118,7 +126,7 @@ class Ui_ImageDialog(object):
         self.tool_tip.setObjectName(u"tool_tip")
         self.tool_tip.setGeometry(QRect(223, 25, 15, 15))
         font7 = QFont()
-        font7.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font7.setFamilies([u"Nanum Gothic"])
         font7.setPointSize(8)
         self.tool_tip.setFont(font7)
         self.tool_tip.setStyleSheet(u"QLabel{\n"
@@ -134,22 +142,20 @@ class Ui_ImageDialog(object):
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(10, 25, 210, 15))
         font8 = QFont()
-        font8.setFamilies([u"\ub098\ub214\uace0\ub515"])
+        font8.setFamilies([u"Nanum Gothic"])
         font8.setPointSize(8)
         font8.setItalic(False)
         font8.setUnderline(False)
         self.label_4.setFont(font8)
         self.label_4.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
 "}")
         self.label_4.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.buttonBox = QDialogButtonBox(ImageDialog)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(50, 310, 201, 35))
-        font9 = QFont()
-        font9.setFamilies([u"\ub098\ub214\uace0\ub515"])
-        font9.setPointSize(12)
-        self.buttonBox.setFont(font9)
+        self.buttonBox.setFont(font1)
         self.buttonBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.buttonBox.setAutoFillBackground(False)
         self.buttonBox.setStyleSheet(u"")
@@ -171,7 +177,7 @@ class Ui_ImageDialog(object):
 "\uc774\ubbf8\uc9c0\ub97c \uc120\ud0dd\ud558\uc138\uc694", None))
         self.reset_button.setText("")
         self.groupBox.setTitle(QCoreApplication.translate("ImageDialog", u" \uc88c\ud45c \uc124\uc815 ", None))
-        self.button_record.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d\uc2dc\uc791", None))
+        self.button_record.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d", None))
         self.label_2.setText(QCoreApplication.translate("ImageDialog", u"X :", None))
         self.label_3.setText(QCoreApplication.translate("ImageDialog", u"Y :", None))
         self.tool_tip.setText(QCoreApplication.translate("ImageDialog", u"?", None))

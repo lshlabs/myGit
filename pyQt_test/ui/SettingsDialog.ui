@@ -21,7 +21,7 @@
   </property>
   <property name="font">
    <font>
-    <family>나눔고딕</family>
+    <family>Nanum Gothic</family>
    </font>
   </property>
   <property name="windowTitle">
@@ -47,15 +47,9 @@
      <height>35</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>430</width>
-     <height>35</height>
-    </size>
-   </property>
    <property name="font">
     <font>
-     <family>나눔고딕</family>
+     <family>Nanum Gothic</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -86,6 +80,7 @@
    </property>
    <property name="font">
     <font>
+     <family>.AppleSystemUIFont</family>
      <pointsize>10</pointsize>
     </font>
    </property>
@@ -133,7 +128,7 @@
     </property>
     <property name="font">
      <font>
-      <family>나눔고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>10</pointsize>
       <italic>false</italic>
       <kerning>false</kerning>
@@ -193,13 +188,14 @@
     </property>
     <property name="font">
      <font>
-      <family>나눔고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	color: rgb(0 ,0, 0);
+	background-color: transparent;
 }</string>
     </property>
     <property name="text">
@@ -280,13 +276,14 @@
     </property>
     <property name="font">
      <font>
-      <family>나눔고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	color: rgb(0 ,0, 0);
+	background-color: transparent;
 }</string>
     </property>
     <property name="text">
@@ -373,7 +370,7 @@
     </property>
     <property name="font">
      <font>
-      <family>나눔고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>10</pointsize>
       <italic>false</italic>
       <kerning>false</kerning>

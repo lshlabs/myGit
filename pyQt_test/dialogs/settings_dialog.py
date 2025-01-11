@@ -23,6 +23,7 @@ class SettingsDialog(QDialog):
         self.data_file = get_data_file_path()
         self.load_settings()
         self.ui.buttonBox.accepted.connect(self.save_settings)
+        self.ui.buttonBox.rejected.connect(self.reject)
         
     def load_settings(self):
         """저장된 설정값 로드"""

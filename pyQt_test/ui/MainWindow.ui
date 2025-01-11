@@ -170,7 +170,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>Nanum Gothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -236,7 +236,7 @@ border: none;</string>
           <widget class="QLineEdit" name="entry1">
            <property name="font">
             <font>
-             <family>나눔고딕</family>
+             <family>Nanum Gothic</family>
              <pointsize>9</pointsize>
             </font>
            </property>
@@ -353,7 +353,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>나눔고딕</family>
+             <family>Nanum Gothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -486,7 +486,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>나눔고딕</family>
+             <family>Nanum Gothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -578,7 +578,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>Nanum Gothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -662,7 +662,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>나눔고딕</family>
+             <family>Nanum Gothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -777,7 +777,7 @@ border: none;</string>
           <widget class="QLineEdit" name="entry2">
            <property name="font">
             <font>
-             <family>나눔고딕</family>
+             <family>Nanum Gothic</family>
              <pointsize>9</pointsize>
             </font>
            </property>
@@ -894,7 +894,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>나눔고딕</family>
+             <family>Nanum Gothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -963,7 +963,7 @@ border: none;</string>
        </property>
        <property name="font">
         <font>
-         <family>나눔고딕</family>
+         <family>Nanum Gothic</family>
         </font>
        </property>
        <property name="styleSheet">
@@ -986,7 +986,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>Nanum Gothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1042,7 +1042,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>Nanum Gothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1070,7 +1070,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>나눔고딕</family>
+          <family>Nanum Gothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1115,7 +1115,7 @@ border: none;</string>
       </property>
       <property name="font">
        <font>
-        <family>나눔고딕</family>
+        <family>Nanum Gothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1158,7 +1158,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>나눔고딕</family>
+        <family>Nanum Gothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1201,7 +1201,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>나눔고딕</family>
+        <family>Nanum Gothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1244,7 +1244,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>나눔고딕</family>
+        <family>Nanum Gothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1287,7 +1287,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>나눔고딕</family>
+        <family>Nanum Gothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1330,7 +1330,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>나눔고딕</family>
+        <family>Nanum Gothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1591,7 +1591,7 @@ border: 1px solid black;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>30</pointsize>
        <bold>false</bold>
       </font>
@@ -1647,7 +1647,7 @@ border-radius:15px;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
       </font>
      </property>
      <property name="styleSheet">
@@ -1735,7 +1735,7 @@ border-radius:15px;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1780,7 +1780,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1825,7 +1825,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1870,7 +1870,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1915,7 +1915,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1966,7 +1966,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -2014,7 +2014,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>나눔고딕</family>
+       <family>Nanum Gothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>

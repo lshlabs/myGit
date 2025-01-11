@@ -52,7 +52,7 @@
    </property>
    <property name="font">
     <font>
-     <family>맑은 고딕</family>
+     <family>Nanum Gothic</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -121,7 +121,7 @@ border-radius: 10px;</string>
    </property>
    <property name="font">
     <font>
-     <family>맑은 고딕</family>
+     <family>Nanum Gothic</family>
      <pointsize>10</pointsize>
      <kerning>true</kerning>
     </font>
@@ -150,7 +150,7 @@ border-radius: 10px;</string>
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>기록시작</string>
+     <string>기록</string>
     </property>
     <property name="default">
      <bool>true</bool>
@@ -174,6 +174,12 @@ border-radius: 10px;</string>
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
     <property name="text">
      <string>X :</string>
     </property>
@@ -189,7 +195,7 @@ border-radius: 10px;</string>
     </property>
     <property name="font">
      <font>
-      <family>맑은 고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -228,6 +234,12 @@ border: 1px solid black;</string>
       <pointsize>11</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
     <property name="text">
      <string>Y :</string>
     </property>
@@ -243,7 +255,7 @@ border: 1px solid black;</string>
     </property>
     <property name="font">
      <font>
-      <family>맑은 고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -278,7 +290,7 @@ border: 1px solid black;</string>
     </property>
     <property name="font">
      <font>
-      <family>나눔고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>8</pointsize>
      </font>
     </property>
@@ -310,7 +322,7 @@ border: 1px solid black;</string>
     </property>
     <property name="font">
      <font>
-      <family>나눔고딕</family>
+      <family>Nanum Gothic</family>
       <pointsize>8</pointsize>
       <italic>false</italic>
       <underline>false</underline>
@@ -319,6 +331,7 @@ border: 1px solid black;</string>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	color: rgb(0 ,0, 0);
+	background-color: transparent;
 }</string>
     </property>
     <property name="text">
@@ -340,7 +353,7 @@ border: 1px solid black;</string>
    </property>
    <property name="font">
     <font>
-     <family>나눔고딕</family>
+     <family>Nanum Gothic</family>
      <pointsize>12</pointsize>
     </font>
    </property>
