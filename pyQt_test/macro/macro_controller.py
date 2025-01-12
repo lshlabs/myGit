@@ -6,6 +6,8 @@ from pynput import keyboard  # pynput 라이브러리 추가
 from .image_finder import ImageFinder
 import pyautogui as pg
 from .hotkey_manager import HotkeyManager
+from .coordinate_clicker import CoordinateClicker
+from utils.file_utils import load_json_data  # 추가된 import
 
 class MacroController:
     def __init__(self, data_file, main_window):
@@ -14,7 +16,7 @@ class MacroController:
         self.image_finder_pyautogui = ImageFinder()
         self.running = {}  # 각 메뉴의 실행 상태
         self.macro_threads = {}  # 각 메뉴의 스레드
-        self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))
+        self.data = self._load_data()  # 메서드로 분리
         self.completed_frames = {}  # 각 메뉴의 완료된 프레임 수
         self.frame1_detected = {}  # frame_image1 감지 상태
         self.frame1_order = []  # frame_image1이 감지된 메뉴 순서
@@ -23,6 +25,10 @@ class MacroController:
         # 핫키 매니저 초기화 및 등록
         self.hotkey_manager = HotkeyManager(self)
         self.hotkey_manager.register_hotkeys()
+
+    def _load_data(self):
+        """데이터 로드"""
+        return json.load(open(self.data_file, 'r', encoding='utf-8'))
 
     def _run_macro(self, menu_name):
         """매크로 실행 스레드"""
@@ -106,13 +112,20 @@ class MacroController:
 
     def start_macro(self, menu_name):
         """매크로 시작"""
-        self.data = json.load(open(self.data_file, 'r', encoding='utf-8'))
-        menu_data = self.data[menu_name]['other_values']
+        self.data = self._load_data()
         
+        # 매크로 on/off 상태 체크
         button_state = self.data[menu_name]['other_values']['button_state']
         if button_state == 'off':
             print(f"[{menu_name}] 매크로가 off 상태입니다")
             return
+        
+        # 자동모드(active) 체크
+        if not self.data[menu_name]['mode']['radio_active_state']:
+            print(f"[{menu_name}] 자동모드가 아닙니다")
+            return
+        
+        menu_data = self.data[menu_name]['other_values']
         
         if not self.running.get(menu_name, False):
             self.running[menu_name] = True
@@ -187,3 +200,49 @@ class MacroController:
             break  # 작업 완료 후 종료
 
         time.sleep(1)
+
+    def start_coordinate_macro(self, menu):
+        clicker = CoordinateClicker(self.data, menu)
+        if clicker.is_valid_coordinates():
+            # 새로운 스레드에서 실행
+            self.current_thread = threading.Thread(target=clicker.start)
+            self.current_thread.start()
+        else:
+            print("유효한 좌표가 없습니다.")
+
+    def click_coordinate(self, menu, image_num):
+        """특정 메뉴의 이미지 좌표 클릭"""
+        try:
+            # 실행 시점에 최신 데이터 로드
+            self.data = self._load_data()
+            
+            # 데이터 유효성 검사
+            if not self.data or menu not in self.data:
+                print("데이터가 유효하지 않습니다.")
+                return
+            
+            # 매크로 on/off 상태 체크
+            button_state = self.data[menu]['other_values']['button_state']
+            if button_state == 'off':
+                print(f"[{menu}] 매크로가 off 상태입니다")
+                return
+            
+            # 수동모드(passive) 체크
+            if not self.data[menu]['mode']['radio_passive_state']:
+                print(f"[{menu}] 수동모드가 아닙니다")
+                return
+            
+            coordinates = self.data[menu]['coordinates']
+            x = coordinates[f'image{image_num}_x']
+            y = coordinates[f'image{image_num}_y']
+            
+            # 좌표가 유효한 경우에만 클릭
+            if x != 0 and y != 0:
+                pg.moveTo(x, y)
+                pg.click()
+                print(f"{menu}의 이미지{image_num} 좌표({x}, {y}) 클릭 완료")
+            else:
+                print(f"좌표가 설정되지 않았습니다: {menu} - image{image_num}")
+            
+        except Exception as e:
+            print(f"좌표 클릭 중 오류 발생: {e}")

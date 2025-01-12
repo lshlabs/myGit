@@ -1,64 +1,104 @@
 from pynput import keyboard
+from pynput.keyboard import Key, GlobalHotKeys
 
 class HotkeyManager:
     def __init__(self, macro_controller):
-       self.macro_controller = macro_controller
-       self.hotkey_listener = None
-    def create_hotkey_combination(self):
-        """핫키 조합을 생성하는 메서드"""
-        run_dict = {}
-        stop_dict = {}
+        self.macro_controller = macro_controller
+        self.hotkey_listeners = []  # 핫키 리스너들을 저장할 리스트 추가
+
+    def register_hotkeys(self):
+        """모든 메뉴의 핫키 등록"""
+        hotkeys = {}  # GlobalHotKeys에 전달할 핫키 딕셔너리
         
-        # 각 메뉴에 대한 핫키 조합 생성
+        print("\n=== 핫키 등록 정보 ===")
+        
         for menu in ['menu2', 'menu3', 'menu6']:
-            run_dict[menu] = self._create_hotkey(menu, 'run')
-            stop_dict[menu] = self._create_hotkey(menu, 'stop')
-        return run_dict, stop_dict
-    
-    def _create_hotkey(self, menu, action):
-        """핫키 조합을 생성하는 헬퍼 메서드"""
-        combo_value = self.macro_controller.data[menu]['settings'][f'combo_{action}_value']
+            print(f"\n[ {menu} ]")
+            # 액티브 모드 핫키
+            run_hotkey = self._create_active_hotkey(menu, 'run')
+            stop_hotkey = self._create_active_hotkey(menu, 'stop')
+            
+            if run_hotkey:
+                hotkeys[run_hotkey] = lambda m=menu: self.macro_controller.start_macro(m)
+                print(f"자동모드 실행 핫키: {run_hotkey}")
+            else:
+                print("자동모드 실행 핫키: 설정 안됨")
+            
+            if stop_hotkey:
+                hotkeys[stop_hotkey] = lambda m=menu: self.macro_controller.stop_macro(m)
+                print(f"자동모드 중지 핫키: {stop_hotkey}")
+            else:
+                print("자동모드 중지 핫키: 설정 안됨")
+            
+            # 패시브 모드 핫키
+            max_ps = 6 if menu == 'menu6' else 3
+            for i in range(1, max_ps + 1):
+                ps_hotkey = self._create_passive_hotkey(menu, i)
+                if ps_hotkey:
+                    hotkeys[ps_hotkey] = lambda m=menu, img=i: self.macro_controller.click_coordinate(m, img)
+                    print(f"수동모드 핫키 {i}: {ps_hotkey}")
+                else:
+                    print(f"수동모드 핫키 {i}: 설정 안됨")
+        
+        print("\n==================")
+        
+        # GlobalHotKeys 리스너 생성 및 시작
+        if hotkeys:
+            listener = GlobalHotKeys(hotkeys)
+            listener.start()
+            self.hotkey_listeners.append(listener)
+
+    def unregister_all_hotkeys(self):
+        """모든 핫키 해제"""
+        for listener in self.hotkey_listeners:
+            listener.stop()
+        self.hotkey_listeners.clear()
+    def _create_active_hotkey(self, menu, action):
+        """액티브 모드 핫키 생성"""
+        settings = self.macro_controller.data[menu]['settings_active']
+        
+        combo_value = settings[f'combo_{action}_value']
         if not combo_value or combo_value == '0':
             return None
         
-        parts = []
-        # 수정자 키 확인 (형식 변경)
-        if self.macro_controller.data[menu]['settings'][f'check_ctrl{1 if action == "run" else 2}_state']:
-            parts.append('<ctrl>')
-        if self.macro_controller.data[menu]['settings'][f'check_alt{1 if action == "run" else 2}_state']:
-            parts.append('<alt>')
-        if self.macro_controller.data[menu]['settings'][f'check_shift{1 if action == "run" else 2}_state']:
-            parts.append('<shift>')
+        modifiers = []
+        if settings[f'check_ctrl{1 if action == "run" else 2}_state']:
+            modifiers.append('<ctrl>')
+        if settings[f'check_alt{1 if action == "run" else 2}_state']:
+            modifiers.append('<alt>')
+        if settings[f'check_shift{1 if action == "run" else 2}_state']:
+            modifiers.append('<shift>')
         
-        # 일반 키 추가 (키 값을 소문자로 변환)
-        parts.append(combo_value.lower())
+        # 특수 키 처리
+        key = combo_value.lower()
+        if key.startswith('f') and key[1:].isdigit():  # F1-F12 키 처리
+            key = f'<f{key[1:]}>'
         
-        # 핫키 문자열 생성
-        return '+'.join(parts)
-    
-    def register_hotkeys(self):
-        """키보드 이벤트 리스너 등록"""
-        run_combination, stop_combination = self.create_hotkey_combination()
-        # 디버깅 출력
-        print(f"menu2 실행 트리거 키 조합: {run_combination['menu2']}")
-        print(f"menu2 종료 트리거 키 조합: {stop_combination['menu2']}")
-        print(f"menu3 실행 트리거 키 조합: {run_combination['menu3']}")
-        print(f"menu3 종료 트리거 키 조합: {stop_combination['menu3']}")
-        print(f"menu6 실행 트리거 키 조합: {run_combination['menu6']}")
-        print(f"menu6 종료 트리거 키 조합: {stop_combination['menu6']}")
-        # 핫키 등록
-        hotkey_dict = {
-            run_combination['menu2']: lambda: self.macro_controller.start_macro('menu2'),
-            stop_combination['menu2']: lambda: self.macro_controller.stop_macro('menu2'),
-            run_combination['menu3']: lambda: self.macro_controller.start_macro('menu3'),
-            stop_combination['menu3']: lambda: self.macro_controller.stop_macro('menu3'),
-            run_combination['menu6']: lambda: self.macro_controller.start_macro('menu6'),
-            stop_combination['menu6']: lambda: self.macro_controller.stop_macro('menu6')
-        }
-        # 빈 문자열 체크 및 핫키 등록
-        self.hotkey_listener = keyboard.GlobalHotKeys({
-            k: v for k, v in hotkey_dict.items() if k  # 빈 문자열이 아닌 경우만 등록
-        })
-        self.hotkey_listener.start()
+        if modifiers:
+            return f"{'+'.join(modifiers)}+{key}"
+        return key
+
+    def _create_passive_hotkey(self, menu, index):
+        """패시브 모드 핫키 생성"""
+        settings = self.macro_controller.data[menu]['settings_passive']
         
-        return hotkey_dict
+        combo_value = settings[f'combo_ps{index}_value']
+        if not combo_value or combo_value == '0':
+            return None
+        
+        modifiers = []
+        if settings[f'check_ctrl{index+2}_state']:
+            modifiers.append('<ctrl>')
+        if settings[f'check_alt{index+2}_state']:
+            modifiers.append('<alt>')
+        if settings[f'check_shift{index+2}_state']:
+            modifiers.append('<shift>')
+        
+        # 특수 키 처리
+        key = combo_value.lower()
+        if key.startswith('f') and key[1:].isdigit():  # F1-F12 키 처리
+            key = f'<f{key[1:]}>'
+        
+        if modifiers:
+            return f"{'+'.join(modifiers)}+{key}"
+        return key
