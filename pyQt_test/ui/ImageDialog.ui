@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
-    <height>350</height>
+    <width>400</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="font">
@@ -32,9 +32,9 @@
   <widget class="QLabel" name="preview_label">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>75</x>
      <y>10</y>
-     <width>200</width>
+     <width>250</width>
      <height>150</height>
     </rect>
    </property>
@@ -42,12 +42,6 @@
     <size>
      <width>0</width>
      <height>0</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>200</width>
-     <height>160</height>
     </size>
    </property>
    <property name="font">
@@ -74,7 +68,7 @@
   <widget class="QPushButton" name="reset_button">
    <property name="geometry">
     <rect>
-     <x>225</x>
+     <x>300</x>
      <y>135</y>
      <width>20</width>
      <height>20</height>
@@ -115,14 +109,14 @@ border-radius: 10px;</string>
     <rect>
      <x>25</x>
      <y>170</y>
-     <width>250</width>
-     <height>120</height>
+     <width>350</width>
+     <height>280</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Nanum Gothic</family>
-     <pointsize>10</pointsize>
+     <pointsize>12</pointsize>
      <kerning>true</kerning>
     </font>
    </property>
@@ -132,13 +126,13 @@ border-radius: 10px;</string>
    <property name="title">
     <string> 좌표 설정 </string>
    </property>
-   <widget class="QPushButton" name="button_record">
+   <widget class="QPushButton" name="button_record1">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>80</y>
-      <width>80</width>
-      <height>25</height>
+      <x>250</x>
+      <y>100</y>
+      <width>70</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
@@ -151,20 +145,23 @@ border-radius: 10px;</string>
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>기록</string>
+     <string>기록 시작</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
     </property>
     <property name="default">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="label_X1">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>50</y>
+      <x>50</x>
+      <y>105</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -185,11 +182,11 @@ border-radius: 10px;</string>
      <string>X :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_X">
+   <widget class="QTextEdit" name="textEdit_X1">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>50</y>
+      <x>70</x>
+      <y>105</y>
       <width>60</width>
       <height>20</height>
      </rect>
@@ -220,11 +217,11 @@ border: 1px solid black;</string>
      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="label_Y1">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>50</y>
+      <x>140</x>
+      <y>105</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -245,11 +242,11 @@ border: 1px solid black;</string>
      <string>Y :</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_Y">
+   <widget class="QTextEdit" name="textEdit_Y1">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>50</y>
+      <x>160</x>
+      <y>105</y>
       <width>60</width>
       <height>20</height>
      </rect>
@@ -280,11 +277,11 @@ border: 1px solid black;</string>
      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="tool_tip">
+   <widget class="QLabel" name="tooltip_1">
     <property name="geometry">
      <rect>
-      <x>223</x>
-      <y>25</y>
+      <x>220</x>
+      <y>32</y>
       <width>15</width>
       <height>15</height>
      </rect>
@@ -312,19 +309,19 @@ border: 1px solid black;</string>
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="label_1">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>25</y>
-      <width>210</width>
-      <height>15</height>
+      <x>20</x>
+      <y>30</y>
+      <width>200</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>NanumGothic</family>
-      <pointsize>8</pointsize>
+      <pointsize>12</pointsize>
       <italic>false</italic>
       <underline>false</underline>
      </font>
@@ -336,19 +333,436 @@ border: 1px solid black;</string>
 }</string>
     </property>
     <property name="text">
-     <string>수동모드 사용 시 이미지의 좌표를 설정하세요</string>
+     <string>해당 이미지를 인식할 범위를 설정하세요</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>시작점 좌표</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_record2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>160</y>
+      <width>70</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>기록 시작</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Y2">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>165</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>Y :</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_Y2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>165</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nanum Gothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white;
+border: 1px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Plain</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>140</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>끝점 좌표</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_X2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>165</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nanum Gothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white;
+border: 1px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Plain</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_X2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>165</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>X :</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_Y3">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>238</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nanum Gothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white;
+border: 1px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Plain</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_Y3">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>238</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>Y :</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit_X3">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>238</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nanum Gothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:white;
+border: 1px solid black;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Plain</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_X3">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>238</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>X :</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>208</y>
+      <width>190</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>클릭 좌표 조정 (※첫 실행시 수정 금지)</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tooltip_2">
+    <property name="geometry">
+     <rect>
+      <x>215</x>
+      <y>210</y>
+      <width>15</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Nanum Gothic</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	background-color: #9437FF;
+	color:#FFFFFF;
+	border: none;
+	border-radius: 6px;
+	border-width : 1px
+
+}</string>
+    </property>
+    <property name="text">
+     <string>?</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>55</y>
+      <width>290</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>NanumGothic</family>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+    </property>
+    <property name="text">
+     <string>기록 시작 버튼을 누른 후 F10을 누르면 좌표를 확정합니다</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
     </property>
    </widget>
   </widget>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>310</y>
-     <width>201</width>
+     <x>25</x>
+     <y>460</y>
+     <width>350</width>
      <height>35</height>
     </rect>
    </property>
@@ -374,7 +788,7 @@ border: 1px solid black;</string>
     <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
    </property>
    <property name="centerButtons">
-    <bool>true</bool>
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

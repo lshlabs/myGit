@@ -28,6 +28,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         
         self.data_file = get_data_file_path()
+        self.setFixedSize(self.width(), self.height())
         
         # 데이터 파일이 없으면 생성
         if not os.path.exists(self.data_file):
@@ -319,11 +320,17 @@ class MainWindow(QMainWindow):
                     dialog.selected_file_path = get_absolute_path(current_path)
             
             # 좌표 로드 (이미지 유무와 관계없이)
-            x_coord = data[current_menu]['coordinates'][f'image{image_number}_x']
-            y_coord = data[current_menu]['coordinates'][f'image{image_number}_y']
-            if x_coord != 0 or y_coord != 0:
-                dialog.ui.textEdit_X.setText(str(x_coord))
-                dialog.ui.textEdit_Y.setText(str(y_coord))
+            x_coord1 = data[current_menu]['coordinates_active']['start_pos'][f'image{image_number}_x']
+            y_coord1 = data[current_menu]['coordinates_active']['start_pos'][f'image{image_number}_y']
+            if x_coord1 != 0 or y_coord1 != 0:
+                dialog.ui.textEdit_X1.setText(str(x_coord1))
+                dialog.ui.textEdit_Y1.setText(str(y_coord1))
+            
+            x_coord2 = data[current_menu]['coordinates_active']['end_pos'][f'image{image_number}_x']
+            y_coord2 = data[current_menu]['coordinates_active']['end_pos'][f'image{image_number}_y']
+            if x_coord2 != 0 or y_coord2 != 0:
+                dialog.ui.textEdit_X2.setText(str(x_coord2))
+                dialog.ui.textEdit_Y2.setText(str(y_coord2))
         
         if dialog.exec() == QDialog.Accepted:
             if dialog.reset_requested:
@@ -336,8 +343,8 @@ class MainWindow(QMainWindow):
                 data = load_json_data(self.data_file)
                 if data:
                     data[current_menu]['other_values'][frame_name] = None
-                    data[current_menu]['coordinates'][f'image{image_number}_x'] = 0
-                    data[current_menu]['coordinates'][f'image{image_number}_y'] = 0
+                    data[current_menu]['coordinates_active'][f'image{image_number}_x'] = 0
+                    data[current_menu]['coordinates_active'][f'image{image_number}_y'] = 0
                     save_json_data(self.data_file, data)
             
             elif dialog.selected_pixmap:
@@ -356,6 +363,22 @@ class MainWindow(QMainWindow):
     def show_settings_dialog(self, event):
         """설정 다이얼로그 표시"""
         dialog = SettingsDialog(self)
+        
+        # 데이터 로드
+        data = load_json_data(self.data_file)
+        if data:
+            current_menu = self.get_current_menu()
+            max_items = 6 if current_menu == 'menu6' else 3
+            
+            # 패시브 모드 좌표 로드
+            for i in range(1, max_items + 1):
+                x_coord = data[current_menu]['coordinates_passive']['setting_pos'][f'image{i}_x']
+                y_coord = data[current_menu]['coordinates_passive']['setting_pos'][f'image{i}_y']
+                
+                if x_coord != 0 or y_coord != 0:
+                    getattr(dialog.ui, f'textEdit_X{i}').setText(str(x_coord))
+                    getattr(dialog.ui, f'textEdit_Y{i}').setText(str(y_coord))
+        
         dialog.exec()
 
     def save_radio_state(self, menu_name):

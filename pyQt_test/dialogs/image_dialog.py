@@ -4,6 +4,7 @@ from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QPixmap, QKeyEvent, QCursor
 from PySide6.QtWidgets import QApplication
 from ui.ImageDialog_ui import Ui_ImageDialog
+from pynput import mouse
 import resource_rc
 from utils import load_json_data, save_json_data, get_data_file_path
 
@@ -16,23 +17,38 @@ class ImageDialog(QDialog):
         self.ui = Ui_ImageDialog()
         self.ui.setupUi(self)
         
+        self.setFixedSize(self.width(), self.height())
+        
         # 메뉴 이름과 이미지 번호 저장
         self.menu_name = menu_name
         self.image_number = image_number
         
         # tooltips설정
-        self.ui.tool_tip.setCursor(Qt.PointingHandCursor)
+        self.ui.tooltip_1.setCursor(Qt.PointingHandCursor)
         tooltip_text = """
             <html style="font-family: Nanum Gothic; font-size: 12px;">
             <p></p>
-            <h3 align="center">좌표 녹화 도움말</h3>
-            <p> 1. 기록 버튼을 클릭하세요 </p>
-            <p> 2. 해당 이미지가 있는 실제 화면상의 위치에 마우스를 올려주세요 </p>
-            <p> 3. F10를 누르면 좌표가 자동으로 채워집니다 </p>
+            <h3 align="center">툴팁입니다</h3>
+            <p> 1. 툴팁툴팁 </p>
+            <p> 2. 툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁 </p>
+            <p> 3. 툴팁툴팁툴팁툴팁툴팁툴팁 </p>
             <p></p>
             </html>
         """
-        self.ui.tool_tip.setToolTip(tooltip_text)
+        self.ui.tooltip_1.setToolTip(tooltip_text)
+        
+        self.ui.tooltip_2.setCursor(Qt.PointingHandCursor)
+        tooltip_text = """
+            <html style="font-family: Nanum Gothic; font-size: 12px;">
+            <p></p>
+            <h3 align="center">툴팁입니다</h3>
+            <p> 1. 툴팁툴팁 </p>
+            <p> 2. 툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁툴팁 </p>
+            <p> 3. 툴팁툴팁툴팁툴팁툴팁툴팁 </p>
+            <p></p>
+            </html>
+        """
+        self.ui.tooltip_2.setToolTip(tooltip_text)
         
         # QLabel 클릭 이벤트 연결
         self.ui.preview_label.mousePressEvent = self.select_image
@@ -42,7 +58,9 @@ class ImageDialog(QDialog):
         self.ui.buttonBox.rejected.connect(self.reject)
         self.ui.reset_button.clicked.connect(self.reset_image)
         
-        self.ui.button_record.clicked.connect(self.record_coordinate)
+        # 좌표 기록 버튼
+        self.ui.button_record1.clicked.connect(self.record_coordinate)
+        self.ui.button_record2.clicked.connect(self.record_coordinate)
         
         self.selected_pixmap = None
         self.selected_file_path = None
@@ -105,24 +123,36 @@ class ImageDialog(QDialog):
             
     def record_coordinate(self):
         """좌표기록 버튼 클릭이벤트"""
+        sender = self.sender()
         if not self.recording:
             self.recording = True
-            self.ui.button_record.setText("기록 중...")
+            # 어떤 버튼이 클릭되었는지 저장
+            self.active_button = 1 if sender == self.ui.button_record1 else 2
+            sender.setText("기록 중...")
             self.timer.start(50)
         
     def update_coordinates(self):
         """좌표 업데이트"""
         if self.recording:
             cursor_pos = QCursor.pos()
-            self.ui.textEdit_X.setText(str(cursor_pos.x()))
-            self.ui.textEdit_Y.setText(str(cursor_pos.y()))
+            # 활성화된 버튼에 따라 다른 텍스트 에디트 업데이트
+            if self.active_button == 1:
+                self.ui.textEdit_X1.setText(str(cursor_pos.x()))
+                self.ui.textEdit_Y1.setText(str(cursor_pos.y()))
+            else:
+                self.ui.textEdit_X2.setText(str(cursor_pos.x()))
+                self.ui.textEdit_Y2.setText(str(cursor_pos.y()))
     
     def eventFilter(self, obj, event):
         """이벤트 필터"""
         if self.recording and event.type() == event.Type.KeyPress:
             if event.key() == Qt.Key.Key_F10:
                 self.recording = False
-                self.ui.button_record.setText("기록")
+                # 활성화된 버튼 텍스트 복원
+                if self.active_button == 1:
+                    self.ui.button_record1.setText("기록 시작")
+                else:
+                    self.ui.button_record2.setText("기록 시작")
                 self.timer.stop()
                 return True
         return super().eventFilter(obj, event)
@@ -130,35 +160,38 @@ class ImageDialog(QDialog):
     def accept(self):
         """OK 버튼 클릭 시 호출되는 메서드"""
         if self.menu_name and self.image_number:
-            # data.json 파일 로드
             data_file = get_data_file_path()
             data = load_json_data(data_file)
             
             if data:
-                # 좌표 저장
-                x_coord = self.ui.textEdit_X.toPlainText()
-                y_coord = self.ui.textEdit_Y.toPlainText()
+                # 첫 번째 좌표 저장
+                x_coord1 = self.ui.textEdit_X1.toPlainText()
+                y_coord1 = self.ui.textEdit_Y1.toPlainText()
+                # 두 번째 좌표 저장
+                x_coord2 = self.ui.textEdit_X2.toPlainText()
+                y_coord2 = self.ui.textEdit_Y2.toPlainText()
                 
-                # 좌표가 비어있지 않은 경우에만 저장
-                if x_coord and y_coord:
-                    try:
-                        x_coord = int(x_coord)
-                        y_coord = int(y_coord)
-                        
-                        # coordinates 섹션에 좌표 저장
-                        data[self.menu_name]['coordinates'][f'image{self.image_number}_x'] = x_coord
-                        data[self.menu_name]['coordinates'][f'image{self.image_number}_y'] = y_coord
-                        
-                        # 파일 저장
-                        save_json_data(data_file, data)
-                    except ValueError:
-                        pass  # 숫자로 변환할 수 없는 경우 무시
-                
-                # 이미지가 없고 좌표가 비어있는 경우 좌표 초기화
-                elif not self.selected_pixmap and not x_coord and not y_coord:
-                    data[self.menu_name]['coordinates'][f'image{self.image_number}_x'] = 0
-                    data[self.menu_name]['coordinates'][f'image{self.image_number}_y'] = 0
+                try:
+                    # 첫 번째 좌표가 있는 경우 저장
+                    if x_coord1 and y_coord1:
+                        data[self.menu_name]['coordinates_active']['start_pos'][f'image{self.image_number}_x'] = int(x_coord1)
+                        data[self.menu_name]['coordinates_active']['start_pos'][f'image{self.image_number}_y'] = int(y_coord1)
+                    
+                    # 두 번째 좌표가 있는 경우 저장
+                    if x_coord2 and y_coord2:
+                        data[self.menu_name]['coordinates_active']['end_pos'][f'image{self.image_number}_x'] = int(x_coord2)
+                        data[self.menu_name]['coordinates_active']['end_pos'][f'image{self.image_number}_y'] = int(y_coord2)
+                    
+                    # 이미지가 없고 좌표가 모두 비어있는 경우 초기화
+                    if not self.selected_pixmap and not (x_coord1 or y_coord1 or x_coord2 or y_coord2):
+                        data[self.menu_name]['coordinates_active']['start_pos'][f'image{self.image_number}_x'] = 0
+                        data[self.menu_name]['coordinates_active']['start_pos'][f'image{self.image_number}_y'] = 0
+                        data[self.menu_name]['coordinates_active']['end_pos'][f'image{self.image_number}_x'] = 0
+                        data[self.menu_name]['coordinates_active']['end_pos'][f'image{self.image_number}_y'] = 0
+                    
                     save_json_data(data_file, data)
+                except ValueError:
+                    pass  # 숫자로 변환할 수 없는 경우 무시
         
-        super().accept()  # 기본 accept 동작 수행
+        super().accept()
         

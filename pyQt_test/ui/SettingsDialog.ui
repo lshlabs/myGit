@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>450</width>
-    <height>560</height>
+    <height>580</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -42,7 +42,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>520</y>
+     <y>540</y>
      <width>430</width>
      <height>35</height>
     </rect>
@@ -69,1244 +69,2420 @@
     <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox_active">
+  <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>410</width>
-     <height>130</height>
+     <x>10</x>
+     <y>10</y>
+     <width>430</width>
+     <height>520</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>NanumGothic</family>
-     <pointsize>10</pointsize>
-    </font>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-   <property name="title">
-    <string> 자동모드 시작 / 중지 키 설정 </string>
-   </property>
-   <widget class="QCheckBox" name="check_shift1">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>30</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+   <widget class="QWidget" name="keyset_tab">
+    <attribute name="title">
+     <string>키 설정</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_active">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>410</width>
+       <height>130</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>NanumGothic</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string> 자동모드 시작 / 중지 키 설정 </string>
+     </property>
+     <widget class="QCheckBox" name="check_shift1">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>30</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_stop">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>80</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-	color: rgb(0 ,0, 0);
-	background-color:  rgb(255 ,255, 255);
-}</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_shift2">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>80</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_start">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-    </property>
-    <property name="text">
-     <string>시작 키</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl2">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>80</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt2">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>80</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_stop">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-    </property>
-    <property name="text">
-     <string>종료 키</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl1">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>30</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt1">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>30</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_run">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>30</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_stop">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>80</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
 	color: rgb(0 ,0, 0);
 	background-color:  rgb(255 ,255, 255);
 }</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_passive">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>170</y>
-     <width>410</width>
-     <height>330</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>NanumGothic</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="title">
-    <string>수동모드 클릭 키 설정</string>
-   </property>
-   <widget class="QCheckBox" name="check_shift3">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>30</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_shift2">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>80</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_ps2">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>80</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-	color: rgb(0 ,0, 0);
-	background-color:  rgb(255 ,255, 255);
-}</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_shift4">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>80</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_img_name1">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_start">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
 	color: rgb(0 ,0, 0);
 	background-color: transparent;
 }</string>
-    </property>
-    <property name="text">
-     <string>이미지1</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl4">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>80</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="text">
+       <string>시작 키</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>80</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt4">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>80</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt2">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>80</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_img_name2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-    </property>
-    <property name="text">
-     <string>이미지2</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl3">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>30</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt3">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>30</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_ps1">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>30</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-	color: rgb(0 ,0, 0);
-	background-color:  rgb(255 ,255, 255);
-}</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_ps3">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>130</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-	color: rgb(0 ,0, 0);
-	background-color:  rgb(255 ,255, 255);
-}</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_ps4">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>180</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
-	color: rgb(0 ,0, 0);
-	background-color:  rgb(255 ,255, 255);
-}</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt6">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>180</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_img_name4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>180</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_stop">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
 	color: rgb(0 ,0, 0);
 	background-color: transparent;
 }</string>
-    </property>
-    <property name="text">
-     <string>이미지4</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl6">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>180</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="text">
+       <string>종료 키</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl1">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_img_name3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-    </property>
-    <property name="text">
-     <string>이미지3</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt5">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>130</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt1">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>30</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl5">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>130</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>16</width>
-      <height>16</height>
-     </size>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_shift5">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>130</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_shift6">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>180</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl7">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>230</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_ps5">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>230</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_run">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>30</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
 	color: rgb(0 ,0, 0);
 	background-color:  rgb(255 ,255, 255);
 }</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_shift7">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>230</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_passive">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>410</width>
+       <height>330</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>NanumGothic</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>수동모드 동작 키 설정</string>
+     </property>
+     <widget class="QCheckBox" name="check_shift3">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>30</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt7">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>230</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_img_name5">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>230</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-    </property>
-    <property name="text">
-     <string>이미지5</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_ctrl8">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>280</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Ctrl</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="combo_ps6">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>280</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <kerning>false</kerning>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox{
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_ps2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>80</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
 	color: rgb(0 ,0, 0);
 	background-color:  rgb(255 ,255, 255);
 }</string>
-    </property>
-    <property name="currentText">
-     <string/>
-    </property>
-    <property name="placeholderText">
-     <string>선택하세요</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_shift8">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>280</y>
-      <width>55</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_shift4">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>80</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
 	color: rgb(0 ,0, 0);
 }</string>
-    </property>
-    <property name="text">
-     <string>Shift</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="check_alt8">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>280</y>
-      <width>50</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QCheckBox{
-	color: rgb(0 ,0, 0);
-}</string>
-    </property>
-    <property name="text">
-     <string>Alt</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-    <property name="tristate">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_img_name6">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>70</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>NanumGothic</family>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel{
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
 	color: rgb(0 ,0, 0);
 	background-color: transparent;
 }</string>
-    </property>
-    <property name="text">
-     <string>이미지6</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
+      </property>
+      <property name="text">
+       <string>이미지1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl4">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>80</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt4">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>80</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt3">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>30</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_ps1">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>30</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_ps3">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>130</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_ps4">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>180</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt6">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>180</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl6">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>180</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt5">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>130</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl5">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>130</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>16</width>
+        <height>16</height>
+       </size>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_shift5">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>130</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_shift6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>180</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl7">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>230</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_ps5">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>230</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_shift7">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>230</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt7">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>230</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>230</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지5</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_ctrl8">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>280</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Ctrl</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="combo_ps6">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>280</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+        <italic>false</italic>
+        <kerning>false</kerning>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+	color: rgb(0 ,0, 0);
+	background-color:  rgb(255 ,255, 255);
+}</string>
+      </property>
+      <property name="currentText">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>선택하세요</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_shift8">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>280</y>
+        <width>55</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Shift</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="check_alt8">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>280</y>
+        <width>50</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QCheckBox{
+	color: rgb(0 ,0, 0);
+}</string>
+      </property>
+      <property name="text">
+       <string>Alt</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>280</y>
+        <width>70</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지6</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="passiveset_tab">
+    <attribute name="title">
+     <string>수동모드</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_coordinate">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>410</width>
+       <height>410</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>NanumGothic</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="title">
+      <string>좌표 설정</string>
+     </property>
+     <widget class="QTextEdit" name="textEdit_X1">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>100</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img1_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지 1</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Y1">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>100</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>Y :</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_Y1">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_X1">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>100</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>X :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_record1">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>95</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>기록 시작</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_record2">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>145</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>기록 시작</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_Y2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Y2">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>150</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>Y :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img2_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>150</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지 2</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_X2">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>150</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_X2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>150</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>X :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img3_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>200</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지 3</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_Y3">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>200</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Y3">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>200</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>Y :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_X3">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>200</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>X :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_record3">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>195</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>기록 시작</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_X3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>200</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_record4">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>245</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>기록 시작</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_Y4">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>250</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img5_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>300</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지 5</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Y4">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>250</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>Y :</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_Y5">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>300</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Y5">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>300</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>Y :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_X5">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>300</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>X :</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_record5">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>295</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>기록 시작</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_record6">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>345</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>기록 시작</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
+      </property>
+      <property name="default">
+       <bool>false</bool>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_X5">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>300</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img4_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>250</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지 4</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_Y6">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>350</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>Y :</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_X6">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>350</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_X4">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>250</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_X4">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>250</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>X :</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_Y6">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>350</y>
+        <width>60</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_X6">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>350</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>X :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_img6_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>350</y>
+        <width>50</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>이미지 6</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_1">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>35</y>
+        <width>261</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>12</pointsize>
+        <italic>false</italic>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>수동모드에서 클릭할 좌표를 설정하세요</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>291</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+        <pointsize>12</pointsize>
+        <italic>false</italic>
+        <underline>false</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel{
+	color: rgb(0 ,0, 0);
+	background-color: transparent;
+}</string>
+      </property>
+      <property name="text">
+       <string>기록 시작 버튼을 누른 후 F10을 누르면 좌표를 확정합니다</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>

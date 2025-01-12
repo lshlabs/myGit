@@ -23,7 +23,7 @@ class Ui_ImageDialog(object):
     def setupUi(self, ImageDialog):
         if not ImageDialog.objectName():
             ImageDialog.setObjectName(u"ImageDialog")
-        ImageDialog.resize(300, 350)
+        ImageDialog.resize(400, 500)
         font = QFont()
         font.setFamilies([u"Arial"])
         ImageDialog.setFont(font)
@@ -34,9 +34,8 @@ class Ui_ImageDialog(object):
         ImageDialog.setModal(True)
         self.preview_label = QLabel(ImageDialog)
         self.preview_label.setObjectName(u"preview_label")
-        self.preview_label.setGeometry(QRect(50, 10, 200, 150))
+        self.preview_label.setGeometry(QRect(75, 10, 250, 150))
         self.preview_label.setMinimumSize(QSize(0, 0))
-        self.preview_label.setMaximumSize(QSize(200, 160))
         font1 = QFont()
         font1.setFamilies([u"NanumGothic"])
         font1.setPointSize(12)
@@ -49,7 +48,7 @@ class Ui_ImageDialog(object):
         self.preview_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.reset_button = QPushButton(ImageDialog)
         self.reset_button.setObjectName(u"reset_button")
-        self.reset_button.setGeometry(QRect(225, 135, 20, 20))
+        self.reset_button.setGeometry(QRect(300, 135, 20, 20))
         self.reset_button.setMinimumSize(QSize(0, 0))
         self.reset_button.setMaximumSize(QSize(88, 16777215))
         font2 = QFont()
@@ -63,74 +62,75 @@ class Ui_ImageDialog(object):
         self.reset_button.setIcon(icon)
         self.groupBox = QGroupBox(ImageDialog)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(25, 170, 250, 120))
+        self.groupBox.setGeometry(QRect(25, 170, 350, 280))
         font3 = QFont()
         font3.setFamilies([u"Nanum Gothic"])
-        font3.setPointSize(10)
+        font3.setPointSize(12)
         font3.setKerning(True)
         self.groupBox.setFont(font3)
         self.groupBox.setStyleSheet(u"")
-        self.button_record = QPushButton(self.groupBox)
-        self.button_record.setObjectName(u"button_record")
-        self.button_record.setGeometry(QRect(80, 80, 80, 25))
+        self.button_record1 = QPushButton(self.groupBox)
+        self.button_record1.setObjectName(u"button_record1")
+        self.button_record1.setGeometry(QRect(250, 100, 70, 30))
         font4 = QFont()
         font4.setFamilies([u"NanumGothic"])
         font4.setPointSize(10)
-        self.button_record.setFont(font4)
-        self.button_record.setStyleSheet(u"")
-        self.button_record.setFlat(False)
-        self.label_2 = QLabel(self.groupBox)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(30, 50, 20, 20))
+        self.button_record1.setFont(font4)
+        self.button_record1.setStyleSheet(u"")
+        self.button_record1.setAutoDefault(False)
+        self.button_record1.setFlat(False)
+        self.label_X1 = QLabel(self.groupBox)
+        self.label_X1.setObjectName(u"label_X1")
+        self.label_X1.setGeometry(QRect(50, 105, 20, 20))
         font5 = QFont()
         font5.setFamilies([u"NanumGothic"])
         font5.setPointSize(11)
-        self.label_2.setFont(font5)
-        self.label_2.setStyleSheet(u"QLabel{\n"
+        self.label_X1.setFont(font5)
+        self.label_X1.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_X = QTextEdit(self.groupBox)
-        self.textEdit_X.setObjectName(u"textEdit_X")
-        self.textEdit_X.setGeometry(QRect(50, 50, 60, 20))
+        self.textEdit_X1 = QTextEdit(self.groupBox)
+        self.textEdit_X1.setObjectName(u"textEdit_X1")
+        self.textEdit_X1.setGeometry(QRect(70, 105, 60, 20))
         font6 = QFont()
         font6.setFamilies([u"Nanum Gothic"])
         font6.setPointSize(10)
-        self.textEdit_X.setFont(font6)
-        self.textEdit_X.setAutoFillBackground(False)
-        self.textEdit_X.setStyleSheet(u"background:white;\n"
+        self.textEdit_X1.setFont(font6)
+        self.textEdit_X1.setAutoFillBackground(False)
+        self.textEdit_X1.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_X.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_X.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_X.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_X.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.label_3 = QLabel(self.groupBox)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(130, 50, 20, 20))
-        self.label_3.setFont(font5)
-        self.label_3.setStyleSheet(u"QLabel{\n"
+        self.textEdit_X1.setFrameShape(QFrame.Shape.Box)
+        self.textEdit_X1.setFrameShadow(QFrame.Shadow.Plain)
+        self.textEdit_X1.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit_X1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.label_Y1 = QLabel(self.groupBox)
+        self.label_Y1.setObjectName(u"label_Y1")
+        self.label_Y1.setGeometry(QRect(140, 105, 20, 20))
+        self.label_Y1.setFont(font5)
+        self.label_Y1.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_Y = QTextEdit(self.groupBox)
-        self.textEdit_Y.setObjectName(u"textEdit_Y")
-        self.textEdit_Y.setGeometry(QRect(150, 50, 60, 20))
-        self.textEdit_Y.setFont(font6)
-        self.textEdit_Y.setAutoFillBackground(False)
-        self.textEdit_Y.setStyleSheet(u"background:white;\n"
+        self.textEdit_Y1 = QTextEdit(self.groupBox)
+        self.textEdit_Y1.setObjectName(u"textEdit_Y1")
+        self.textEdit_Y1.setGeometry(QRect(160, 105, 60, 20))
+        self.textEdit_Y1.setFont(font6)
+        self.textEdit_Y1.setAutoFillBackground(False)
+        self.textEdit_Y1.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_Y.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_Y.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_Y.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_Y.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.tool_tip = QLabel(self.groupBox)
-        self.tool_tip.setObjectName(u"tool_tip")
-        self.tool_tip.setGeometry(QRect(223, 25, 15, 15))
+        self.textEdit_Y1.setFrameShape(QFrame.Shape.Box)
+        self.textEdit_Y1.setFrameShadow(QFrame.Shadow.Plain)
+        self.textEdit_Y1.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit_Y1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.tooltip_1 = QLabel(self.groupBox)
+        self.tooltip_1.setObjectName(u"tooltip_1")
+        self.tooltip_1.setGeometry(QRect(220, 32, 15, 15))
         font7 = QFont()
         font7.setFamilies([u"Nanum Gothic"])
         font7.setPointSize(8)
-        self.tool_tip.setFont(font7)
-        self.tool_tip.setStyleSheet(u"QLabel{\n"
+        self.tooltip_1.setFont(font7)
+        self.tooltip_1.setStyleSheet(u"QLabel{\n"
 "	background-color: #9437FF;\n"
 "	color:#FFFFFF;\n"
 "	border: none;\n"
@@ -138,35 +138,168 @@ class Ui_ImageDialog(object):
 "	border-width : 1px\n"
 "\n"
 "}")
-        self.tool_tip.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.label_4 = QLabel(self.groupBox)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(10, 25, 210, 15))
+        self.tooltip_1.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_1 = QLabel(self.groupBox)
+        self.label_1.setObjectName(u"label_1")
+        self.label_1.setGeometry(QRect(20, 30, 200, 20))
         font8 = QFont()
         font8.setFamilies([u"NanumGothic"])
-        font8.setPointSize(8)
+        font8.setPointSize(12)
         font8.setItalic(False)
         font8.setUnderline(False)
-        self.label_4.setFont(font8)
+        self.label_1.setFont(font8)
+        self.label_1.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.label_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.label_3 = QLabel(self.groupBox)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(30, 80, 60, 20))
+        self.label_3.setFont(font5)
+        self.label_3.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.label_3.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.button_record2 = QPushButton(self.groupBox)
+        self.button_record2.setObjectName(u"button_record2")
+        self.button_record2.setGeometry(QRect(250, 160, 70, 30))
+        self.button_record2.setFont(font4)
+        self.button_record2.setStyleSheet(u"")
+        self.button_record2.setAutoDefault(False)
+        self.button_record2.setFlat(False)
+        self.label_Y2 = QLabel(self.groupBox)
+        self.label_Y2.setObjectName(u"label_Y2")
+        self.label_Y2.setGeometry(QRect(140, 165, 20, 20))
+        self.label_Y2.setFont(font5)
+        self.label_Y2.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.textEdit_Y2 = QTextEdit(self.groupBox)
+        self.textEdit_Y2.setObjectName(u"textEdit_Y2")
+        self.textEdit_Y2.setGeometry(QRect(160, 165, 60, 20))
+        self.textEdit_Y2.setFont(font6)
+        self.textEdit_Y2.setAutoFillBackground(False)
+        self.textEdit_Y2.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.textEdit_Y2.setFrameShape(QFrame.Shape.Box)
+        self.textEdit_Y2.setFrameShadow(QFrame.Shadow.Plain)
+        self.textEdit_Y2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit_Y2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.label_4 = QLabel(self.groupBox)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(30, 140, 60, 20))
+        self.label_4.setFont(font5)
         self.label_4.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.label_4.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.textEdit_X2 = QTextEdit(self.groupBox)
+        self.textEdit_X2.setObjectName(u"textEdit_X2")
+        self.textEdit_X2.setGeometry(QRect(70, 165, 60, 20))
+        self.textEdit_X2.setFont(font6)
+        self.textEdit_X2.setAutoFillBackground(False)
+        self.textEdit_X2.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.textEdit_X2.setFrameShape(QFrame.Shape.Box)
+        self.textEdit_X2.setFrameShadow(QFrame.Shadow.Plain)
+        self.textEdit_X2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit_X2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.label_X2 = QLabel(self.groupBox)
+        self.label_X2.setObjectName(u"label_X2")
+        self.label_X2.setGeometry(QRect(50, 165, 20, 20))
+        self.label_X2.setFont(font5)
+        self.label_X2.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.textEdit_Y3 = QTextEdit(self.groupBox)
+        self.textEdit_Y3.setObjectName(u"textEdit_Y3")
+        self.textEdit_Y3.setGeometry(QRect(160, 238, 60, 20))
+        self.textEdit_Y3.setFont(font6)
+        self.textEdit_Y3.setAutoFillBackground(False)
+        self.textEdit_Y3.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.textEdit_Y3.setFrameShape(QFrame.Shape.Box)
+        self.textEdit_Y3.setFrameShadow(QFrame.Shadow.Plain)
+        self.textEdit_Y3.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit_Y3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.label_Y3 = QLabel(self.groupBox)
+        self.label_Y3.setObjectName(u"label_Y3")
+        self.label_Y3.setGeometry(QRect(140, 238, 20, 20))
+        self.label_Y3.setFont(font5)
+        self.label_Y3.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.textEdit_X3 = QTextEdit(self.groupBox)
+        self.textEdit_X3.setObjectName(u"textEdit_X3")
+        self.textEdit_X3.setGeometry(QRect(70, 238, 60, 20))
+        self.textEdit_X3.setFont(font6)
+        self.textEdit_X3.setAutoFillBackground(False)
+        self.textEdit_X3.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.textEdit_X3.setFrameShape(QFrame.Shape.Box)
+        self.textEdit_X3.setFrameShadow(QFrame.Shadow.Plain)
+        self.textEdit_X3.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit_X3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.label_X3 = QLabel(self.groupBox)
+        self.label_X3.setObjectName(u"label_X3")
+        self.label_X3.setGeometry(QRect(50, 238, 20, 20))
+        self.label_X3.setFont(font5)
+        self.label_X3.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.label_5 = QLabel(self.groupBox)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(20, 208, 190, 20))
+        self.label_5.setFont(font1)
+        self.label_5.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.label_5.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.tooltip_2 = QLabel(self.groupBox)
+        self.tooltip_2.setObjectName(u"tooltip_2")
+        self.tooltip_2.setGeometry(QRect(215, 210, 15, 15))
+        self.tooltip_2.setFont(font7)
+        self.tooltip_2.setStyleSheet(u"QLabel{\n"
+"	background-color: #9437FF;\n"
+"	color:#FFFFFF;\n"
+"	border: none;\n"
+"	border-radius: 6px;\n"
+"	border-width : 1px\n"
+"\n"
+"}")
+        self.tooltip_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.label_2 = QLabel(self.groupBox)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(20, 55, 290, 20))
+        self.label_2.setFont(font8)
+        self.label_2.setStyleSheet(u"QLabel{\n"
+"	color: rgb(0 ,0, 0);\n"
+"	background-color: transparent;\n"
+"}")
+        self.label_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.buttonBox = QDialogButtonBox(ImageDialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(50, 310, 201, 35))
+        self.buttonBox.setGeometry(QRect(25, 460, 350, 35))
         self.buttonBox.setFont(font1)
         self.buttonBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.buttonBox.setAutoFillBackground(False)
         self.buttonBox.setStyleSheet(u"")
         self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
-        self.buttonBox.setCenterButtons(True)
+        self.buttonBox.setCenterButtons(False)
 
         self.retranslateUi(ImageDialog)
 
-        self.button_record.setDefault(True)
+        self.button_record1.setDefault(False)
+        self.button_record2.setDefault(False)
 
 
         QMetaObject.connectSlotsByName(ImageDialog)
@@ -178,10 +311,20 @@ class Ui_ImageDialog(object):
 "\uc774\ubbf8\uc9c0\ub97c \uc120\ud0dd\ud558\uc138\uc694", None))
         self.reset_button.setText("")
         self.groupBox.setTitle(QCoreApplication.translate("ImageDialog", u" \uc88c\ud45c \uc124\uc815 ", None))
-        self.button_record.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d", None))
-        self.label_2.setText(QCoreApplication.translate("ImageDialog", u"X :", None))
-        self.label_3.setText(QCoreApplication.translate("ImageDialog", u"Y :", None))
-        self.tool_tip.setText(QCoreApplication.translate("ImageDialog", u"?", None))
-        self.label_4.setText(QCoreApplication.translate("ImageDialog", u"\uc218\ub3d9\ubaa8\ub4dc \uc0ac\uc6a9 \uc2dc \uc774\ubbf8\uc9c0\uc758 \uc88c\ud45c\ub97c \uc124\uc815\ud558\uc138\uc694", None))
+        self.button_record1.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d \uc2dc\uc791", None))
+        self.label_X1.setText(QCoreApplication.translate("ImageDialog", u"X :", None))
+        self.label_Y1.setText(QCoreApplication.translate("ImageDialog", u"Y :", None))
+        self.tooltip_1.setText(QCoreApplication.translate("ImageDialog", u"?", None))
+        self.label_1.setText(QCoreApplication.translate("ImageDialog", u"\ud574\ub2f9 \uc774\ubbf8\uc9c0\ub97c \uc778\uc2dd\ud560 \ubc94\uc704\ub97c \uc124\uc815\ud558\uc138\uc694", None))
+        self.label_3.setText(QCoreApplication.translate("ImageDialog", u"\uc2dc\uc791\uc810 \uc88c\ud45c", None))
+        self.button_record2.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d \uc2dc\uc791", None))
+        self.label_Y2.setText(QCoreApplication.translate("ImageDialog", u"Y :", None))
+        self.label_4.setText(QCoreApplication.translate("ImageDialog", u"\ub05d\uc810 \uc88c\ud45c", None))
+        self.label_X2.setText(QCoreApplication.translate("ImageDialog", u"X :", None))
+        self.label_Y3.setText(QCoreApplication.translate("ImageDialog", u"Y :", None))
+        self.label_X3.setText(QCoreApplication.translate("ImageDialog", u"X :", None))
+        self.label_5.setText(QCoreApplication.translate("ImageDialog", u"\ud074\ub9ad \uc88c\ud45c \uc870\uc815 (\u203b\uccab \uc2e4\ud589\uc2dc \uc218\uc815 \uae08\uc9c0)", None))
+        self.tooltip_2.setText(QCoreApplication.translate("ImageDialog", u"?", None))
+        self.label_2.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \ud655\uc815\ud569\ub2c8\ub2e4", None))
     # retranslateUi
 

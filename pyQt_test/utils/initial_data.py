@@ -32,13 +32,29 @@ def get_initial_data():
                 'check_alt5_state': False,
                 'check_shift5_state': False
             },
-            'coordinates': {
-                'image1_x': 0,
-                'image1_y': 0,
-                'image2_x': 0,
-                'image2_y': 0,
-                'image3_x': 0,
-                'image3_y': 0
+            'coordinates_active': {
+                'start_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                },
+                'end_pos':{
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                },
+                'setting_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                }
+            },
+            'coordinates_passive': {
+                'setting_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                }
             },
             'other_values': {
                 'frame_image1': None,
@@ -81,13 +97,29 @@ def get_initial_data():
                 'check_alt5_state': False,
                 'check_shift5_state': False
             },
-            'coordinates': {
-                'image1_x': 0,
-                'image1_y': 0,
-                'image2_x': 0,
-                'image2_y': 0,
-                'image3_x': 0,
-                'image3_y': 0
+            'coordinates_active': {
+                'start_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                },
+                'end_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                },
+                'setting_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                }
+            },
+            'coordinates_passive': {
+                'setting_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0
+                }
             },
             'other_values': {
                 'frame_image1': None,
@@ -145,19 +177,41 @@ def get_initial_data():
                 'check_alt8_state': False,
                 'check_shift8_state': False
             },
-            'coordinates': {
-                'image1_x': 0,
-                'image1_y': 0,
-                'image2_x': 0,
-                'image2_y': 0,
-                'image3_x': 0,
-                'image3_y': 0,
-                'image4_x': 0,
-                'image4_y': 0,
-                'image5_x': 0,
-                'image5_y': 0,
-                'image6_x': 0,
-                'image6_y': 0
+            'coordinates_active': {
+                'start_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0,
+                    'image4_x': 0, 'image4_y': 0,
+                    'image5_x': 0, 'image5_y': 0,
+                    'image6_x': 0, 'image6_y': 0
+                },
+                'end_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0,
+                    'image4_x': 0, 'image4_y': 0,
+                    'image5_x': 0, 'image5_y': 0,
+                    'image6_x': 0, 'image6_y': 0
+                },
+                'setting_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0,
+                    'image4_x': 0, 'image4_y': 0,
+                    'image5_x': 0, 'image5_y': 0,
+                    'image6_x': 0, 'image6_y': 0
+                }
+            },
+            'coordinates_passive': {
+                'setting_pos': {
+                    'image1_x': 0, 'image1_y': 0,
+                    'image2_x': 0, 'image2_y': 0,
+                    'image3_x': 0, 'image3_y': 0,
+                    'image4_x': 0, 'image4_y': 0,
+                    'image5_x': 0, 'image5_y': 0,
+                    'image6_x': 0, 'image6_y': 0
+                }
             },
             'other_values': {
                 'frame_image1': None,
