@@ -52,7 +52,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Nanum Gothic</family>
+     <family>NanumGothic</family>
      <pointsize>12</pointsize>
     </font>
    </property>
@@ -143,6 +143,7 @@ border-radius: 10px;</string>
     </property>
     <property name="font">
      <font>
+      <family>NanumGothic</family>
       <pointsize>10</pointsize>
      </font>
     </property>
@@ -170,7 +171,7 @@ border-radius: 10px;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>NanumGothic</family>
       <pointsize>11</pointsize>
      </font>
     </property>
@@ -230,7 +231,7 @@ border: 1px solid black;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>NanumGothic</family>
       <pointsize>11</pointsize>
      </font>
     </property>
@@ -322,7 +323,7 @@ border: 1px solid black;</string>
     </property>
     <property name="font">
      <font>
-      <family>Nanum Gothic</family>
+      <family>NanumGothic</family>
       <pointsize>8</pointsize>
       <italic>false</italic>
       <underline>false</underline>
@@ -353,7 +354,7 @@ border: 1px solid black;</string>
    </property>
    <property name="font">
     <font>
-     <family>Nanum Gothic</family>
+     <family>NanumGothic</family>
      <pointsize>12</pointsize>
     </font>
    </property>

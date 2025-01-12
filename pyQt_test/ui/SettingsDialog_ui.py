@@ -42,7 +42,7 @@ class Ui_SettingsDialog(object):
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setGeometry(QRect(10, 520, 430, 35))
         font1 = QFont()
-        font1.setFamilies([u"Nanum Gothic"])
+        font1.setFamilies([u"NanumGothic"])
         font1.setPointSize(12)
         self.buttonBox.setFont(font1)
         self.buttonBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
@@ -54,16 +54,13 @@ class Ui_SettingsDialog(object):
         self.groupBox_active.setObjectName(u"groupBox_active")
         self.groupBox_active.setGeometry(QRect(20, 20, 410, 130))
         font2 = QFont()
-        font2.setFamilies([u".AppleSystemUIFont"])
+        font2.setFamilies([u"NanumGothic"])
         font2.setPointSize(10)
         self.groupBox_active.setFont(font2)
         self.check_shift1 = QCheckBox(self.groupBox_active)
         self.check_shift1.setObjectName(u"check_shift1")
         self.check_shift1.setGeometry(QRect(290, 30, 55, 32))
-        font3 = QFont()
-        font3.setFamilies([u"Arial"])
-        font3.setPointSize(10)
-        self.check_shift1.setFont(font3)
+        self.check_shift1.setFont(font2)
         self.check_shift1.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -72,12 +69,12 @@ class Ui_SettingsDialog(object):
         self.combo_stop = QComboBox(self.groupBox_active)
         self.combo_stop.setObjectName(u"combo_stop")
         self.combo_stop.setGeometry(QRect(90, 80, 120, 32))
-        font4 = QFont()
-        font4.setFamilies([u"Nanum Gothic"])
-        font4.setPointSize(10)
-        font4.setItalic(False)
-        font4.setKerning(False)
-        self.combo_stop.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"NanumGothic"])
+        font3.setPointSize(10)
+        font3.setItalic(False)
+        font3.setKerning(False)
+        self.combo_stop.setFont(font3)
         self.combo_stop.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -85,7 +82,7 @@ class Ui_SettingsDialog(object):
         self.check_shift2 = QCheckBox(self.groupBox_active)
         self.check_shift2.setObjectName(u"check_shift2")
         self.check_shift2.setGeometry(QRect(290, 80, 55, 32))
-        self.check_shift2.setFont(font3)
+        self.check_shift2.setFont(font2)
         self.check_shift2.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -94,10 +91,7 @@ class Ui_SettingsDialog(object):
         self.label_start = QLabel(self.groupBox_active)
         self.label_start.setObjectName(u"label_start")
         self.label_start.setGeometry(QRect(10, 30, 70, 32))
-        font5 = QFont()
-        font5.setFamilies([u"Nanum Gothic"])
-        font5.setPointSize(10)
-        self.label_start.setFont(font5)
+        self.label_start.setFont(font2)
         self.label_start.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -106,7 +100,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl2 = QCheckBox(self.groupBox_active)
         self.check_ctrl2.setObjectName(u"check_ctrl2")
         self.check_ctrl2.setGeometry(QRect(230, 80, 50, 32))
-        self.check_ctrl2.setFont(font3)
+        self.check_ctrl2.setFont(font2)
         self.check_ctrl2.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -115,7 +109,7 @@ class Ui_SettingsDialog(object):
         self.check_alt2 = QCheckBox(self.groupBox_active)
         self.check_alt2.setObjectName(u"check_alt2")
         self.check_alt2.setGeometry(QRect(350, 80, 50, 32))
-        self.check_alt2.setFont(font3)
+        self.check_alt2.setFont(font2)
         self.check_alt2.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -124,7 +118,7 @@ class Ui_SettingsDialog(object):
         self.label_stop = QLabel(self.groupBox_active)
         self.label_stop.setObjectName(u"label_stop")
         self.label_stop.setGeometry(QRect(10, 80, 70, 32))
-        self.label_stop.setFont(font5)
+        self.label_stop.setFont(font2)
         self.label_stop.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -133,7 +127,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl1 = QCheckBox(self.groupBox_active)
         self.check_ctrl1.setObjectName(u"check_ctrl1")
         self.check_ctrl1.setGeometry(QRect(230, 30, 50, 32))
-        self.check_ctrl1.setFont(font3)
+        self.check_ctrl1.setFont(font2)
         self.check_ctrl1.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -143,7 +137,7 @@ class Ui_SettingsDialog(object):
         self.check_alt1 = QCheckBox(self.groupBox_active)
         self.check_alt1.setObjectName(u"check_alt1")
         self.check_alt1.setGeometry(QRect(350, 30, 50, 32))
-        self.check_alt1.setFont(font3)
+        self.check_alt1.setFont(font2)
         self.check_alt1.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -152,7 +146,7 @@ class Ui_SettingsDialog(object):
         self.combo_run = QComboBox(self.groupBox_active)
         self.combo_run.setObjectName(u"combo_run")
         self.combo_run.setGeometry(QRect(90, 30, 120, 32))
-        self.combo_run.setFont(font4)
+        self.combo_run.setFont(font3)
         self.combo_run.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -164,7 +158,7 @@ class Ui_SettingsDialog(object):
         self.check_shift3 = QCheckBox(self.groupBox_passive)
         self.check_shift3.setObjectName(u"check_shift3")
         self.check_shift3.setGeometry(QRect(290, 30, 55, 32))
-        self.check_shift3.setFont(font3)
+        self.check_shift3.setFont(font2)
         self.check_shift3.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -173,7 +167,7 @@ class Ui_SettingsDialog(object):
         self.combo_ps2 = QComboBox(self.groupBox_passive)
         self.combo_ps2.setObjectName(u"combo_ps2")
         self.combo_ps2.setGeometry(QRect(90, 80, 120, 32))
-        self.combo_ps2.setFont(font4)
+        self.combo_ps2.setFont(font3)
         self.combo_ps2.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -181,7 +175,7 @@ class Ui_SettingsDialog(object):
         self.check_shift4 = QCheckBox(self.groupBox_passive)
         self.check_shift4.setObjectName(u"check_shift4")
         self.check_shift4.setGeometry(QRect(290, 80, 55, 32))
-        self.check_shift4.setFont(font3)
+        self.check_shift4.setFont(font2)
         self.check_shift4.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -190,7 +184,7 @@ class Ui_SettingsDialog(object):
         self.label_img_name1 = QLabel(self.groupBox_passive)
         self.label_img_name1.setObjectName(u"label_img_name1")
         self.label_img_name1.setGeometry(QRect(10, 30, 70, 32))
-        self.label_img_name1.setFont(font5)
+        self.label_img_name1.setFont(font2)
         self.label_img_name1.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -199,7 +193,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl4 = QCheckBox(self.groupBox_passive)
         self.check_ctrl4.setObjectName(u"check_ctrl4")
         self.check_ctrl4.setGeometry(QRect(230, 80, 50, 32))
-        self.check_ctrl4.setFont(font3)
+        self.check_ctrl4.setFont(font2)
         self.check_ctrl4.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -208,7 +202,7 @@ class Ui_SettingsDialog(object):
         self.check_alt4 = QCheckBox(self.groupBox_passive)
         self.check_alt4.setObjectName(u"check_alt4")
         self.check_alt4.setGeometry(QRect(350, 80, 50, 32))
-        self.check_alt4.setFont(font3)
+        self.check_alt4.setFont(font2)
         self.check_alt4.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -217,7 +211,7 @@ class Ui_SettingsDialog(object):
         self.label_img_name2 = QLabel(self.groupBox_passive)
         self.label_img_name2.setObjectName(u"label_img_name2")
         self.label_img_name2.setGeometry(QRect(10, 80, 70, 32))
-        self.label_img_name2.setFont(font5)
+        self.label_img_name2.setFont(font2)
         self.label_img_name2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -226,7 +220,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl3 = QCheckBox(self.groupBox_passive)
         self.check_ctrl3.setObjectName(u"check_ctrl3")
         self.check_ctrl3.setGeometry(QRect(230, 30, 50, 32))
-        self.check_ctrl3.setFont(font3)
+        self.check_ctrl3.setFont(font2)
         self.check_ctrl3.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -236,7 +230,7 @@ class Ui_SettingsDialog(object):
         self.check_alt3 = QCheckBox(self.groupBox_passive)
         self.check_alt3.setObjectName(u"check_alt3")
         self.check_alt3.setGeometry(QRect(350, 30, 50, 32))
-        self.check_alt3.setFont(font3)
+        self.check_alt3.setFont(font2)
         self.check_alt3.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -245,7 +239,7 @@ class Ui_SettingsDialog(object):
         self.combo_ps1 = QComboBox(self.groupBox_passive)
         self.combo_ps1.setObjectName(u"combo_ps1")
         self.combo_ps1.setGeometry(QRect(90, 30, 120, 32))
-        self.combo_ps1.setFont(font4)
+        self.combo_ps1.setFont(font3)
         self.combo_ps1.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -253,7 +247,7 @@ class Ui_SettingsDialog(object):
         self.combo_ps3 = QComboBox(self.groupBox_passive)
         self.combo_ps3.setObjectName(u"combo_ps3")
         self.combo_ps3.setGeometry(QRect(90, 130, 120, 32))
-        self.combo_ps3.setFont(font4)
+        self.combo_ps3.setFont(font3)
         self.combo_ps3.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -261,7 +255,7 @@ class Ui_SettingsDialog(object):
         self.combo_ps4 = QComboBox(self.groupBox_passive)
         self.combo_ps4.setObjectName(u"combo_ps4")
         self.combo_ps4.setGeometry(QRect(90, 180, 120, 32))
-        self.combo_ps4.setFont(font4)
+        self.combo_ps4.setFont(font3)
         self.combo_ps4.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -269,7 +263,7 @@ class Ui_SettingsDialog(object):
         self.check_alt6 = QCheckBox(self.groupBox_passive)
         self.check_alt6.setObjectName(u"check_alt6")
         self.check_alt6.setGeometry(QRect(350, 180, 50, 32))
-        self.check_alt6.setFont(font3)
+        self.check_alt6.setFont(font2)
         self.check_alt6.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -278,7 +272,7 @@ class Ui_SettingsDialog(object):
         self.label_img_name4 = QLabel(self.groupBox_passive)
         self.label_img_name4.setObjectName(u"label_img_name4")
         self.label_img_name4.setGeometry(QRect(10, 180, 70, 32))
-        self.label_img_name4.setFont(font5)
+        self.label_img_name4.setFont(font2)
         self.label_img_name4.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -287,7 +281,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl6 = QCheckBox(self.groupBox_passive)
         self.check_ctrl6.setObjectName(u"check_ctrl6")
         self.check_ctrl6.setGeometry(QRect(230, 180, 50, 32))
-        self.check_ctrl6.setFont(font3)
+        self.check_ctrl6.setFont(font2)
         self.check_ctrl6.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -296,7 +290,7 @@ class Ui_SettingsDialog(object):
         self.label_img_name3 = QLabel(self.groupBox_passive)
         self.label_img_name3.setObjectName(u"label_img_name3")
         self.label_img_name3.setGeometry(QRect(10, 130, 70, 32))
-        self.label_img_name3.setFont(font5)
+        self.label_img_name3.setFont(font2)
         self.label_img_name3.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -305,7 +299,7 @@ class Ui_SettingsDialog(object):
         self.check_alt5 = QCheckBox(self.groupBox_passive)
         self.check_alt5.setObjectName(u"check_alt5")
         self.check_alt5.setGeometry(QRect(350, 130, 50, 32))
-        self.check_alt5.setFont(font3)
+        self.check_alt5.setFont(font2)
         self.check_alt5.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -314,7 +308,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl5 = QCheckBox(self.groupBox_passive)
         self.check_ctrl5.setObjectName(u"check_ctrl5")
         self.check_ctrl5.setGeometry(QRect(230, 130, 50, 32))
-        self.check_ctrl5.setFont(font3)
+        self.check_ctrl5.setFont(font2)
         self.check_ctrl5.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -324,7 +318,7 @@ class Ui_SettingsDialog(object):
         self.check_shift5 = QCheckBox(self.groupBox_passive)
         self.check_shift5.setObjectName(u"check_shift5")
         self.check_shift5.setGeometry(QRect(290, 130, 55, 32))
-        self.check_shift5.setFont(font3)
+        self.check_shift5.setFont(font2)
         self.check_shift5.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -333,7 +327,7 @@ class Ui_SettingsDialog(object):
         self.check_shift6 = QCheckBox(self.groupBox_passive)
         self.check_shift6.setObjectName(u"check_shift6")
         self.check_shift6.setGeometry(QRect(290, 180, 55, 32))
-        self.check_shift6.setFont(font3)
+        self.check_shift6.setFont(font2)
         self.check_shift6.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -342,7 +336,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl7 = QCheckBox(self.groupBox_passive)
         self.check_ctrl7.setObjectName(u"check_ctrl7")
         self.check_ctrl7.setGeometry(QRect(230, 230, 50, 32))
-        self.check_ctrl7.setFont(font3)
+        self.check_ctrl7.setFont(font2)
         self.check_ctrl7.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -351,7 +345,7 @@ class Ui_SettingsDialog(object):
         self.combo_ps5 = QComboBox(self.groupBox_passive)
         self.combo_ps5.setObjectName(u"combo_ps5")
         self.combo_ps5.setGeometry(QRect(90, 230, 120, 32))
-        self.combo_ps5.setFont(font4)
+        self.combo_ps5.setFont(font3)
         self.combo_ps5.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -359,7 +353,7 @@ class Ui_SettingsDialog(object):
         self.check_shift7 = QCheckBox(self.groupBox_passive)
         self.check_shift7.setObjectName(u"check_shift7")
         self.check_shift7.setGeometry(QRect(290, 230, 55, 32))
-        self.check_shift7.setFont(font3)
+        self.check_shift7.setFont(font2)
         self.check_shift7.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -368,7 +362,7 @@ class Ui_SettingsDialog(object):
         self.check_alt7 = QCheckBox(self.groupBox_passive)
         self.check_alt7.setObjectName(u"check_alt7")
         self.check_alt7.setGeometry(QRect(350, 230, 50, 32))
-        self.check_alt7.setFont(font3)
+        self.check_alt7.setFont(font2)
         self.check_alt7.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -377,7 +371,7 @@ class Ui_SettingsDialog(object):
         self.label_img_name5 = QLabel(self.groupBox_passive)
         self.label_img_name5.setObjectName(u"label_img_name5")
         self.label_img_name5.setGeometry(QRect(10, 230, 70, 32))
-        self.label_img_name5.setFont(font5)
+        self.label_img_name5.setFont(font2)
         self.label_img_name5.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -386,7 +380,7 @@ class Ui_SettingsDialog(object):
         self.check_ctrl8 = QCheckBox(self.groupBox_passive)
         self.check_ctrl8.setObjectName(u"check_ctrl8")
         self.check_ctrl8.setGeometry(QRect(230, 280, 50, 32))
-        self.check_ctrl8.setFont(font3)
+        self.check_ctrl8.setFont(font2)
         self.check_ctrl8.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -395,7 +389,7 @@ class Ui_SettingsDialog(object):
         self.combo_ps6 = QComboBox(self.groupBox_passive)
         self.combo_ps6.setObjectName(u"combo_ps6")
         self.combo_ps6.setGeometry(QRect(90, 280, 120, 32))
-        self.combo_ps6.setFont(font4)
+        self.combo_ps6.setFont(font3)
         self.combo_ps6.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color:  rgb(255 ,255, 255);\n"
@@ -403,7 +397,7 @@ class Ui_SettingsDialog(object):
         self.check_shift8 = QCheckBox(self.groupBox_passive)
         self.check_shift8.setObjectName(u"check_shift8")
         self.check_shift8.setGeometry(QRect(290, 280, 55, 32))
-        self.check_shift8.setFont(font3)
+        self.check_shift8.setFont(font2)
         self.check_shift8.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -412,7 +406,7 @@ class Ui_SettingsDialog(object):
         self.check_alt8 = QCheckBox(self.groupBox_passive)
         self.check_alt8.setObjectName(u"check_alt8")
         self.check_alt8.setGeometry(QRect(350, 280, 50, 32))
-        self.check_alt8.setFont(font3)
+        self.check_alt8.setFont(font2)
         self.check_alt8.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(0 ,0, 0);\n"
 "}")
@@ -421,7 +415,7 @@ class Ui_SettingsDialog(object):
         self.label_img_name6 = QLabel(self.groupBox_passive)
         self.label_img_name6.setObjectName(u"label_img_name6")
         self.label_img_name6.setGeometry(QRect(10, 280, 70, 32))
-        self.label_img_name6.setFont(font5)
+        self.label_img_name6.setFont(font2)
         self.label_img_name6.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"

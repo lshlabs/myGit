@@ -5,8 +5,8 @@
       "radio_passive_state": true
     },
     "settings_active": {
-      "combo_run_value": "1",
-      "check_ctrl1_state": false,
+      "combo_run_value": "B",
+      "check_ctrl1_state": true,
       "check_alt1_state": false,
       "check_shift1_state": false,
       "combo_stop_value": "2",
@@ -29,12 +29,12 @@
       "check_shift5_state": false
     },
     "coordinates": {
-      "image1_x": 1108,
-      "image1_y": 554,
-      "image2_x": 1114,
-      "image2_y": 665,
-      "image3_x": 0,
-      "image3_y": 0
+      "image1_x": 1585,
+      "image1_y": 408,
+      "image2_x": 2007,
+      "image2_y": 982,
+      "image3_x": 615,
+      "image3_y": 1098
     },
     "other_values": {
       "frame_image1": null,
@@ -42,15 +42,15 @@
       "frame_image3": null,
       "entry1": 50,
       "entry2": 15,
-      "button_state": "on",
-      "frame_color": "background:#45D3D3",
-      "label_title_color": "#FFFFFF"
+      "button_state": "off",
+      "frame_color": "background:#CED0D0;",
+      "label_title_color": "#000000"
     }
   },
   "menu3": {
     "mode": {
-      "radio_active_state": true,
-      "radio_passive_state": false
+      "radio_active_state": false,
+      "radio_passive_state": true
     },
     "settings_active": {
       "combo_run_value": "3",
@@ -91,7 +91,7 @@
       "entry1": 50,
       "entry2": 20,
       "button_state": "on",
-      "frame_color": "background:#FA0150",
+      "frame_color": "background:#FA0150;",
       "label_title_color": "#FFFFFF"
     }
   },
@@ -159,7 +159,7 @@
       "frame_image6": null,
       "entry2": 15,
       "button_state": "off",
-      "frame_color": "background:#CED0D0",
+      "frame_color": "background:#CED0D0;",
       "label_title_color": "#000000"
     }
   }

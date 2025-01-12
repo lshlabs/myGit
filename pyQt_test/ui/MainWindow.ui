@@ -47,7 +47,7 @@
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>NanumGothic</family>
      </font>
     </property>
     <property name="autoFillBackground">
@@ -118,7 +118,7 @@ border: none;</string>
       </property>
       <property name="font">
        <font>
-        <family>Arial</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -147,7 +147,7 @@ border: none;</string>
        </property>
        <property name="font">
         <font>
-         <family>Arial</family>
+         <family>NanumGothic</family>
         </font>
        </property>
        <property name="styleSheet">
@@ -170,7 +170,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Nanum Gothic</family>
+          <family>NanumGothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -189,7 +189,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
          </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_7" stretch="0,1,0">
@@ -215,7 +215,7 @@ border: none;</string>
           <spacer name="verticalSpacer4">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -236,7 +236,7 @@ border: none;</string>
           <widget class="QLineEdit" name="entry1">
            <property name="font">
             <font>
-             <family>Nanum Gothic</family>
+             <family>NanumGothic</family>
              <pointsize>9</pointsize>
             </font>
            </property>
@@ -258,7 +258,7 @@ border: none;</string>
           <spacer name="verticalSpacer3">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -294,7 +294,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
          </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,1,0">
@@ -320,7 +320,7 @@ border: none;</string>
           <spacer name="verticalSpacer5">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -353,7 +353,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Nanum Gothic</family>
+             <family>NanumGothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -391,7 +391,7 @@ border: none;</string>
           <spacer name="verticalSpacer6">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -427,7 +427,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
          </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,1,0">
@@ -453,7 +453,7 @@ border: none;</string>
           <spacer name="verticalSpacer1">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -486,7 +486,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Nanum Gothic</family>
+             <family>NanumGothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -524,7 +524,7 @@ border: none;</string>
           <spacer name="verticalSpacer2">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -555,7 +555,7 @@ border: none;</string>
        </property>
        <property name="font">
         <font>
-         <family>Arial</family>
+         <family>NanumGothic</family>
         </font>
        </property>
        <property name="styleSheet">
@@ -578,7 +578,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Nanum Gothic</family>
+          <family>NanumGothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -603,7 +603,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
          </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5" stretch="0,1,0">
@@ -629,7 +629,7 @@ border: none;</string>
           <spacer name="verticalSpacer11">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -662,7 +662,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Nanum Gothic</family>
+             <family>NanumGothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -700,7 +700,7 @@ border: none;</string>
           <spacer name="verticalSpacer12">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -730,7 +730,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
          </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_8" stretch="0,1,0">
@@ -756,7 +756,7 @@ border: none;</string>
           <spacer name="verticalSpacer9">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -777,7 +777,7 @@ border: none;</string>
           <widget class="QLineEdit" name="entry2">
            <property name="font">
             <font>
-             <family>Nanum Gothic</family>
+             <family>NanumGothic</family>
              <pointsize>9</pointsize>
             </font>
            </property>
@@ -799,7 +799,7 @@ border: none;</string>
           <spacer name="verticalSpacer10">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -835,7 +835,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
          </font>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11" stretch="0,1,0">
@@ -861,7 +861,7 @@ border: none;</string>
           <spacer name="verticalSpacer7">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -894,7 +894,7 @@ border: none;</string>
            </property>
            <property name="font">
             <font>
-             <family>Nanum Gothic</family>
+             <family>NanumGothic</family>
              <pointsize>10</pointsize>
              <bold>false</bold>
              <hintingpreference>PreferVerticalHinting</hintingpreference>
@@ -932,7 +932,7 @@ border: none;</string>
           <spacer name="verticalSpacer8">
            <property name="font">
             <font>
-             <family>Arial</family>
+             <family>NanumGothic</family>
             </font>
            </property>
            <property name="orientation">
@@ -963,7 +963,7 @@ border: none;</string>
        </property>
        <property name="font">
         <font>
-         <family>Nanum Gothic</family>
+         <family>NanumGothic</family>
         </font>
        </property>
        <property name="styleSheet">
@@ -986,7 +986,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Nanum Gothic</family>
+          <family>NanumGothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1017,7 +1017,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Arial</family>
+          <family>NanumGothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1042,7 +1042,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Nanum Gothic</family>
+          <family>NanumGothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1070,7 +1070,7 @@ border: none;</string>
         </property>
         <property name="font">
          <font>
-          <family>Nanum Gothic</family>
+          <family>NanumGothic</family>
           <pointsize>9</pointsize>
          </font>
         </property>
@@ -1115,7 +1115,7 @@ border: none;</string>
       </property>
       <property name="font">
        <font>
-        <family>Nanum Gothic</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1158,7 +1158,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Nanum Gothic</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1201,7 +1201,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Nanum Gothic</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1244,7 +1244,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Nanum Gothic</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1287,7 +1287,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Nanum Gothic</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1330,7 +1330,7 @@ border: 1px solid black;</string>
       </property>
       <property name="font">
        <font>
-        <family>Nanum Gothic</family>
+        <family>NanumGothic</family>
        </font>
       </property>
       <property name="styleSheet">
@@ -1365,6 +1365,11 @@ border: 1px solid black;</string>
         <height>120</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background:#CED0D0;
 border:1px solid black;</string>
@@ -1396,6 +1401,11 @@ border:1px solid black;</string>
         <width>120</width>
         <height>120</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background:#CED0D0;
@@ -1429,6 +1439,11 @@ border:1px solid black;</string>
         <height>120</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background:#CED0D0;
 border:1px solid black;</string>
@@ -1460,6 +1475,11 @@ border:1px solid black;</string>
         <width>120</width>
         <height>120</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background:#CED0D0;
@@ -1493,6 +1513,11 @@ border:1px solid black;</string>
         <height>120</height>
        </size>
       </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">background:#CED0D0;
 border:1px solid black;</string>
@@ -1524,6 +1549,11 @@ border:1px solid black;</string>
         <width>120</width>
         <height>120</height>
        </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>NanumGothic</family>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">background:#CED0D0;
@@ -1561,7 +1591,7 @@ border:1px solid black;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>NanumGothic</family>
      </font>
     </property>
     <property name="styleSheet">
@@ -1591,7 +1621,7 @@ border: 1px solid black;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>30</pointsize>
        <bold>false</bold>
       </font>
@@ -1624,7 +1654,7 @@ border: 1px solid black;</string>
      </property>
      <property name="font">
       <font>
-       <family>Arial</family>
+       <family>NanumGothic</family>
       </font>
      </property>
      <property name="styleSheet">
@@ -1647,7 +1677,7 @@ border-radius:15px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
       </font>
      </property>
      <property name="styleSheet">
@@ -1689,7 +1719,7 @@ border-radius:15px;</string>
     </property>
     <property name="font">
      <font>
-      <family>Arial</family>
+      <family>NanumGothic</family>
      </font>
     </property>
     <property name="autoFillBackground">
@@ -1735,7 +1765,7 @@ border-radius:15px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1780,7 +1810,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1825,7 +1855,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1870,7 +1900,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1915,7 +1945,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -1966,7 +1996,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>
@@ -2014,7 +2044,7 @@ border: none;</string>
      </property>
      <property name="font">
       <font>
-       <family>Nanum Gothic</family>
+       <family>NanumGothic</family>
        <pointsize>13</pointsize>
       </font>
      </property>

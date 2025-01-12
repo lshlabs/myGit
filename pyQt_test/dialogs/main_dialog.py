@@ -258,7 +258,7 @@ class MainWindow(QMainWindow):
         if state == 'off':  # OFF 상태
             self.ui.button_off.show()
             self.ui.button_on.hide()
-            self.ui.frame_title.setStyleSheet("background:#CED0D0")  # RGB(206, 208, 208) -> HEX
+            self.ui.frame_title.setStyleSheet("background:#CED0D0;")  # RGB(206, 208, 208) -> HEX
         else:  # ON 상태
             self.ui.button_on.show()
             self.ui.button_off.hide()
@@ -268,7 +268,7 @@ class MainWindow(QMainWindow):
                 'menu3': yogiyo['color'],
                 'menu6': manna['color']
             }
-            self.ui.frame_title.setStyleSheet(f"background:{colors[menu]}")
+            self.ui.frame_title.setStyleSheet(f"background:{colors[menu]};")
 
     def on_button_on_clicked(self):
         """ON 버튼 클릭 (ON -> OFF)"""
