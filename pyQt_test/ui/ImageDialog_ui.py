@@ -64,7 +64,7 @@ class Ui_ImageDialog(object):
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setGeometry(QRect(25, 170, 350, 280))
         font3 = QFont()
-        font3.setFamilies([u"Nanum Gothic"])
+        font3.setFamilies([u"NanumGothic"])
         font3.setPointSize(12)
         font3.setKerning(True)
         self.groupBox.setFont(font3)
@@ -84,7 +84,7 @@ class Ui_ImageDialog(object):
         self.label_X1.setGeometry(QRect(50, 105, 20, 20))
         font5 = QFont()
         font5.setFamilies([u"NanumGothic"])
-        font5.setPointSize(11)
+        font5.setPointSize(9)
         self.label_X1.setFont(font5)
         self.label_X1.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -125,7 +125,7 @@ class Ui_ImageDialog(object):
         self.textEdit_Y1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tooltip_1 = QLabel(self.groupBox)
         self.tooltip_1.setObjectName(u"tooltip_1")
-        self.tooltip_1.setGeometry(QRect(220, 32, 15, 15))
+        self.tooltip_1.setGeometry(QRect(245, 32, 15, 15))
         font7 = QFont()
         font7.setFamilies([u"Nanum Gothic"])
         font7.setPointSize(8)
@@ -141,10 +141,10 @@ class Ui_ImageDialog(object):
         self.tooltip_1.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_1 = QLabel(self.groupBox)
         self.label_1.setObjectName(u"label_1")
-        self.label_1.setGeometry(QRect(20, 30, 200, 20))
+        self.label_1.setGeometry(QRect(15, 30, 220, 20))
         font8 = QFont()
         font8.setFamilies([u"NanumGothic"])
-        font8.setPointSize(12)
+        font8.setPointSize(10)
         font8.setItalic(False)
         font8.setUnderline(False)
         self.label_1.setFont(font8)
@@ -256,8 +256,8 @@ class Ui_ImageDialog(object):
 "}")
         self.label_5 = QLabel(self.groupBox)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(20, 208, 190, 20))
-        self.label_5.setFont(font1)
+        self.label_5.setGeometry(QRect(15, 208, 215, 20))
+        self.label_5.setFont(font4)
         self.label_5.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
@@ -265,7 +265,7 @@ class Ui_ImageDialog(object):
         self.label_5.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.tooltip_2 = QLabel(self.groupBox)
         self.tooltip_2.setObjectName(u"tooltip_2")
-        self.tooltip_2.setGeometry(QRect(215, 210, 15, 15))
+        self.tooltip_2.setGeometry(QRect(240, 210, 15, 15))
         self.tooltip_2.setFont(font7)
         self.tooltip_2.setStyleSheet(u"QLabel{\n"
 "	background-color: #9437FF;\n"
@@ -278,7 +278,7 @@ class Ui_ImageDialog(object):
         self.tooltip_2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_2 = QLabel(self.groupBox)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(20, 55, 290, 20))
+        self.label_2.setGeometry(QRect(15, 55, 320, 20))
         self.label_2.setFont(font8)
         self.label_2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -325,6 +325,6 @@ class Ui_ImageDialog(object):
         self.label_X3.setText(QCoreApplication.translate("ImageDialog", u"X :", None))
         self.label_5.setText(QCoreApplication.translate("ImageDialog", u"\ud074\ub9ad \uc88c\ud45c \uc870\uc815 (\u203b\uccab \uc2e4\ud589\uc2dc \uc218\uc815 \uae08\uc9c0)", None))
         self.tooltip_2.setText(QCoreApplication.translate("ImageDialog", u"?", None))
-        self.label_2.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \ud655\uc815\ud569\ub2c8\ub2e4", None))
+        self.label_2.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \uc800\uc7a5\ud569\ub2c8\ub2e4", None))
     # retranslateUi
 

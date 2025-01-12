@@ -54,6 +54,9 @@ class Ui_SettingsDialog(object):
         self.tabWidget = QTabWidget(SettingsDialog)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setGeometry(QRect(10, 10, 430, 520))
+        self.tabWidget.setStyleSheet(u"QTabWidget{\n"
+"	background-color: #EAEFEF;\n"
+"}")
         self.keyset_tab = QWidget()
         self.keyset_tab.setObjectName(u"keyset_tab")
         self.groupBox_active = QGroupBox(self.keyset_tab)
@@ -763,10 +766,10 @@ class Ui_SettingsDialog(object):
         self.label_img6_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_1 = QLabel(self.groupBox_coordinate)
         self.label_1.setObjectName(u"label_1")
-        self.label_1.setGeometry(QRect(20, 35, 261, 20))
+        self.label_1.setGeometry(QRect(20, 35, 250, 20))
         font5 = QFont()
         font5.setFamilies([u"NanumGothic"])
-        font5.setPointSize(12)
+        font5.setPointSize(10)
         font5.setItalic(False)
         font5.setUnderline(False)
         self.label_1.setFont(font5)
@@ -777,7 +780,7 @@ class Ui_SettingsDialog(object):
         self.label_1.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_2 = QLabel(self.groupBox_coordinate)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(20, 60, 291, 20))
+        self.label_2.setGeometry(QRect(20, 60, 320, 20))
         self.label_2.setFont(font5)
         self.label_2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -790,7 +793,7 @@ class Ui_SettingsDialog(object):
         self.buttonBox.accepted.connect(SettingsDialog.accept)
         self.buttonBox.rejected.connect(SettingsDialog.reject)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         self.button_record1.setDefault(False)
         self.button_record2.setDefault(False)
         self.button_record3.setDefault(False)
@@ -804,7 +807,7 @@ class Ui_SettingsDialog(object):
 
     def retranslateUi(self, SettingsDialog):
         SettingsDialog.setWindowTitle(QCoreApplication.translate("SettingsDialog", u"\uc124\uc815", None))
-        self.groupBox_active.setTitle(QCoreApplication.translate("SettingsDialog", u" \uc790\ub3d9\ubaa8\ub4dc \uc2dc\uc791 / \uc911\uc9c0 \ud0a4 \uc124\uc815 ", None))
+        self.groupBox_active.setTitle(QCoreApplication.translate("SettingsDialog", u" \uc790\ub3d9\ubaa8\ub4dc \uc2dc\uc791 / \uc885\ub8cc \ud0a4 \uc124\uc815 ", None))
         self.check_shift1.setText(QCoreApplication.translate("SettingsDialog", u"Shift", None))
         self.combo_stop.setCurrentText("")
         self.combo_stop.setPlaceholderText(QCoreApplication.translate("SettingsDialog", u"\uc120\ud0dd\ud558\uc138\uc694", None))
@@ -881,7 +884,7 @@ class Ui_SettingsDialog(object):
         self.label_X6.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
         self.label_img6_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 6", None))
         self.label_1.setText(QCoreApplication.translate("SettingsDialog", u"\uc218\ub3d9\ubaa8\ub4dc\uc5d0\uc11c \ud074\ub9ad\ud560 \uc88c\ud45c\ub97c \uc124\uc815\ud558\uc138\uc694", None))
-        self.label_2.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \ud655\uc815\ud569\ub2c8\ub2e4", None))
+        self.label_2.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \uc800\uc7a5\ud569\ub2c8\ub2e4", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.passiveset_tab), QCoreApplication.translate("SettingsDialog", u"\uc218\ub3d9\ubaa8\ub4dc", None))
     # retranslateUi
 
