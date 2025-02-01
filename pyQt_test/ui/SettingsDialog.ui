@@ -95,7 +95,7 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>410</width>
+       <width>405</width>
        <height>130</height>
       </rect>
      </property>
@@ -416,7 +416,7 @@
       <rect>
        <x>10</x>
        <y>150</y>
-       <width>410</width>
+       <width>405</width>
        <height>330</height>
       </rect>
      </property>
@@ -1340,7 +1340,7 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>410</width>
+       <width>405</width>
        <height>410</height>
       </rect>
      </property>
@@ -1356,7 +1356,7 @@
      <widget class="QTextEdit" name="textEdit_X1">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>140</x>
         <y>100</y>
         <width>60</width>
         <height>20</height>
@@ -1388,38 +1388,10 @@ border: 1px solid black;</string>
        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_img1_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>100</y>
-        <width>50</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>NanumGothic</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-      </property>
-      <property name="text">
-       <string>이미지 1</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_Y1">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>100</y>
         <width>20</width>
         <height>20</height>
@@ -1444,7 +1416,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_Y1">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>230</x>
         <y>100</y>
         <width>60</width>
         <height>20</height>
@@ -1479,7 +1451,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_X1">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>120</x>
         <y>100</y>
         <width>20</width>
         <height>20</height>
@@ -1504,7 +1476,7 @@ border: 1px solid black;</string>
      <widget class="QPushButton" name="button_record1">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>95</y>
         <width>70</width>
         <height>30</height>
@@ -1535,7 +1507,7 @@ border: 1px solid black;</string>
      <widget class="QPushButton" name="button_record2">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>145</y>
         <width>70</width>
         <height>30</height>
@@ -1566,7 +1538,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_Y2">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>230</x>
         <y>150</y>
         <width>60</width>
         <height>20</height>
@@ -1601,7 +1573,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_Y2">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>150</y>
         <width>20</width>
         <height>20</height>
@@ -1623,38 +1595,10 @@ border: 1px solid black;</string>
        <string>Y :</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_img2_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>150</y>
-        <width>50</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>NanumGothic</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-      </property>
-      <property name="text">
-       <string>이미지 2</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QTextEdit" name="textEdit_X2">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>140</x>
         <y>150</y>
         <width>60</width>
         <height>20</height>
@@ -1689,7 +1633,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_X2">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>120</x>
         <y>150</y>
         <width>20</width>
         <height>20</height>
@@ -1711,38 +1655,10 @@ border: 1px solid black;</string>
        <string>X :</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_img3_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>200</y>
-        <width>50</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>NanumGothic</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-      </property>
-      <property name="text">
-       <string>이미지 3</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QTextEdit" name="textEdit_Y3">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>230</x>
         <y>200</y>
         <width>60</width>
         <height>20</height>
@@ -1777,7 +1693,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_Y3">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>200</y>
         <width>20</width>
         <height>20</height>
@@ -1802,7 +1718,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_X3">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>120</x>
         <y>200</y>
         <width>20</width>
         <height>20</height>
@@ -1827,7 +1743,7 @@ border: 1px solid black;</string>
      <widget class="QPushButton" name="button_record3">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>195</y>
         <width>70</width>
         <height>30</height>
@@ -1858,7 +1774,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_X3">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>140</x>
         <y>200</y>
         <width>60</width>
         <height>20</height>
@@ -1893,7 +1809,7 @@ border: 1px solid black;</string>
      <widget class="QPushButton" name="button_record4">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>245</y>
         <width>70</width>
         <height>30</height>
@@ -1924,7 +1840,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_Y4">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>230</x>
         <y>250</y>
         <width>60</width>
         <height>20</height>
@@ -1956,38 +1872,10 @@ border: 1px solid black;</string>
        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_img5_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>300</y>
-        <width>50</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>NanumGothic</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-      </property>
-      <property name="text">
-       <string>이미지 5</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_Y4">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>250</y>
         <width>20</width>
         <height>20</height>
@@ -2012,7 +1900,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_Y5">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>230</x>
         <y>300</y>
         <width>60</width>
         <height>20</height>
@@ -2047,7 +1935,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_Y5">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>300</y>
         <width>20</width>
         <height>20</height>
@@ -2072,7 +1960,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_X5">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>120</x>
         <y>300</y>
         <width>20</width>
         <height>20</height>
@@ -2097,7 +1985,7 @@ border: 1px solid black;</string>
      <widget class="QPushButton" name="button_record5">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>295</y>
         <width>70</width>
         <height>30</height>
@@ -2128,7 +2016,7 @@ border: 1px solid black;</string>
      <widget class="QPushButton" name="button_record6">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>310</x>
         <y>345</y>
         <width>70</width>
         <height>30</height>
@@ -2159,7 +2047,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_X5">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>140</x>
         <y>300</y>
         <width>60</width>
         <height>20</height>
@@ -2191,38 +2079,10 @@ border: 1px solid black;</string>
        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_img4_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>250</y>
-        <width>50</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>NanumGothic</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-      </property>
-      <property name="text">
-       <string>이미지 4</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_Y6">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>210</x>
         <y>350</y>
         <width>20</width>
         <height>20</height>
@@ -2247,7 +2107,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_X6">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>140</x>
         <y>350</y>
         <width>60</width>
         <height>20</height>
@@ -2282,7 +2142,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_X4">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>140</x>
         <y>250</y>
         <width>60</width>
         <height>20</height>
@@ -2317,7 +2177,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_X4">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>120</x>
         <y>250</y>
         <width>20</width>
         <height>20</height>
@@ -2342,7 +2202,7 @@ border: 1px solid black;</string>
      <widget class="QTextEdit" name="textEdit_Y6">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>230</x>
         <y>350</y>
         <width>60</width>
         <height>20</height>
@@ -2377,7 +2237,7 @@ border: 1px solid black;</string>
      <widget class="QLabel" name="label_X6">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>120</x>
         <y>350</y>
         <width>20</width>
         <height>20</height>
@@ -2397,34 +2257,6 @@ border: 1px solid black;</string>
       </property>
       <property name="text">
        <string>X :</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_img6_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>350</y>
-        <width>50</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>NanumGothic</family>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel{
-	color: rgb(0 ,0, 0);
-	background-color: transparent;
-}</string>
-      </property>
-      <property name="text">
-       <string>이미지 6</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
       </property>
      </widget>
      <widget class="QLabel" name="label_1">
@@ -2485,6 +2317,183 @@ border: 1px solid black;</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LineEdit_img_name1">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>100</y>
+        <width>70</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LineEdit_img_name2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>150</y>
+        <width>70</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LineEdit_img_name3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>200</y>
+        <width>70</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LineEdit_img_name4">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>250</y>
+        <width>70</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LineEdit_img_name5">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>300</y>
+        <width>70</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="LineEdit_img_name6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>350</y>
+        <width>70</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Nanum Gothic</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:white;
+border: 1px solid black;</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+      <property name="placeholderText">
+       <string/>
       </property>
      </widget>
     </widget>
