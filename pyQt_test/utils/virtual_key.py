@@ -5,8 +5,8 @@ VIRTUAL_KEYS = {
     # 알파벳 (A-Z)
     **{chr(i): chr(i) for i in range(65, 91)},
     
-    # 기능키 (F1-F12)
-    **{f'F{i}': f'Key.f{i}' for i in range(1, 13)},  # F1, F2, ... 형식으로 저장
+    # 기능키 (F1-F12), F10 제외
+    **{f'F{i}': f'Key.f{i}' for i in range(1, 13) if i != 10},  # F10 제외
     
     # 특수문자
     '`': 'grave',
@@ -23,18 +23,14 @@ VIRTUAL_KEYS = {
 }
 
 def get_key_list():
-    """ComboBox에 표시할 키 리스트 반환"""
-    # F1-F12 키를 자연스러운 순서로 정렬
-    f_keys = [f'F{i}' for i in range(1, 13)]
-    
-    # 숫자 키 (0-9)
-    num_keys = [str(i) for i in range(10)]
-    
-    # 나머지 키들 정렬 (특수문자, 알파벳)
-    other_keys = sorted([k for k in VIRTUAL_KEYS.keys() 
-                        if not k.startswith('F') and not k.isdigit()])
-    
-    return f_keys + num_keys + other_keys
+    """가상 키 리스트 반환"""
+    # VIRTUAL_KEYS의 키들을 정렬하여 반환
+    return sorted(VIRTUAL_KEYS.keys(), key=lambda x: (
+        # F키는 숫자 부분으로 정렬, 숫자가 없으면 0으로 처리
+        int(x[1:]) if x.startswith('F') and x[1:].isdigit() else 
+        # 나머지는 문자 자체로 정렬
+        ord(x) if len(x) == 1 else ord(x[0])
+    ))
 
 def get_key_value(key):
     """키 문자열을 pynput 형식으로 변환"""

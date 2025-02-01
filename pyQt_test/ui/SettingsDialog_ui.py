@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QCheckBox, QComboBox,
     QDialog, QDialogButtonBox, QFrame, QGroupBox,
-    QLabel, QPushButton, QSizePolicy, QTabWidget,
-    QTextEdit, QWidget)
+    QLabel, QLineEdit, QPushButton, QSizePolicy,
+    QTabWidget, QTextEdit, QWidget)
 
 class Ui_SettingsDialog(object):
     def setupUi(self, SettingsDialog):
@@ -58,7 +58,7 @@ class Ui_SettingsDialog(object):
         self.keyset_tab.setObjectName(u"keyset_tab")
         self.groupBox_active = QGroupBox(self.keyset_tab)
         self.groupBox_active.setObjectName(u"groupBox_active")
-        self.groupBox_active.setGeometry(QRect(10, 10, 410, 130))
+        self.groupBox_active.setGeometry(QRect(10, 10, 405, 130))
         self.groupBox_active.setFont(font1)
         self.check_shift1 = QCheckBox(self.groupBox_active)
         self.check_shift1.setObjectName(u"check_shift1")
@@ -159,7 +159,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.groupBox_passive = QGroupBox(self.keyset_tab)
         self.groupBox_passive.setObjectName(u"groupBox_passive")
-        self.groupBox_passive.setGeometry(QRect(10, 150, 410, 330))
+        self.groupBox_passive.setGeometry(QRect(10, 150, 405, 330))
         self.groupBox_passive.setFont(font1)
         self.check_shift3 = QCheckBox(self.groupBox_passive)
         self.check_shift3.setObjectName(u"check_shift3")
@@ -432,11 +432,11 @@ class Ui_SettingsDialog(object):
         self.passiveset_tab.setObjectName(u"passiveset_tab")
         self.groupBox_coordinate = QGroupBox(self.passiveset_tab)
         self.groupBox_coordinate.setObjectName(u"groupBox_coordinate")
-        self.groupBox_coordinate.setGeometry(QRect(10, 10, 410, 410))
+        self.groupBox_coordinate.setGeometry(QRect(10, 10, 405, 410))
         self.groupBox_coordinate.setFont(font1)
         self.textEdit_X1 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_X1.setObjectName(u"textEdit_X1")
-        self.textEdit_X1.setGeometry(QRect(110, 100, 60, 20))
+        self.textEdit_X1.setGeometry(QRect(140, 100, 60, 20))
         font4 = QFont()
         font4.setFamilies([u"Nanum Gothic"])
         font4.setPointSize(10)
@@ -448,18 +448,9 @@ class Ui_SettingsDialog(object):
         self.textEdit_X1.setFrameShadow(QFrame.Shadow.Plain)
         self.textEdit_X1.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.textEdit_X1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.label_img1_2 = QLabel(self.groupBox_coordinate)
-        self.label_img1_2.setObjectName(u"label_img1_2")
-        self.label_img1_2.setGeometry(QRect(30, 100, 50, 20))
-        self.label_img1_2.setFont(font2)
-        self.label_img1_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0 ,0, 0);\n"
-"	background-color: transparent;\n"
-"}")
-        self.label_img1_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_Y1 = QLabel(self.groupBox_coordinate)
         self.label_Y1.setObjectName(u"label_Y1")
-        self.label_Y1.setGeometry(QRect(180, 100, 20, 20))
+        self.label_Y1.setGeometry(QRect(210, 100, 20, 20))
         self.label_Y1.setFont(font2)
         self.label_Y1.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -467,7 +458,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.textEdit_Y1 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_Y1.setObjectName(u"textEdit_Y1")
-        self.textEdit_Y1.setGeometry(QRect(200, 100, 60, 20))
+        self.textEdit_Y1.setGeometry(QRect(230, 100, 60, 20))
         self.textEdit_Y1.setFont(font4)
         self.textEdit_Y1.setAutoFillBackground(False)
         self.textEdit_Y1.setStyleSheet(u"background:white;\n"
@@ -478,7 +469,7 @@ class Ui_SettingsDialog(object):
         self.textEdit_Y1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_X1 = QLabel(self.groupBox_coordinate)
         self.label_X1.setObjectName(u"label_X1")
-        self.label_X1.setGeometry(QRect(90, 100, 20, 20))
+        self.label_X1.setGeometry(QRect(120, 100, 20, 20))
         self.label_X1.setFont(font2)
         self.label_X1.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -486,21 +477,21 @@ class Ui_SettingsDialog(object):
 "}")
         self.button_record1 = QPushButton(self.groupBox_coordinate)
         self.button_record1.setObjectName(u"button_record1")
-        self.button_record1.setGeometry(QRect(300, 95, 70, 30))
+        self.button_record1.setGeometry(QRect(310, 95, 70, 30))
         self.button_record1.setFont(font2)
         self.button_record1.setStyleSheet(u"")
         self.button_record1.setAutoDefault(False)
         self.button_record1.setFlat(False)
         self.button_record2 = QPushButton(self.groupBox_coordinate)
         self.button_record2.setObjectName(u"button_record2")
-        self.button_record2.setGeometry(QRect(300, 145, 70, 30))
+        self.button_record2.setGeometry(QRect(310, 145, 70, 30))
         self.button_record2.setFont(font2)
         self.button_record2.setStyleSheet(u"")
         self.button_record2.setAutoDefault(False)
         self.button_record2.setFlat(False)
         self.textEdit_Y2 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_Y2.setObjectName(u"textEdit_Y2")
-        self.textEdit_Y2.setGeometry(QRect(200, 150, 60, 20))
+        self.textEdit_Y2.setGeometry(QRect(230, 150, 60, 20))
         self.textEdit_Y2.setFont(font4)
         self.textEdit_Y2.setAutoFillBackground(False)
         self.textEdit_Y2.setStyleSheet(u"background:white;\n"
@@ -511,24 +502,15 @@ class Ui_SettingsDialog(object):
         self.textEdit_Y2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_Y2 = QLabel(self.groupBox_coordinate)
         self.label_Y2.setObjectName(u"label_Y2")
-        self.label_Y2.setGeometry(QRect(180, 150, 20, 20))
+        self.label_Y2.setGeometry(QRect(210, 150, 20, 20))
         self.label_Y2.setFont(font2)
         self.label_Y2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.label_img2_2 = QLabel(self.groupBox_coordinate)
-        self.label_img2_2.setObjectName(u"label_img2_2")
-        self.label_img2_2.setGeometry(QRect(30, 150, 50, 20))
-        self.label_img2_2.setFont(font2)
-        self.label_img2_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0 ,0, 0);\n"
-"	background-color: transparent;\n"
-"}")
-        self.label_img2_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.textEdit_X2 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_X2.setObjectName(u"textEdit_X2")
-        self.textEdit_X2.setGeometry(QRect(110, 150, 60, 20))
+        self.textEdit_X2.setGeometry(QRect(140, 150, 60, 20))
         self.textEdit_X2.setFont(font4)
         self.textEdit_X2.setAutoFillBackground(False)
         self.textEdit_X2.setStyleSheet(u"background:white;\n"
@@ -539,24 +521,15 @@ class Ui_SettingsDialog(object):
         self.textEdit_X2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_X2 = QLabel(self.groupBox_coordinate)
         self.label_X2.setObjectName(u"label_X2")
-        self.label_X2.setGeometry(QRect(90, 150, 20, 20))
+        self.label_X2.setGeometry(QRect(120, 150, 20, 20))
         self.label_X2.setFont(font2)
         self.label_X2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.label_img3_2 = QLabel(self.groupBox_coordinate)
-        self.label_img3_2.setObjectName(u"label_img3_2")
-        self.label_img3_2.setGeometry(QRect(30, 200, 50, 20))
-        self.label_img3_2.setFont(font2)
-        self.label_img3_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0 ,0, 0);\n"
-"	background-color: transparent;\n"
-"}")
-        self.label_img3_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.textEdit_Y3 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_Y3.setObjectName(u"textEdit_Y3")
-        self.textEdit_Y3.setGeometry(QRect(200, 200, 60, 20))
+        self.textEdit_Y3.setGeometry(QRect(230, 200, 60, 20))
         self.textEdit_Y3.setFont(font4)
         self.textEdit_Y3.setAutoFillBackground(False)
         self.textEdit_Y3.setStyleSheet(u"background:white;\n"
@@ -567,7 +540,7 @@ class Ui_SettingsDialog(object):
         self.textEdit_Y3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_Y3 = QLabel(self.groupBox_coordinate)
         self.label_Y3.setObjectName(u"label_Y3")
-        self.label_Y3.setGeometry(QRect(180, 200, 20, 20))
+        self.label_Y3.setGeometry(QRect(210, 200, 20, 20))
         self.label_Y3.setFont(font2)
         self.label_Y3.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -575,7 +548,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.label_X3 = QLabel(self.groupBox_coordinate)
         self.label_X3.setObjectName(u"label_X3")
-        self.label_X3.setGeometry(QRect(90, 200, 20, 20))
+        self.label_X3.setGeometry(QRect(120, 200, 20, 20))
         self.label_X3.setFont(font2)
         self.label_X3.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -583,14 +556,14 @@ class Ui_SettingsDialog(object):
 "}")
         self.button_record3 = QPushButton(self.groupBox_coordinate)
         self.button_record3.setObjectName(u"button_record3")
-        self.button_record3.setGeometry(QRect(300, 195, 70, 30))
+        self.button_record3.setGeometry(QRect(310, 195, 70, 30))
         self.button_record3.setFont(font2)
         self.button_record3.setStyleSheet(u"")
         self.button_record3.setAutoDefault(False)
         self.button_record3.setFlat(False)
         self.textEdit_X3 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_X3.setObjectName(u"textEdit_X3")
-        self.textEdit_X3.setGeometry(QRect(110, 200, 60, 20))
+        self.textEdit_X3.setGeometry(QRect(140, 200, 60, 20))
         self.textEdit_X3.setFont(font4)
         self.textEdit_X3.setAutoFillBackground(False)
         self.textEdit_X3.setStyleSheet(u"background:white;\n"
@@ -601,14 +574,14 @@ class Ui_SettingsDialog(object):
         self.textEdit_X3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.button_record4 = QPushButton(self.groupBox_coordinate)
         self.button_record4.setObjectName(u"button_record4")
-        self.button_record4.setGeometry(QRect(300, 245, 70, 30))
+        self.button_record4.setGeometry(QRect(310, 245, 70, 30))
         self.button_record4.setFont(font2)
         self.button_record4.setStyleSheet(u"")
         self.button_record4.setAutoDefault(False)
         self.button_record4.setFlat(False)
         self.textEdit_Y4 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_Y4.setObjectName(u"textEdit_Y4")
-        self.textEdit_Y4.setGeometry(QRect(200, 250, 60, 20))
+        self.textEdit_Y4.setGeometry(QRect(230, 250, 60, 20))
         self.textEdit_Y4.setFont(font4)
         self.textEdit_Y4.setAutoFillBackground(False)
         self.textEdit_Y4.setStyleSheet(u"background:white;\n"
@@ -617,18 +590,9 @@ class Ui_SettingsDialog(object):
         self.textEdit_Y4.setFrameShadow(QFrame.Shadow.Plain)
         self.textEdit_Y4.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.textEdit_Y4.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.label_img5_2 = QLabel(self.groupBox_coordinate)
-        self.label_img5_2.setObjectName(u"label_img5_2")
-        self.label_img5_2.setGeometry(QRect(30, 300, 50, 20))
-        self.label_img5_2.setFont(font2)
-        self.label_img5_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0 ,0, 0);\n"
-"	background-color: transparent;\n"
-"}")
-        self.label_img5_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_Y4 = QLabel(self.groupBox_coordinate)
         self.label_Y4.setObjectName(u"label_Y4")
-        self.label_Y4.setGeometry(QRect(180, 250, 20, 20))
+        self.label_Y4.setGeometry(QRect(210, 250, 20, 20))
         self.label_Y4.setFont(font2)
         self.label_Y4.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -636,7 +600,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.textEdit_Y5 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_Y5.setObjectName(u"textEdit_Y5")
-        self.textEdit_Y5.setGeometry(QRect(200, 300, 60, 20))
+        self.textEdit_Y5.setGeometry(QRect(230, 300, 60, 20))
         self.textEdit_Y5.setFont(font4)
         self.textEdit_Y5.setAutoFillBackground(False)
         self.textEdit_Y5.setStyleSheet(u"background:white;\n"
@@ -647,7 +611,7 @@ class Ui_SettingsDialog(object):
         self.textEdit_Y5.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_Y5 = QLabel(self.groupBox_coordinate)
         self.label_Y5.setObjectName(u"label_Y5")
-        self.label_Y5.setGeometry(QRect(180, 300, 20, 20))
+        self.label_Y5.setGeometry(QRect(210, 300, 20, 20))
         self.label_Y5.setFont(font2)
         self.label_Y5.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -655,7 +619,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.label_X5 = QLabel(self.groupBox_coordinate)
         self.label_X5.setObjectName(u"label_X5")
-        self.label_X5.setGeometry(QRect(90, 300, 20, 20))
+        self.label_X5.setGeometry(QRect(120, 300, 20, 20))
         self.label_X5.setFont(font2)
         self.label_X5.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -663,21 +627,21 @@ class Ui_SettingsDialog(object):
 "}")
         self.button_record5 = QPushButton(self.groupBox_coordinate)
         self.button_record5.setObjectName(u"button_record5")
-        self.button_record5.setGeometry(QRect(300, 295, 70, 30))
+        self.button_record5.setGeometry(QRect(310, 295, 70, 30))
         self.button_record5.setFont(font2)
         self.button_record5.setStyleSheet(u"")
         self.button_record5.setAutoDefault(False)
         self.button_record5.setFlat(False)
         self.button_record6 = QPushButton(self.groupBox_coordinate)
         self.button_record6.setObjectName(u"button_record6")
-        self.button_record6.setGeometry(QRect(300, 345, 70, 30))
+        self.button_record6.setGeometry(QRect(310, 345, 70, 30))
         self.button_record6.setFont(font2)
         self.button_record6.setStyleSheet(u"")
         self.button_record6.setAutoDefault(False)
         self.button_record6.setFlat(False)
         self.textEdit_X5 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_X5.setObjectName(u"textEdit_X5")
-        self.textEdit_X5.setGeometry(QRect(110, 300, 60, 20))
+        self.textEdit_X5.setGeometry(QRect(140, 300, 60, 20))
         self.textEdit_X5.setFont(font4)
         self.textEdit_X5.setAutoFillBackground(False)
         self.textEdit_X5.setStyleSheet(u"background:white;\n"
@@ -686,18 +650,9 @@ class Ui_SettingsDialog(object):
         self.textEdit_X5.setFrameShadow(QFrame.Shadow.Plain)
         self.textEdit_X5.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.textEdit_X5.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.label_img4_2 = QLabel(self.groupBox_coordinate)
-        self.label_img4_2.setObjectName(u"label_img4_2")
-        self.label_img4_2.setGeometry(QRect(30, 250, 50, 20))
-        self.label_img4_2.setFont(font2)
-        self.label_img4_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0 ,0, 0);\n"
-"	background-color: transparent;\n"
-"}")
-        self.label_img4_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_Y6 = QLabel(self.groupBox_coordinate)
         self.label_Y6.setObjectName(u"label_Y6")
-        self.label_Y6.setGeometry(QRect(180, 350, 20, 20))
+        self.label_Y6.setGeometry(QRect(210, 350, 20, 20))
         self.label_Y6.setFont(font2)
         self.label_Y6.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -705,7 +660,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.textEdit_X6 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_X6.setObjectName(u"textEdit_X6")
-        self.textEdit_X6.setGeometry(QRect(110, 350, 60, 20))
+        self.textEdit_X6.setGeometry(QRect(140, 350, 60, 20))
         self.textEdit_X6.setFont(font4)
         self.textEdit_X6.setAutoFillBackground(False)
         self.textEdit_X6.setStyleSheet(u"background:white;\n"
@@ -716,7 +671,7 @@ class Ui_SettingsDialog(object):
         self.textEdit_X6.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.textEdit_X4 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_X4.setObjectName(u"textEdit_X4")
-        self.textEdit_X4.setGeometry(QRect(110, 250, 60, 20))
+        self.textEdit_X4.setGeometry(QRect(140, 250, 60, 20))
         self.textEdit_X4.setFont(font4)
         self.textEdit_X4.setAutoFillBackground(False)
         self.textEdit_X4.setStyleSheet(u"background:white;\n"
@@ -727,7 +682,7 @@ class Ui_SettingsDialog(object):
         self.textEdit_X4.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_X4 = QLabel(self.groupBox_coordinate)
         self.label_X4.setObjectName(u"label_X4")
-        self.label_X4.setGeometry(QRect(90, 250, 20, 20))
+        self.label_X4.setGeometry(QRect(120, 250, 20, 20))
         self.label_X4.setFont(font2)
         self.label_X4.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
@@ -735,7 +690,7 @@ class Ui_SettingsDialog(object):
 "}")
         self.textEdit_Y6 = QTextEdit(self.groupBox_coordinate)
         self.textEdit_Y6.setObjectName(u"textEdit_Y6")
-        self.textEdit_Y6.setGeometry(QRect(200, 350, 60, 20))
+        self.textEdit_Y6.setGeometry(QRect(230, 350, 60, 20))
         self.textEdit_Y6.setFont(font4)
         self.textEdit_Y6.setAutoFillBackground(False)
         self.textEdit_Y6.setStyleSheet(u"background:white;\n"
@@ -746,21 +701,12 @@ class Ui_SettingsDialog(object):
         self.textEdit_Y6.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_X6 = QLabel(self.groupBox_coordinate)
         self.label_X6.setObjectName(u"label_X6")
-        self.label_X6.setGeometry(QRect(90, 350, 20, 20))
+        self.label_X6.setGeometry(QRect(120, 350, 20, 20))
         self.label_X6.setFont(font2)
         self.label_X6.setStyleSheet(u"QLabel{\n"
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.label_img6_2 = QLabel(self.groupBox_coordinate)
-        self.label_img6_2.setObjectName(u"label_img6_2")
-        self.label_img6_2.setGeometry(QRect(30, 350, 50, 20))
-        self.label_img6_2.setFont(font2)
-        self.label_img6_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0 ,0, 0);\n"
-"	background-color: transparent;\n"
-"}")
-        self.label_img6_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.label_1 = QLabel(self.groupBox_coordinate)
         self.label_1.setObjectName(u"label_1")
         self.label_1.setGeometry(QRect(20, 35, 261, 20))
@@ -784,6 +730,49 @@ class Ui_SettingsDialog(object):
 "	background-color: transparent;\n"
 "}")
         self.label_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.LineEdit_img_name1 = QLineEdit(self.groupBox_coordinate)
+        self.LineEdit_img_name1.setObjectName(u"LineEdit_img_name1")
+        self.LineEdit_img_name1.setGeometry(QRect(30, 100, 70, 20))
+        self.LineEdit_img_name1.setFont(font4)
+        self.LineEdit_img_name1.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.LineEdit_img_name1.setMaxLength(32767)
+        self.LineEdit_img_name2 = QLineEdit(self.groupBox_coordinate)
+        self.LineEdit_img_name2.setObjectName(u"LineEdit_img_name2")
+        self.LineEdit_img_name2.setGeometry(QRect(30, 150, 70, 20))
+        self.LineEdit_img_name2.setFont(font4)
+        self.LineEdit_img_name2.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.LineEdit_img_name2.setMaxLength(32767)
+        self.LineEdit_img_name2.setClearButtonEnabled(False)
+        self.LineEdit_img_name3 = QLineEdit(self.groupBox_coordinate)
+        self.LineEdit_img_name3.setObjectName(u"LineEdit_img_name3")
+        self.LineEdit_img_name3.setGeometry(QRect(30, 200, 70, 20))
+        self.LineEdit_img_name3.setFont(font4)
+        self.LineEdit_img_name3.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.LineEdit_img_name3.setMaxLength(32767)
+        self.LineEdit_img_name4 = QLineEdit(self.groupBox_coordinate)
+        self.LineEdit_img_name4.setObjectName(u"LineEdit_img_name4")
+        self.LineEdit_img_name4.setGeometry(QRect(30, 250, 70, 20))
+        self.LineEdit_img_name4.setFont(font4)
+        self.LineEdit_img_name4.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.LineEdit_img_name4.setMaxLength(32767)
+        self.LineEdit_img_name5 = QLineEdit(self.groupBox_coordinate)
+        self.LineEdit_img_name5.setObjectName(u"LineEdit_img_name5")
+        self.LineEdit_img_name5.setGeometry(QRect(30, 300, 70, 20))
+        self.LineEdit_img_name5.setFont(font4)
+        self.LineEdit_img_name5.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.LineEdit_img_name5.setMaxLength(32767)
+        self.LineEdit_img_name6 = QLineEdit(self.groupBox_coordinate)
+        self.LineEdit_img_name6.setObjectName(u"LineEdit_img_name6")
+        self.LineEdit_img_name6.setGeometry(QRect(30, 350, 70, 20))
+        self.LineEdit_img_name6.setFont(font4)
+        self.LineEdit_img_name6.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.LineEdit_img_name6.setMaxLength(32767)
         self.tabWidget.addTab(self.passiveset_tab, "")
 
         self.retranslateUi(SettingsDialog)
@@ -856,32 +845,38 @@ class Ui_SettingsDialog(object):
         self.label_img6.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c06", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.keyset_tab), QCoreApplication.translate("SettingsDialog", u"\ud0a4 \uc124\uc815", None))
         self.groupBox_coordinate.setTitle(QCoreApplication.translate("SettingsDialog", u"\uc88c\ud45c \uc124\uc815", None))
-        self.label_img1_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 1", None))
         self.label_Y1.setText(QCoreApplication.translate("SettingsDialog", u"Y :", None))
         self.label_X1.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
         self.button_record1.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791", None))
         self.button_record2.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791", None))
         self.label_Y2.setText(QCoreApplication.translate("SettingsDialog", u"Y :", None))
-        self.label_img2_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 2", None))
         self.label_X2.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
-        self.label_img3_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 3", None))
         self.label_Y3.setText(QCoreApplication.translate("SettingsDialog", u"Y :", None))
         self.label_X3.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
         self.button_record3.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791", None))
         self.button_record4.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791", None))
-        self.label_img5_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 5", None))
         self.label_Y4.setText(QCoreApplication.translate("SettingsDialog", u"Y :", None))
         self.label_Y5.setText(QCoreApplication.translate("SettingsDialog", u"Y :", None))
         self.label_X5.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
         self.button_record5.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791", None))
         self.button_record6.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791", None))
-        self.label_img4_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 4", None))
         self.label_Y6.setText(QCoreApplication.translate("SettingsDialog", u"Y :", None))
         self.label_X4.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
         self.label_X6.setText(QCoreApplication.translate("SettingsDialog", u"X :", None))
-        self.label_img6_2.setText(QCoreApplication.translate("SettingsDialog", u"\uc774\ubbf8\uc9c0 6", None))
         self.label_1.setText(QCoreApplication.translate("SettingsDialog", u"\uc218\ub3d9\ubaa8\ub4dc\uc5d0\uc11c \ud074\ub9ad\ud560 \uc88c\ud45c\ub97c \uc124\uc815\ud558\uc138\uc694", None))
         self.label_2.setText(QCoreApplication.translate("SettingsDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \ud655\uc815\ud569\ub2c8\ub2e4", None))
+        self.LineEdit_img_name1.setInputMask("")
+        self.LineEdit_img_name1.setPlaceholderText("")
+        self.LineEdit_img_name2.setInputMask("")
+        self.LineEdit_img_name2.setPlaceholderText("")
+        self.LineEdit_img_name3.setInputMask("")
+        self.LineEdit_img_name3.setPlaceholderText("")
+        self.LineEdit_img_name4.setInputMask("")
+        self.LineEdit_img_name4.setPlaceholderText("")
+        self.LineEdit_img_name5.setInputMask("")
+        self.LineEdit_img_name5.setPlaceholderText("")
+        self.LineEdit_img_name6.setInputMask("")
+        self.LineEdit_img_name6.setPlaceholderText("")
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.passiveset_tab), QCoreApplication.translate("SettingsDialog", u"\uc218\ub3d9\ubaa8\ub4dc", None))
     # retranslateUi
 

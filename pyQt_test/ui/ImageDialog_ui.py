@@ -16,16 +16,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QFrame, QGroupBox, QLabel, QPushButton,
-    QSizePolicy, QTextEdit, QWidget)
+    QGroupBox, QLabel, QLineEdit, QPushButton,
+    QSizePolicy, QWidget)
 
 class Ui_ImageDialog(object):
     def setupUi(self, ImageDialog):
         if not ImageDialog.objectName():
             ImageDialog.setObjectName(u"ImageDialog")
-        ImageDialog.resize(400, 500)
+        ImageDialog.resize(400, 550)
         font = QFont()
-        font.setFamilies([u"Arial"])
+        font.setFamilies([u"Nanum Gothic"])
         ImageDialog.setFont(font)
         ImageDialog.setStyleSheet(u"QDialog{\n"
 "	background-color: #EAEFEF;\n"
@@ -62,7 +62,7 @@ class Ui_ImageDialog(object):
         self.reset_button.setIcon(icon)
         self.groupBox = QGroupBox(ImageDialog)
         self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setGeometry(QRect(25, 170, 350, 280))
+        self.groupBox.setGeometry(QRect(25, 210, 350, 280))
         font3 = QFont()
         font3.setFamilies([u"Nanum Gothic"])
         font3.setPointSize(12)
@@ -90,7 +90,7 @@ class Ui_ImageDialog(object):
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_X1 = QTextEdit(self.groupBox)
+        self.textEdit_X1 = QLineEdit(self.groupBox)
         self.textEdit_X1.setObjectName(u"textEdit_X1")
         self.textEdit_X1.setGeometry(QRect(70, 105, 60, 20))
         font6 = QFont()
@@ -100,10 +100,6 @@ class Ui_ImageDialog(object):
         self.textEdit_X1.setAutoFillBackground(False)
         self.textEdit_X1.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_X1.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_X1.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_X1.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_X1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_Y1 = QLabel(self.groupBox)
         self.label_Y1.setObjectName(u"label_Y1")
         self.label_Y1.setGeometry(QRect(140, 105, 20, 20))
@@ -112,17 +108,13 @@ class Ui_ImageDialog(object):
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_Y1 = QTextEdit(self.groupBox)
+        self.textEdit_Y1 = QLineEdit(self.groupBox)
         self.textEdit_Y1.setObjectName(u"textEdit_Y1")
         self.textEdit_Y1.setGeometry(QRect(160, 105, 60, 20))
         self.textEdit_Y1.setFont(font6)
         self.textEdit_Y1.setAutoFillBackground(False)
         self.textEdit_Y1.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_Y1.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_Y1.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_Y1.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_Y1.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.tooltip_1 = QLabel(self.groupBox)
         self.tooltip_1.setObjectName(u"tooltip_1")
         self.tooltip_1.setGeometry(QRect(220, 32, 15, 15))
@@ -177,17 +169,13 @@ class Ui_ImageDialog(object):
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_Y2 = QTextEdit(self.groupBox)
+        self.textEdit_Y2 = QLineEdit(self.groupBox)
         self.textEdit_Y2.setObjectName(u"textEdit_Y2")
         self.textEdit_Y2.setGeometry(QRect(160, 165, 60, 20))
         self.textEdit_Y2.setFont(font6)
         self.textEdit_Y2.setAutoFillBackground(False)
         self.textEdit_Y2.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_Y2.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_Y2.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_Y2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_Y2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_4 = QLabel(self.groupBox)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(30, 140, 60, 20))
@@ -197,17 +185,13 @@ class Ui_ImageDialog(object):
 "	background-color: transparent;\n"
 "}")
         self.label_4.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
-        self.textEdit_X2 = QTextEdit(self.groupBox)
+        self.textEdit_X2 = QLineEdit(self.groupBox)
         self.textEdit_X2.setObjectName(u"textEdit_X2")
         self.textEdit_X2.setGeometry(QRect(70, 165, 60, 20))
         self.textEdit_X2.setFont(font6)
         self.textEdit_X2.setAutoFillBackground(False)
         self.textEdit_X2.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_X2.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_X2.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_X2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_X2.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_X2 = QLabel(self.groupBox)
         self.label_X2.setObjectName(u"label_X2")
         self.label_X2.setGeometry(QRect(50, 165, 20, 20))
@@ -216,17 +200,13 @@ class Ui_ImageDialog(object):
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_Y3 = QTextEdit(self.groupBox)
+        self.textEdit_Y3 = QLineEdit(self.groupBox)
         self.textEdit_Y3.setObjectName(u"textEdit_Y3")
         self.textEdit_Y3.setGeometry(QRect(160, 238, 60, 20))
         self.textEdit_Y3.setFont(font6)
         self.textEdit_Y3.setAutoFillBackground(False)
         self.textEdit_Y3.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_Y3.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_Y3.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_Y3.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_Y3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_Y3 = QLabel(self.groupBox)
         self.label_Y3.setObjectName(u"label_Y3")
         self.label_Y3.setGeometry(QRect(140, 238, 20, 20))
@@ -235,17 +215,13 @@ class Ui_ImageDialog(object):
 "	color: rgb(0 ,0, 0);\n"
 "	background-color: transparent;\n"
 "}")
-        self.textEdit_X3 = QTextEdit(self.groupBox)
+        self.textEdit_X3 = QLineEdit(self.groupBox)
         self.textEdit_X3.setObjectName(u"textEdit_X3")
         self.textEdit_X3.setGeometry(QRect(70, 238, 60, 20))
         self.textEdit_X3.setFont(font6)
         self.textEdit_X3.setAutoFillBackground(False)
         self.textEdit_X3.setStyleSheet(u"background:white;\n"
 "border: 1px solid black;")
-        self.textEdit_X3.setFrameShape(QFrame.Shape.Box)
-        self.textEdit_X3.setFrameShadow(QFrame.Shadow.Plain)
-        self.textEdit_X3.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_X3.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.label_X3 = QLabel(self.groupBox)
         self.label_X3.setObjectName(u"label_X3")
         self.label_X3.setGeometry(QRect(50, 238, 20, 20))
@@ -287,7 +263,7 @@ class Ui_ImageDialog(object):
         self.label_2.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
         self.buttonBox = QDialogButtonBox(ImageDialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(25, 460, 350, 35))
+        self.buttonBox.setGeometry(QRect(25, 510, 350, 35))
         self.buttonBox.setFont(font1)
         self.buttonBox.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.buttonBox.setAutoFillBackground(False)
@@ -295,6 +271,13 @@ class Ui_ImageDialog(object):
         self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
         self.buttonBox.setCenterButtons(False)
+        self.textEdit_img_name = QLineEdit(ImageDialog)
+        self.textEdit_img_name.setObjectName(u"textEdit_img_name")
+        self.textEdit_img_name.setGeometry(QRect(110, 180, 180, 20))
+        self.textEdit_img_name.setFont(font6)
+        self.textEdit_img_name.setStyleSheet(u"background:white;\n"
+"border: 1px solid black;")
+        self.textEdit_img_name.setMaxLength(20)
 
         self.retranslateUi(ImageDialog)
 
@@ -326,5 +309,7 @@ class Ui_ImageDialog(object):
         self.label_5.setText(QCoreApplication.translate("ImageDialog", u"\ud074\ub9ad \uc88c\ud45c \uc870\uc815 (\u203b\uccab \uc2e4\ud589\uc2dc \uc218\uc815 \uae08\uc9c0)", None))
         self.tooltip_2.setText(QCoreApplication.translate("ImageDialog", u"?", None))
         self.label_2.setText(QCoreApplication.translate("ImageDialog", u"\uae30\ub85d \uc2dc\uc791 \ubc84\ud2bc\uc744 \ub204\ub978 \ud6c4 F10\uc744 \ub204\ub974\uba74 \uc88c\ud45c\ub97c \ud655\uc815\ud569\ub2c8\ub2e4", None))
+        self.textEdit_img_name.setInputMask("")
+        self.textEdit_img_name.setPlaceholderText(QCoreApplication.translate("ImageDialog", u"\uc774\ubbf8\uc9c0\uc758 \uc774\ub984\uc744 \uc785\ub825\ud558\uc138\uc694", None))
     # retranslateUi
 

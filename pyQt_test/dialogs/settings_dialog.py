@@ -69,13 +69,25 @@ class SettingsDialog(QDialog):
     def record_coordinate(self):
         """좌표기록 버튼 클릭이벤트"""
         sender = self.sender()
+        
+        # 현재 클릭된 버튼 번호 확인
+        current_button = None
+        for i in range(1, 7):
+            if sender == getattr(self.ui, f'button_record{i}'):
+                current_button = i
+                break
+            
+        # 이미 기록 중이고 같은 버튼을 눌렀다면 기록 취소
+        if self.recording and self.active_button == current_button:
+            self.recording = False
+            sender.setText("기록 시작")
+            self.timer.stop()
+            return
+        
+        # 새로운 기록 시작
         if not self.recording:
             self.recording = True
-            # 어떤 버튼이 클릭되었는지 저장
-            for i in range(1, 7):
-                if sender == getattr(self.ui, f'button_record{i}'):
-                    self.active_button = i
-                    break
+            self.active_button = current_button
             sender.setText("기록 중...")
             self.timer.start(50)
     
@@ -110,18 +122,18 @@ class SettingsDialog(QDialog):
         # 4-6번째 요소들의 위젯 리스트
         widgets_to_hide = [
             # 패시브 모드 설정
-            (self.ui.label_img4, self.ui.combo_ps4, 
+            (self.ui.LineEdit_img_name4, self.ui.combo_ps4, 
              self.ui.check_ctrl6, self.ui.check_alt6, self.ui.check_shift6),
-            (self.ui.label_img5, self.ui.combo_ps5,
+            (self.ui.LineEdit_img_name5, self.ui.combo_ps5,
              self.ui.check_ctrl7, self.ui.check_alt7, self.ui.check_shift7),
-            (self.ui.label_img6, self.ui.combo_ps6,
+            (self.ui.LineEdit_img_name6, self.ui.combo_ps6,
              self.ui.check_ctrl8, self.ui.check_alt8, self.ui.check_shift8),
             # 좌표 설정
-            (self.ui.label_img4_2, self.ui.label_X4, self.ui.textEdit_X4 
+            (self.ui.LineEdit_img_name4, self.ui.label_X4, self.ui.textEdit_X4 
              ,self.ui.label_Y4, self.ui.textEdit_Y4, self.ui.button_record4),
-            (self.ui.label_img5_2, self.ui.label_X5, self.ui.textEdit_X5 
+            (self.ui.LineEdit_img_name5, self.ui.label_X5, self.ui.textEdit_X5 
              ,self.ui.label_Y5, self.ui.textEdit_Y5, self.ui.button_record5),
-            (self.ui.label_img6_2, self.ui.label_X6, self.ui.textEdit_X6 
+            (self.ui.LineEdit_img_name6, self.ui.label_X6, self.ui.textEdit_X6 
              ,self.ui.label_Y6, self.ui.textEdit_Y6, self.ui.button_record6)
         ]
         
@@ -180,6 +192,7 @@ class SettingsDialog(QDialog):
             max_items = 6 if current_menu == 'menu6' else 3
             
             for i in range(1, max_items + 1):
+                img_name = getattr(self.ui, f'LineEdit_img_name{i}')
                 combo = getattr(self.ui, f'combo_ps{i}')
                 index = combo.findText(passive_settings.get(f'combo_ps{i}_value', '0'))
                 if index >= 0:
@@ -189,6 +202,7 @@ class SettingsDialog(QDialog):
                 alt = getattr(self.ui, f'check_alt{i+2}')
                 shift = getattr(self.ui, f'check_shift{i+2}')
                 
+                img_name.setText(passive_settings.get(f'LineEdit_img_name{i}', ''))
                 ctrl.setChecked(passive_settings.get(f'check_ctrl{i+2}_state', False))
                 alt.setChecked(passive_settings.get(f'check_alt{i+2}_state', False))
                 shift.setChecked(passive_settings.get(f'check_shift{i+2}_state', False))
@@ -215,12 +229,14 @@ class SettingsDialog(QDialog):
             max_items = 6 if current_menu == 'menu6' else 3
             
             for i in range(1, max_items + 1):
+                img_name = getattr(self.ui, f'LineEdit_img_name{i}')
                 combo = getattr(self.ui, f'combo_ps{i}')
                 ctrl = getattr(self.ui, f'check_ctrl{i+2}')
                 alt = getattr(self.ui, f'check_alt{i+2}')
                 shift = getattr(self.ui, f'check_shift{i+2}')
                 
                 passive_settings.update({
+                    f'LineEdit_img_name{i}': img_name.text(),
                     f'combo_ps{i}_value': combo.currentText(),
                     f'check_ctrl{i+2}_state': ctrl.isChecked(),
                     f'check_alt{i+2}_state': alt.isChecked(),
@@ -237,13 +253,14 @@ class SettingsDialog(QDialog):
                         data[current_menu]['coordinates_passive']['setting_pos'][f'image{i}_x'] = int(x_coord)
                         data[current_menu]['coordinates_passive']['setting_pos'][f'image{i}_y'] = int(y_coord)
                     else:
-                        # 좌표가 비어있는 경우 초기화
                         data[current_menu]['coordinates_passive']['setting_pos'][f'image{i}_x'] = 0
                         data[current_menu]['coordinates_passive']['setting_pos'][f'image{i}_y'] = 0
             except ValueError:
-                pass  # 숫자로 변환할 수 없는 경우 무시
+                pass
             
             # 설정 저장
             data[current_menu]['settings_active'] = active_settings
             data[current_menu]['settings_passive'] = passive_settings
             save_json_data(self.data_file, data)
+            
+            self.main_window.macro_controller.hotkey_manager.register_hotkeys()  # 설정 변경 후 실행

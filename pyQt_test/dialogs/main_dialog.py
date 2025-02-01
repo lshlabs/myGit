@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parents[1]))  # pyQt_test 폴더를 path에 추가
 
-import resource_rc  # 이제 직접 import 가능
+import resource_rc
 from PySide6.QtWidgets import QApplication, QMainWindow, QDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
@@ -35,7 +35,8 @@ class MainWindow(QMainWindow):
             self.create_data_file()  # 데이터 파일 생성
         
         # MacroController 인스턴스 생성
-        self.macro_controller = MacroController(self.data_file, self)  # MainWindow 인스턴스 전달
+        self.data = load_json_data(self.data_file)  # 데이터 로드
+        self.macro_controller = MacroController(self.data_file, self)  # data_file 전달
         
         # settings 아이콘 설정
         settings_icon = QPixmap(":/img/settings.png")
@@ -134,6 +135,11 @@ class MainWindow(QMainWindow):
 
     def update_menu_display(self, menu_name, settings):
         """메뉴 화면 업데이트"""
+        # 데이터 로드
+        data = load_json_data(self.data_file)
+        if not data:
+            return
+        
         # Setting 프레임 설정
         self.ui.Setting_frame.show()
         self.ui.Setting_frame.setGeometry(43, settings['y_pos'], 460, 171)
@@ -161,19 +167,26 @@ class MainWindow(QMainWindow):
             self.ui.scrollAreaWidgetContents.setMinimumHeight(settings['height'])
             self.ui.scrollAreaWidgetContents.setMaximumHeight(settings['height'])
         
-        # 이미지 프레임 표시/숨기기
+        # 이미지 프레임과 라벨 표시/숨기기
         all_frames = [f'frame_image{i}' for i in range(1, 7)]
         for frame_name in all_frames:
             frame = getattr(self.ui, frame_name)
             label = getattr(self.ui, frame_name.replace('frame_', 'label_'))
             
             if frame_name in settings['frames']:
+                # 이미지 설정
                 if self.menu_pixmaps[menu_name][frame_name]:
                     frame.setPixmap(self.menu_pixmaps[menu_name][frame_name])
                     frame.setStyleSheet("background: transparent; border: 1px solid black;")
                 else:
                     frame.clear()
                     frame.setStyleSheet("background:#CED0D0;\nborder:1px solid black;")
+                
+                # 라벨 텍스트 업데이트
+                image_number = frame_name.replace('frame_image', '')
+                saved_name = data[menu_name]['other_values'].get(f'frame_image{image_number}_name', '')
+                label.setText(saved_name if saved_name else f"이미지 {image_number}")
+                
                 frame.show()
                 label.show()
             else:
@@ -359,6 +372,13 @@ class MainWindow(QMainWindow):
                 if data:
                     data[current_menu]['other_values'][frame_name] = relative_path
                     save_json_data(self.data_file, data)
+
+            # 이미지 이름 라벨 업데이트
+            data = load_json_data(self.data_file)
+            if data:
+                saved_name = data[current_menu]['other_values'].get(f'frame_image{image_number}_name', '')
+                label = getattr(self.ui, f'label_image{image_number}')
+                label.setText(saved_name if saved_name else f"이미지 {image_number}")
 
     def show_settings_dialog(self, event):
         """설정 다이얼로그 표시"""

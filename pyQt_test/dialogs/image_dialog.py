@@ -1,5 +1,5 @@
 import os
-from PySide6.QtWidgets import QDialog, QFileDialog
+from PySide6.QtWidgets import QDialog, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QPixmap, QKeyEvent, QCursor
 from PySide6.QtWidgets import QApplication
@@ -22,6 +22,14 @@ class ImageDialog(QDialog):
         # 메뉴 이름과 이미지 번호 저장
         self.menu_name = menu_name
         self.image_number = image_number
+        
+        # 저장된 이미지 이름 불러오기
+        data = load_json_data(get_data_file_path())
+        if data and menu_name:
+            saved_name = data[menu_name]['other_values'].get(f'frame_image{image_number}_name', '')
+            self.ui.textEdit_img_name.setText(saved_name)
+        
+        self.ui.textEdit_img_name.setPlaceholderText("이미지 이름을 입력하세요")
         
         # tooltips설정
         self.ui.tooltip_1.setCursor(Qt.PointingHandCursor)
@@ -73,7 +81,15 @@ class ImageDialog(QDialog):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_coordinates)
         
-        self.installEventFilter(self)  # 키 이벤트 필터 설치
+        # 모든 LineEdit에 이벤트 필터 설치
+        self.ui.textEdit_img_name.installEventFilter(self)
+        self.ui.textEdit_X1.installEventFilter(self)
+        self.ui.textEdit_Y1.installEventFilter(self)
+        self.ui.textEdit_X2.installEventFilter(self)
+        self.ui.textEdit_Y2.installEventFilter(self)
+        
+        # 메인 윈도우에 이벤트 필터 설치 추가
+        self.installEventFilter(self)
         
     def select_image(self, event):
         file_name, _ = QFileDialog.getOpenFileName(
@@ -124,12 +140,20 @@ class ImageDialog(QDialog):
     def record_coordinate(self):
         """좌표기록 버튼 클릭이벤트"""
         sender = self.sender()
-        if not self.recording:
-            self.recording = True
-            # 어떤 버튼이 클릭되었는지 저장
-            self.active_button = 1 if sender == self.ui.button_record1 else 2
-            sender.setText("기록 중...")
-            self.timer.start(50)
+        current_button = 1 if sender == self.ui.button_record1 else 2
+        
+        # 이미 기록 중이고 같은 버튼을 눌렀다면 기록 취소
+        if self.recording and self.active_button == current_button:
+            self.recording = False
+            sender.setText("기록 시작")
+            self.timer.stop()
+            return
+        
+        # 새로운 기록 시작
+        self.recording = True
+        self.active_button = current_button
+        sender.setText("기록 중...")
+        self.timer.start(50)
         
     def update_coordinates(self):
         """좌표 업데이트"""
@@ -145,16 +169,21 @@ class ImageDialog(QDialog):
     
     def eventFilter(self, obj, event):
         """이벤트 필터"""
+        # 좌표 기록 중 F10 키 처리
         if self.recording and event.type() == event.Type.KeyPress:
             if event.key() == Qt.Key.Key_F10:
                 self.recording = False
                 # 활성화된 버튼 텍스트 복원
-                if self.active_button == 1:
-                    self.ui.button_record1.setText("기록 시작")
-                else:
-                    self.ui.button_record2.setText("기록 시작")
+                if self.active_button:
+                    getattr(self.ui, f'button_record{self.active_button}').setText("기록 시작")
                 self.timer.stop()
                 return True
+            
+        # LineEdit에서 엔터키 처리
+        if isinstance(obj, QLineEdit) and event.type() == event.Type.KeyPress:
+            if event.key() in [Qt.Key.Key_Return, Qt.Key.Key_Enter]:
+                return True  # 엔터키 이벤트 무시
+            
         return super().eventFilter(obj, event)
         
     def accept(self):
@@ -164,14 +193,21 @@ class ImageDialog(QDialog):
             data = load_json_data(data_file)
             
             if data:
+                # 이미지 이름 저장
+                img_name = self.ui.textEdit_img_name.text()
+                
                 # 첫 번째 좌표 저장
-                x_coord1 = self.ui.textEdit_X1.toPlainText()
-                y_coord1 = self.ui.textEdit_Y1.toPlainText()
+                x_coord1 = self.ui.textEdit_X1.text()
+                y_coord1 = self.ui.textEdit_Y1.text()
                 # 두 번째 좌표 저장
-                x_coord2 = self.ui.textEdit_X2.toPlainText()
-                y_coord2 = self.ui.textEdit_Y2.toPlainText()
+                x_coord2 = self.ui.textEdit_X2.text()
+                y_coord2 = self.ui.textEdit_Y2.text()
                 
                 try:
+                    # 이미지 이름 저장
+                    if img_name:
+                        data[self.menu_name]['other_values'][f'frame_image{self.image_number}_name'] = img_name
+                    
                     # 첫 번째 좌표가 있는 경우 저장
                     if x_coord1 and y_coord1:
                         data[self.menu_name]['coordinates_active']['start_pos'][f'image{self.image_number}_x'] = int(x_coord1)
