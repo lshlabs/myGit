@@ -297,7 +297,7 @@ border: none;</string>
           <family>NanumGothic</family>
          </font>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,1,0">
+        <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0">
          <property name="spacing">
           <number>0</number>
          </property>

@@ -165,7 +165,6 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_9.addItem(self.verticalSpacer6)
 
-        self.verticalLayout_9.setStretch(1, 1)
         self.verticalFrame_minus1 = QFrame(self.frame_timeset1)
         self.verticalFrame_minus1.setObjectName(u"verticalFrame_minus1")
         self.verticalFrame_minus1.setGeometry(QRect(150, 0, 41, 51))
