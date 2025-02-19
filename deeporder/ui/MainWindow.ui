@@ -28,7 +28,9 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #EAEFEF;</string>
+   <string notr="true">QMainWindow{
+	background-color: #EFEFEF;
+}</string>
   </property>
   <widget class="QWidget" name="mainwindow">
    <property name="font">
@@ -91,13 +93,15 @@ border-radius: 5px;
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: darkgray;
-color: white;
-border: none;
-border-top-left-radius :5px;
-border-top-right-radius : 5px;
-border-bottom-left-radius : 0px;
-border-bottom-right-radius : 0px;</string>
+      <string notr="true">QLabel {
+	background-color: darkgray;
+	color: white;
+	border: none;
+	border-top-left-radius :5px;
+	border-top-right-radius : 5px;
+	border-bottom-left-radius : 0px;
+	border-bottom-right-radius : 0px;
+}</string>
      </property>
      <property name="lineWidth">
       <number>0</number>
@@ -126,11 +130,14 @@ border-bottom-right-radius : 0px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color:black;
-border-radius: 5px;
+      <string notr="true">QListWidget {
+                color: black;
+                border-radius: 5px;
+            }
 QListWidget::item {
-        height: 40px;
-    }</string>
+                height: 30px;
+                padding: 4px;
+}</string>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Shadow::Plain</enum>
@@ -174,19 +181,6 @@ QListWidget::item {
      <property name="sortingEnabled">
       <bool>false</bool>
      </property>
-     <item>
-      <property name="text">
-       <string>macro1</string>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>12</pointsize>
-        <bold>false</bold>
-        <stylestrategy>NoAntialias</stylestrategy>
-       </font>
-      </property>
-     </item>
     </widget>
     <widget class="QLineEdit" name="lineEdit">
      <property name="geometry">
@@ -204,8 +198,11 @@ QListWidget::item {
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color:black;
-border-radius: 5px;</string>
+      <string notr="true">QLineEdit {
+	color:black;
+	border-radius: 5px; 
+	padding-left:10px;
+}</string>
      </property>
      <property name="inputMask">
       <string/>
@@ -251,7 +248,7 @@ border-radius: 5px;</string>
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color :#f0f0f0;;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
      </property>
@@ -302,7 +299,7 @@ border-radius: 5px;</string>
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
      </property>
@@ -353,7 +350,7 @@ border-radius: 5px;</string>
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
      </property>
@@ -402,16 +399,18 @@ border-radius: 5px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: darkgray;
-color: white;
-border-top: 1px solid black;
-border-bottom: 1px solid black;
-border-left: 1px solid black;
-border-right: none;
-border-top-left-radius :5px;
-border-top-right-radius : 0px;
-border-bottom-left-radius : 5px;
-border-bottom-right-radius : 0px;</string>
+      <string notr="true">QLabel {
+	background-color: darkgray;
+	color: white;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	border-right: none;
+	border-top-left-radius :5px;
+	border-top-right-radius : 0px;
+	border-bottom-left-radius : 5px;
+	border-bottom-right-radius : 0px;
+}</string>
      </property>
      <property name="lineWidth">
       <number>0</number>
@@ -452,16 +451,18 @@ border-bottom-right-radius : 0px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: deepskyblue;
-color: white;
-border-top: 1px solid black;
-border-bottom: 1px solid black;
-border-left: none;
-border-right: 1px solid black;
-border-top-left-radius :0px;
-border-top-right-radius : 5px;
-border-bottom-left-radius : 0px;
-border-bottom-right-radius : 5px;</string>
+      <string notr="true">QLabel {
+	background-color: deepskyblue;
+	color: white;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: none;
+	border-right: 1px solid black;
+	border-top-left-radius :0px;
+	border-top-right-radius : 5px;
+	border-bottom-left-radius : 0px;
+	border-bottom-right-radius : 5px;
+}</string>
      </property>
      <property name="lineWidth">
       <number>0</number>
@@ -489,8 +490,10 @@ border-bottom-right-radius : 5px;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border:none;
-color:black;</string>
+      <string notr="true">QLabel {
+	border: none;
+	color: black;
+}</string>
      </property>
      <property name="text">
       <string>v1.0.0 updated 250201</string>
@@ -530,7 +533,7 @@ color:black;</string>
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
      </property>
@@ -581,7 +584,7 @@ color:black;</string>
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
      </property>

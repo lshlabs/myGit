@@ -19,8 +19,9 @@
    <string>설정</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #EAEFEF;
-</string>
+   <string notr="true">QMainWindow{
+	background-color: #EFEFEF;
+}</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -85,7 +86,7 @@ border-radius: 5px;
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
     </property>
@@ -136,7 +137,7 @@ border-radius: 5px;
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
     </property>
@@ -198,10 +199,132 @@ color:black;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QComboBox
+{
+  selection-color: white;
+  selection-background-color: blue;
+}</string>
     </property>
     <property name="placeholderText">
      <string>선택하세요</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_width">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>110</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:black;
+border-radius: 5px;
+padding-left:3px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+    <property name="placeholderText">
+     <string>ex) 1920</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_height">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>110</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:black;
+border-radius: 5px;
+padding-left:3px;</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+    <property name="placeholderText">
+     <string>ex) 1080</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_width">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>110</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:none;
+color:black;</string>
+    </property>
+    <property name="text">
+     <string>가로 :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_height">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>110</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:none;
+color:black;</string>
+    </property>
+    <property name="text">
+     <string>세로 :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
     </property>
    </widget>
   </widget>

@@ -1,0 +1,73 @@
+{
+    "macro_list": {
+        "M1": {
+            "name": "테스트5",
+            "actions": {
+                "A0": {
+                    "name": "- 버튼 이미지",
+                    "type": "image",
+                    "number": 1,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A0.png",
+                    "surface": [
+                        1,
+                        2
+                    ],
+                    "priority": true
+                },
+                "A1": {
+                    "name": "+ 버튼 이미지",
+                    "type": "image",
+                    "number": 3,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A1.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A2": {
+                    "name": "예상시간 이미지",
+                    "type": "image",
+                    "number": 4,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A2.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A3": {
+                    "name": "거부버튼 이미지",
+                    "type": "image",
+                    "number": 5,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A3.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A4": {
+                    "name": "접수버튼 이미지",
+                    "type": "image",
+                    "number": 6,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A4.png",
+                    "surface": [
+                        2,
+                        4
+                    ],
+                    "priority": false
+                },
+                "A5": {
+                    "name": "딜레이: 0.8초",
+                    "type": "delay",
+                    "number": 2,
+                    "value": 0.8,
+                    "priority": false
+                }
+            },
+            "program": "Google Chrome"
+        }
+    },
+    "settings_main": {
+        "resolution": "1920 x 1080",
+        "custom": false
+    }
+}

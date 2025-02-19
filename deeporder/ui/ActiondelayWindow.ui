@@ -19,8 +19,9 @@
    <string>대기시간 추가</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #EAEFEF;
-</string>
+   <string notr="true">QMainWindow{
+	background-color: #EFEFEF;
+}</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -85,7 +86,7 @@ border-radius: 5px;
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
     </property>
@@ -136,7 +137,7 @@ border-radius: 5px;
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
     </property>
@@ -225,7 +226,8 @@ color:black;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color:black;
-border-radius: 5px;</string>
+border-radius: 5px;
+padding-left: 3px;</string>
     </property>
     <property name="inputMask">
      <string/>
@@ -237,7 +239,7 @@ border-radius: 5px;</string>
      <number>32767</number>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>ex) 0.5</string>
     </property>
    </widget>
    <widget class="QLabel" name="label2">

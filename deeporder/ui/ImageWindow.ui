@@ -12,15 +12,16 @@
   </property>
   <property name="font">
    <font>
-    <family>Nanum Gothic</family>
+    <family>Arial</family>
    </font>
   </property>
   <property name="windowTitle">
    <string>이미지 첨부</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #EAEFEF;
-</string>
+   <string notr="true">QDialog{
+	background-color: #EFEFEF;
+}</string>
   </property>
   <property name="sizeGripEnabled">
    <bool>false</bool>
@@ -85,7 +86,7 @@ border-radius: 5px;
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
     </property>
@@ -136,7 +137,7 @@ border-radius: 5px;
     border-radius: 5px;
 	color:black;
     border: 1px solid #8f8f91;
-    background-color: #f0f0f0;
+    background-color: #EFEFEF;
     padding: 2px 4px;
 }</string>
     </property>
@@ -160,7 +161,7 @@ border-radius: 5px;
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>290</y>
+      <y>280</y>
       <width>300</width>
       <height>20</height>
      </rect>
@@ -182,58 +183,11 @@ color:black;</string>
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_title">
-    <property name="geometry">
-     <rect>
-      <x>1</x>
-      <y>1</y>
-      <width>338</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>128</horstretch>
-      <verstretch>60</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Arial</family>
-      <pointsize>20</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: deepskyblue;
-color: white;
-border: none;
-border-top-left-radius :5px;
-border-top-right-radius : 5px;
-border-bottom-left-radius : 0px;
-border-bottom-right-radius : 0px;</string>
-    </property>
-    <property name="lineWidth">
-     <number>0</number>
-    </property>
-    <property name="text">
-     <string>action name</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_preview">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>80</y>
+      <y>20</y>
       <width>300</width>
       <height>200</height>
      </rect>
@@ -252,9 +206,11 @@ border-bottom-right-radius : 0px;</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0 ,0, 0);
-background-color: #EAEFEF;
-border: 1px solid black;</string>
+     <string notr="true">QLabel {
+	color: black;
+	background-color: #EAEFEF;
+	border: 1px solid black;
+}</string>
     </property>
     <property name="text">
      <string>이곳을 클릭하여
@@ -264,11 +220,11 @@ border: 1px solid black;</string>
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="reset_button">
+   <widget class="QPushButton" name="button_reset">
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>240</y>
+      <y>180</y>
       <width>30</width>
       <height>30</height>
      </rect>
@@ -293,6 +249,7 @@ border: 1px solid black;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background: white;
+color:black;
 border: 1px solid black;
 border-radius: 15px;</string>
     </property>
@@ -307,7 +264,7 @@ border-radius: 15px;</string>
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>320</y>
+      <y>310</y>
       <width>90</width>
       <height>70</height>
      </rect>
@@ -359,7 +316,7 @@ border-bottom-right-radius : 0px;</string>
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>320</y>
+      <y>310</y>
       <width>90</width>
       <height>70</height>
      </rect>
@@ -411,7 +368,7 @@ border-bottom-right-radius : 0px;</string>
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>390</y>
+      <y>380</y>
       <width>90</width>
       <height>70</height>
      </rect>
@@ -463,7 +420,7 @@ border-bottom-right-radius : 0px;</string>
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>390</y>
+      <y>380</y>
       <width>90</width>
       <height>70</height>
      </rect>
@@ -509,6 +466,39 @@ border-bottom-right-radius : 5px;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>230</y>
+      <width>300</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:black;
+border-radius: 5px; 
+padding-left:10px</string>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+    <property name="placeholderText">
+     <string>동작의 이름을 입력하세요</string>
     </property>
    </widget>
   </widget>

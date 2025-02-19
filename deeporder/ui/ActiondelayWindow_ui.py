@@ -26,8 +26,9 @@ class Ui_ActiondelayWindow(object):
         font = QFont()
         font.setFamilies([u"Nanum Gothic"])
         ActiondelayWindow.setFont(font)
-        ActiondelayWindow.setStyleSheet(u"background-color: #EAEFEF;\n"
-"")
+        ActiondelayWindow.setStyleSheet(u"QMainWindow{\n"
+"	background-color: #EFEFEF;\n"
+"}")
         ActiondelayWindow.setSizeGripEnabled(False)
         ActiondelayWindow.setModal(True)
         self.frame_main = QFrame(ActiondelayWindow)
@@ -61,7 +62,7 @@ class Ui_ActiondelayWindow(object):
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color: #f0f0f0;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.InsertText))
@@ -79,7 +80,7 @@ class Ui_ActiondelayWindow(object):
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color: #f0f0f0;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         self.button_cancel.setIcon(icon)
@@ -110,7 +111,8 @@ class Ui_ActiondelayWindow(object):
         self.lineEdit_delay.setGeometry(QRect(130, 80, 111, 30))
         self.lineEdit_delay.setFont(font4)
         self.lineEdit_delay.setStyleSheet(u"color:black;\n"
-"border-radius: 5px;")
+"border-radius: 5px;\n"
+"padding-left: 3px;")
         self.lineEdit_delay.setMaxLength(32767)
         self.label2 = QLabel(self.frame_main)
         self.label2.setObjectName(u"label2")
@@ -137,7 +139,7 @@ class Ui_ActiondelayWindow(object):
         self.label1.setText(QCoreApplication.translate("ActiondelayWindow", u"\ub300\uae30 \uc2dc\uac04 :", None))
         self.lineEdit_delay.setInputMask("")
         self.lineEdit_delay.setText("")
-        self.lineEdit_delay.setPlaceholderText("")
+        self.lineEdit_delay.setPlaceholderText(QCoreApplication.translate("ActiondelayWindow", u"ex) 0.5", None))
         self.label2.setText(QCoreApplication.translate("ActiondelayWindow", u"\ucd08", None))
     # retranslateUi
 

@@ -29,7 +29,9 @@ class Ui_MainWindow(object):
         font.setFamilies([u"Arial"])
         MainWindow.setFont(font)
         MainWindow.setAutoFillBackground(False)
-        MainWindow.setStyleSheet(u"background-color: #EAEFEF;")
+        MainWindow.setStyleSheet(u"QMainWindow{\n"
+"	background-color: #EFEFEF;\n"
+"}")
         self.mainwindow = QWidget(MainWindow)
         self.mainwindow.setObjectName(u"mainwindow")
         font1 = QFont()
@@ -59,35 +61,33 @@ class Ui_MainWindow(object):
         font2.setPointSize(20)
         font2.setBold(True)
         self.label_title.setFont(font2)
-        self.label_title.setStyleSheet(u"background-color: darkgray;\n"
-"color: white;\n"
-"border: none;\n"
-"border-top-left-radius :5px;\n"
-"border-top-right-radius : 5px;\n"
-"border-bottom-left-radius : 0px;\n"
-"border-bottom-right-radius : 0px;")
+        self.label_title.setStyleSheet(u"QLabel {\n"
+"	background-color: darkgray;\n"
+"	color: white;\n"
+"	border: none;\n"
+"	border-top-left-radius :5px;\n"
+"	border-top-right-radius : 5px;\n"
+"	border-bottom-left-radius : 0px;\n"
+"	border-bottom-right-radius : 0px;\n"
+"}")
         self.label_title.setLineWidth(0)
         self.label_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.listWidget = QListWidget(self.frame_main)
+        self.listWidget.setObjectName(u"listWidget")
+        self.listWidget.setGeometry(QRect(30, 80, 420, 300))
         font3 = QFont()
         font3.setFamilies([u"Arial"])
         font3.setPointSize(12)
-        font3.setBold(False)
-        font3.setStyleStrategy(QFont.NoAntialias)
-        __qlistwidgetitem = QListWidgetItem(self.listWidget)
-        __qlistwidgetitem.setFont(font3);
-        self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setGeometry(QRect(30, 80, 420, 300))
-        font4 = QFont()
-        font4.setFamilies([u"Arial"])
-        font4.setPointSize(12)
-        font4.setKerning(True)
-        self.listWidget.setFont(font4)
-        self.listWidget.setStyleSheet(u"color:black;\n"
-"border-radius: 5px;\n"
+        font3.setKerning(True)
+        self.listWidget.setFont(font3)
+        self.listWidget.setStyleSheet(u"QListWidget {\n"
+"                color: black;\n"
+"                border-radius: 5px;\n"
+"            }\n"
 "QListWidget::item {\n"
-"        height: 40px;\n"
-"    }")
+"                height: 30px;\n"
+"                padding: 4px;\n"
+"}")
         self.listWidget.setFrameShadow(QFrame.Shadow.Plain)
         self.listWidget.setAutoScroll(True)
         self.listWidget.setAutoScrollMargin(16)
@@ -104,12 +104,15 @@ class Ui_MainWindow(object):
         self.lineEdit = QLineEdit(self.frame_main)
         self.lineEdit.setObjectName(u"lineEdit")
         self.lineEdit.setGeometry(QRect(30, 400, 300, 30))
-        font5 = QFont()
-        font5.setFamilies([u"Arial"])
-        font5.setPointSize(10)
-        self.lineEdit.setFont(font5)
-        self.lineEdit.setStyleSheet(u"color:black;\n"
-"border-radius: 5px;")
+        font4 = QFont()
+        font4.setFamilies([u"Arial"])
+        font4.setPointSize(10)
+        self.lineEdit.setFont(font4)
+        self.lineEdit.setStyleSheet(u"QLineEdit {\n"
+"	color:black;\n"
+"	border-radius: 5px; \n"
+"	padding-left:10px;\n"
+"}")
         self.lineEdit.setMaxLength(32767)
         self.button_add = QPushButton(self.frame_main)
         self.button_add.setObjectName(u"button_add")
@@ -119,18 +122,18 @@ class Ui_MainWindow(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.button_add.sizePolicy().hasHeightForWidth())
         self.button_add.setSizePolicy(sizePolicy1)
-        font6 = QFont()
-        font6.setFamilies([u"Arial"])
-        font6.setPointSize(10)
-        font6.setBold(False)
-        font6.setHintingPreference(QFont.PreferVerticalHinting)
-        self.button_add.setFont(font6)
+        font5 = QFont()
+        font5.setFamilies([u"Arial"])
+        font5.setPointSize(10)
+        font5.setBold(False)
+        font5.setHintingPreference(QFont.PreferVerticalHinting)
+        self.button_add.setFont(font5)
         self.button_add.setAutoFillBackground(False)
         self.button_add.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color :#f0f0f0;;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         icon = QIcon(QIcon.fromTheme(QIcon.ThemeIcon.InsertText))
@@ -142,13 +145,13 @@ class Ui_MainWindow(object):
         self.button_delete.setGeometry(QRect(400, 400, 50, 30))
         sizePolicy1.setHeightForWidth(self.button_delete.sizePolicy().hasHeightForWidth())
         self.button_delete.setSizePolicy(sizePolicy1)
-        self.button_delete.setFont(font6)
+        self.button_delete.setFont(font5)
         self.button_delete.setAutoFillBackground(False)
         self.button_delete.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color: #f0f0f0;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         self.button_delete.setIcon(icon)
@@ -159,13 +162,13 @@ class Ui_MainWindow(object):
         self.button_edit.setGeometry(QRect(340, 440, 50, 30))
         sizePolicy1.setHeightForWidth(self.button_edit.sizePolicy().hasHeightForWidth())
         self.button_edit.setSizePolicy(sizePolicy1)
-        self.button_edit.setFont(font6)
+        self.button_edit.setFont(font5)
         self.button_edit.setAutoFillBackground(False)
         self.button_edit.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color: #f0f0f0;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         self.button_edit.setIcon(icon)
@@ -178,16 +181,18 @@ class Ui_MainWindow(object):
         self.label_run.setSizePolicy(sizePolicy)
         self.label_run.setBaseSize(QSize(0, 0))
         self.label_run.setFont(font2)
-        self.label_run.setStyleSheet(u"background-color: darkgray;\n"
-"color: white;\n"
-"border-top: 1px solid black;\n"
-"border-bottom: 1px solid black;\n"
-"border-left: 1px solid black;\n"
-"border-right: none;\n"
-"border-top-left-radius :5px;\n"
-"border-top-right-radius : 0px;\n"
-"border-bottom-left-radius : 5px;\n"
-"border-bottom-right-radius : 0px;")
+        self.label_run.setStyleSheet(u"QLabel {\n"
+"	background-color: darkgray;\n"
+"	color: white;\n"
+"	border-top: 1px solid black;\n"
+"	border-bottom: 1px solid black;\n"
+"	border-left: 1px solid black;\n"
+"	border-right: none;\n"
+"	border-top-left-radius :5px;\n"
+"	border-top-right-radius : 0px;\n"
+"	border-bottom-left-radius : 5px;\n"
+"	border-bottom-right-radius : 0px;\n"
+"}")
         self.label_run.setLineWidth(0)
         self.label_run.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_stop = QLabel(self.frame_main)
@@ -197,40 +202,44 @@ class Ui_MainWindow(object):
         self.label_stop.setSizePolicy(sizePolicy)
         self.label_stop.setBaseSize(QSize(0, 0))
         self.label_stop.setFont(font2)
-        self.label_stop.setStyleSheet(u"background-color: deepskyblue;\n"
-"color: white;\n"
-"border-top: 1px solid black;\n"
-"border-bottom: 1px solid black;\n"
-"border-left: none;\n"
-"border-right: 1px solid black;\n"
-"border-top-left-radius :0px;\n"
-"border-top-right-radius : 5px;\n"
-"border-bottom-left-radius : 0px;\n"
-"border-bottom-right-radius : 5px;")
+        self.label_stop.setStyleSheet(u"QLabel {\n"
+"	background-color: deepskyblue;\n"
+"	color: white;\n"
+"	border-top: 1px solid black;\n"
+"	border-bottom: 1px solid black;\n"
+"	border-left: none;\n"
+"	border-right: 1px solid black;\n"
+"	border-top-left-radius :0px;\n"
+"	border-top-right-radius : 5px;\n"
+"	border-bottom-left-radius : 0px;\n"
+"	border-bottom-right-radius : 5px;\n"
+"}")
         self.label_stop.setLineWidth(0)
         self.label_stop.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label_version = QLabel(self.frame_main)
         self.label_version.setObjectName(u"label_version")
         self.label_version.setGeometry(QRect(10, 530, 130, 10))
-        font7 = QFont()
-        font7.setFamilies([u"Arial"])
-        font7.setPointSize(9)
-        self.label_version.setFont(font7)
-        self.label_version.setStyleSheet(u"border:none;\n"
-"color:black;")
+        font6 = QFont()
+        font6.setFamilies([u"Arial"])
+        font6.setPointSize(9)
+        self.label_version.setFont(font6)
+        self.label_version.setStyleSheet(u"QLabel {\n"
+"	border: none;\n"
+"	color: black;\n"
+"}")
         self.label_version.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.button_copy = QPushButton(self.frame_main)
         self.button_copy.setObjectName(u"button_copy")
         self.button_copy.setGeometry(QRect(400, 440, 50, 30))
         sizePolicy1.setHeightForWidth(self.button_copy.sizePolicy().hasHeightForWidth())
         self.button_copy.setSizePolicy(sizePolicy1)
-        self.button_copy.setFont(font6)
+        self.button_copy.setFont(font5)
         self.button_copy.setAutoFillBackground(False)
         self.button_copy.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color: #f0f0f0;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         self.button_copy.setIcon(icon)
@@ -241,13 +250,13 @@ class Ui_MainWindow(object):
         self.button_setting.setGeometry(QRect(340, 480, 110, 30))
         sizePolicy1.setHeightForWidth(self.button_setting.sizePolicy().hasHeightForWidth())
         self.button_setting.setSizePolicy(sizePolicy1)
-        self.button_setting.setFont(font6)
+        self.button_setting.setFont(font5)
         self.button_setting.setAutoFillBackground(False)
         self.button_setting.setStyleSheet(u"QPushButton {\n"
 "    border-radius: 5px;\n"
 "	color:black;\n"
 "    border: 1px solid #8f8f91;\n"
-"    background-color: #f0f0f0;\n"
+"    background-color: #EFEFEF;\n"
 "    padding: 2px 4px;\n"
 "}")
         self.button_setting.setIcon(icon)
@@ -270,13 +279,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"DeepOrder", None))
         self.label_title.setText(QCoreApplication.translate("MainWindow", u"DeepOrder", None))
-
-        __sortingEnabled = self.listWidget.isSortingEnabled()
-        self.listWidget.setSortingEnabled(False)
-        ___qlistwidgetitem = self.listWidget.item(0)
-        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"macro1", None));
-        self.listWidget.setSortingEnabled(__sortingEnabled)
-
         self.lineEdit.setInputMask("")
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\uc774\ub984\uc744 \uc785\ub825\ud558\uc138\uc694", None))
