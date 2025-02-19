@@ -167,11 +167,7 @@ class MainDialog(QtWidgets.QMainWindow):
         self.label_stop.setStyleSheet(stop_style)
 
     def manage_listWidget(self, action: str):
-        """ListWidget 항목 관리
-        
-        Args:
-            action (str): 수행할 동작 ('add', 'delete', 'copy', 'edit')
-        """
+        """ListWidget 항목 관리"""
         if action == 'add':
             text = self.lineEdit.text().strip()
             self.listWidget.addItem(text)
@@ -215,7 +211,6 @@ class MainDialog(QtWidgets.QMainWindow):
                 
                 base_text = current_item.text()
                 # 복제 번호 확인
-                import re
                 copy_num = 1
                 while True:
                     new_text = f"{base_text} ({copy_num})"
@@ -228,10 +223,24 @@ class MainDialog(QtWidgets.QMainWindow):
                     if not exists:
                         break
                     copy_num += 1
-                # 새 항목 추가
-                self.listWidget.addItem(new_text)
-                # 원본 항목 선택 유지
-                self.listWidget.setCurrentItem(current_item)
+                    
+                # 데이터 매니저에서 원본 매크로 키 찾기
+                data_manager = DataManager.get_instance()
+                macro_list = data_manager._data['macro_list']
+                original_macro_key = None
+                for key, macro in macro_list.items():
+                    if macro['name'] == base_text:
+                        original_macro_key = key
+                        break
+                
+                if original_macro_key:
+                    # 매크로 복제
+                    new_macro_key = data_manager.copy_macro(original_macro_key, new_text)
+                    if new_macro_key:
+                        # 새 항목 추가
+                        self.listWidget.addItem(new_text)
+                        # 원본 항목 선택 유지
+                        self.listWidget.setCurrentItem(current_item)
 
         elif action == 'edit':
             current_item = self.listWidget.currentItem()
@@ -308,6 +317,10 @@ class MainDialog(QtWidgets.QMainWindow):
         # 매크로 이름들을 listWidget에 추가
         for macro in macro_list.values():
             self.listWidget.addItem(macro['name'])
+        
+        # 첫 번째 아이템이 있다면 선택
+        if self.listWidget.count() > 0:
+            self.listWidget.setCurrentRow(0)
 
 def main():
     app = QtWidgets.QApplication([])

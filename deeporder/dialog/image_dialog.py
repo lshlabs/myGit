@@ -14,6 +14,9 @@ class ImageDialog(QtWidgets.QDialog):
         self.macro_key = macro_key
         self.action_key = action_key
         
+        # 선택된 이미지 경로를 저장할 변수 추가
+        self.file_path = None
+        
         # UI 초기화
         self.init_ui()
         self.connect_signals()
@@ -80,6 +83,9 @@ class ImageDialog(QtWidgets.QDialog):
         surfaces = self.action_data['surface']
         for i in range(1, 5):
             label = getattr(self, f'label_surface{i}')
+            # 모든 surface를 먼저 darkgray로 초기화
+            label.setStyleSheet(label.styleSheet().replace('deepskyblue', 'darkgray'))
+            # 데이터에 있는 surface만 deepskyblue로 설정
             if i in surfaces:
                 label.setStyleSheet(label.styleSheet().replace('darkgray', 'deepskyblue'))
 
@@ -100,8 +106,8 @@ class ImageDialog(QtWidgets.QDialog):
         file_dialog.setNameFilter("Images (*.png *.xpm *.jpg *.jpeg *.bmp)")
         
         if file_dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
-            file_path = file_dialog.selectedFiles()[0]
-            pixmap = QPixmap(file_path)
+            self.file_path = file_dialog.selectedFiles()[0]  # 파일 경로 저장
+            pixmap = QPixmap(self.file_path)
             self.label_preview.setPixmap(pixmap.scaled(
                 self.label_preview.size(),
                 Qt.AspectRatioMode.KeepAspectRatio,
@@ -134,27 +140,33 @@ class ImageDialog(QtWidgets.QDialog):
             # 이름 업데이트
             self.action_data['name'] = self.lineEdit.text()
             # 이미지 업데이트
-            new_image_path = str(Path(self.action_data['image']))
-            self.label_preview.pixmap().save(new_image_path)
+            if self.file_path:  # 새로운 이미지가 선택된 경우
+                new_image_path = str(Path(self.file_path))
+                pixmap = QPixmap(self.file_path)
+                pixmap.save(new_image_path)
+            else:  # 기존 이미지를 유지하는 경우
+                new_image_path = str(Path(self.action_data['image']))
+                self.label_preview.pixmap().save(new_image_path)
             # surface 업데이트
             self.action_data['surface'] = surfaces
         
         # 추가 모드
         else:
-            # 새로운 이미지 저장
-            image_path = self.data_manager.get_new_image_path(self.macro_key)
-            self.label_preview.pixmap().save(str(image_path))
-            
             # 새로운 action 생성
             self.data_manager.create_image_action(
                 macro_key=self.macro_key,
                 name=self.lineEdit.text(),
-                image_path=str(image_path),
+                image_path=str(self.file_path),  # 저장된 파일 경로 사용
                 surfaces=surfaces
             )
         
         # 데이터 저장
         self.data_manager.save_data()
+        
+        # 부모 다이얼로그(ActionDialog)의 테이블 업데이트
+        if isinstance(self.parent(), QtWidgets.QDialog):
+            self.parent().load_actions()
+        
         self.accept()
 
     def reset_image(self):

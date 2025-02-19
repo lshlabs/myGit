@@ -155,8 +155,8 @@ class ActionWizardDialog(QtWidgets.QDialog):
         # 창 닫기
         self.accept()
         
-        # ActionDialog 열기
-        dialog = ActionDialog(self.parent(), title_text=self.title_text)
+        # ActionDialog 열기 (macro_key 전달)
+        dialog = ActionDialog(self.parent(), macro_key=macro_key)
         dialog.show()
         
     def label_preview1_clicked(self, event):

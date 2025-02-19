@@ -48,8 +48,10 @@ class ActionDialog(QtWidgets.QDialog):
         self.button_arrowup.hide()
         self.button_arrowdown.hide()
         
-        # 테이블 스크롤바 보이기/숨기기 이벤트 연결
-        self.table_widget.verticalScrollBar().rangeChanged.connect(self.update_arrow_buttons)
+        # 스크롤바 이벤트 연결
+        scrollbar = self.table_widget.verticalScrollBar()
+        scrollbar.valueChanged.connect(self.update_arrow_buttons)
+        scrollbar.rangeChanged.connect(self.update_arrow_buttons)
         
         # 콤보박스
         self.combo_window = self.findChild(QtWidgets.QComboBox, 'comboBox_window')
@@ -360,15 +362,38 @@ class ActionDialog(QtWidgets.QDialog):
             name_item = QtWidgets.QTableWidgetItem(name)
             name_item.setTextAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
             self.table_widget.setItem(row, 1, name_item)
+        
+        # 첫 번째 행이 있다면 선택
+        if self.table_widget.rowCount() > 0:
+            self.table_widget.setCurrentCell(0, 1)  # 첫 번째 행의 이름 열 선택
 
-    def update_arrow_buttons(self, min_val, max_val):
-        """스크롤바 범위에 따라 화살표 버튼 표시/숨김"""
-        if max_val > 0:  # 스크롤이 필요한 경우
-            self.button_arrowup.show()
-            self.button_arrowdown.show()
-        else:  # 스크롤이 필요없는 경우
+    def update_arrow_buttons(self):
+        """스크롤바 상태에 따라 화살표 버튼 표시/숨김"""
+        scrollbar = self.table_widget.verticalScrollBar()
+        
+        # 스크롤이 필요한지 확인
+        if scrollbar.maximum() == 0:
+            # 스크롤이 필요없는 경우
             self.button_arrowup.hide()
             self.button_arrowdown.hide()
+            return
+        
+        # 현재 스크롤 위치
+        current_pos = scrollbar.value()
+        max_pos = scrollbar.maximum()
+        
+        # 최상단인 경우 (위로 스크롤할 내용이 없음)
+        if current_pos == 0:
+            self.button_arrowup.hide()
+            self.button_arrowdown.show()
+        # 최하단인 경우 (아래로 스크롤할 내용이 없음)
+        elif current_pos == max_pos:
+            self.button_arrowup.show()
+            self.button_arrowdown.hide()
+        # 중간인 경우 (위아래로 스크롤할 내용이 있음)
+        else:
+            self.button_arrowup.show()
+            self.button_arrowdown.show()
 
     def update_window_list(self):
         """실행 중인 프로그램 목록 업데이트"""

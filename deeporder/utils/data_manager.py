@@ -168,3 +168,55 @@ class DataManager:
         except Exception as e:
             print(f"이미지 액션 생성 중 오류 발생: {e}")
             return None
+    
+    def copy_macro(self, original_macro_key, new_name):
+        """매크로 복제
+        
+        Args:
+            original_macro_key (str): 원본 매크로 키
+            new_name (str): 새로운 매크로 이름
+            
+        Returns:
+            str: 새로운 매크로 키
+        """
+        try:
+            # 새로운 매크로 키 생성
+            new_macro_key = f"M{len(self._data['macro_list'])}"
+            
+            # 원본 매크로 데이터 복사
+            original_macro = self._data['macro_list'][original_macro_key]
+            new_macro = {
+                'name': new_name,
+                'program': original_macro.get('program'),
+                'actions': {}
+            }
+            
+            # 액션 데이터 복사
+            for action_key, action_data in original_macro['actions'].items():
+                new_macro['actions'][action_key] = action_data.copy()
+            
+            # 이미지 파일 복사
+            original_folder = self.img_path / original_macro['name']
+            new_folder = self.img_path / new_name
+            if original_folder.exists():
+                # 기존 폴더가 있다면 삭제
+                if new_folder.exists():
+                    shutil.rmtree(new_folder)
+                # 폴더 복사
+                shutil.copytree(original_folder, new_folder)
+                
+                # 이미지 경로 업데이트
+                for action in new_macro['actions'].values():
+                    if action['type'] == 'image':
+                        old_path = Path(action['image'])
+                        action['image'] = str(new_folder / old_path.name)
+            
+            # 새로운 매크로 저장
+            self._data['macro_list'][new_macro_key] = new_macro
+            self.save_data()
+            
+            return new_macro_key
+            
+        except Exception as e:
+            print(f"매크로 복제 중 오류 발생: {e}")
+            return None

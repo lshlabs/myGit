@@ -1,24 +1,23 @@
 {
     "macro_list": {
-        "M1": {
-            "name": "테스트5",
+        "M0": {
+            "name": "테스트1",
             "actions": {
                 "A0": {
                     "name": "- 버튼 이미지",
                     "type": "image",
                     "number": 1,
-                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A0.png",
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트1/A0.png",
                     "surface": [
-                        1,
-                        2
+                        1
                     ],
-                    "priority": true
+                    "priority": false
                 },
                 "A1": {
                     "name": "+ 버튼 이미지",
                     "type": "image",
-                    "number": 3,
-                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A1.png",
+                    "number": 2,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트1/A1.png",
                     "surface": [
                         1
                     ],
@@ -27,8 +26,8 @@
                 "A2": {
                     "name": "예상시간 이미지",
                     "type": "image",
-                    "number": 4,
-                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A2.png",
+                    "number": 3,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트1/A2.png",
                     "surface": [
                         1
                     ],
@@ -37,8 +36,8 @@
                 "A3": {
                     "name": "거부버튼 이미지",
                     "type": "image",
-                    "number": 5,
-                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A3.png",
+                    "number": 4,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트1/A3.png",
                     "surface": [
                         1
                     ],
@@ -47,23 +46,239 @@
                 "A4": {
                     "name": "접수버튼 이미지",
                     "type": "image",
-                    "number": 6,
-                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트5/A4.png",
+                    "number": 5,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트1/A4.png",
                     "surface": [
-                        2,
-                        4
+                        1
+                    ],
+                    "priority": false
+                }
+            },
+            "program": ""
+        },
+        "M1": {
+            "name": "테스트2",
+            "actions": {
+                "A0": {
+                    "name": "- 버튼 이미지",
+                    "type": "image",
+                    "number": 1,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트2/A0.png",
+                    "surface": [
+                        1
                     ],
                     "priority": false
                 },
-                "A5": {
-                    "name": "딜레이: 0.8초",
-                    "type": "delay",
+                "A1": {
+                    "name": "+ 버튼 이미지",
+                    "type": "image",
                     "number": 2,
-                    "value": 0.8,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트2/A1.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A2": {
+                    "name": "예상시간 이미지",
+                    "type": "image",
+                    "number": 3,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트2/A2.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A3": {
+                    "name": "거부버튼 이미지",
+                    "type": "image",
+                    "number": 4,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트2/A3.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A4": {
+                    "name": "접수버튼 이미지",
+                    "type": "image",
+                    "number": 5,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트2/A4.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                }
+            },
+            "program": "Safari"
+        },
+        "M2": {
+            "name": "테스트3",
+            "actions": {
+                "A0": {
+                    "name": "- 버튼 이미지",
+                    "type": "image",
+                    "number": 1,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3/A0.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A1": {
+                    "name": "+ 버튼 이미지",
+                    "type": "image",
+                    "number": 2,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3/A1.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A2": {
+                    "name": "예상시간 이미지",
+                    "type": "image",
+                    "number": 3,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3/A2.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A3": {
+                    "name": "거부버튼 이미지",
+                    "type": "image",
+                    "number": 4,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3/A3.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A4": {
+                    "name": "접수버튼 이미지",
+                    "type": "image",
+                    "number": 5,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3/A4.png",
+                    "surface": [
+                        1
+                    ],
                     "priority": false
                 }
             },
             "program": "Google Chrome"
+        },
+        "M3": {
+            "name": "테스트3 (1)",
+            "program": "Google Chrome",
+            "actions": {
+                "A0": {
+                    "name": "- 버튼 이미지",
+                    "type": "image",
+                    "number": 1,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (1)/A0.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A1": {
+                    "name": "+ 버튼 이미지",
+                    "type": "image",
+                    "number": 2,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (1)/A1.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A2": {
+                    "name": "예상시간 이미지",
+                    "type": "image",
+                    "number": 3,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (1)/A2.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A3": {
+                    "name": "거부버튼 이미지",
+                    "type": "image",
+                    "number": 4,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (1)/A3.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A4": {
+                    "name": "접수버튼 이미지",
+                    "type": "image",
+                    "number": 5,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (1)/A4.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                }
+            }
+        },
+        "M4": {
+            "name": "테스트3 (2)",
+            "program": "Google Chrome",
+            "actions": {
+                "A0": {
+                    "name": "- 버튼 이미지",
+                    "type": "image",
+                    "number": 1,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (2)/A0.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A1": {
+                    "name": "+ 버튼 이미지",
+                    "type": "image",
+                    "number": 2,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (2)/A1.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A2": {
+                    "name": "예상시간 이미지",
+                    "type": "image",
+                    "number": 3,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (2)/A2.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A3": {
+                    "name": "거부버튼 이미지",
+                    "type": "image",
+                    "number": 4,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (2)/A3.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                },
+                "A4": {
+                    "name": "접수버튼 이미지",
+                    "type": "image",
+                    "number": 5,
+                    "image": "/Users/mac/Documents/GitHub/myGit/deeporder/img/테스트3 (2)/A4.png",
+                    "surface": [
+                        1
+                    ],
+                    "priority": false
+                }
+            }
         }
     },
     "settings_main": {
