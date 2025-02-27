@@ -77,11 +77,17 @@ class WizardStep3Dialog(QtWidgets.QDialog):
         scale_x = self.display_pixmap.width() / self.original_pixmap.width()
         scale_y = self.display_pixmap.height() / self.original_pixmap.height()
         
-        # 마우스 위치를 원본 이미지 크기 기준으로 변환
+        # label 내에서의 마우스 위치
         pos = self.label_preview.mapFromParent(event.pos())
+        
+        # pixmap이 그려지는 시작 위치 계산 (여백)
+        x_offset = (self.label_preview.width() - self.display_pixmap.width()) // 2
+        y_offset = (self.label_preview.height() - self.display_pixmap.height()) // 2
+        
+        # 여백을 고려한 실제 pixmap 내에서의 좌표로 변환
         pos = QPoint(
-            int(pos.x() / scale_x),
-            int(pos.y() / scale_y)
+            int((pos.x() - x_offset) / scale_x),
+            int((pos.y() - y_offset) / scale_y)
         )
         
         if not self.label_preview.rect().contains(pos):
@@ -112,11 +118,17 @@ class WizardStep3Dialog(QtWidgets.QDialog):
         scale_x = self.display_pixmap.width() / self.original_pixmap.width()
         scale_y = self.display_pixmap.height() / self.original_pixmap.height()
         
-        # 마우스 위치를 원본 이미지 크기 기준으로 변환
+        # label 내에서의 마우스 위치
         pos = self.label_preview.mapFromParent(event.pos())
+        
+        # pixmap이 그려지는 시작 위치 계산 (여백)
+        x_offset = (self.label_preview.width() - self.display_pixmap.width()) // 2
+        y_offset = (self.label_preview.height() - self.display_pixmap.height()) // 2
+        
+        # 여백을 고려한 실제 pixmap 내에서의 좌표로 변환
         pos = QPoint(
-            int(pos.x() / scale_x),
-            int(pos.y() / scale_y)
+            int((pos.x() - x_offset) / scale_x),
+            int((pos.y() - y_offset) / scale_y)
         )
         
         if self.label_preview.rect().contains(pos):

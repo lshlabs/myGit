@@ -81,6 +81,7 @@ class ImageDialog(QtWidgets.QDialog):
         
         # surface 설정
         surfaces = self.action_data['surface']
+        
         for i in range(1, 5):
             label = getattr(self, f'label_surface{i}')
             # 모든 surface를 먼저 darkgray로 초기화

@@ -16,7 +16,9 @@ class ActionWizardDialog(QtWidgets.QDialog):
         super().__init__(parent)
         uic.loadUi('deeporder/ui/ActionWizardWindow.ui', self)
         self.setFixedSize(500, 470)
-        self.title_text = title_text  # 전달받은 텍스트 저장
+        self.title_text = title_text
+        self.is_new_macro = not isinstance(parent, ActionDialog)  # 호출 출처 구분
+        self.macro_key = None  # action_dialog에서 전달받을 매크로 키
         self.init_ui()
         self.connect_signals()
         
@@ -118,36 +120,40 @@ class ActionWizardDialog(QtWidgets.QDialog):
         self.stackedWidget.setCurrentIndex(index)
     
     def save_action(self):
-        """저장 버튼 클릭 시 tempdata의 정보를 data로 옮기고 창을 닫습니다"""
-        # DataManager 인스턴스 가져오기
+        """저장 버튼 클릭 시 실행"""
         data_manager = DataManager.get_instance()
         temp_manager = TempManager.get_instance()
         
-        # 새로운 매크로 키 생성 (M0, M1, ...)
-        macro_key = f"M{len(data_manager._data['macro_list'])}"
-        
-        # 매크로 기본 정보 생성
-        data_manager._data['macro_list'][macro_key] = {
-            'name': self.title_text,
-        }
-        
-        # 기본 액션 생성 (이미지 파일 복사 포함)
-        data_manager.create_default_actions(macro_key)
-        
-        # 크롭된 이미지들을 매크로 폴더로 복사
-        area_files = {
-            'minus': 'A0.png',
-            'plus': 'A1.png',
-            'time': 'A2.png',
-            'reject': 'A3.png',
-            'accept': 'A4.png'
-        }
-        
-        macro_folder = data_manager.img_path / self.title_text
-        for label, filename in area_files.items():
-            temp_image_path = temp_manager.get_cropped_image(label)
-            if temp_image_path:
-                shutil.copy2(temp_image_path, macro_folder / filename)
+        if self.is_new_macro:
+            # 새로운 매크로 생성 (수정된 로직)
+            macro_keys = data_manager._data['macro_list'].keys()
+            next_num = 1
+            while f"M{next_num}" in macro_keys:
+                next_num += 1
+            macro_key = f"M{next_num}"
+            
+            data_manager._data['macro_list'][macro_key] = {
+                'name': self.title_text,
+            }
+            data_manager.create_default_actions(macro_key)
+            
+            # 크롭된 이미지들을 매크로 폴더로 복사
+            area_files = {
+                'minus': 'A0.png',
+                'plus': 'A1.png',
+                'time': 'A2.png',
+                'reject': 'A3.png',
+                'accept': 'A4.png'
+            }
+            
+            macro_folder = data_manager.img_path / self.title_text
+            for label, filename in area_files.items():
+                temp_image_path = temp_manager.get_cropped_image(label)
+                if temp_image_path:
+                    shutil.copy2(temp_image_path, macro_folder / filename)
+        else:
+            # 기존 매크로에 새로운 액션 추가
+            data_manager.create_wizard_actions(self.macro_key, temp_manager)
         
         # 임시 데이터 정리
         temp_manager.clear_temp_data()
@@ -155,9 +161,10 @@ class ActionWizardDialog(QtWidgets.QDialog):
         # 창 닫기
         self.accept()
         
-        # ActionDialog 열기 (macro_key 전달)
-        dialog = ActionDialog(self.parent(), macro_key=macro_key)
-        dialog.show()
+        # 새로운 매크로인 경우에만 ActionDialog 열기
+        if self.is_new_macro:
+            dialog = ActionDialog(self.parent(), macro_key=macro_key)
+            dialog.show()
         
     def label_preview1_clicked(self, event):
         """이미지 선택 및 미리보기"""

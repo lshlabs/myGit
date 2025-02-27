@@ -16,7 +16,7 @@ class MainDialog(QtWidgets.QMainWindow):
         self.setFixedSize(500, 570)
         self.init_ui()
         self.connect_signals()
-        self.load_macro_list()  # 데이터 로딩 추가
+        self.load_macro_list()
 
     def init_ui(self):
         """UI 요소 초기화"""
@@ -52,19 +52,83 @@ class MainDialog(QtWidgets.QMainWindow):
         if not self.validate_lineEdit():
             return
         
-        dialog = ActionWizardDialog(self, title_text=self.lineEdit.text().strip())
+        # 포커스를 다른 위젯으로 이동시켜 IME 입력 완료를 강제
+        self.button_add.setFocus()
+        QtWidgets.QApplication.processEvents()
+        
+        title_text = self.lineEdit.text().strip()
+        dialog = ActionWizardDialog(self, title_text=title_text)
+        
         if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:  # save 버튼으로 닫힌 경우
-            self.manage_listWidget('add')
+            text = self.lineEdit.text().strip()
+            self.listWidget.addItem(text)
+            self.lineEdit.clear()
+            # 추가된 항목 선택
+            self.listWidget.setCurrentRow(self.listWidget.count() - 1)
 
     def btn_delete(self):
         """삭제 버튼 클릭 시 실행"""
         current_item = self.listWidget.currentItem()
         if current_item:
-            # 데이터에서 해당 매크로 찾기
+            # 실행 중인 아이템 삭제 시도 시 경고
+            if current_item.text().endswith(' (실행 중)'):
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "삭제 오류",
+                    "실행중인 동작은 삭제할 수 없습니다."
+                )
+                return
+            
+            # 삭제 확인 메시지
+            reply = QtWidgets.QMessageBox.question(
+                self,
+                '삭제 확인',
+                '정말 삭제하시겠습니까?',
+                QtWidgets.QMessageBox.StandardButton.Yes | 
+                QtWidgets.QMessageBox.StandardButton.No
+            )
+            
+            if reply == QtWidgets.QMessageBox.StandardButton.Yes:
+                # 데이터에서 해당 매크로 찾기
+                data_manager = DataManager.get_instance()
+                macro_list = data_manager._data['macro_list']
+                
+                # 매크로 이름으로 매크로 키 찾기
+                macro_key = None
+                for key, macro in macro_list.items():
+                    if macro['name'] == current_item.text():
+                        macro_key = key
+                        break
+                
+                if macro_key:
+                    # 이미지 폴더 삭제
+                    macro_folder = data_manager.img_path / current_item.text()
+                    if macro_folder.exists():
+                        shutil.rmtree(macro_folder)
+                    
+                    # 데이터에서 매크로 삭제
+                    del macro_list[macro_key]
+                    data_manager.save_data()
+                
+                # listWidget에서 아이템 삭제
+                self.listWidget.takeItem(self.listWidget.currentRow())
+
+    def btn_edit(self):
+        """편집 버튼 클릭 시 실행"""
+        current_item = self.listWidget.currentItem()
+        if current_item:
+            # 실행 중인 아이템 편집 시도 시 경고
+            if current_item.text().endswith(' (실행 중)'):
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "편집 오류",
+                    "실행중인 동작은 편집할 수 없습니다."
+                )
+                return
+            
+            # 데이터 매니저에서 매크로 키 찾기
             data_manager = DataManager.get_instance()
             macro_list = data_manager._data['macro_list']
-            
-            # 매크로 이름으로 매크로 키 찾기
             macro_key = None
             for key, macro in macro_list.items():
                 if macro['name'] == current_item.text():
@@ -72,30 +136,64 @@ class MainDialog(QtWidgets.QMainWindow):
                     break
             
             if macro_key:
-                # 이미지 폴더 삭제
-                macro_folder = data_manager.img_path / current_item.text()
-                if macro_folder.exists():
-                    shutil.rmtree(macro_folder)
-                
-                # 데이터에서 매크로 삭제
-                del macro_list[macro_key]
-                data_manager.save_data()
-            
-            # listWidget에서 아이템 삭제
-            self.listWidget.takeItem(self.listWidget.currentRow())
-
-    def btn_edit(self):
-        """편집 버튼 클릭 시 실행"""
-        self.manage_listWidget('edit')
+                dialog = ActionDialog(self, macro_key)
+                if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:  # save 버튼으로 닫힌 경우
+                    # 이름이 변경된 경우 listWidget 항목 업데이트
+                    new_name = data_manager._data['macro_list'][macro_key]['name']
+                    if new_name != current_item.text():
+                        current_item.setText(new_name)
 
     def btn_copy(self):
         """복제 버튼 클릭 시 실행"""
-        self.manage_listWidget('copy')
+        current_item = self.listWidget.currentItem()
+        if current_item:
+            # 실행 중인 아이템 복제 시도 시 경고
+            if current_item.text().endswith(' (실행 중)'):
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "복제 오류",
+                    "실행중인 동작은 복제할 수 없습니다."
+                )
+                return
+            
+            base_text = current_item.text()
+            # 복제 번호 확인
+            copy_num = 1
+            while True:
+                new_text = f"{base_text} ({copy_num})"
+                # 같은 번호가 있는지 확인
+                exists = False
+                for i in range(self.listWidget.count()):
+                    if self.listWidget.item(i).text() == new_text:
+                        exists = True
+                        break
+                if not exists:
+                    break
+                copy_num += 1
+            
+            # 데이터 매니저에서 원본 매크로 키 찾기
+            data_manager = DataManager.get_instance()
+            macro_list = data_manager._data['macro_list']
+            original_macro_key = None
+            for key, macro in macro_list.items():
+                if macro['name'] == base_text:
+                    original_macro_key = key
+                    break
+            
+            if original_macro_key:
+                # 매크로 복제
+                new_macro_key = data_manager.copy_macro(original_macro_key, new_text)
+                if new_macro_key:
+                    # 새 항목 추가
+                    self.listWidget.addItem(new_text)
+                    # 원본 항목 선택 유지
+                    self.listWidget.setCurrentItem(current_item)
 
     def btn_setting(self):
+        """설정 버튼 클릭 시 실행"""
         dialog = MainSettingDialog(self)
         dialog.show()
-        
+
     def label_run_clicked(self, event):
         """실행 라벨 클릭 시 실행"""
         # 리스트가 비어있는 경우
@@ -169,103 +267,13 @@ class MainDialog(QtWidgets.QMainWindow):
     def manage_listWidget(self, action: str):
         """ListWidget 항목 관리"""
         if action == 'add':
-            text = self.lineEdit.text().strip()
-            self.listWidget.addItem(text)
-            self.lineEdit.clear()
-            # 추가된 항목 선택
-            self.listWidget.setCurrentRow(self.listWidget.count() - 1)
-            
+            self.btn_add()
         elif action == 'delete':
-            current_item = self.listWidget.currentItem()
-            if current_item:
-                # 실행 중인 아이템 삭제 시도 시 경고
-                if current_item.text().endswith(' (실행 중)'):
-                    QtWidgets.QMessageBox.warning(
-                        self,
-                        "삭제 오류",
-                        "실행중인 동작은 삭제할 수 없습니다."
-                    )
-                    return
-                
-                reply = QtWidgets.QMessageBox.question(
-                    self,
-                    '삭제 확인',
-                    '정말 삭제하시겠습니까?',
-                    QtWidgets.QMessageBox.StandardButton.Yes | 
-                    QtWidgets.QMessageBox.StandardButton.No
-                )
-                if reply == QtWidgets.QMessageBox.StandardButton.Yes:
-                    self.listWidget.takeItem(self.listWidget.currentRow())
-                
+            self.btn_delete()
         elif action == 'copy':
-            current_item = self.listWidget.currentItem()
-            if current_item:
-                # 실행 중인 아이템 복제 시도 시 경고
-                if current_item.text().endswith(' (실행 중)'):
-                    QtWidgets.QMessageBox.warning(
-                        self,
-                        "복제 오류",
-                        "실행중인 동작은 복제할 수 없습니다."
-                    )
-                    return
-                
-                base_text = current_item.text()
-                # 복제 번호 확인
-                copy_num = 1
-                while True:
-                    new_text = f"{base_text} ({copy_num})"
-                    # 같은 번호가 있는지 확인
-                    exists = False
-                    for i in range(self.listWidget.count()):
-                        if self.listWidget.item(i).text() == new_text:
-                            exists = True
-                            break
-                    if not exists:
-                        break
-                    copy_num += 1
-                    
-                # 데이터 매니저에서 원본 매크로 키 찾기
-                data_manager = DataManager.get_instance()
-                macro_list = data_manager._data['macro_list']
-                original_macro_key = None
-                for key, macro in macro_list.items():
-                    if macro['name'] == base_text:
-                        original_macro_key = key
-                        break
-                
-                if original_macro_key:
-                    # 매크로 복제
-                    new_macro_key = data_manager.copy_macro(original_macro_key, new_text)
-                    if new_macro_key:
-                        # 새 항목 추가
-                        self.listWidget.addItem(new_text)
-                        # 원본 항목 선택 유지
-                        self.listWidget.setCurrentItem(current_item)
-
+            self.btn_copy()
         elif action == 'edit':
-            current_item = self.listWidget.currentItem()
-            if current_item:
-                # 실행 중인 아이템 수정 시도 시 경고
-                if current_item.text().endswith(' (실행 중)'):
-                    QtWidgets.QMessageBox.warning(
-                        self,
-                        "수정 오류",
-                        "실행중인 동작은 수정할 수 없습니다."
-                    )
-                    return
-                
-                # 매크로 이름으로 매크로 키 찾기
-                data_manager = DataManager.get_instance()
-                macro_list = data_manager._data['macro_list']
-                macro_key = None
-                for key, macro in macro_list.items():
-                    if macro['name'] == current_item.text():
-                        macro_key = key
-                        break
-                
-                if macro_key:
-                    dialog = ActionDialog(self, macro_key=macro_key)
-                    dialog.show()
+            self.btn_edit()
 
     def validate_lineEdit(self) -> bool:
         """LineEdit 텍스트 유효성 검사
@@ -284,9 +292,9 @@ class MainDialog(QtWidgets.QMainWindow):
             )
             return False
         
-        # 특수문자 검사 (알파벳, 숫자, 한글, 공백만 허용)
+        # 특수문자 검사 (알파벳, 숫자, 한글(자음/모음 포함), 공백만 허용)
         import re
-        if not re.match(r'^[a-zA-Z0-9가-힣\s]+$', text):
+        if not re.match(r'^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\s]+$', text):
             QtWidgets.QMessageBox.warning(
                 self,
                 "입력 오류",

@@ -180,8 +180,12 @@ class DataManager:
             str: 새로운 매크로 키
         """
         try:
-            # 새로운 매크로 키 생성
-            new_macro_key = f"M{len(self._data['macro_list'])}"
+            # 새로운 매크로 키 생성 (수정된 부분)
+            macro_keys = self._data['macro_list'].keys()
+            next_num = 1
+            while f"M{next_num}" in macro_keys:
+                next_num += 1
+            new_macro_key = f"M{next_num}"
             
             # 원본 매크로 데이터 복사
             original_macro = self._data['macro_list'][original_macro_key]
@@ -220,3 +224,64 @@ class DataManager:
         except Exception as e:
             print(f"매크로 복제 중 오류 발생: {e}")
             return None
+    
+    def create_wizard_actions(self, macro_key, temp_manager):
+        """액션 위자드로 새로운 액션 5개 생성
+        
+        Args:
+            macro_key (str): 매크로 키
+            temp_manager (TempManager): 임시 이미지 관리자
+            
+        Returns:
+            bool: 성공 여부
+        """
+        try:
+            actions = self._data['macro_list'][macro_key]['actions']
+            macro_name = self._data['macro_list'][macro_key]['name']
+            macro_folder = self.img_path / macro_name
+            
+            # 새로운 액션 키와 번호 계산
+            last_key_num = -1
+            for key in actions.keys():
+                if key.startswith('A'):
+                    try:
+                        num = int(key[1:])
+                        last_key_num = max(last_key_num, num)
+                    except ValueError:
+                        continue
+                    
+            # 새로운 number는 현재 가장 큰 number + 1부터
+            new_number = max([action['number'] for action in actions.values()], default=0) + 1
+            
+            # 새로운 액션 생성
+            area_files = {
+                'minus': ('- 버튼 이미지', f'A{last_key_num + 1}.png'),
+                'plus': ('+ 버튼 이미지', f'A{last_key_num + 2}.png'),
+                'time': ('예상시간 이미지', f'A{last_key_num + 3}.png'),
+                'reject': ('거부버튼 이미지', f'A{last_key_num + 4}.png'),
+                'accept': ('접수버튼 이미지', f'A{last_key_num + 5}.png')
+            }
+            
+            # 이미지 복사 및 액션 생성
+            for i, (label, (name, filename)) in enumerate(area_files.items()):
+                temp_image_path = temp_manager.get_cropped_image(label)
+                if temp_image_path:
+                    # 이미지 복사
+                    shutil.copy2(temp_image_path, macro_folder / filename)
+                    
+                    # 액션 생성
+                    action_key = f'A{last_key_num + i + 1}'
+                    actions[action_key] = {
+                        'name': name,
+                        'type': 'image',
+                        'number': new_number + i,
+                        'image': str(macro_folder / filename),
+                        'surface': [1],
+                        'priority': False
+                    }
+            
+            return self.save_data()
+            
+        except Exception as e:
+            print(f"액션 위자드로 액션 생성 중 오류 발생: {e}")
+            return False
