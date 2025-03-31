@@ -1,13 +1,17 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHeaderView, QTableWidgetItem, QTextEdit
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtGui import QColor, QBrush
 import os
 import sys
 import json
+import requests
 
 class TradingTab(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
+        # 이전 가격 정보 저장용 딕셔너리 추가
+        self.previous_prices = {}
         self.setup_ui()
         self.setup_connections()
         # 초기화 시 설정 정보 로드
@@ -32,6 +36,14 @@ class TradingTab(QWidget):
         
         # 테이블 열 너비 설정
         self.setup_table_columns()
+        
+        # 가격 업데이트 타이머 설정
+        self.price_timer = QTimer(self)
+        self.price_timer.timeout.connect(self.update_price_data)
+        self.price_timer.start(1000)  # 1초마다 업데이트
+        
+        # 초기 가격 업데이트
+        self.update_price_data()
         
     def setup_table_columns(self):
         # 테이블 헤더 가져오기
@@ -307,9 +319,78 @@ class TradingTab(QWidget):
         else:
             print("매매 시작")
         
+        # 가격 업데이트 시작
+        if not self.price_timer.isActive():
+            self.price_timer.start(5000)
+        
     def stop_trading(self):
         print("매매 중지")
+        # 가격 업데이트 중지 (선택사항)
+        # self.price_timer.stop()
 
     def update_settings_display(self):
         """설정 정보를 다시 로드하여 표시 업데이트"""
         self.load_settings_overview()
+
+    def update_price_data(self):
+        """Bybit API에서 BTC 및 ETH 선물 가격 정보를 가져와 테이블 업데이트"""
+        try:
+            # 코인별 정보를 저장할 딕셔너리
+            coin_prices = {}
+            
+            # 가져올 코인 심볼 리스트
+            symbols = ["BTCUSDT", "ETHUSDT"]
+            
+            for symbol in symbols:
+                # Bybit API 엔드포인트
+                url = "https://api.bybit.com/v5/market/tickers"
+                params = {"category": "linear", "symbol": symbol}
+                
+                # API 요청
+                response = requests.get(url, params=params)
+                data = response.json()
+                
+                if data["retCode"] == 0 and data["result"]["list"]:
+                    ticker_data = data["result"]["list"][0]
+                    # 소수점 1자리까지만 표시
+                    price = f"{float(ticker_data['lastPrice']):.1f}"
+                    coin = symbol.replace("USDT", "")  # "BTC" 또는 "ETH"
+                    coin_prices[coin] = price
+            
+            # 테이블에 가격 업데이트
+            # BTC는 1행(인덱스 0), ETH는 2행(인덱스 1)에 표시
+            row_map = {"BTC": 0, "ETH": 1}
+            
+            for coin, price in coin_prices.items():
+                if coin in row_map:
+                    row = row_map[coin]
+                    
+                    # 코인명이 없으면 추가
+                    if not self.coin_table.item(row, 0):
+                        coin_item = QTableWidgetItem(coin)
+                        coin_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                        self.coin_table.setItem(row, 0, coin_item)
+                    
+                    # 가격 업데이트 (4열 = 인덱스 3)
+                    price_item = QTableWidgetItem(price)
+                    price_item.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
+                    
+                    # 가격 변동에 따른 색상 처리
+                    if coin in self.previous_prices:
+                        prev_price = float(self.previous_prices[coin])
+                        current_price = float(price)
+                        
+                        if current_price > prev_price:
+                            # 가격 상승 - 녹색
+                            price_item.setForeground(QBrush(QColor("green")))
+                        elif current_price < prev_price:
+                            # 가격 하락 - 빨간색
+                            price_item.setForeground(QBrush(QColor("red")))
+                    
+                    self.coin_table.setItem(row, 4, price_item)
+                    
+                    # 현재 가격을 이전 가격으로 저장
+                    self.previous_prices[coin] = price
+                    
+        except Exception as e:
+            print(f"가격 데이터 업데이트 중 오류: {str(e)}")
