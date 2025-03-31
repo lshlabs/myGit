@@ -138,16 +138,42 @@ class WizardStep2Dialog(QtWidgets.QDialog):
 
     def save_and_close(self):
         """저장 후 창 닫기"""
-        # 드래그 영역 저장
+        # 스케일된 드래그 영역 저장 (화면 상 좌표)
         TempManager.get_instance().save_drag_areas(self.drag_areas)
         
-        # 크롭된 이미지 저장
+        # 원본 이미지와 스케일된 이미지의 비율 계산 (원본 좌표 계산)
+        scale_x = self.original_pixmap.width() / self.display_pixmap.width()
+        scale_y = self.original_pixmap.height() / self.display_pixmap.height()
+        
+        # 원본 이미지 좌표로 변환된 드래그 영역 계산
+        original_drag_areas = {}
         for label, rect in self.drag_areas.items():
             if rect:
-                cropped = self.original_pixmap.copy(rect)
-                TempManager.get_instance().save_cropped_image(cropped, label)
+                original_rect = QRect(
+                    int(rect.x() * scale_x * 2),
+                    int(rect.y() * scale_y * 2),
+                    int(rect.width() * scale_x * 2),
+                    int(rect.height() * scale_y * 2)
+                )
+                original_drag_areas[label] = original_rect
+            else:
+                original_drag_areas[label] = None
+            
+        # 원본 좌표 드래그 영역 저장 (tempdata의 "original_drag_areas" 키에 저장)
+        TempManager.get_instance().save_original_drag_areas(original_drag_areas)
         
-        # 드래그 영역이 그려진 이미지 저장
+        # painted 이미지 저장: 원본 이미지에 해당 드래그 영역만 빨간 테두리로 그린 후 저장
+        for label, rect in self.drag_areas.items():
+            if rect:
+                # 원본 이미지 전체를 복사한 후 해당 영역에 빨간 사각형 그리기
+                painted = self.original_pixmap.copy()
+                painter = QPainter(painted)
+                painter.setPen(QPen(QColor('red'), 1))
+                painter.drawRect(rect)
+                painter.end()
+                TempManager.get_instance().save_painted_image(painted, label)
+        
+        # 모든 드래그 영역이 그려진 임시 이미지 저장 (temp_step2.png)
         result = self.original_pixmap.copy()
         painter = QPainter(result)
         painter.setPen(QPen(QColor('red'), 1))
@@ -199,7 +225,7 @@ class WizardStep2Dialog(QtWidgets.QDialog):
                     int(area.x() * scale_x),
                     int(area.y() * scale_y),
                     int(area.width() * scale_x),
-                    int(area.height() * scale_y)
+                    int(area.height() * scale_y)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
                 )
                 painter.drawRect(scaled_rect)
             

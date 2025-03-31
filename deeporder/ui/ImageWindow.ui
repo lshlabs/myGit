@@ -16,7 +16,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>이미지 첨부</string>
+   <string>동작 편집</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{

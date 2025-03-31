@@ -496,7 +496,7 @@ QListWidget::item {
 }</string>
      </property>
      <property name="text">
-      <string>v1.0.0 updated 250201</string>
+      <string>v0.1.3-dev 250227</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>

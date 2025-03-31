@@ -1,0 +1,94 @@
+{
+    "long_settings": {
+        "coin_selection": "비트코인",
+        "signal1": {
+            "type": "RSI",
+            "timeframe": "15분봉",
+            "settings": {
+                "rsi_length": 14,
+                "rsi_overbought": 70,
+                "rsi_oversold": 30,
+                "option": 1,
+                "is_short": false
+            }
+        },
+        "signal2": {
+            "type": "볼린저밴드",
+            "timeframe": "15분봉",
+            "settings": {
+                "boll_length": 20,
+                "boll_deviation": 2,
+                "option": 2,
+                "is_short": false
+            }
+        },
+        "buy_amount": {
+            "base_amount": 100,
+            "leverage": 35,
+            "use_split": true,
+            "split_criteria": "rsi",
+            "rsi_level1": 5,
+            "rsi_amount1": 10,
+            "rsi_amount2": 10,
+            "price_drop1": 0,
+            "price_amount1": 0,
+            "price_amount2": 0
+        },
+        "stop_loss": {
+            "type": "indicator",
+            "rate": 20.0,
+            "indicator": 500
+        },
+        "take_profit": {
+            "type": "rate",
+            "rate": 30.0,
+            "indicator": 200
+        }
+    },
+    "short_settings": {
+        "coin_selection": "비트코인",
+        "signal1": {
+            "type": "볼린저밴드",
+            "timeframe": "15분봉",
+            "settings": {
+                "boll_length": 20,
+                "boll_deviation": 2,
+                "option": 1,
+                "is_short": false
+            }
+        },
+        "signal2": {
+            "type": "MACD",
+            "timeframe": "15분봉",
+            "settings": {
+                "macd_fast": 12,
+                "macd_slow": 26,
+                "macd_signal": 9,
+                "option": 1,
+                "is_short": false
+            }
+        },
+        "buy_amount": {
+            "base_amount": 100,
+            "leverage": 50,
+            "use_split": true,
+            "split_criteria": "price",
+            "rsi_level1": 0,
+            "rsi_amount1": 0,
+            "rsi_amount2": 0,
+            "price_drop1": 300,
+            "price_amount1": 20,
+            "price_amount2": 5
+        },
+        "stop_loss": {
+            "type": "rate",
+            "rate": 10.0,
+            "indicator": 0
+        },
+        "take_profit": {
+            "type": "rate",
+            "rate": 20.0,
+            "indicator": 0
+        }
+    }
+}

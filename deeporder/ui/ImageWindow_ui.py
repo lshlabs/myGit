@@ -237,7 +237,7 @@ class Ui_ImageWindow(object):
     # setupUi
 
     def retranslateUi(self, ImageWindow):
-        ImageWindow.setWindowTitle(QCoreApplication.translate("ImageWindow", u"\uc774\ubbf8\uc9c0 \ucca8\ubd80", None))
+        ImageWindow.setWindowTitle(QCoreApplication.translate("ImageWindow", u"\ub3d9\uc791 \ud3b8\uc9d1", None))
         self.button_save.setText(QCoreApplication.translate("ImageWindow", u"\uc800\uc7a5", None))
         self.button_cancel.setText(QCoreApplication.translate("ImageWindow", u"\ucde8\uc18c", None))
         self.label_tip.setText(QCoreApplication.translate("ImageWindow", u"\ud654\uba74 \ub0b4\uc5d0\uc11c \uc774\ubbf8\uc9c0\uac00 \uc778\uc2dd\ub420 \ubd80\ubd84\uc744 \uc120\ud0dd\ud558\uc138\uc694", None))

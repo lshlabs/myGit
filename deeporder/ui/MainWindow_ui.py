@@ -287,7 +287,7 @@ class Ui_MainWindow(object):
         self.button_edit.setText(QCoreApplication.translate("MainWindow", u"\uc218\uc815", None))
         self.label_run.setText(QCoreApplication.translate("MainWindow", u"RUN", None))
         self.label_stop.setText(QCoreApplication.translate("MainWindow", u"STOP", None))
-        self.label_version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0 updated 250201", None))
+        self.label_version.setText(QCoreApplication.translate("MainWindow", u"v0.1.3-dev 250227", None))
         self.button_copy.setText(QCoreApplication.translate("MainWindow", u"\ubcf5\uc81c", None))
         self.button_setting.setText(QCoreApplication.translate("MainWindow", u"\uc124\uc815", None))
     # retranslateUi

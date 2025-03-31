@@ -10,6 +10,7 @@ from dialog.wizard_step2_dialog import WizardStep2Dialog
 from dialog.wizard_step3_dialog import WizardStep3Dialog
 from utils.temp_manager import TempManager
 from utils.data_manager import DataManager
+from PIL import Image
 
 class ActionWizardDialog(QtWidgets.QDialog):
     def __init__(self, parent=None, title_text=""):
@@ -125,7 +126,7 @@ class ActionWizardDialog(QtWidgets.QDialog):
         temp_manager = TempManager.get_instance()
         
         if self.is_new_macro:
-            # 새로운 매크로 생성 (수정된 로직)
+            # 새로운 매크로 생성을 위해 새로운 매크로 키 생성 후 기본 데이터 등록
             macro_keys = data_manager._data['macro_list'].keys()
             next_num = 1
             while f"M{next_num}" in macro_keys:
@@ -135,25 +136,11 @@ class ActionWizardDialog(QtWidgets.QDialog):
             data_manager._data['macro_list'][macro_key] = {
                 'name': self.title_text,
             }
-            data_manager.create_default_actions(macro_key)
-            
-            # 크롭된 이미지들을 매크로 폴더로 복사
-            area_files = {
-                'minus': 'A0.png',
-                'plus': 'A1.png',
-                'time': 'A2.png',
-                'reject': 'A3.png',
-                'accept': 'A4.png'
-            }
-            
-            macro_folder = data_manager.img_path / self.title_text
-            for label, filename in area_files.items():
-                temp_image_path = temp_manager.get_cropped_image(label)
-                if temp_image_path:
-                    shutil.copy2(temp_image_path, macro_folder / filename)
+            # DataManager에서 내부적으로 기본 액션 생성 및 painted 이미지 복사를 수행하도록 위임
+            data_manager.create_wizard_actions(macro_key)
         else:
-            # 기존 매크로에 새로운 액션 추가
-            data_manager.create_wizard_actions(self.macro_key, temp_manager)
+            # 기존 매크로에 새로운 액션 추가 (DataManager 내부에서 처리)
+            data_manager.add_wizard_actions(self.macro_key)
         
         # 임시 데이터 정리
         temp_manager.clear_temp_data()
@@ -176,6 +163,11 @@ class ActionWizardDialog(QtWidgets.QDialog):
         if file_dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
             file_path = file_dialog.selectedFiles()[0]
             pixmap = QPixmap(file_path)
+            
+            # TempManager에 step1 이미지 저장
+            temp_manager = TempManager.get_instance()
+            image = Image.open(file_path)
+            temp_manager.save_temp_image(image, 1)  # step1 이미지로 저장
             
             # 각 label에 이미지 설정
             for label in [self.label_preview1, self.label_preview2, self.label_preview3]:

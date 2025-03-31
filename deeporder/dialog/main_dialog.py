@@ -8,12 +8,22 @@ from dialog.action_wizard_dialog import ActionWizardDialog
 from dialog.action_dialog import ActionDialog
 from dialog.main_setting_dialog import MainSettingDialog
 from utils.data_manager import DataManager
+from core_functions.macro_runner import MacroRunner
 
 class MainDialog(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('deeporder/ui/MainWindow.ui', self)
         self.setFixedSize(500, 570)
+        
+        # MacroRunner 인스턴스 생성
+        self.macro_runner = MacroRunner()
+        self.macro_runner.status_changed.connect(self.on_macro_status_changed)
+        self.macro_runner.log_message.connect(self.on_log_message)
+        
+        # 매크로 키 매핑 (이름 -> 키)
+        self.macro_name_to_key = {}
+        
         self.init_ui()
         self.connect_signals()
         self.load_macro_list()
@@ -207,26 +217,51 @@ class MainDialog(QtWidgets.QMainWindow):
         
         current_item = self.listWidget.currentItem()
         if current_item:
-            # 현재 선택된 아이템의 텍스트가 ' (실행 중)'으로 끝나지 않는 경우에만 추가
-            if not current_item.text().endswith(' (실행 중)'):
-                current_item.setText(f"{current_item.text()} (실행 중)")
+            # 이미 실행 중인 경우 무시
+            if current_item.text().endswith(' (실행 중)'):
+                return
+                
+            # 매크로 이름에서 키 가져오기
+            macro_name = current_item.text()
+            macro_key = self.macro_name_to_key.get(macro_name)
             
-            # 라벨들의 스타일시트 변경 (run 상태)
-            run_style = self.label_run.styleSheet().replace('darkgray', 'deepskyblue')
-            stop_style = self.label_stop.styleSheet().replace('deepskyblue', 'darkgray')
+            if not macro_key:
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "실행 오류",
+                    "매크로 정보를 찾을 수 없습니다."
+                )
+                return
+                
+            # 매크로 실행
+            success = self.macro_runner.start_macro(macro_key)
             
-            self.label_run.setStyleSheet(run_style)
-            self.label_stop.setStyleSheet(stop_style)
-            
-            # label_title은 실행 중인 아이템이 하나라도 있으면 run 상태 유지
-            title_style = self.label_title.styleSheet().replace('darkgray', 'deepskyblue')
-            self.label_title.setStyleSheet(title_style)
+            if success:
+                current_item.setText(f"{macro_name} (실행 중)")
+                
+                # 라벨들의 스타일시트 변경 (run 상태)
+                run_style = self.label_run.styleSheet().replace('darkgray', 'deepskyblue')
+                stop_style = self.label_stop.styleSheet().replace('deepskyblue', 'darkgray')
+                
+                self.label_run.setStyleSheet(run_style)
+                self.label_stop.setStyleSheet(stop_style)
+                
+                # label_title은 실행 중인 아이템이 하나라도 있으면 run 상태 유지
+                title_style = self.label_title.styleSheet().replace('darkgray', 'deepskyblue')
+                self.label_title.setStyleSheet(title_style)
 
     def label_stop_clicked(self, event):
         """중지 라벨 클릭 시 실행"""
         current_item = self.listWidget.currentItem()
         if current_item and current_item.text().endswith(' (실행 중)'):
-            current_item.setText(current_item.text().replace(' (실행 중)', ''))
+            macro_name = current_item.text().replace(' (실행 중)', '')
+            macro_key = self.macro_name_to_key.get(macro_name)
+            
+            if macro_key:
+                # 매크로 중지
+                self.macro_runner.stop_macro(macro_key)
+                
+            current_item.setText(macro_name)
         
         # 라벨들의 스타일시트 변경 (stop 상태)
         run_style = self.label_run.styleSheet().replace('deepskyblue', 'darkgray')
@@ -314,6 +349,34 @@ class MainDialog(QtWidgets.QMainWindow):
         
         return True
 
+    def on_macro_status_changed(self, macro_key, status):
+        """매크로 상태 변경 시그널 핸들러"""
+        # 데이터에서 매크로 이름 찾기
+        data_manager = DataManager.get_instance()
+        macro_name = None
+        if macro_key in data_manager._data['macro_list']:
+            macro_name = data_manager._data['macro_list'][macro_key]['name']
+        
+        if not macro_name:
+            return
+            
+        # UI 업데이트
+        for i in range(self.listWidget.count()):
+            item = self.listWidget.item(i)
+            item_name = item.text().replace(' (실행 중)', '')
+            
+            if item_name == macro_name:
+                if status == "running" and not item.text().endswith(' (실행 중)'):
+                    item.setText(f"{item_name} (실행 중)")
+                elif status == "stopped" and item.text().endswith(' (실행 중)'):
+                    item.setText(item_name)
+                break
+
+    def on_log_message(self, message):
+        """로그 메시지 시그널 핸들러"""
+        # 로그 표시 UI가 있다면 여기서 처리
+        print(f"로그: {message}")  # 임시로 콘솔에 출력
+
     def load_macro_list(self):
         """데이터에서 매크로 리스트 로드"""
         data_manager = DataManager.get_instance()
@@ -321,10 +384,13 @@ class MainDialog(QtWidgets.QMainWindow):
         
         # listWidget 초기화
         self.listWidget.clear()
+        self.macro_name_to_key.clear()  # 매핑 초기화
         
         # 매크로 이름들을 listWidget에 추가
-        for macro in macro_list.values():
+        for key, macro in macro_list.items():
             self.listWidget.addItem(macro['name'])
+            # 이름 -> 키 매핑 추가
+            self.macro_name_to_key[macro['name']] = key
         
         # 첫 번째 아이템이 있다면 선택
         if self.listWidget.count() > 0:

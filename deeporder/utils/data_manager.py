@@ -2,6 +2,8 @@ from pathlib import Path
 import json
 import shutil
 from PIL import Image
+from utils.temp_manager import TempManager
+import os
 
 class DataManager:
     _instance = None
@@ -55,70 +57,157 @@ class DataManager:
             print(f"데이터 저장 중 오류 발생: {e}")
             return False
     
-    def create_default_actions(self, macro_key):
-        """기본 액션 생성"""
+    def _wizard_actions_common(self, macro_key, mapping, starting_action_number):
+        """
+        공통 로직: TempManager의 painted 이미지 복사 및 액션 데이터 생성
+
+        Args:
+            macro_key (str): 매크로 키.
+            mapping (dict): {temp_label: (액션 이름, 파일 이름)} 형식의 매핑.
+            starting_action_number (int): 액션 번호를 시작할 번호.
+        
+        Returns:
+            dict: 생성된 액션 데이터 딕셔너리.
+        """
+        temp_manager = TempManager.get_instance()
+
         macro_name = self._data['macro_list'][macro_key]['name']
         macro_folder = self.img_path / macro_name
         macro_folder.mkdir(exist_ok=True)
-        
-        # 기본 액션 생성
+
+        # temp_manager에서 원본 드래그 영역 좌표들을 가져옵니다.
+        original_drag_areas = temp_manager.get_original_drag_areas()
+
         actions = {}
-        action_names = {
-            'A0': '- 버튼 이미지',
-            'A1': '+ 버튼 이미지',
-            'A2': '예상시간 이미지',
-            'A3': '거부버튼 이미지',
-            'A4': '접수버튼 이미지'
-        }
-        
-        for key, name in action_names.items():
-            actions[key] = {
-                'name': name,
-                'type': 'image',
-                'number': int(key[1]) + 1,
-                'image': str(macro_folder / f'{key}.png'),
-                'surface': [1],
-                'priority': False
-            }
+        action_number = starting_action_number
+
+        for temp_label, (action_name, filename) in mapping.items():
+            # temp_label에 따라 적절한 이미지 경로 가져오기
+            if temp_label == 'step1':
+                temp_image_path = temp_manager.get_temp_image(1)
+                
+                # 원본 이미지에도 전체 이미지 크기를 좌표로 저장 (스케일링 계산용)
+                if temp_image_path and os.path.exists(temp_image_path):
+                    try:
+                        # 이미지 크기 가져오기
+                        import cv2
+                        img = cv2.imread(str(temp_image_path))
+                        if img is not None:
+                            height, width = img.shape[:2]
+                            # 전체 이미지 크기를 템플릿 좌표로 설정 (x=0, y=0, width, height)
+                            coordinates = [0, 0, width, height]
+                            print(f"원본 템플릿 이미지 크기: {width}x{height}, 좌표: {coordinates}")
+                        else:
+                            coordinates = None
+                            print(f"원본 템플릿 이미지를 읽을 수 없음: {temp_image_path}")
+                    except Exception as e:
+                        coordinates = None
+                        print(f"원본 템플릿 이미지 크기 읽기 실패: {e}")
+                else:
+                    coordinates = None
+            else:
+                temp_image_path = temp_manager.get_painted_image(temp_label)
+                # 드래그 영역 좌표 정보 획득
+                drag_area = original_drag_areas.get(temp_label)
+                coordinates = ([drag_area['x'], drag_area['y'], 
+                              drag_area['width'], drag_area['height']]
+                                 if drag_area else None)
+
+            # 이미지 복사 및 액션 데이터 생성
+            if temp_image_path and os.path.exists(temp_image_path):
+                shutil.copy2(temp_image_path, macro_folder / filename)
             
+            action_key = f"A{action_number}"
+            actions[action_key] = {
+                'name': action_name,
+                'type': 'image',
+                'number': action_number,
+                'image': str(macro_folder / filename),
+                'priority': False,
+                'coordinates': coordinates
+            }
+            action_number += 1
+
+        return actions
+
+    def create_wizard_actions(self, macro_key):
+        """
+        신규 매크로 생성 시, 초기 액션 생성 및 이미지 복사.
+        """
+        # 신규 매크로에서는 고정된 매핑과 번호를 사용
+        mapping = {
+            'step1': ('원본 이미지', 'A1.png'),
+            'minus': ('- 버튼 이미지', 'A2.png'),
+            'plus': ('+ 버튼 이미지', 'A3.png'),
+            'time': ('예상시간 이미지', 'A4.png'),
+            'reject': ('거부버튼 이미지', 'A5.png'),
+            'accept': ('접수버튼 이미지', 'A6.png')
+        }
+        # 액션 번호는 1부터 시작 (A1 → number 1 등)
+        actions = self._wizard_actions_common(macro_key, mapping, starting_action_number=1)
         self._data['macro_list'][macro_key]['actions'] = actions
         return self.save_data()
-        
-    def save_cropped_images(self, macro_key, original_image, drag_areas):
-        """드래그 영역으로 이미지 크롭하여 저장"""
+
+    def add_wizard_actions(self, macro_key):
+        """
+        기존 매크로에 대해서 추가 액션 생성 및 이미지 복사.
+        """
+        actions = self._data['macro_list'][macro_key]['actions']
         macro_name = self._data['macro_list'][macro_key]['name']
         macro_folder = self.img_path / macro_name
-        macro_folder.mkdir(exist_ok=True)
+
+        # 기존 액션에서 가장 큰 번호 산출 (없으면 0)
+        last_action_number = max([action['number'] for action in actions.values()], default=0)
         
-        # PIL Image로 변환
-        img = Image.open(original_image)
-        
-        # 각 영역별 이미지 크롭 및 저장
-        area_files = {
-            'minus': 'A0.png',
-            'plus': 'A1.png',
-            'time': 'A2.png',
-            'reject': 'A3.png',  # 거절버튼
-            'accept': 'A4.png'   # 수락버튼
+        # 추가 액션은 기존 번호 + 1부터 할당
+        mapping = {
+            'step1': ('원본 이미지', f'A{last_action_number + 1}.png'),
+            'minus': ('- 버튼 이미지', f'A{last_action_number + 2}.png'),
+            'plus': ('+ 버튼 이미지', f'A{last_action_number + 3}.png'),
+            'time': ('예상시간 이미지', f'A{last_action_number + 4}.png'),
+            'reject': ('거부버튼 이미지', f'A{last_action_number + 5}.png'),
+            'accept': ('접수버튼 이미지', f'A{last_action_number + 6}.png')
         }
+        new_actions = self._wizard_actions_common(macro_key, mapping, starting_action_number=last_action_number+1)
+        actions.update(new_actions)
+        return self.save_data()
+    
+    # def save_cropped_images(self, macro_key, original_image, drag_areas):
+    #     """드래그 영역으로 이미지 크롭하여 저장"""
+    #     macro_name = self._data['macro_list'][macro_key]['name']
+    #     macro_folder = self.img_path / macro_name
+    #     macro_folder.mkdir(exist_ok=True)
         
-        for area_name, filename in area_files.items():
-            if area_name in drag_areas and drag_areas[area_name]:
-                rect = drag_areas[area_name]
-                cropped = img.crop((rect.x(), rect.y(), 
-                                  rect.x() + rect.width(), 
-                                  rect.y() + rect.height()))
-                cropped.save(macro_folder / filename)
+    #     # PIL Image로 변환
+    #     img = Image.open(original_image)
+        
+    #     # 각 영역별 이미지 크롭 및 저장
+    #     area_files = {
+    #         'minus': 'A0.png',
+    #         'plus': 'A1.png',
+    #         'time': 'A2.png',
+    #         'reject': 'A3.png',  # 거절버튼
+    #         'accept': 'A4.png'   # 수락버튼
+    #     }
+        
+    #     for area_name, filename in area_files.items():
+    #         if area_name in drag_areas and drag_areas[area_name]:
+    #             rect = drag_areas[area_name]
+    #             cropped = img.crop((rect.x(), rect.y(), 
+    #                               rect.x() + rect.width(), 
+    #                               rect.y() + rect.height()))
+    #             cropped.save(macro_folder / filename)
                 
-        return True
+    #     return True
     
     def create_delay_action(self, macro_key, delay_time):
         """딜레이 액션 생성"""
         try:
             actions = self._data['macro_list'][macro_key]['actions']
-            # 새로운 액션 번호 계산
-            new_number = len(actions) + 1
-            new_key = f'A{len(actions)}'
+            # 기존 액션에서 가장 큰 번호 산출 (없으면 0)
+            last_action_number = max([action['number'] for action in actions.values()], default=0)
+            new_number = last_action_number + 1
+            new_key = f'A{new_number}'
             
             # 딜레이 액션 생성
             actions[new_key] = {
@@ -134,40 +223,39 @@ class DataManager:
             print(f"딜레이 액션 생성 중 오류 발생: {e}")
             return False
     
-    def create_image_action(self, macro_key, name, image_path, surfaces):
-        """이미지 액션 생성"""
-        try:
-            actions = self._data['macro_list'][macro_key]['actions']
+    # def create_image_action(self, macro_key, name, image_path):
+    #     """이미지 액션 생성"""
+    #     try:
+    #         actions = self._data['macro_list'][macro_key]['actions']
             
-            # 새로운 액션 키 생성 (마지막 번호 + 1)
-            last_num = -1
-            for key in actions.keys():
-                if key.startswith('A'):
-                    try:
-                        num = int(key[1:])
-                        last_num = max(last_num, num)
-                    except ValueError:
-                        continue
-            new_key = f'A{last_num + 1}'
+    #         # 새로운 액션 키 생성 (마지막 번호 + 1)
+    #         last_num = -1
+    #         for key in actions.keys():
+    #             if key.startswith('A'):
+    #                 try:
+    #                     num = int(key[1:])
+    #                     last_num = max(last_num, num)
+    #                 except ValueError:
+    #                     continue
+    #         new_key = f'A{last_num + 1}'
             
-            # 새로운 number 계산 (현재 가장 큰 number + 1)
-            new_number = max([action['number'] for action in actions.values()], default=0) + 1
+    #         # 새로운 number 계산 (현재 가장 큰 number + 1)
+    #         new_number = max([action['number'] for action in actions.values()], default=0) + 1
             
-            # 새로운 액션 생성
-            actions[new_key] = {
-                'name': name,
-                'type': 'image',
-                'number': new_number,
-                'image': str(image_path),
-                'surface': surfaces,
-                'priority': False
-            }
+    #         # 새로운 액션 생성
+    #         actions[new_key] = {
+    #             'name': name,
+    #             'type': 'image',
+    #             'number': new_number,
+    #             'image': str(image_path),
+    #             'priority': False
+    #         }
             
-            return new_key
+    #         return new_key
             
-        except Exception as e:
-            print(f"이미지 액션 생성 중 오류 발생: {e}")
-            return None
+    #     except Exception as e:
+    #         print(f"이미지 액션 생성 중 오류 발생: {e}")
+    #         return None
     
     def copy_macro(self, original_macro_key, new_name):
         """매크로 복제
@@ -224,64 +312,3 @@ class DataManager:
         except Exception as e:
             print(f"매크로 복제 중 오류 발생: {e}")
             return None
-    
-    def create_wizard_actions(self, macro_key, temp_manager):
-        """액션 위자드로 새로운 액션 5개 생성
-        
-        Args:
-            macro_key (str): 매크로 키
-            temp_manager (TempManager): 임시 이미지 관리자
-            
-        Returns:
-            bool: 성공 여부
-        """
-        try:
-            actions = self._data['macro_list'][macro_key]['actions']
-            macro_name = self._data['macro_list'][macro_key]['name']
-            macro_folder = self.img_path / macro_name
-            
-            # 새로운 액션 키와 번호 계산
-            last_key_num = -1
-            for key in actions.keys():
-                if key.startswith('A'):
-                    try:
-                        num = int(key[1:])
-                        last_key_num = max(last_key_num, num)
-                    except ValueError:
-                        continue
-                    
-            # 새로운 number는 현재 가장 큰 number + 1부터
-            new_number = max([action['number'] for action in actions.values()], default=0) + 1
-            
-            # 새로운 액션 생성
-            area_files = {
-                'minus': ('- 버튼 이미지', f'A{last_key_num + 1}.png'),
-                'plus': ('+ 버튼 이미지', f'A{last_key_num + 2}.png'),
-                'time': ('예상시간 이미지', f'A{last_key_num + 3}.png'),
-                'reject': ('거부버튼 이미지', f'A{last_key_num + 4}.png'),
-                'accept': ('접수버튼 이미지', f'A{last_key_num + 5}.png')
-            }
-            
-            # 이미지 복사 및 액션 생성
-            for i, (label, (name, filename)) in enumerate(area_files.items()):
-                temp_image_path = temp_manager.get_cropped_image(label)
-                if temp_image_path:
-                    # 이미지 복사
-                    shutil.copy2(temp_image_path, macro_folder / filename)
-                    
-                    # 액션 생성
-                    action_key = f'A{last_key_num + i + 1}'
-                    actions[action_key] = {
-                        'name': name,
-                        'type': 'image',
-                        'number': new_number + i,
-                        'image': str(macro_folder / filename),
-                        'surface': [1],
-                        'priority': False
-                    }
-            
-            return self.save_data()
-            
-        except Exception as e:
-            print(f"액션 위자드로 액션 생성 중 오류 발생: {e}")
-            return False

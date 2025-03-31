@@ -7,6 +7,7 @@ sys.path.append(str(Path(__file__).parents[1]))
 from dialog.image_dialog import ImageDialog
 from dialog.action_delay_dialog import ActionDelayDialog
 from dialog.action_setting_dialog import ActionSettingDialog
+from dialog.action_preview_dialog import ActionPreviewDialog
 from utils.data_manager import DataManager
 
 class ActionDialog(QtWidgets.QDialog):
@@ -164,8 +165,12 @@ class ActionDialog(QtWidgets.QDialog):
                 action_data['value'] = float(dialog.lineEdit_delay.text())
                 action_data['name'] = f"딜레이: {action_data['value']}초"
                 self.load_actions()
+        # else:
+        #     dialog = ImageDialog(self, macro_key=self.macro_key, action_key=action_key)
+        #     if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
+        #         self.load_actions()
         else:
-            dialog = ImageDialog(self, macro_key=self.macro_key, action_key=action_key)
+            dialog = ActionPreviewDialog(self, macro_key=self.macro_key, action_key=action_key)
             if dialog.exec() == QtWidgets.QDialog.DialogCode.Accepted:
                 self.load_actions()
 
